@@ -3,3 +3,11 @@
 //
 
 #include "Player.h"
+
+Player::Player() {
+    name = " ";
+}
+
+int Player::testmethod() {
+    
+}

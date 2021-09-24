@@ -7,7 +7,10 @@
 
 
 class Player {
-
+public:
+    string name;
+    Player( );
+    testmethod();
 };
 
 
