@@ -1,4 +1,0 @@
-"A:\Programming Stuff\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - NMake Makefiles" "A:\Programming Stuff\GitHub\COMP_345_PROJ"
--- Configuring done
--- Generating done
--- Build files have been written to: A:/Programming Stuff/GitHub/COMP_345_PROJ/cmake-build-debug

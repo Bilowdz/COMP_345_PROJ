@@ -1,3 +1,0 @@
-A:/Programming Stuff/GitHub/COMP_345_PROJ/cmake-build-debug/CMakeFiles/COMP_345_PROJ.dir
-A:/Programming Stuff/GitHub/COMP_345_PROJ/cmake-build-debug/CMakeFiles/edit_cache.dir
-A:/Programming Stuff/GitHub/COMP_345_PROJ/cmake-build-debug/CMakeFiles/rebuild_cache.dir
