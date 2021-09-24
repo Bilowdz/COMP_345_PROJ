@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/COMP_345_PROJ.dir/Map.cpp.obj"
   "CMakeFiles/COMP_345_PROJ.dir/main.cpp.obj"
   "COMP_345_PROJ.exe"
   "COMP_345_PROJ.exe.manifest"

@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="A:/Programming Stuff/GitHub/COMP_345_PROJ/Map.cpp">
+			<Option target="COMP_345_PROJ"/>
+		</Unit>
+		<Unit filename="A:/Programming Stuff/GitHub/COMP_345_PROJ/Map.h">
+			<Option target="COMP_345_PROJ"/>
+		</Unit>
 		<Unit filename="A:/Programming Stuff/GitHub/COMP_345_PROJ/main.cpp">
 			<Option target="COMP_345_PROJ"/>
 		</Unit>

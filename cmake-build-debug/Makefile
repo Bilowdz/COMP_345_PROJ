@@ -118,6 +118,30 @@ COMP_345_PROJ\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\COMP_345_PROJ.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\COMP_345_PROJ.dir\build
 .PHONY : COMP_345_PROJ\fast
 
+Map.obj: Map.cpp.obj
+.PHONY : Map.obj
+
+# target to build an object file
+Map.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\COMP_345_PROJ.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\COMP_345_PROJ.dir\Map.cpp.obj
+.PHONY : Map.cpp.obj
+
+Map.i: Map.cpp.i
+.PHONY : Map.i
+
+# target to preprocess a source file
+Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\COMP_345_PROJ.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\COMP_345_PROJ.dir\Map.cpp.i
+.PHONY : Map.cpp.i
+
+Map.s: Map.cpp.s
+.PHONY : Map.s
+
+# target to generate assembly for a file
+Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\COMP_345_PROJ.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\COMP_345_PROJ.dir\Map.cpp.s
+.PHONY : Map.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -151,6 +175,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... COMP_345_PROJ
+	@echo ... Map.obj
+	@echo ... Map.i
+	@echo ... Map.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
