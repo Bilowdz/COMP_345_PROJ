@@ -9,6 +9,7 @@ void Map::Validate() {
 }
 
 Map* MapLoader::Load(std::string fileName) {
+    std::vector<Territory*> territories;
     Map *map (new Map);
 
     std::ifstream input(fileName);
@@ -24,6 +25,8 @@ Map* MapLoader::Load(std::string fileName) {
     }
 
     // Read continents
+    std::cout << "\nReading Continents" << std::endl;
+
     input >> name;
     while(name != "[countries]" && !input.eof()) {
         input >> reward >> color;
@@ -34,6 +37,8 @@ Map* MapLoader::Load(std::string fileName) {
     }
 
     // Read countries
+    std::cout << "\nReading Territories" << std::endl;
+
     input >> str;
     while(strcmp(str, "[borders]") && !input.eof()) {
         sscanf(str, "%d", &id);
@@ -41,25 +46,28 @@ Map* MapLoader::Load(std::string fileName) {
         std::cout << "Territory: " << name << ", In Continent: " << continent << std::endl;
         Territory *territory(new Territory(id, name));
         map->map[continent-1].territories.push_back(*territory);
-        map->territories.push_back(*territory);
+        territories.push_back(territory);
         input >> str;
     }
 
-    // TODO: FIX THIS
     // Read adjacency's
+    std::cout << "\nReading Adjacency's" << std::endl;
+
     while(!input.eof()) {
         input.getline(str, 255);
-        char *currentTerritory = strtok(str, " ");
-        if(currentTerritory){
-            sscanf(currentTerritory, "%d", &id);
-            std::cout << "Territory: " << id << std::endl;
-            Territory cur = map->territories[id];
-            char *adjacentTerritory = strtok(NULL, " ");
-            while(adjacentTerritory){
-                sscanf(currentTerritory, "%d", &id);
-                cur.adjacentTerritories.push_back(map->territories[id]);
-                char *adjacentTerritory = strtok(NULL, " ");
+        char *token = strtok(str, " ");
+        if(token){
+            sscanf(token, "%d", &id);
+            std::cout << "Territory: " << id << " is adjacent to: ";
+            Territory* cur = territories[id-1];
+            token = strtok(NULL, " ");
+            while(token){
+                sscanf(token, "%d", &id);
+                std::cout << "territory #" << id << " ";
+                cur->adjacentTerritories.push_back(*territories[id-1]);
+                token = strtok(NULL, " ");
             }
+            std::cout << std::endl;
         }
     }
 

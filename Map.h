@@ -32,7 +32,6 @@ public:
 class Map {
 public:
     std::vector<Continent> map;
-    std::vector<Territory> territories;
     void Validate();
 };
 
