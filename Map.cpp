@@ -9,24 +9,27 @@ void Map::Validate() {
 }
 
 Map* MapLoader::Load(std::string fileName) {
+    //Temporary storage for the territories (ease to edit)
     std::vector<Territory*> territories;
     Map *map (new Map);
 
+    //Open map file
     std::ifstream input(fileName);
-    char str[256];
 
+    //Variables used in the reading of the file
+    char str[256];
     std::string name; int reward; std::string color;
     int id, continent, miscData1, miscData2;
 
     // Skip to continents header
     while(strcmp(str, "[continents]") && !input.eof()) {
-        // std::cout << "Skipped Line: " << str << std::endl;
         input.getline(str, 255);
     }
 
     // Read continents
+    //      Checks if the first element is the start of countries before proceeding,
+    //      Creates a new continent and adds it to the map
     std::cout << "\nReading Continents" << std::endl;
-
     input >> name;
     while(name != "[countries]" && !input.eof()) {
         input >> reward >> color;
@@ -37,8 +40,9 @@ Map* MapLoader::Load(std::string fileName) {
     }
 
     // Read countries
+    //      Checks if the first element is the start of borders before proceeding,
+    //      Creates a new country and adds it to the temporary vector and its continent
     std::cout << "\nReading Territories" << std::endl;
-
     input >> str;
     while(strcmp(str, "[borders]") && !input.eof()) {
         sscanf(str, "%d", &id);
@@ -51,8 +55,11 @@ Map* MapLoader::Load(std::string fileName) {
     }
 
     // Read adjacency's
+    //      Checks for the end of file before proceeding,
+    //      Gets and splits the next line on space
+    //      Saves the first element as the territory to edit
+    //      Loops through the other elements adding them to the adjacency
     std::cout << "\nReading Adjacency's" << std::endl;
-
     while(!input.eof()) {
         input.getline(str, 255);
         char *token = strtok(str, " ");
