@@ -9,11 +9,12 @@
 using namespace std;
 
 
-class Card {
-    string cardType;
-    Card();
-    Card(string type);
-    string getType();
+struct Card {
+    public:
+        string cardType;
+        Card();
+        Card(string type);
+        string getType();
 };
 
 

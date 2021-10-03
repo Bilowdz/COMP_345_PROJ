@@ -5,16 +5,15 @@
 #ifndef COMP_345_PROJ_DECK_H
 #define COMP_345_PROJ_DECK_H
 #include <vector>
-#include "Card.h"
+#include "Card.cpp"
 
 class Deck {
     public:
-        std::vector<Card> deckOfCards;
+        std::vector<Card*> cardsHeld;
     Deck();
     Deck(int numPlayers);
-    void Deal(Deck otherDeck);
-    void Play(Deck otherDeck);
-
+    void Deal(Deck otherDeck[]);
+    void Play(Deck otherDeck, string ct);
 };
 
 
