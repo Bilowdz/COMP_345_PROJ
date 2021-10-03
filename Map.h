@@ -16,7 +16,7 @@ public:
     std::string name;
     int unitsGarrisoned;
     // Owner
-    std::vector<Territory> adjacentTerritories;
+    std::vector<Territory*> adjacentTerritories;
 };
 
 class Continent{
@@ -25,7 +25,7 @@ public:
     std::string name;
     int territorialReward;
     // Owner
-    std::vector<Territory> territories;
+    std::vector<Territory*> territories;
     // Color
 };
 

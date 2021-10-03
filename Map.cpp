@@ -45,7 +45,7 @@ Map* MapLoader::Load(std::string fileName) {
         input >> name >> continent >> miscData1 >> miscData2;
         std::cout << "Territory: " << name << ", In Continent: " << continent << std::endl;
         Territory *territory(new Territory(id, name));
-        map->map[continent-1].territories.push_back(*territory);
+        map->map[continent-1].territories.push_back(territory);
         territories.push_back(territory);
         input >> str;
     }
@@ -64,7 +64,7 @@ Map* MapLoader::Load(std::string fileName) {
             while(token){
                 sscanf(token, "%d", &id);
                 std::cout << "territory #" << id << " ";
-                cur->adjacentTerritories.push_back(*territories[id-1]);
+                cur->adjacentTerritories.push_back(territories[id-1]);
                 token = strtok(NULL, " ");
             }
             std::cout << std::endl;
