@@ -8,6 +8,7 @@
 Player::Player() {
 //     this->name = "Player" + std::to_string(playerNumber);
 //     playerNumber++;
+//player to chose what countries it has
 }
 
 Player::Player(string name) {
