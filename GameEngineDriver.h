@@ -9,9 +9,17 @@
 
 class GameEngineDriver {
 public:
+    GameEngine* game;
+    bool isGameDone;
     GameEngineDriver();
-    void start();
-    void chooseCommand(State* s, GameEngine g);
+    GameEngineDriver(const GameEngineDriver &);
+    ~GameEngineDriver();
+
+    void chooseCommand();
+    GameEngineDriver& operator =(const GameEngineDriver &);
+
+    friend std::ostream & operator << (std::ostream &, const GameEngineDriver &);
+    //friend std::istream & operator << (std::istream &, const GameEngineDriver &);
 };
 
 

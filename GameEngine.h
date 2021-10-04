@@ -15,15 +15,26 @@ enum State
     ST_ISSUE_ORDERS,
     ST_EXECUTE_ORDERS,
     ST_WIN,
-    ST_END,
-    ST_DEFAULT
+    ST_END
+};
+
+enum Transition {
+    T_LOAD_MAP,
+    T_VALIDATE_MAP,
+    T_ADD_PLAYER,
+    T_ASSIGN_COUNTRIES,
+    T_ISSUE_ORDER,
+    T_END_ISSUE_ORDERS,
+    T_EXEC_ORDER,
+    T_END_EXEC_ORDERS,
+    T_WIN,
+    T_PLAY,
+    T_END
 };
 
 class GameEngine {
-    public:
-        State currentState;
-        GameEngine();
-        GameEngine(State);
+    private:
+    State currentState;
         void loadmap();
         void validatemap();
         void addplayer();
@@ -36,6 +47,17 @@ class GameEngine {
         void end();
         void play();
 
+    public:
+        GameEngine();
+        GameEngine(const GameEngine &);
+        GameEngine(GameEngine *);
+        ~GameEngine();
+
+        bool transition(Transition);
+
+        GameEngine& operator =(const GameEngine &);
+        friend std::ostream & operator << (std::ostream &, const GameEngine &);
+        //friend std::istream & operator << (std::istream &, const GameEngine &);
 };
 
 
