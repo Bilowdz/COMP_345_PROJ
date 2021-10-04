@@ -4,13 +4,52 @@
 
 #include "Orders.h"
 #include <iostream>
+#include <vector>
 
-void OrdersList::addDeploy(Deploy addDeploy) {
-    if (typeid(addDeploy) == typeid(Deploy)){
-        std::cout << "orderToAdd is an instance of Deploy";
-    } else {
-        std::cout << "orderToAdd is NOT an instance of Deploy";
+//------------------------------------------------------
+// OrdersList functions
+//------------------------------------------------------
+
+// constructor
+OrdersList::OrdersList(std::vector<Orders> ordersList) {
+    for (int i = 0; i < ordersList.size(); ++i) {
+        setListMember(ordersList[i]);
     }
+}
+
+// setter
+void OrdersList::setListMember(Orders order) {
+    this->ordersList.push_back(order);
+}
+
+// getter
+std::vector<Orders> OrdersList::getList() {
+    return this->ordersList;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+void OrdersList::addDeploy(Deploy addDeploy, std::vector<Orders> ordersList) {
+    if (typeid(addDeploy) == typeid(Deploy)){
+        std::cout << "orderToAdd is an instance of Deploy\n";
+
+    } else {
+        std::cout << "orderToAdd is NOT an instance of Deploy\n";
+    }
+}
+void OrdersList::move(int index) {
+
+}
+
+//------------------------------------------------------
+// Orders functions
+//------------------------------------------------------
+
+void Orders::toString() {
+    if (Deploy* d = dynamic_cast<Deploy*>(this)) {
+        Deploy::toString();
+    }
+        std::cout << "This is an Orders object\n";
 }
 
 void Deploy::deployArmies(int armies) {
@@ -44,4 +83,16 @@ void Deploy::validate(int armies) {
 
 void Deploy::execute() {
     std::cout << "Deploy executed.";
+}
+
+void Deploy::toString() {
+    std::cout << "This is a deploy object\n";
+}
+
+void Deploy::setArmies(int armies) {
+    Deploy::armies = armies;
+}
+
+Deploy::Deploy(int armies) {
+    Deploy::setArmies(armies);
 }
