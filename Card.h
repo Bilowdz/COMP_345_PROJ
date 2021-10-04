@@ -13,7 +13,7 @@ struct Card {
     public:
         string cardType;
         Card();
-        Card(string type);
+        Card(string* type);
         string getType();
 };
 

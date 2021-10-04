@@ -6,13 +6,15 @@
 #define COMP_345_PROJ_DECK_H
 #include <vector>
 #include "Card.cpp"
+#include <stdlib.h>
 
 class Deck {
     public:
         std::vector<Card*> cardsHeld;
     Deck();
     Deck(int numPlayers);
-    void Deal(Deck otherDeck[]);
+    void ReceiveCard(Card *c);
+    void Deal(Deck *otherDeck[]);
     void Play(Deck otherDeck, string ct);
 };
 
