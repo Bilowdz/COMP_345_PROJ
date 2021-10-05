@@ -21,10 +21,9 @@ public:
 
     Player(); //default constructor
     Player(string *name);
-    //Player(string);
 
     //todo Add the hand that the player will have when cards are given to him
-    //Player(string name, vector<Territory*>);
+    //Player(string *name, vector<Territory*>);
 
     vector<Territory> *toDefend(vector<Territory>);
 

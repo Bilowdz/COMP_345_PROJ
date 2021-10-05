@@ -15,7 +15,7 @@ Player::Player(string *name) {
     this->name = *name;
 }
 
-//Player::Player(string name, vector<Territory *> territory) {
+//Player::Player(string *name, vector<Territory *> territory) {
 //
 //}
 

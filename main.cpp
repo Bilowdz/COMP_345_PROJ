@@ -12,15 +12,14 @@ int main() {
     vector<Player> nameVector;
 
     int numPlayers;
-    string x;
-    string *pPlayerName;
-    pPlayerName = &x;
+    string playerName;
+    string *pPlayerName = &playerName;
     cout << "Enter number of players: ";
     cin >> numPlayers;
 
     for (unsigned i = 0; i < numPlayers; ++i) {
         cout << "Please enter your name: ";
-        cin >> x;
+        cin >> playerName;
         Player pObject(pPlayerName);
         nameVector.push_back(pObject);
         cout << endl;
