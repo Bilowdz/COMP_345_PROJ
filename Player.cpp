@@ -11,9 +11,13 @@ Player::Player() {
 //player to chose what countries it has
 }
 
-Player::Player(string name) {
-    this->name = name;
+Player::Player(string *name) {
+    this->name = *name;
 }
+
+//Player::Player(string name, vector<Territory *> territory) {
+//
+//}
 
 vector<Territory> *Player::toDefend(vector<Territory> defend) { //might not need these params
     //vector<Territory> territory = NULL;
@@ -31,10 +35,13 @@ vector<Order> *Player::issueOrder(Player currentPlayer) {
     return NULL;
 }
 
-string Player::getName() {
+string Player::getName() const{
+    //same as (*this).name
     return this->name;
 }
 
 void Player::setName(string s) {
+    //same as (*this).name = s;
     this->name = s;
 }
+

@@ -16,10 +16,15 @@ using namespace std;
 
 class Player {
 public:
+
     string name;
 
     Player(); //default constructor
-    explicit Player(string name);
+    Player(string *name);
+    //Player(string);
+
+    //todo Add the hand that the player will have when cards are given to him
+    //Player(string name, vector<Territory*>);
 
     vector<Territory> *toDefend(vector<Territory>);
 
@@ -27,13 +32,13 @@ public:
 
     vector<Order> *issueOrder(Player);
 
-    string getName();
+    string getName() const;
 
     void setName(string);
 
 
 private:
-    const string player = "Player";
+    //const string player = "Player";
     //static int playerNumber;
 };
 

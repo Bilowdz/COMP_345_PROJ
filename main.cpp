@@ -3,28 +3,51 @@
 
 using namespace std;
 
+void createPlayerVec(vector<Player> &);
+
+void showPlayerVec(vector<Player> &);
+
 int main() {
 
-    int number;
+    vector<Player> nameVector;
 
-    cout << "Enter number of players" << endl;
-    cin >> number;
+    int numPlayers;
+    string x;
+    string *pPlayerName;
+    pPlayerName = &x;
+    cout << "Enter number of players: ";
+    cin >> numPlayers;
 
-    vector<Player> nameVector(number); //using constructor to create n size array
-
-    for (int i = 0; i < number; i++) {
-        Player playerObj;
-        string playerName;
+    for (unsigned i = 0; i < numPlayers; ++i) {
         cout << "Please enter your name: ";
-        cin >> playerName;
-        playerObj.setName(playerName);
-        nameVector.push_back(playerObj);
+        cin >> x;
+        Player pObject(pPlayerName);
+        nameVector.push_back(pObject);
         cout << endl;
     }
 
-    for (auto &x: nameVector) {
-        cout << x.getName() << endl;
+//    for(vector<Player*>::iterator it = nameVector.begin(); it != nameVector.end(); ++it) {
+//        cout << (*it)->getName() << endl; //The * operator gives you the item referenced by the iterator, which in your case is a pointer. Then you use the -> to dereference that pointer.
+//    }
+//
+    cout << "Names entered" << endl;
+    for (unsigned i = 0; i < nameVector.size(); i++) {
+        cout << nameVector.at(i).getName() << endl;
     }
 
     return 0;
 }
+
+//void createPlayerVec(vector<Player> vecPlayer) {
+//
+//}
+//
+//void showPlayerVec(const vector<Player>& vecPlayer) {
+//
+//    unsigned int vecSize = vecPlayer.size();
+//
+//    for(unsigned int i = 0; i < vecSize; i++) {
+//        cout << vecPlayer[i].getName() << endl;
+//    }
+//
+//}
