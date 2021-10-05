@@ -5,11 +5,14 @@
 #ifndef COMP_345_PROJ_DECK_H
 #define COMP_345_PROJ_DECK_H
 #pragma  once
+
 #include <vector>
 #include "Card.h"
 #include <stdlib.h>
 #include <time.h>
 
+
+//creating all functions and constructors
 class Deck {
     public:
         std::vector<Card*> cardsHeld;

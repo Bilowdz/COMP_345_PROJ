@@ -9,7 +9,7 @@
 #include <string>
 using namespace std;
 
-
+//creating all functions and constructors
 struct Card {
     public:
         string *cardType;
