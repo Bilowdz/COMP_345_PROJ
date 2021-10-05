@@ -1,9 +1,11 @@
 //
-// Created by Nicolo pt 2 on 2021-09-24.
+// Created by Nicolo on 2021-09-24.
 //
+using namespace std;
 
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
+
 
 enum State
 {
@@ -34,7 +36,8 @@ enum Transition {
 
 class GameEngine {
     private:
-    State currentState;
+        State currentState;
+        int helrlo;
         void loadmap();
         void validatemap();
         void addplayer();
@@ -53,11 +56,14 @@ class GameEngine {
         GameEngine(GameEngine *);
         ~GameEngine();
 
+        string getState();
+
         bool transition(Transition);
 
         GameEngine& operator =(const GameEngine &);
-        friend std::ostream & operator << (std::ostream &, const GameEngine &);
-        //friend std::istream & operator << (std::istream &, const GameEngine &);
+        friend ostream & operator << (ostream &, const GameEngine &ge);
+        friend istream & operator >> (istream &, GameEngine &ge);
+
 };
 
 

@@ -1,5 +1,5 @@
 //
-// Created by Nicolo pt 2 on 2021-09-24.
+// Created by Nicolo on 2021-09-24.
 //
 
 #ifndef COMP_345_PROJ_GAMEENGINEDRIVER_H
@@ -8,8 +8,9 @@
 
 
 class GameEngineDriver {
-public:
+private:
     GameEngine* game;
+public:
     bool isGameDone;
     GameEngineDriver();
     GameEngineDriver(const GameEngineDriver &);
@@ -18,8 +19,8 @@ public:
     void chooseCommand();
     GameEngineDriver& operator =(const GameEngineDriver &);
 
-    friend std::ostream & operator << (std::ostream &, const GameEngineDriver &);
-    //friend std::istream & operator << (std::istream &, const GameEngineDriver &);
+    friend ostream & operator << (ostream &, const GameEngineDriver &ged);
+    friend istream & operator >> (istream &, GameEngineDriver &ged);
 };
 
 

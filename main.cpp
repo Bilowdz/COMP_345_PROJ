@@ -6,8 +6,6 @@ int main() {
     cout << "Hello, World!" << endl;
 
     GameEngineDriver driver;
-    cout << "-------------" << endl;
-    cout << "GameEngineDriver: " << driver << endl;
 
     while(!driver.isGameDone) {
         driver.chooseCommand();

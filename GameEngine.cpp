@@ -1,5 +1,5 @@
 //
-// Created by Nicolo pt 2 on 2021-09-24.
+// Created by Nicolo on 2021-09-24.
 //
 #include <iostream>
 #include "GameEngine.h"
@@ -121,6 +121,31 @@ bool GameEngine::transition(Transition t) {
     return false;
 }
 
+string GameEngine::getState() {
+    switch(currentState) {
+        case ST_START:
+            return "start";
+        case ST_MAP_LOADED:
+            return "maploaded";
+        case ST_MAP_VALIDATED:
+            return "mapvalidated";
+        case ST_PLAYERS_ADDED:
+            return "playersadded";
+        case ST_ASSIGN_REINFORCEMENT:
+            return "assignreinforcement";
+        case ST_ISSUE_ORDERS:
+            return "issueorders";
+        case ST_EXECUTE_ORDERS:
+            return "executeorders";
+        case ST_WIN:
+            return "win";
+        case ST_END:
+            return "end";
+        default:
+            return "error";
+    }
+}
+
 void GameEngine::loadmap() {
     cout << "executing function loadmap" << endl;
 }
@@ -176,7 +201,9 @@ GameEngine& GameEngine::operator =(const GameEngine &ge) {
 // stream insertion operator overloads
 ostream & operator << (ostream &out, const GameEngine &ge)
 {
+    cout << "using ostream operator '<<' from GameEngine class" << endl;
     switch(ge.currentState) {
+
         case ST_START:
             out << "Current State: start" << endl;
             break;
@@ -211,11 +238,13 @@ ostream & operator << (ostream &out, const GameEngine &ge)
     return out;
 }
 
-
-// TODO how do i allow user to input from a string to an enum?
+// TODO can this accept a state as an input?
+// TODO ask if its good practice to change the value of a enum based on a string
+// for example, a series of if statements to validate user input, and once a user input is validated (ie as stated on the graph),
+// then set state to appropriate state, return in with valid string
 istream & operator >> (istream &in,  GameEngine &ge)
 {
-    cout << "Enter Current State ";
-    //in >> ge.currentState;
+    cout << "using istream operator '>>' from GameEngine class" << endl;
+    cout << "Enter a state";
     return in;
 }
