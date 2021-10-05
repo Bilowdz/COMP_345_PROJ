@@ -4,6 +4,7 @@
 
 #ifndef COMP_345_PROJ_CARD_H
 #define COMP_345_PROJ_CARD_H
+#pragma  once
 #include<iostream>
 #include <string>
 using namespace std;
@@ -11,7 +12,7 @@ using namespace std;
 
 struct Card {
     public:
-        string cardType;
+        string *cardType;
         Card();
         Card(string* type);
         string getType();

@@ -8,9 +8,9 @@ Card::Card(){
     cout << "No Type specified please try again" << endl;
 }
 
-Card::Card(string* t) : cardType(*t){
+Card::Card(string* t) : cardType(t){
 }
 
 string Card::getType(){
-    return type;
+    return *cardType;
 }

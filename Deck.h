@@ -4,9 +4,11 @@
 
 #ifndef COMP_345_PROJ_DECK_H
 #define COMP_345_PROJ_DECK_H
+#pragma  once
 #include <vector>
-#include "Card.cpp"
+#include "Card.h"
 #include <stdlib.h>
+#include <time.h>
 
 class Deck {
     public:
@@ -16,6 +18,7 @@ class Deck {
     void ReceiveCard(Card *c);
     void Deal(Deck *otherDeck[]);
     void Play(Deck otherDeck, string ct);
+    void showCards();
 };
 
 
