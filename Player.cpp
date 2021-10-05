@@ -45,3 +45,7 @@ void Player::setName(string s) {
     this->name = s;
 }
 
+Player::Player(string *name, vector<Territory *> pTerritories, vector<Hand *> pHand, vector<OrderList *> pOrderList) {
+
+}
+

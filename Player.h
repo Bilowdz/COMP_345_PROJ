@@ -7,6 +7,10 @@
 #include <string>
 #include "Territory.h"
 #include "Order.h"
+#include "OrderList.h"
+#include "Hand.h"
+
+
 
 using namespace std;
 
@@ -23,7 +27,7 @@ public:
     Player(string *name);
 
     //todo Add the hand that the player will have when cards are given to him
-    //Player(string *name, vector<Territory*>);
+    Player(string *name, vector<Territory*> pTerritories, vector<Hand*> pHand, vector<OrderList*> pOrderList);
 
     vector<Territory> *toDefend(vector<Territory>);
 
