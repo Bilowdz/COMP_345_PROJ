@@ -9,11 +9,9 @@
 class Hand {
 
 public:
-    Hand();
-    std::vector<Card*> cardsHeld;
-    //void ReceiveCard(Card *c);
-    static void ShowHandCards(Hand *showHand);
-
+    Hand(int);
+private:
+    int cardNumber;
 };
 
 

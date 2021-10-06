@@ -3,21 +3,11 @@
 //
 
 #include <iostream>
+#include <vector>
 #include "Hand.h"
+using namespace std;
 
-Hand::Hand() {
-    std::cout<< "Hand constructor" << std::endl;
+Hand::Hand(int cardNumber) {
+    this->cardNumber = cardNumber;
 }
 
-void Hand::ReceiveCard(Card *c) {
-    cardsHeld.push_back(c);
-}
-
-void Hand::ShowHandCards(Hand *showHand)
-{
-    for(int i = 0; i < showHand->cardsHeld.size(); i++)
-    {
-        cout << "The Hand Card " << (i+1) << " is of type " << showHand->cardsHeld.at(i)->getType() << endl;
-    }
-    cout << "\n\n\n" << endl;
-};

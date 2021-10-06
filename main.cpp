@@ -5,8 +5,12 @@ using namespace std;
 
 void createPlayerVec(vector<Player>);
 void showPlayerVec(vector<Player>);
+vector<Territory*> generateTerritories(int territoryNumber);
+vector<Hand*> generateHand(vector<Territory*>, int cardNumber);
 
 int main() {
+    int territoryNumber = 1;
+    int cardNumber = 1;
 
     vector<Player> nameVector;
     vector<Territory*> vTerri;
@@ -38,6 +42,16 @@ int main() {
 
     return 0;
 }
+
+//vector<Territory*> generateTerritories(vector<Territory*> vTerritory, int territoryNumber) {
+//    Territory playerTerritory((rand() % 20), ("Territory" + to_string(territoryNumber)));
+//    //vTerritory.push_back(playerTerritory);
+//
+//}
+//
+//vector<Hand*> generateHand(int card) {
+//    //Hand(card);
+//}
 
 //void createPlayerVec(vector<Player> vecPlayer) {
 //

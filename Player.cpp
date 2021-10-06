@@ -46,7 +46,7 @@ vector<Order*> Player::issueOrder(Player *currentPlayer) {
 }
 
 void Player::getTerritoriesOwned() {
-    std::cout <<
+    //std::cout <<
 }
 
 string Player::getName() const{
