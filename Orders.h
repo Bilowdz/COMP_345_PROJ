@@ -10,12 +10,13 @@
 
 class Orders {
 private:
-    // each order is implemented as a subclass of this class
-    // each of these subclasses must implement validate() to make sure the order can be done
-    // also implement execute() which first uses validate() then executes the order for each subclass
+
 public:
+    Orders();
+    Orders(const Orders &o1);
     virtual void identify();
     virtual void validate();
+
 };
 
 //------------------------------------------------------------------
@@ -29,6 +30,9 @@ private:
 public:
     void setArmies(int sArmies);
     int getArmies() const;
+    Deploy();
+    ~Deploy();
+    Deploy(const Deploy &d1);
     void validate() override;
     static void execute();
     void identify() override;
@@ -40,6 +44,9 @@ private:
 public:
     void setArmies(int sArmies);
     int getArmies() const;
+    Advance();
+    ~Advance();
+    Advance(const Advance &a1);
     void validate() override;
     static void execute();
     void identify() override;
@@ -49,6 +56,9 @@ class Bomb : public Orders {
 private:
 
 public:
+    Bomb();
+    ~Bomb();
+    Bomb(const Bomb &b1);
     void validate() override;
     static void execute();
     void identify() override;
@@ -58,6 +68,9 @@ class Blockade : public Orders {
 private:
 
 public:
+    Blockade();
+    ~Blockade();
+    Blockade(const Blockade &b1);
     void validate() override;
     static void execute();
     void identify() override;
@@ -67,6 +80,9 @@ class Airlift : public Orders {
 private:
 
 public:
+    Airlift();
+    ~Airlift();
+    Airlift(const Airlift &a1);
     void validate() override;
     static void execute();
     void identify() override;
@@ -76,6 +92,9 @@ class Negotiate : public Orders {
 private:
 
 public:
+    Negotiate();
+    ~Negotiate();
+    Negotiate(const Negotiate &n1);
     void validate() override;
     static void execute();
     void identify() override;

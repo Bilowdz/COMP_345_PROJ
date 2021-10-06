@@ -113,4 +113,5 @@ int main(){
     cout << "\nexample validate/execute on an negotiate object at index 6\n\n";
 
     ordersListObj.getList().at(6)->validate();
+
 }

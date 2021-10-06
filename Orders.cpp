@@ -33,14 +33,17 @@ void OrdersList::addBomb(Bomb * bomb) {
     this->ordersList.push_back(bomb);
     cout << "Bomb order added." << endl;
 }
+
 void OrdersList::addBlockade(Blockade * blockade) {
     this->ordersList.push_back(blockade);
     cout << "Blockade order added." << endl;
 }
+
 void OrdersList::addAirlift(Airlift * airlift) {
     this->ordersList.push_back(airlift);
     cout << "Airlift order added." << endl;
 }
+
 void OrdersList::addNegotiate(Negotiate * negotiate) {
     this->ordersList.push_back(negotiate);
     cout << "Negotiate order added." << endl;
@@ -80,6 +83,10 @@ void OrdersList::remove(int index) {
 // Orders functions
 //------------------------------------------------------
 
+Orders::Orders() = default;
+
+Orders::Orders(const Orders &o1) = default;
+
 void Orders::identify() {
     std::cout << "Orders object: ";
 }
@@ -97,6 +104,14 @@ void Deploy::setArmies(int sArmies) {
 
 int Deploy::getArmies() const {
     return this->armies;
+}
+
+Deploy::Deploy() = default;
+
+Deploy::~Deploy() = default;
+
+Deploy::Deploy(const Deploy &d1) {
+    this->armies = d1.armies;
 }
 
 void Deploy::validate() {
@@ -144,6 +159,14 @@ int Advance::getArmies() const {
     return this->armies;
 }
 
+Advance::Advance() = default;
+
+Advance::~Advance() = default;
+
+Advance::Advance(const Advance &a1) {
+    this->armies = a1.armies;
+}
+
 void Advance::validate() {
     // validate if player has enough armies
     std::cout << "How many armies does the current player own?";
@@ -186,6 +209,14 @@ void Advance::identify() {
 // Bomb functions
 //------------------------------------------------------
 
+Bomb::Bomb() = default;
+
+Bomb::~Bomb() = default;
+
+Bomb::Bomb(const Bomb &b1) {
+    // empty because Bomb has no members.
+}
+
 void Bomb::validate() {
     std::cout << "Is the territory being bombed an enemy territory that is adjacent to a territory owned by the current player? (1 for yes, 0 for no)";
     int adjacentTerritory;
@@ -209,6 +240,14 @@ void Bomb::identify() {
 //------------------------------------------------------
 // Blockade functions
 //------------------------------------------------------
+
+Blockade::Blockade() = default;
+
+Blockade::~Blockade() = default;
+
+Blockade::Blockade(const Blockade &b1) {
+    // empty because Blockade has no members.
+}
 
 void Blockade::validate() {
     std::cout << "Is the territory being blockaded owned by the current player? (1 for yes, 0 for no)";
@@ -234,6 +273,14 @@ void Blockade::identify() {
 // Airlift functions
 //------------------------------------------------------
 
+Airlift::Airlift() = default;
+
+Airlift::~Airlift() = default;
+
+Airlift::Airlift(const Airlift &a1) {
+    // empty because Airlift has no members.
+}
+
 void Airlift::validate() {
     std::cout << "Is starting territory owned by player? (1 for yes, 0 for no)";
     int airlift;
@@ -257,6 +304,14 @@ void Airlift::identify() {
 //------------------------------------------------------
 // Negotiate functions
 //------------------------------------------------------
+
+Negotiate::Negotiate() = default;
+
+Negotiate::~Negotiate() = default;
+
+Negotiate::Negotiate(const Negotiate &n1) {
+    // empty because Negotiate has no members.
+}
 
 void Negotiate::validate() {
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
