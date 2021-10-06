@@ -31,7 +31,8 @@ public:
 
 class Map {
 public:
-    std::vector<Continent> map;
+    std::vector<Continent*> continents;
+    std::vector<Territory*> map;
     void Validate();
 };
 

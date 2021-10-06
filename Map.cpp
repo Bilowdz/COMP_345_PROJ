@@ -9,8 +9,6 @@ void Map::Validate() {
 }
 
 Map* MapLoader::Load(std::string fileName) {
-    //Temporary storage for the territories (ease to edit)
-    std::vector<Territory*> territories;
     Map *map (new Map);
 
     //Open map file
@@ -35,7 +33,7 @@ Map* MapLoader::Load(std::string fileName) {
         input >> reward >> color;
         std::cout << "Continent: " << name << ", With Reward: " << reward << std::endl;
         Continent *continent(new Continent(name, reward));
-        map->map.push_back(*continent);
+        map->continents.push_back(continent);
         input >> name;
     }
 
@@ -49,8 +47,9 @@ Map* MapLoader::Load(std::string fileName) {
         input >> name >> continent >> miscData1 >> miscData2;
         std::cout << "Territory: " << name << ", In Continent: " << continent << std::endl;
         Territory *territory(new Territory(id, name));
-        map->map[continent-1].territories.push_back(territory);
-        territories.push_back(territory);
+        auto curContinent = map->continents.at(continent-1);
+        curContinent->territories.push_back(territory);
+        map->map.push_back(territory);
         input >> str;
     }
 
@@ -66,17 +65,19 @@ Map* MapLoader::Load(std::string fileName) {
         if(token){
             sscanf(token, "%d", &id);
             std::cout << "Territory: " << id << " is adjacent to: ";
-            Territory* cur = territories[id-1];
+            Territory* cur = map->map[id-1];
             token = strtok(NULL, " ");
             while(token){
                 sscanf(token, "%d", &id);
-                std::cout << "territory #" << id << " ";
-                cur->adjacentTerritories.push_back(territories[id-1]);
+                std::cout << "T#" << id << " ";
+                cur->adjacentTerritories.push_back(map->map[id-1]);
                 token = strtok(NULL, " ");
             }
             std::cout << std::endl;
         }
     }
+
+    input.close();
 
     return map;
 }

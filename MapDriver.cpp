@@ -3,5 +3,6 @@
 
 int main() {
     MapLoader* loader(new MapLoader);
-    loader->Load("A:\\Programming Stuff\\GitHub\\COMP_345_PROJ\\Maps\\canada.map");
+    Map *map = loader->Load("A:\\Programming Stuff\\GitHub\\COMP_345_PROJ\\Maps\\canada.map");
+    map->Validate();
 }
