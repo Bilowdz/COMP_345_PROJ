@@ -129,7 +129,7 @@ void Deploy::execute() {
 
 void Deploy::identify() {
     Orders::identify();
-    std::cout << "Deploy object. Can deploy armies to territories. It has " << this->getArmies() << " armies.\n";
+    std::cout << "Deploy object. Can deploy armies to territories. It needs " << this->getArmies() << " armies.\n";
 }
 
 //------------------------------------------------------
@@ -179,7 +179,7 @@ void Advance::execute() {
 
 void Advance::identify() {
     Orders::identify();
-    std::cout << "Advance object. Can deploy armies to territories owned. It has " << this->getArmies() << " armies.\n";
+    std::cout << "Advance object. Can deploy armies to territories owned. It needs " << this->getArmies() << " armies.\n";
 }
 
 //------------------------------------------------------
