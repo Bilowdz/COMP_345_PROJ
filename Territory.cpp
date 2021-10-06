@@ -9,6 +9,13 @@ Territory::Territory() {
     std::cout << "I own these territories" << std::endl;
 }
 
+Territory::Territory(int id, std::string name) {
+    this->id = id;
+    this->name = name;
+    this->unitsGarrisoned = 0;
+}
+
+
 Territory::Territory(int *numOfTerritories) {
     this->numOfTerritories = *numOfTerritories;
 }
