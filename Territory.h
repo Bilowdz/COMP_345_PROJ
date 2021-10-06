@@ -12,6 +12,7 @@ public:
     Territory(int *numOfTerritories);
     void setNumTerritories(int *numOfTerritories);
     int& getNumTerritories();
+    void identify();
 private:
     int numOfTerritories;
 

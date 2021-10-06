@@ -14,6 +14,7 @@ using namespace std;
 #ifndef COMP_345_PROJ_PLAYER_H
 #define COMP_345_PROJ_PLAYER_H
 
+//todo add identify to each class.
 
 class Player {
 public:

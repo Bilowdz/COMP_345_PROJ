@@ -20,3 +20,7 @@ void Territory::setNumTerritories(int *numOfTerritories) {
 int& Territory::getNumTerritories() {
     return numOfTerritories;
 }
+
+void Territory::identify() {
+    std::cout << "This is a territory" << std::endl;
+}
