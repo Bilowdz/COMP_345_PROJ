@@ -11,9 +11,12 @@
 
 class Territory{
 public:
-    Territory(int id, std::string name);
+    Territory(int id, std::string name, int continent);
+    friend std::ostream & operator << (std::ostream &out, const Territory &territory);
+    friend std::istream & operator >> (std::istream &in,  Territory &territory);
     int id;
     std::string name;
+    int continent;
     int unitsGarrisoned;
     // Owner
     std::vector<Territory*> adjacentTerritories;
@@ -22,6 +25,8 @@ public:
 class Continent{
 public:
     Continent(std::string name, int territorialReward);
+    friend std::ostream & operator << (std::ostream &out, const Continent &continent);
+    friend std::istream & operator >> (std::istream &in,  Continent &continent);
     std::string name;
     int territorialReward;
     // Owner
