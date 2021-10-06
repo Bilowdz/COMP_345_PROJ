@@ -8,11 +8,25 @@ void Map::Validate() {
 
 }
 
-Map* MapLoader::Load(std::string fileName) {
+void Map::Print() {
+    std::cout << "Territories" << std::endl;
+    for(Territory* t : map){
+        std::cout << *t;
+    }
+
+    std::cout << "Continents" << std::endl;
+    for(Continent* c : continents){
+        std::cout << *c;
+    }
+}
+
+Map* MapLoader::Load(std::string fileName, bool debug) {
     Map *map (new Map);
 
     //Open map file
     std::ifstream input(fileName);
+
+    std::streampos saveState;
 
     //Variables used in the reading of the file
     char str[256];
@@ -28,28 +42,44 @@ Map* MapLoader::Load(std::string fileName) {
     //      Checks if the first element is the start of countries before proceeding,
     //      Creates a new continent and adds it to the map
     std::cout << "\nReading Continents" << std::endl;
-    input >> name;
-    while(name != "[countries]" && !input.eof()) {
-        input >> reward >> color;
-        std::cout << "Continent: " << name << ", With Reward: " << reward << std::endl;
-        Continent *continent(new Continent(name, reward));
+    saveState = input.tellg();
+    input >> str;
+    while(strcmp(str, "[countries]") && !input.eof()) {
+        input.seekg(saveState);
+
+        //Create continent object and populate from stream
+        Continent *continent(new Continent("tmp", 0));
+        input >> *continent;
+
+        if(debug)
+            std::cout << "Continent: " << continent->name << ", With Reward: " << continent->territorialReward << std::endl;
+
         map->continents.push_back(continent);
-        input >> name;
+
+        saveState = input.tellg();
+        input >> str;
     }
 
     // Read countries
     //      Checks if the first element is the start of borders before proceeding,
     //      Creates a new country and adds it to the temporary vector and its continent
     std::cout << "\nReading Territories" << std::endl;
+    saveState = input.tellg();
     input >> str;
     while(strcmp(str, "[borders]") && !input.eof()) {
-        sscanf(str, "%d", &id);
-        input >> name >> continent >> miscData1 >> miscData2;
-        std::cout << "Territory: " << name << ", In Continent: " << continent << std::endl;
-        Territory *territory(new Territory(id, name, continent));
-        auto curContinent = map->continents.at(continent-1);
+        input.seekg(saveState);
+
+        Territory *territory(new Territory(0, "tmp", 0));
+        input >> *territory;
+
+        if(debug)
+            std::cout << "Territory: " << territory->name << ", In Continent: " << territory->continent << std::endl;
+
+        auto curContinent = map->continents.at(territory->continent-1);
         curContinent->territories.push_back(territory);
         map->map.push_back(territory);
+
+        saveState = input.tellg();
         input >> str;
     }
 
@@ -62,14 +92,22 @@ Map* MapLoader::Load(std::string fileName) {
     while(!input.eof()) {
         input.getline(str, 255);
         char *token = strtok(str, " ");
+
         if(token){
             sscanf(token, "%d", &id);
-            std::cout << "Territory: " << id << " is adjacent to: ";
+
+            if(debug)
+                std::cout << "Territory: " << id << " is adjacent to: ";
+
             Territory* cur = map->map[id-1];
             token = strtok(NULL, " ");
+
             while(token){
                 sscanf(token, "%d", &id);
-                std::cout << "T#" << id << " ";
+
+                if(debug)
+                    std::cout << "T#" << id << " ";
+
                 cur->adjacentTerritories.push_back(map->map[id-1]);
                 token = strtok(NULL, " ");
             }

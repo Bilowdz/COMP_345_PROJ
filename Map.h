@@ -38,12 +38,14 @@ class Map {
 public:
     std::vector<Continent*> continents;
     std::vector<Territory*> map;
+
     void Validate();
+    void Print();
 };
 
 class MapLoader{
 public:
-    Map* Load(std::string fileName);
+    Map* Load(std::string fileName, bool debug);
 };
 
 
