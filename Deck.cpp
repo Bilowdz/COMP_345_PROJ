@@ -12,11 +12,11 @@ Deck::Deck(){
 Deck::Deck(int numPlayers){
     for(int i = 0; i < numPlayers; i++)
     {
-        cardsHeld.push_back(new Card((string *) "Bomb"));
-        cardsHeld.push_back(new Card((string *) "Reinforcement"));
-        cardsHeld.push_back(new Card((string *) "Blockade"));
-        cardsHeld.push_back(new Card((string *) "Airlift"));
-        cardsHeld.push_back(new Card((string *) "Diplomacy"));
+        cardsHeld.push_back(new Card( "Bomb"));
+        cardsHeld.push_back(new Card( "Reinforcement"));
+        cardsHeld.push_back(new Card( "Blockade"));
+        cardsHeld.push_back(new Card( "Airlift"));
+        cardsHeld.push_back(new Card( "Diplomacy"));
     }
 };
 
@@ -26,29 +26,30 @@ Deck::Deck(int numPlayers){
 void Deck::ReceiveCard(Card *c)
 {
     cardsHeld.push_back(c);
-}
+};
 
 //for each member in the "otherdeck" array a vector item from the main deck is chosen at random, that card is copied to one deck in "otherdeck" and then that item is deleted from the main deck
-void Deck::Deal(Deck *otherDeck[])
+void Deck::Deal(Hand *playerHand)
 {
-    for(int j = 0; j < 3; j++)
-    {
-        for (int i = 0; i < sizeof(&otherDeck); i++) {
-            srand((unsigned) time(0));
-            int deckPosition = rand() % this->cardsHeld.size();
-            string ct = cardsHeld.at(deckPosition)->getType();
-            string *card = &ct;
-            Card *dealtCard = new Card(card);
-            otherDeck[i]->ReceiveCard(dealtCard);
-            this->cardsHeld.erase(this->cardsHeld.begin() + deckPosition);
-        }
-    }
-}
+    srand((unsigned) time(0));
+    int deckPosition = rand() % this->cardsHeld.size();
+    string ct = cardsHeld.at(deckPosition)->getType();
+    string *card = &ct;
+    Card *dealtCard = new Card(*card);
+    playerHand->ReceiveCard(dealtCard);
+    this->cardsHeld.erase(this->cardsHeld.begin() + deckPosition);
+};
+
 //loops through all the cards and displays their type
-void Deck::showCards()
+void Deck::showCards(Deck *showDeck)
 {
-    for(int i = 0; i < this->cardsHeld.size(); i++)
+    for(int i = 0; i < showDeck->cardsHeld.size(); i++)
     {
-        cout << "Card " << (i+1) << "is of type" << cardsHeld.at(i)->getType() << endl;
+        cout << "Card " << (i+1) << " is of type " << showDeck->cardsHeld.at(i)->getType() << endl;
     }
-}
+    cout << "\n\n\n" << endl;
+};
+
+void Deck::Play(Deck otherDeck, string ct) {
+
+};

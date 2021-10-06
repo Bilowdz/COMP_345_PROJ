@@ -8,6 +8,7 @@
 
 #include <vector>
 #include "Card.h"
+#include "Hand.h"
 #include <stdlib.h>
 #include <time.h>
 
@@ -19,9 +20,9 @@ class Deck {
     Deck();
     Deck(int numPlayers);
     void ReceiveCard(Card *c);
-    void Deal(Deck *otherDeck[]);
+    void Deal(Hand *playerHand);
     void Play(Deck otherDeck, string ct);
-    void showCards();
+    static void showCards(Deck *showDeck);
 };
 
 
