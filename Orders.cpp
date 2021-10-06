@@ -60,8 +60,15 @@ void OrdersList::getListMember(int index) {
 }
 
 void OrdersList::move(int indexFrom, int indexTo) {
-    this->ordersList.insert(ordersList.begin()+indexTo, this->ordersList[indexFrom]);
-    this->ordersList.erase(ordersList.begin()+indexFrom+1);
+    if (indexFrom > indexTo) {
+        this->ordersList.insert(ordersList.begin() + indexTo, this->ordersList[indexFrom]);
+        this->ordersList.erase(ordersList.begin() + indexFrom + 1);
+    } else if (indexFrom < indexTo) {
+        this->ordersList.insert(ordersList.begin() + indexTo, this->ordersList[indexFrom]);
+        this->ordersList.erase(ordersList.begin() + indexFrom);
+    } else {
+        std::cout << "Order already there, cancelling move call.\n\n";
+    }
 }
 
 

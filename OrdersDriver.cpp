@@ -3,7 +3,6 @@
 //
 
 #include "Orders.h"
-#include <stdio.h>
 #include <iostream>
 using namespace std;
 
@@ -75,21 +74,37 @@ int main(){
         ordersListObj.getList().at(i)->identify();
     }
 
-    cout << "\nexample validate/execute on a deploy object at index 2\n\n";
+    cout << "\nmoving index 2 to index 5\n\n";
 
-    ordersListObj.getList().at(2)->validate();
+    ordersListObj.move(2,5);
+
+    for (int i = 0; i < ordersListObj.getList().size(); i++) {
+        ordersListObj.getList().at(i)->identify();
+    }
+
+    cout << "\nmoving index 4 to index 4\n\n";
+
+    ordersListObj.move(4,4);
+
+    for (int i = 0; i < ordersListObj.getList().size(); i++) {
+        ordersListObj.getList().at(i)->identify();
+    }
+
+    cout << "\nexample validate/execute on a deploy object at index 4\n\n";
+
+    ordersListObj.getList().at(4)->validate();
 
     cout << "\nexample validate/execute on an advance object at index 1\n\n";
 
     ordersListObj.getList().at(1)->validate();
 
-    cout << "\nexample validate/execute on a bomb object at index 3\n\n";
+    cout << "\nexample validate/execute on a bomb object at index 2\n\n";
+
+    ordersListObj.getList().at(2)->validate();
+
+    cout << "\nexample validate/execute on an blockade object at index 3\n\n";
 
     ordersListObj.getList().at(3)->validate();
-
-    cout << "\nexample validate/execute on an blockade object at index 4\n\n";
-
-    ordersListObj.getList().at(4)->validate();
 
     cout << "\nexample validate/execute on an airlift object at index 5\n\n";
 
