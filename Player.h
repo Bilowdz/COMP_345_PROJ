@@ -9,9 +9,6 @@
 #include "Order.h"
 #include "OrderList.h"
 #include "Hand.h"
-
-
-
 using namespace std;
 
 #ifndef COMP_345_PROJ_PLAYER_H
@@ -20,27 +17,24 @@ using namespace std;
 
 class Player {
 public:
-
-    string name;
-
     Player(); //default constructor
     Player(string *name);
-
-    //todo Add the hand that the player will have when cards are given to him
-    Player(string *name, vector<Territory*> pTerritories, vector<Hand*> pHand, vector<OrderList*> pOrderList);
-
-    vector<Territory> *toDefend(vector<Territory>);
-
-    vector<Territory> *toAttack(vector<Territory>);
-
-    vector<Order> *issueOrder(Player);
-
+    Player(string *name, vector<Territory*> *pTerritories, vector<Hand*> *pHand, vector<Order*> *pOrder);
+    vector<Territory> toDefend(vector<Territory*>);
+    vector<Territory> toAttack(vector<Territory*>);
+    //Player class includes issueOrder method that creates an Order object and places it in the list of orders of the player
+    vector<Order*> issueOrder(Player *currentPlayer);
+    void getTerritoriesOwned();
+    //const does not modify the object.
     string getName() const;
-
     void setName(string);
 
 
 private:
+    string name;
+    vector<Territory*> vTerritory;
+    vector<Hand*> vHand;
+    vector<Order*> vOrder; //objects that are child to order
     //const string player = "Player";
     //static int playerNumber;
 };

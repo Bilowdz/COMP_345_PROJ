@@ -9,6 +9,11 @@
 class Territory {
 public:
     Territory();
+    Territory(int *numOfTerritories);
+    void setNumTerritories(int *numOfTerritories);
+    int& getNumTerritories();
+private:
+    int numOfTerritories;
 
 };
 

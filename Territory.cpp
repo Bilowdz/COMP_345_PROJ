@@ -6,5 +6,17 @@
 #include "Territory.h"
 
 Territory::Territory() {
-    std::cout<< "I own these territories" << std::endl;
+    std::cout << "I own these territories" << std::endl;
+}
+
+Territory::Territory(int *numOfTerritories) {
+    this->numOfTerritories = *numOfTerritories;
+}
+
+void Territory::setNumTerritories(int *numOfTerritories) {
+    this->numOfTerritories = *numOfTerritories;
+}
+
+int& Territory::getNumTerritories() {
+    return numOfTerritories;
 }

@@ -3,13 +3,13 @@
 
 using namespace std;
 
-void createPlayerVec(vector<Player> &);
-
-void showPlayerVec(vector<Player> &);
+void createPlayerVec(vector<Player>);
+void showPlayerVec(vector<Player>);
 
 int main() {
 
     vector<Player> nameVector;
+    vector<Territory*> vTerri;
 
     int numPlayers;
     string playerName;
@@ -24,6 +24,8 @@ int main() {
         nameVector.push_back(pObject);
         cout << endl;
     }
+
+
 
 //    for(vector<Player*>::iterator it = nameVector.begin(); it != nameVector.end(); ++it) {
 //        cout << (*it)->getName() << endl; //The * operator gives you the item referenced by the iterator, which in your case is a pointer. Then you use the -> to dereference that pointer.
