@@ -14,3 +14,8 @@ Card::Card(string t) : cardType(t){
 string Card::getType() const{
     return cardType;
 }
+
+Card::Card(Card *c) {
+    string t = c->getType();
+    cardType = t;
+}

@@ -7,12 +7,16 @@
 #pragma once
 #include <vector>
 #include "Card.h"
+#include "Deck.h"
+
+
 
 class Hand {
 public:
     std::vector<Card*> cardsHeld;
     Hand();
     void ReceiveCard(Card *c);
+    void Play(Deck *mainDeck);
     static void ShowHandCards(Hand *showHand);
 };
 

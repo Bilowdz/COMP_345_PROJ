@@ -5,7 +5,6 @@
 #ifndef COMP_345_PROJ_DECK_H
 #define COMP_345_PROJ_DECK_H
 #pragma  once
-
 #include <vector>
 #include "Card.h"
 #include "Hand.h"
@@ -20,8 +19,7 @@ class Deck {
     Deck();
     Deck(int numPlayers);
     void ReceiveCard(Card *c);
-    void Deal(Hand *playerHand);
-    void Play(Deck otherDeck, string ct);
+    void Draw(Hand *playerHand);
     static void showCards(Deck *showDeck);
 };
 

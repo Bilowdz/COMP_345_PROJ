@@ -10,11 +10,12 @@
 using namespace std;
 
 //creating all functions and constructors
-struct Card {
+class Card {
     public:
         string cardType;
         Card();
         Card(string type);
+        Card(Card *c);
         string getType() const;
 };
 
