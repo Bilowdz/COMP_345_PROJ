@@ -84,7 +84,7 @@ int main() {
     for (int l = 0; l < vPlayer.at(0)->getNumberOfOrders(); ++l) {
         cout << "\t" + vPlayer.at(0)->getOrder(l) << endl;
     }
-        
+
     return 0;
 }
 

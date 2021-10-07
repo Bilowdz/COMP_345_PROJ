@@ -64,8 +64,8 @@ string Player::getTerritoriesOwned(int vIndex) {
     return vTerritory.at(vIndex)->getName();
 }
 
-void Player::setTerritoriesOwned(vector<Territory *> *pTerritories) {
-    vTerritory = *pTerritories;
+void Player::setTerritoriesOwned(vector<Territory *> vTerritories) {
+    vTerritory = vTerritories;
 }
 
 int Player::getCardsOwned(int vIndex) {
