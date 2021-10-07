@@ -4,7 +4,6 @@
 
 #include "Player.h"
 
-//must have a default constructor for the vector array
 Player::Player() {
 
 }
@@ -20,26 +19,38 @@ Player::Player(string *name, vector<Territory *> pTerritories, vector<Hand *> pH
     this->vOrder = pOrder;
 }
 
-
-vector<Territory*> Player::toDefend() {
-
-    return vTerritory;
-}
-
-vector<Territory*> Player::toAttack() {
-
-    return vTerritory;
-}
-
-vector<Order*> Player::issueOrder(Player *currentPlayer) {
-    Order *newOrder;
-    vOrder.push_back(newOrder);
-    return vOrder;
+Player::Player(Player const &copyPlayer) {
+    name = copyPlayer.name;
+    vTerritory = copyPlayer.vTerritory;
+    vHand = copyPlayer.vHand;
+    vOrder = copyPlayer.vOrder;
 }
 
 
+void Player::toDefend() {
+    for (int i = 0; i < vTerritory.size(); ++i) {
+        cout << "\t" + vTerritory.at(i)->getName() << endl;
+    }
+}
 
-string Player::getName() const{
+void Player::toAttack(vector<Player *> vPlayers) {
+    for (int i = 0; i < vPlayers.size(); ++i) {
+        //Compare the names of the players
+        if (vPlayers.at(i)->getName().compare(name) != 0) {
+            for (int j = 0; j < vPlayers.at(i)->getTerritorySize(); ++j) {
+                cout << "\t" + vPlayers.at(i)->vTerritory.at(j)->getName() << endl;
+            }
+        }
+    }
+}
+
+void Player::issueOrder(string sOrder) {
+    auto *pOrder = new Order(std::move(sOrder));
+    vOrder.push_back(pOrder);
+}
+
+
+string Player::getName() const {
     //same as (*this).name
     return this->name;
 }
@@ -50,9 +61,7 @@ void Player::setName(string s) {
 }
 
 string Player::getTerritoriesOwned(int vIndex) {
-    //for (int i = 0; i < vTerritory.size(); ++i) {
     return vTerritory.at(vIndex)->getName();
-    //}
 }
 
 void Player::setTerritoriesOwned(vector<Territory *> *pTerritories) {
@@ -66,6 +75,17 @@ int Player::getCardsOwned(int vIndex) {
 string Player::getOrder(int vIndex) {
     return vOrder.at(vIndex)->getOrder();
 }
+
+int Player::getTerritorySize() const {
+    return vTerritory.size();
+}
+
+int Player::getNumberOfOrders() const {
+    return vOrder.size();
+}
+
+
+
 
 
 

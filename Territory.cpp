@@ -37,3 +37,11 @@ std::string Territory::getName() const {
 int Territory::getId() const {
     return id;
 }
+
+void Territory::setSize(int territorySize) {
+    this->size = territorySize;
+}
+
+int Territory::getSize() const {
+    return size;
+}

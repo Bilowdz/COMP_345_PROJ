@@ -16,17 +16,17 @@ public:
     int id;
     std::string name;
     int unitsGarrisoned;
-    // Owner
     std::vector<Territory*> adjacentTerritories;
-
     void setNumTerritories(int *numOfTerritories);
     int getNumTerritories() const;
     void identify();
+    void setSize(int);
+    int getSize() const;
     std::string getName() const;
     int getId() const;
 private:
     int numOfTerritories; //number of territories player owns
-
+    int size;
 };
 
 
