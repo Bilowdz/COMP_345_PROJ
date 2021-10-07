@@ -21,7 +21,7 @@ class Player {
 public:
     Player();
 
-    Player(string *name);
+    explicit Player(string *name);
 
     Player(string *name, vector<Territory *> pTerritories, vector<Hand *> pHand, vector<Order *> pOrder);
 
