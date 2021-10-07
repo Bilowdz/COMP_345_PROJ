@@ -3,4 +3,4 @@ project(COMP_345_PROJ)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(COMP_345_PROJ main.cpp Card.cpp Card.h Deck.cpp Deck.h CardDriver.cpp CardDriver.h Hand.cpp Hand.h)
+add_executable(COMP_345_PROJ main.cpp Card.cpp Card.h CardDriver.cpp CardDriver.h)

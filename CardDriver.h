@@ -6,8 +6,7 @@
 #define COMP_345_PROJ_CARDDRIVER_H
 #pragma once
 #include <iostream>
-#include "Deck.h"
-#include "Hand.h"
+#include "Card.h"
 
 class CardDriver {
     public:
