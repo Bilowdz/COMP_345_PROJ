@@ -8,6 +8,9 @@
 
 Order::Order() {
 }
+Order::Order(std::string passedInOrder) {
+    myOrder = std::move(passedInOrder);
+}
 
 std::string Order::getOrder() {
     return myOrder;
@@ -16,3 +19,5 @@ std::string Order::getOrder() {
 void Order::setOrder(std::string order) {
     myOrder = std::move(order);
 }
+
+

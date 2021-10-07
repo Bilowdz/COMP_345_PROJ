@@ -9,6 +9,7 @@
 class Order {
 public:
     Order();
+    Order(std::string);
     std::string getOrder();
     void setOrder(std::string order);
 private:
