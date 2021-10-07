@@ -9,7 +9,9 @@
 class Hand {
 
 public:
-    Hand(int);
+    Hand(int cardNumber);
+    int getCardNumber() const;
+    void setCartNumber(int cardNumber);
 private:
     int cardNumber;
 };

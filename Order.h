@@ -7,7 +7,12 @@
 
 
 class Order {
-
+public:
+    Order();
+    std::string getOrder();
+    void setOrder(std::string order);
+private:
+    std::string myOrder = "This is my order";
 };
 
 

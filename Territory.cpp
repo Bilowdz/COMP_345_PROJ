@@ -15,19 +15,25 @@ Territory::Territory(int id, std::string name) {
     this->unitsGarrisoned = 0;
 }
 
+Territory::~Territory() = default;
 
-Territory::Territory(int *numOfTerritories) {
-    this->numOfTerritories = *numOfTerritories;
-}
 
 void Territory::setNumTerritories(int *numOfTerritories) {
     this->numOfTerritories = *numOfTerritories;
 }
 
-int& Territory::getNumTerritories() {
+int Territory::getNumTerritories() const {
     return numOfTerritories;
 }
 
 void Territory::identify() {
     std::cout << "This is a territory" << std::endl;
+}
+
+std::string Territory::getName() const {
+    return name;
+}
+
+int Territory::getId() const {
+    return id;
 }

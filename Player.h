@@ -20,12 +20,15 @@ class Player {
 public:
     Player(); //default constructor
     Player(string *name);
-    Player(string *name, vector<Territory*> *pTerritories, vector<Hand*> *pHand, vector<Order*> *pOrder);
-    vector<Territory> toDefend(vector<Territory*>);
-    vector<Territory> toAttack(vector<Territory*>);
+    Player(string *name, vector<Territory*> pTerritories, vector<Hand*> pHand, vector<Order*> pOrder);
+    vector<Territory*> toDefend();
+    vector<Territory*> toAttack();
     //Player class includes issueOrder method that creates an Order object and places it in the list of orders of the player
     vector<Order*> issueOrder(Player *currentPlayer);
-    void getTerritoriesOwned();
+    void setTerritoriesOwned(vector<Territory*> *pTerritories);
+    string getTerritoriesOwned(int vIndex);
+    int getCardsOwned(int vIndex);
+    string getOrder(int vIndex);
     //const does not modify the object.
     string getName() const;
     void setName(string);
@@ -36,9 +39,7 @@ private:
     vector<Territory*> vTerritory;
     vector<Hand*> vHand;
     vector<Order*> vOrder; //objects that are child to order
-    //const string player = "Player";
-    //static int playerNumber;
-};
 
+};
 
 #endif //COMP_345_PROJ_PLAYER_H

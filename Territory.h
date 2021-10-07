@@ -10,9 +10,9 @@
 class Territory {
 public:
     Territory();
-    Territory(int *numOfTerritories);
-
+    //Territory(int *numOfTerritories);
     Territory(int id, std::string name);
+    ~Territory();
     int id;
     std::string name;
     int unitsGarrisoned;
@@ -20,10 +20,12 @@ public:
     std::vector<Territory*> adjacentTerritories;
 
     void setNumTerritories(int *numOfTerritories);
-    int& getNumTerritories();
+    int getNumTerritories() const;
     void identify();
+    std::string getName() const;
+    int getId() const;
 private:
-    int numOfTerritories;
+    int numOfTerritories; //number of territories player owns
 
 };
 

@@ -11,3 +11,13 @@ Hand::Hand(int cardNumber) {
     this->cardNumber = cardNumber;
 }
 
+int Hand::getCardNumber() const {
+    return cardNumber;
+}
+
+void Hand::setCartNumber(int cardNumber) {
+    this->cardNumber = cardNumber;
+}
+
+
+
