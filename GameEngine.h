@@ -37,7 +37,6 @@ enum Transition {
 class GameEngine {
     private:
         State currentState;
-        int helrlo;
         void loadmap();
         void validatemap();
         void addplayer();

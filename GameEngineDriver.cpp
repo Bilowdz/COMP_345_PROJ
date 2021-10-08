@@ -24,20 +24,17 @@ using namespace std;
 // constructors
 GameEngineDriver::GameEngineDriver(): isGameDone(false) {
     cout << "executing constructor with no params from GameEngineDriver class" << endl;
-    game = new GameEngine();
+    this->game = new GameEngine();
 }
 
 // copy constructor
 GameEngineDriver::GameEngineDriver(const GameEngineDriver &gameEngineDriver) : isGameDone(false) {
     cout << "executing copy constructor from GameEngineDriver class" << endl;
-    game = gameEngineDriver.game;
+    this->game = new GameEngine(gameEngineDriver.game);
 }
 
 // destructor
-GameEngineDriver:: ~GameEngineDriver() {
-    cout << "executing destructor operation from GameEngineDriver class" << endl;
-    delete game;
-}
+GameEngineDriver:: ~GameEngineDriver() = default;
 
 // validates user input and calls appropriate transition
 void GameEngineDriver::chooseCommand() {

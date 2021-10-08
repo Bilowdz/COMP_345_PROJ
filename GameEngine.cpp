@@ -23,18 +23,15 @@ GameEngine::GameEngine(GameEngine *const pGameEngine) {
 }
 
 // destructor
-GameEngine:: ~GameEngine() {
-    /* TODO what to implement here? */
-    cout << "executing destructor operation from GameEngine class" << endl;
-}
+GameEngine:: ~GameEngine() = default;
 
 // handles state transitions
 bool GameEngine::transition(Transition t) {
     switch(t) {
         case T_LOAD_MAP:
             if(currentState == ST_START || currentState == ST_MAP_LOADED) {
-                // valid input, transition to state map loaded
-                currentState = ST_MAP_LOADED;
+                    // valid input, transition to state map loaded
+                    currentState = ST_MAP_LOADED;
 
                 // execute game engine function
                 this->loadmap();
