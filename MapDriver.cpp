@@ -5,5 +5,7 @@ int main() {
 
     Map *copyMap = new Map(*loader->maps.front());
 
+    std::cout << *loader;
+
     std::cout << loader->maps.size() << std::endl;
 }
