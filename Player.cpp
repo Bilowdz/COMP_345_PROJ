@@ -4,9 +4,7 @@
 
 #include "Player.h"
 
-Player::Player() {
-
-}
+Player::Player() = default;
 
 Player::Player(string *name) {
     this->name = *name;
@@ -25,6 +23,8 @@ Player::Player(Player const &copyPlayer) {
     vHand = copyPlayer.vHand;
     vOrder = copyPlayer.vOrder;
 }
+
+Player::~Player() = default;
 
 
 void Player::toDefend() {
@@ -83,6 +83,8 @@ int Player::getTerritorySize() const {
 int Player::getNumberOfOrders() const {
     return vOrder.size();
 }
+
+
 
 
 

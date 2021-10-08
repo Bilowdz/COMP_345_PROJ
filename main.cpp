@@ -16,8 +16,8 @@ int main() {
     static const int numCardsPerPlayer = 3;
     int numPlayers = 0;
     vector<Player *> vPlayer;
-    vector<Player *> nameVector;
-    vector<Territory *> vTerri;
+    //vector<Player *> nameVector;
+    //vector<Territory *> vTerri;
     string playerName;
     string *pPlayerName = &playerName;
     cout << "Enter number of players: \n";
@@ -85,9 +85,18 @@ int main() {
         cout << "\t" + vPlayer.at(0)->getOrder(l) << endl;
     }
 
+    for (auto & clearMemory : vPlayer) {
+        delete clearMemory;
+    }
+
     return 0;
 }
-
+/**
+ * Generates the territories for each player.
+ *
+ * @param numTerritoryOwned the initial amount of territories
+ * @return vector of Territories that gets passed into the player vector
+ */
 vector<Territory *> generateTerritories(int numTerritoryOwned) {
     vector<Territory *> vTerritory;
     Territory *pPlayerTerritory;
@@ -99,6 +108,12 @@ vector<Territory *> generateTerritories(int numTerritoryOwned) {
     return vTerritory;
 }
 
+/**
+ * Generates the cards for each player
+ *
+ * @param numCardsPerPlayer the initial amount of cards per player
+ * @return vector of Hands that gets passed into the player vector
+ */
 vector<Hand *> generateHand(int numCardsPerPlayer) {
     vector<Hand *> vHand;
     Hand *pHand;
@@ -110,6 +125,11 @@ vector<Hand *> generateHand(int numCardsPerPlayer) {
     return vHand;
 }
 
+/**
+ * Generates Orders that each player can execute
+ *
+ * @return a vector of Orders that gets passed into player vector
+ */
 vector<Order *> generateOrder() {
     vector<Order *> vOrder;
     for (unsigned i = 0; i <= numOfOrders; ++i) {

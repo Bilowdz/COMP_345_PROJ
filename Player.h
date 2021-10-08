@@ -45,6 +45,11 @@ public:
     Player(const Player & copyPlayer);
 
     /**
+     * Default destructor
+     */
+    ~Player();
+
+    /**
      * All the territories that the current player can defend
      */
     void toDefend();
@@ -66,7 +71,7 @@ public:
     /**
      * Set the territories that the player owns
      *
-     * @param vTerritories vector Territor that gets passed in
+     * @param vTerritories vector Territory that gets passed in
      */
     void setTerritoriesOwned(vector<Territory *> vTerritories);
 
