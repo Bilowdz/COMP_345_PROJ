@@ -99,7 +99,9 @@ Map* MapLoader::Load(std::string fileName, bool debug) {
     // Read continents
     //      Checks if the first element is the start of countries before proceeding,
     //      Creates a new continent and adds it to the map
-    std::cout << "\nReading Continents" << std::endl;
+    if(debug)
+        std::cout << "\nReading Continents" << std::endl;
+
     saveState = input.tellg();
     input >> str;
     while(strcmp(str, "[countries]") && !input.eof()) {
@@ -121,7 +123,9 @@ Map* MapLoader::Load(std::string fileName, bool debug) {
     // Read countries
     //      Checks if the first element is the start of borders before proceeding,
     //      Creates a new country and adds it to the temporary vector and its continent
-    std::cout << "\nReading Territories" << std::endl;
+    if(debug)
+        std::cout << "\nReading Territories" << std::endl;
+
     saveState = input.tellg();
     input >> str;
     while(strcmp(str, "[borders]") && !input.eof()) {
@@ -146,7 +150,9 @@ Map* MapLoader::Load(std::string fileName, bool debug) {
     //      Gets and splits the next line on space
     //      Saves the first element as the territory to edit
     //      Loops through the other elements adding them to the adjacency
-    std::cout << "\nReading Adjacency's" << std::endl;
+    if(debug)
+        std::cout << "\nReading Adjacency's" << std::endl;
+
     while(!input.eof()) {
         input.getline(str, 255);
         char *token = strtok(str, " ");
@@ -169,7 +175,9 @@ Map* MapLoader::Load(std::string fileName, bool debug) {
                 cur->adjacentTerritories.push_back(map->map[id-1]);
                 token = strtok(NULL, " ");
             }
-            std::cout << std::endl;
+
+            if(debug)
+                std::cout << std::endl;
         }
     }
 
