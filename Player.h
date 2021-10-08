@@ -68,8 +68,6 @@ public:
      */
     friend ostream &operator<<(ostream &output, Player &player);
 
-    //friend istream &operator>>(istream &input, Player &player);
-
     /**
      * All the territories that the current player can defend
      */

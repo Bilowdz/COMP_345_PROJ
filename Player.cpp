@@ -101,14 +101,6 @@ ostream &operator<<(ostream &output, Player &player) {
     return output;
 }
 
-//istream &operator>>(istream &input, Player &player) {
-//
-//    cout << "Please enter your name: ";
-//    input >> player.name;
-//
-//    return input;
-//}
-
 /**
  * All the territories that the current player can defend
  */
