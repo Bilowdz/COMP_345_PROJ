@@ -24,12 +24,15 @@ int main() {
     for (unsigned i = 0; i < numPlayers; ++i) {
         cout << "Please enter your name: ";
         cin >> playerName;
-        auto *pPlayer = new Player(generateTerritories(territoriesOwnedPerPlayer),
+
+        auto *pPlayer = new Player(&playerName,
+                                   generateTerritories(territoriesOwnedPerPlayer),
                                    generateHand(numCardsPerPlayer),
                                    generateOrder());
         vPlayer.push_back(pPlayer);
         cout << endl;
     }
+
 
 
     for (int i = 0; i < numPlayers; ++i) {
@@ -45,7 +48,7 @@ int main() {
     while(!playing) {
         string input;
         string order;
-        cout << "Would you like to issue an order (y/n)?";
+        cout << "Would you like to issue an order (y/n)? ";
         cin >> input;
 
         if(input == "y") {
