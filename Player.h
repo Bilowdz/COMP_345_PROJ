@@ -9,6 +9,7 @@
 #include "Order.h"
 #include "OrderList.h"
 #include "Hand.h"
+
 using namespace std;
 
 #ifndef COMP_345_PROJ_PLAYER_H
@@ -28,6 +29,15 @@ public:
     explicit Player(string *name);
 
     /**
+    * Constructor that takes in the following parameters
+    *
+    * @param vTerritories is the vector Territory pointer of all the territories the player owns
+    * @param vHand is the vector Hand pointer of all the hand the player owns
+    * @param vOrder is the vector Order pointer of all the orders the player can do
+    */
+    Player(vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder);
+
+    /**
      * Constructor that takes in the following parameters
      *
      * @param name is the name of the player
@@ -42,12 +52,23 @@ public:
      *
      * @param copyPlayer is the Class we would like to copy
      */
-    Player(const Player & copyPlayer);
+    Player(const Player &copyPlayer);
 
     /**
-     * Default destructor
+     * Destructor
      */
     ~Player();
+
+    /**
+     * Ostream operator to output territory, hand and order of each player
+     *
+     * @param output operator
+     * @param player is the player we are currently looking at
+     * @return the output to the terminal
+     */
+    friend ostream &operator<<(ostream &output, Player &player);
+
+    //friend istream &operator>>(istream &input, Player &player);
 
     /**
      * All the territories that the current player can defend
@@ -97,6 +118,13 @@ public:
      * @return the number of the current card
      */
     int getCardsOwned(int vIndex);
+
+    /**
+     * Gets the number of cards in the players hand
+     *
+     * @return the int for amount of cards
+     */
+    int getHandSize() const;
 
     /**
      * Gets the order from the vector Order list.

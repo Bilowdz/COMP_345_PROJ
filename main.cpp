@@ -10,48 +10,31 @@ vector<Order *> generateOrder();
 static int territoryNumber = 1;
 static int cardNumber = 1;
 static int numOfOrders = 2;
+static const int territoriesOwnedPerPlayer = 5;
+static const int numCardsPerPlayer = 3;
 
 int main() {
-    static const int territoriesOwnedPerPlayer = 5;
-    static const int numCardsPerPlayer = 3;
+
     int numPlayers = 0;
     vector<Player *> vPlayer;
-    //vector<Player *> nameVector;
-    //vector<Territory *> vTerri;
     string playerName;
-    string *pPlayerName = &playerName;
     cout << "Enter number of players: \n";
     cin >> numPlayers;
 
     for (unsigned i = 0; i < numPlayers; ++i) {
         cout << "Please enter your name: ";
         cin >> playerName;
-        auto *pPlayer = new Player(pPlayerName,
-                                   generateTerritories(territoriesOwnedPerPlayer),
+        auto *pPlayer = new Player(generateTerritories(territoriesOwnedPerPlayer),
                                    generateHand(numCardsPerPlayer),
                                    generateOrder());
         vPlayer.push_back(pPlayer);
         cout << endl;
     }
 
-    for (int i = 0; i < numPlayers; ++i) {
-        cout << "Player: " + to_string(i + 1) << endl;
-        cout << "Player Name: " << vPlayer.at(i)->getName() << endl;
-        cout << "Territories Owned: \n";
-        for (int j = 0; j < territoriesOwnedPerPlayer; ++j) {
-            cout << "\t" + vPlayer.at(i)->getTerritoriesOwned(j) << endl;
-        }
-        cout << "Cards Owned: \n";
-        for (int k = 0; k < numCardsPerPlayer; ++k) {
-            cout << "\tCard Number: " + to_string(vPlayer.at(i)->getCardsOwned(k)) << endl;
-        }
-        cout << "Orders Sent: \n";
-        for (int l = 0; l <= numOfOrders; ++l) {
-            cout << "\t" + vPlayer.at(i)->getOrder(l) << " " + to_string(l + 1) << endl;
-        }
-        cout << "Territories to defend: \n";
-        vPlayer.at(i)->toDefend();
 
+    for (int i = 0; i < numPlayers; ++i) {
+
+        cout << *vPlayer.at(i); //ostream called
         cout << "Territories to attack: \n";
         vPlayer.at(i)->toAttack(vPlayer);
         cout << endl;
@@ -68,29 +51,30 @@ int main() {
         if(input == "y") {
             cout << "Enter your order: ";
             cin >> order;
-            vPlayer.at(0)->issueOrder(order);
+            vPlayer.at(0)->issueOrder(order); //showing issueOrder Function
             playing = false;
         } else if(input == "n") {
+            cout << "Orders Sent: \n";
+            for (int l = 0; l < vPlayer.at(0)->getNumberOfOrders(); ++l) {
+                cout << "\t" + vPlayer.at(0)->getOrder(l) << endl;
+            }
             cout << "End of program!" << endl;
             playing = true;
         }
         else {
-            cout << "Sorry try again" << endl;
+            cout << "Sorry try again\n" << endl;
             playing = false;
         }
     }
 
-    cout << "Orders Sent: \n";
-    for (int l = 0; l < vPlayer.at(0)->getNumberOfOrders(); ++l) {
-        cout << "\t" + vPlayer.at(0)->getOrder(l) << endl;
-    }
-
-    for (auto & clearMemory : vPlayer) {
-        delete clearMemory;
+    //delete the pointers of vPlayer
+    for (auto & i : vPlayer) {
+        delete i;
     }
 
     return 0;
 }
+
 /**
  * Generates the territories for each player.
  *
