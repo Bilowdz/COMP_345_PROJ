@@ -23,6 +23,7 @@ public:
     friend std::istream & operator >> (std::istream &in,  Territory &territory);
 
     Territory(int id, std::string name, int continent);
+    Territory(const Territory &t1);
     ~Territory();
 };
 
@@ -36,6 +37,7 @@ public:
     friend std::istream & operator >> (std::istream &in,  Continent &continent);
 
     Continent(std::string name, int territorialReward);
+    Continent(const Continent &c1);
     ~Continent();
 };
 
@@ -46,6 +48,9 @@ public:
 
     bool Validate();
     void FancyPrint();
+
+    Map();
+    Map(const Map &m1);
     ~Map();
 private:
     void MarkContinent(Territory* cur, int continent);
@@ -58,8 +63,10 @@ class MapLoader{
 public:
     std::vector<Map*> maps;
 
-    MapLoader();
     void Load(const std::string& fileName);
+
+    MapLoader();
+    MapLoader(const MapLoader &ml1);
     ~MapLoader();
 };
 

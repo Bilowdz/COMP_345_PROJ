@@ -3,9 +3,7 @@
 int main() {
     auto* loader(new MapLoader());
 
-    for(Map *m : loader->maps){
-        m->FancyPrint();
-    }
+    Map *copyMap = new Map(*loader->maps.front());
 
     std::cout << loader->maps.size() << std::endl;
 }
