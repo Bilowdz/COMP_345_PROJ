@@ -1,7 +1,8 @@
 //
 // Created by Main on 2021-09-29.
 //
-#include "CardDriver.h"
+#include <iostream>
+#include "Card.h"
 
 int main() {
     Deck* TestDeck = new Deck(3);
@@ -9,6 +10,8 @@ int main() {
     cout <<  *TestDeck << endl;
     TestDeck->Draw(TestHand);
     TestDeck->Draw(TestHand);
+    TestDeck->Draw(TestHand);
+    cout <<  *TestDeck << endl;
     TestHand->Play(TestDeck);
     cout <<  *TestDeck << endl;
     cout <<  *TestHand << endl;

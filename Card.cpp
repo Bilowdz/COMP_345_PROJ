@@ -20,11 +20,12 @@ string Card::getType() const{
     return cardType;
 };
 
-//string insertion operator
+//string insertion operators
 std::ostream &operator<<(std::ostream &out, const Card &c) {
     out << "{ Card Type: " << c.cardType << "}" << std::endl;
     return out;
 }
+
 //assignment operator
 Card& Card::operator =(const Card &c) {
     this->cardType = c.cardType;

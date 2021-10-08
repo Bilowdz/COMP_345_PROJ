@@ -22,6 +22,7 @@ class Card {
         Card(string type);
         Card(Card *c);
         string getType() const;
+        friend ostream & operator << (ostream &out, const Card &c);
         Card& operator =(const Card &c);
 };
 
