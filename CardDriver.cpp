@@ -3,15 +3,13 @@
 //
 #include "CardDriver.h"
 
-void CardDriver::testDecks() {
-    std::cout << "Hello, World!" << std::endl;
+int main() {
     Deck* TestDeck = new Deck(3);
     Hand* TestHand = new Hand();
-    Deck::showCards(TestDeck);
+    cout <<  *TestDeck << endl;
     TestDeck->Draw(TestHand);
     TestDeck->Draw(TestHand);
-    Deck::showCards(TestDeck);
     TestHand->Play(TestDeck);
-    Deck::showCards(TestDeck);
-    Hand::ShowHandCards(TestHand);
+    cout <<  *TestDeck << endl;
+    cout <<  *TestHand << endl;
 }

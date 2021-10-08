@@ -3,7 +3,7 @@
 //
 
 #include "Card.h"
-
+//creating card constructors
 Card::Card(){
     cout << "No Type specified please try again" << endl;
 };
@@ -11,17 +11,34 @@ Card::Card(){
 Card::Card(string t) : cardType(t){
 };
 
-string Card::getType() const{
-    return cardType;
-};
-
 Card::Card(Card *c) {
     string t = c->getType();
     cardType = t;
 };
+//returns the card's type
+string Card::getType() const{
+    return cardType;
+};
 
+//string insertion operator
+std::ostream &operator<<(std::ostream &out, const Card &c) {
+    out << "{ Card Type: " << c.cardType << "}" << std::endl;
+    return out;
+}
+//assignment operator
+Card& Card::operator =(const Card &c) {
+    this->cardType = c.cardType;
+
+    return *this;
+}
+//creating deck constructors
 Deck::Deck(){
 
+};
+
+Deck::Deck(Deck *d) {
+    vector <Card *> t = d->cardsHeld;
+    cardsHeld = t;
 };
 
 //creates a deck of cards in relation to the number of card (prof didnt specify the number of cards in a deck, can be modified as needed)
@@ -35,7 +52,6 @@ Deck::Deck(int numPlayers){
         cardsHeld.push_back(new Card( "Diplomacy"));
     }
 };
-
 
 //adds a card to a deck
 //note: a hand of cards can be treated as a deck and that is what is done
@@ -54,41 +70,61 @@ void Deck::Draw(Hand *playerHand)
     this->cardsHeld.erase(this->cardsHeld.begin() + deckPosition);
 };
 
-//loops through all the cards and displays their type
-void Deck::showCards(Deck *showDeck)
-{
-    for(int i = 0; i < showDeck->cardsHeld.size(); i++)
+//string insertion operator
+std::ostream &operator<<(std::ostream &out, const Deck &showDeck) {
+    out << "The deck has" << endl;
+    for(int i = 0; i < showDeck.cardsHeld.size(); i++)
     {
-        cout << "Card " << (i+1) << " is of type " << showDeck->cardsHeld.at(i)->getType() << endl;
+        out << "Card " << (i+1) << " is of type " << showDeck.cardsHeld.at(i)->getType() << endl;
     }
-    cout << "\n" << endl;
-};
+    return out;
+}
+//assignment operator
+Deck& Deck::operator =(const Deck &d) {
+    this->cardsHeld = d.cardsHeld;
 
+    return *this;
+}
+//creating Hand constructors
 Hand::Hand()
 {
 };
+
+Hand::Hand(Hand *h) {
+    vector <Card *> t = h->cardsHeld;
+    cardsHeld = t;
+};
+
 //add card to hand
 void Hand::ReceiveCard(Card *c) {
     cardsHeld.push_back(c);
 };
-//displays all cards in hand
-void Hand::ShowHandCards(Hand *showHand)
-{
-    for(int i = 0; i < showHand->cardsHeld.size(); i++)
-    {
-        cout << "The Hand Card " << (i+1) << " is of type " << showHand->cardsHeld.at(i)->getType() << endl;
-    }
-    cout << "\n" << endl;
-}
+
 //displays all cards in the hand, user can then choose a card to play, the card is then returned to the deck
 void Hand::Play(Deck *mainDeck) {
-    ShowHandCards(this);
+    cout << *this << endl;
     cout << "Choose the card you wish to play (enter a in form of a number)";
     int chosenCard;
     cin >> chosenCard;
     chosenCard--;
-    Card *playedCard = new Card(this->cardsHeld.at(chosenCard));
+    Card *playedCard = new Card(*this->cardsHeld.at(chosenCard));
     mainDeck->ReceiveCard(playedCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + chosenCard);
 };
 
+//string insertion operator
+std::ostream &operator<<(std::ostream &out, const Hand &showHand) {
+    cout << "The hand has has" << endl;
+    for(int i = 0; i < showHand.cardsHeld.size(); i++)
+    {
+        cout << "Card " << (i+1) << " is of type " << showHand.cardsHeld.at(i)->getType() << endl;
+    }
+    return out;
+}
+
+//assignment operator
+Hand& Hand::operator =(const Hand &h) {
+    this->cardsHeld = h.cardsHeld;
+
+    return *this;
+}

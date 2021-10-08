@@ -22,6 +22,7 @@ class Card {
         Card(string type);
         Card(Card *c);
         string getType() const;
+        Card& operator =(const Card &c);
 };
 
 
@@ -30,18 +31,22 @@ public:
     std::vector<Card*> cardsHeld;
     Deck();
     Deck(int numPlayers);
+    Deck(Deck *d);
     void ReceiveCard(Card *c);
     void Draw(Hand *playerHand);
-    static void showCards(Deck *showDeck);
+    friend ostream & operator << (ostream &out, const Deck &showDeck);
+    Deck& operator =(const Deck &d);
 };
 
 class Hand {
 public:
     std::vector<Card*> cardsHeld;
     Hand();
+    Hand(Hand *h);
     void ReceiveCard(Card *c);
     void Play(Deck *mainDeck);
-    static void ShowHandCards(Hand *showHand);
+    friend ostream & operator << (ostream &out, const Hand &showHand);
+    Hand& operator =(const Hand &h);
 };
 
 #endif //COMP_345_PROJ_CARD_H
