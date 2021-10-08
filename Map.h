@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <filesystem>
 
 class Territory{
 public:
@@ -52,6 +53,9 @@ private:
 
 class MapLoader{
 public:
+    std::vector<Map*> maps;
+
+    MapLoader();
     Map* Load(std::string fileName, bool debug);
 };
 

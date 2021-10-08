@@ -78,6 +78,17 @@ void Map::MarkMap(Territory *cur) {
     }
 }
 
+MapLoader::MapLoader() {
+    using recursive_directory_iterator = std::filesystem::recursive_directory_iterator;
+
+    std::filesystem::current_path("..");
+    for (const auto& dirEntry : recursive_directory_iterator("Maps")){
+        Map *tmpMap = Load(dirEntry.path().string(), true);
+        if(tmpMap->Validate())
+            maps.push_back(tmpMap);
+    }
+}
+
 Map* MapLoader::Load(std::string fileName, bool debug) {
     Map *map (new Map);
 
