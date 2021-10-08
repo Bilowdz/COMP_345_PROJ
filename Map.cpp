@@ -17,9 +17,10 @@ bool Map::Validate() {
     if(!ClearAndCheckMap())
         return false;
 
-    //Check that each continent is a subgraph
+    // Check that each continent is a subgraph
     int continentNum = 1;
     for(Continent *cont : continents){
+
         // Check that each continent has a territory
         if(cont->territories.empty())
             return false;
@@ -34,7 +35,22 @@ bool Map::Validate() {
         continentNum++;
     }
 
-    // Check Last Clause
+    // Check that each territory belongs to one and only one continent
+    continentNum = 1;
+    for(Continent *cont : continents){
+
+        // Check that no territories already marked
+        for(Territory * t : cont->territories)
+            if(t->visited)
+                return  false;
+
+        // Mark all adjacency's within the continent
+        MarkContinent(cont->territories.front(), continentNum);
+        continentNum++;
+    }
+    // Check that all territories have been marked
+    if(!ClearAndCheckMap())
+        return false;
 
     return true;
 }
