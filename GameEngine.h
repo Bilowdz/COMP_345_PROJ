@@ -63,9 +63,6 @@ class GameEngine {
 
         GameEngine& operator =(const GameEngine &);
         friend ostream & operator << (ostream &, const GameEngine &ge);
-        friend istream & operator >> (istream &, GameEngine &ge);
-
 };
-
 
 #endif //COMP_345_PROJ_GAMEENGINE_H

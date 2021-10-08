@@ -6,7 +6,6 @@
 #define COMP_345_PROJ_GAMEENGINEDRIVER_H
 #include "GameEngine.h"
 
-
 class GameEngineDriver {
 private:
     GameEngine* game;
@@ -21,7 +20,5 @@ public:
     friend ostream & operator << (ostream &, const GameEngineDriver &ged);
     friend istream & operator >> (istream &, GameEngineDriver &ged);
 };
-
-
 
 #endif //COMP_345_PROJ_GAMEENGINEDRIVER_H

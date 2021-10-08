@@ -233,9 +233,3 @@ ostream & operator << (ostream &out, const GameEngine &ge)
     }
     return out;
 }
-
-istream & operator >> (istream &in,  GameEngine &ge)
-{
-    cout << "Enter a state";
-    return in;
-}
