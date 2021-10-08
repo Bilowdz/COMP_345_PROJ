@@ -46,8 +46,9 @@ public:
     std::vector<Continent*> continents;
     std::vector<Territory*> map;
 
+    friend std::ostream & operator << (std::ostream &out, const Map &map);
+
     bool Validate();
-    void FancyPrint();
 
     Map();
     Map(const Map &m1);
@@ -62,6 +63,8 @@ private:
 class MapLoader{
 public:
     std::vector<Map*> maps;
+
+    friend std::ostream & operator << (std::ostream &out, const MapLoader &mapLoader);
 
     void Load(const std::string& fileName);
 

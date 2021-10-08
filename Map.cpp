@@ -92,17 +92,6 @@ bool Map::Validate() {
     return true;
 }
 
-// Prints the maps contents in a visual way
-void Map::FancyPrint() {
-    for(Continent* c : continents){
-        std::cout << "Continent: "<< *c;
-        for(Territory* t : c->territories){
-            std::cout << *t;
-        }
-        std::cout << std::endl;
-    }
-}
-
 // Makes sure that all nodes are marked checked
 // if they are returns true, if not return false
 // resets the status of all nodes
@@ -152,6 +141,20 @@ void Map::MarkMap(Territory *cur) {
             MarkMap(adj);
         }
     }
+}
+
+// Stream output operator for the map class
+// Outputs a styled version of the data
+std::ostream &operator<<(std::ostream &out, const Map &map) {
+    for(Continent* c : map.continents){
+        out << "Continent: "<< *c;
+        for(Territory* t : c->territories){
+            out << *t;
+        }
+        out << std::endl;
+    }
+
+    return out;
 }
 
 // Destructor for the map class
@@ -284,6 +287,17 @@ void MapLoader::Load(const std::string& fileName) {
     // Validate the map before adding
     if(map->Validate())
         maps.push_back(map);
+}
+
+// Stream output operator for the mapLoader class
+// Outputs a styled version of the data
+std::ostream &operator<<(std::ostream &out, const MapLoader &mapLoader) {
+    for(Map *m : mapLoader.maps){
+        out << "MAP START: " << std::endl;
+        out << *m << std::endl;
+    }
+
+    return out;
 }
 
 // Destructor for the mapLoader class
