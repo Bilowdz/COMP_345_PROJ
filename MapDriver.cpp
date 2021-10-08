@@ -3,7 +3,7 @@
 
 int main() {
     MapLoader* loader(new MapLoader);
-    Map *map = loader->Load("A:\\Programming Stuff\\GitHub\\COMP_345_PROJ\\Maps\\canada.map", true);
-    map->Print();
-    map->Validate();
+    Map *map = loader->Load("A:\\Programming Stuff\\GitHub\\COMP_345_PROJ\\Maps\\canada.map", false);
+    // map->Print();
+    std::cout << map->Validate();
 }

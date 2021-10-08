@@ -4,8 +4,26 @@
 
 #include "Map.h"
 
-void Map::Validate() {
+bool Map::Validate() {
+    if(map.empty())
+        return false;
 
+    MarkMap(map.front());
+    ClearAndCheckMap();
+
+    int continentNum = 1;
+    for(Continent *cont : continents){
+        if(cont->territories.empty())
+            return false;
+        MarkContinent(cont->territories.front(), continentNum);
+        ClearAndCheckContinent(cont);
+
+        continentNum++;
+    }
+
+    // Check Last Clause
+
+    return true;
 }
 
 void Map::Print() {
@@ -17,6 +35,46 @@ void Map::Print() {
     std::cout << "Continents" << std::endl;
     for(Continent* c : continents){
         std::cout << *c;
+    }
+}
+
+bool Map::ClearAndCheckMap(){
+    for(Territory *territory : map){
+        if(territory->visited)
+            territory->visited = false;
+        else
+            return false;
+    }
+
+    return  true;
+}
+
+bool Map::ClearAndCheckContinent(Continent *continent){
+    for(Territory *territory : continent->territories){
+        if(territory->visited)
+            territory->visited = false;
+        else
+            return false;
+    }
+
+    return  true;
+}
+
+void Map::MarkContinent(Territory *cur, int continent) {
+    for(Territory* adj : cur->adjacentTerritories){
+        if(adj->continent == continent && !adj->visited){
+            adj->visited = true;
+            MarkContinent(adj, continent);
+        }
+    }
+}
+
+void Map::MarkMap(Territory *cur) {
+    for(Territory* adj : cur->adjacentTerritories){
+        if(!adj->visited){
+            adj->visited = true;
+            MarkMap(adj);
+        }
     }
 }
 
@@ -130,7 +188,6 @@ std::istream &operator>>(std::istream &in, Continent &continent) {
     in >> continent.territorialReward;
 
     std::string color;
-
     in >> color;
 
     return in;
@@ -145,16 +202,18 @@ std::ostream &operator<<(std::ostream &out, const Continent &continent) {
 Territory::Territory(int id, std::string name, int continent) {
     this->id = id;
     this->name = name;
+    this->continent = continent;
     this->unitsGarrisoned = 0;
+    this->visited = false;
 }
 
 std::istream &operator>>(std::istream &in, Territory &territory) {
     in >> territory.id;
     in >> territory.name;
     in >> territory.continent;
+    territory.visited = false;
 
     int miscData1, miscData2;
-
     in >> miscData1 >> miscData2;
 
     return in;

@@ -18,6 +18,7 @@ public:
     std::string name;
     int continent;
     int unitsGarrisoned;
+    bool visited;
     // Owner
     std::vector<Territory*> adjacentTerritories;
 };
@@ -39,8 +40,14 @@ public:
     std::vector<Continent*> continents;
     std::vector<Territory*> map;
 
-    void Validate();
+    bool Validate();
     void Print();
+
+private:
+    void MarkContinent(Territory* cur, int continent);
+    void MarkMap(Territory* cur);
+    bool ClearAndCheckMap();
+    bool ClearAndCheckContinent(Continent* continent);
 };
 
 class MapLoader{
