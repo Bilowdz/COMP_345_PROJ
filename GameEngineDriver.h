@@ -11,12 +11,11 @@ class GameEngineDriver {
 private:
     GameEngine* game;
 public:
-    bool isGameDone;
     GameEngineDriver();
     GameEngineDriver(const GameEngineDriver &);
     ~GameEngineDriver();
+    bool isGameDone();
 
-    void chooseCommand();
     GameEngineDriver& operator =(const GameEngineDriver &);
 
     friend ostream & operator << (ostream &, const GameEngineDriver &ged);

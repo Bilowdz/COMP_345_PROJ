@@ -17,7 +17,8 @@ enum State
     ST_ISSUE_ORDERS,
     ST_EXECUTE_ORDERS,
     ST_WIN,
-    ST_END
+    ST_END,
+    ST_ERROR
 };
 
 enum Transition {
@@ -31,7 +32,8 @@ enum Transition {
     T_END_EXEC_ORDERS,
     T_WIN,
     T_PLAY,
-    T_END
+    T_END,
+    T_ERROR
 };
 
 class GameEngine {
@@ -50,13 +52,13 @@ class GameEngine {
         void play();
 
     public:
+        bool isGameDone;
         GameEngine();
         GameEngine(const GameEngine &);
         GameEngine(GameEngine *);
         ~GameEngine();
 
         string getState();
-
         bool transition(Transition);
 
         GameEngine& operator =(const GameEngine &);

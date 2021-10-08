@@ -6,31 +6,25 @@
 using namespace std;
 
 // constructor
-GameEngine::GameEngine() {
-    currentState = ST_START;
-    cout << "executing constructor with no params from GameEngine class" << endl;
-}
+GameEngine::GameEngine(): isGameDone(false), currentState(ST_START) {}
 
 // copy constructors
-GameEngine::GameEngine(const GameEngine &game) {
-    cout << "executing copy constructor from GameEngine class" << endl;
-    currentState = game.currentState;
-}
+GameEngine::GameEngine(const GameEngine &game): isGameDone(false), currentState(game.currentState) {}
 
-GameEngine::GameEngine(GameEngine *const pGameEngine) {
-    cout << "executing copy constructor from GameEngine class (pointer)" << endl;
-    currentState = pGameEngine->currentState;
-}
+GameEngine::GameEngine(GameEngine *const pGameEngine): isGameDone(false), currentState(pGameEngine->currentState) {}
 
 // destructor
 GameEngine:: ~GameEngine() = default;
 
-// handles state transitions
+// validate and execute transitions based on current state
 bool GameEngine::transition(Transition t) {
     switch(t) {
         case T_LOAD_MAP:
+
+            // only transition from valid states
             if(currentState == ST_START || currentState == ST_MAP_LOADED) {
-                    // valid input, transition to state map loaded
+
+                    // valid transition to state map loaded, so travel to state
                     currentState = ST_MAP_LOADED;
 
                 // execute game engine function
@@ -112,12 +106,16 @@ bool GameEngine::transition(Transition t) {
             }
             break;
         default:
-            cout << "throw error!" << endl;
-            break;
+            try {
+                throw T_ERROR;
+            } catch (Transition t) {
+                cout << " An error has occurred. Exception: '" << t << "'" << endl;
+            }
     }
     return false;
 }
 
+// return string equivalent of enum value currentState
 string GameEngine::getState() {
     switch(currentState) {
         case ST_START:
@@ -144,52 +142,51 @@ string GameEngine::getState() {
 }
 
 void GameEngine::loadmap() {
-    cout << "executing function loadmap" << endl;
+    cout << "Executing function loadmap" << endl;
 }
 
 void GameEngine::validatemap() {
-    cout << "executing function validatemap" << endl;
+    cout << "Executing function validatemap" << endl;
 }
 
 void GameEngine::addplayer() {
-    cout << "executing function addplayer" << endl;
+    cout << "Executing function addplayer" << endl;
 }
 
 void GameEngine::assigncountries() {
-    cout << "executing function assigncountries" << endl;
+    cout << "Executing function assigncountries" << endl;
 }
 
 void GameEngine::issueorder() {
-    cout << "executing function issueorder" << endl;
+    cout << "Executing function issueorder" << endl;
 }
 
 void GameEngine::execorder() {
-    cout << "executing function execorder" << endl;
+    cout << "Executing function execorder" << endl;
 }
 
 void GameEngine::endexecorders() {
-    cout << "executing function endexecorders" << endl;
+    cout << "Executing function endexecorders" << endl;
 }
 
 void GameEngine::endissueorders() {
-    cout << "executing function endissueorders" << endl;
+    cout << "Executing function endissueorders" << endl;
 }
 
 void GameEngine::win() {
-    cout << "executing function win" << endl;
+    cout << "Executing function win" << endl;
 }
 
 void GameEngine::end() {
-    cout << "executing function end" << endl;
+    cout << "Executing function end" << endl;
 }
 
 void GameEngine::play() {
-    cout << "executing function play" << endl;
+    cout << "Executing function play" << endl;
 }
 
 // assignment operator overload
 GameEngine& GameEngine::operator =(const GameEngine &ge) {
-    cout << "using assignment operator '=' from GameEngine class" << endl;
     this->currentState = ge.currentState;
 
     return *this;
@@ -198,7 +195,6 @@ GameEngine& GameEngine::operator =(const GameEngine &ge) {
 // stream insertion operator overloads
 ostream & operator << (ostream &out, const GameEngine &ge)
 {
-    cout << "using ostream operator '<<' from GameEngine class" << endl;
     switch(ge.currentState) {
 
         case ST_START:
@@ -229,19 +225,17 @@ ostream & operator << (ostream &out, const GameEngine &ge)
             out << "Current State: end" << endl;
             break;
         default:
-            out << "throw error!" << endl;
-            break;
+            try {
+                throw ST_ERROR;
+            } catch (State s) {
+                cout << " An error has occurred. Exception: '" << s << "'" << endl;
+            }            break;
     }
     return out;
 }
 
-// TODO can this accept a state as an input?
-// TODO ask if its good practice to change the value of a enum based on a string
-// for example, a series of if statements to validate user input, and once a user input is validated (ie as stated on the graph),
-// then set state to appropriate state, return in with valid string
 istream & operator >> (istream &in,  GameEngine &ge)
 {
-    cout << "using istream operator '>>' from GameEngine class" << endl;
     cout << "Enter a state";
     return in;
 }

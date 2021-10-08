@@ -2,15 +2,16 @@
 #include "GameEngineDriver.h"
 using namespace std;
 
-int main() {
-    cout << "Hello, World!" << endl;
-
+void runGameEngine(){
     GameEngineDriver driver;
-    GameEngineDriver driver2;
-    GameEngineDriver d = driver2;
-    while(!driver.isGameDone) {
-        driver.chooseCommand();
+    while(!driver.isGameDone()) {
+        cin >> driver;
+        cout << driver << endl;
     }
+}
+
+int main() {
+    runGameEngine();
 
     return 0;
 }
