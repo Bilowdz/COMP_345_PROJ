@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Map.h"
 int main() {
-    MapLoader* loader(new MapLoader());
+    auto* loader(new MapLoader());
+    std::cout << loader->maps.size() << std::endl;
 }

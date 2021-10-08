@@ -12,28 +12,31 @@
 
 class Territory{
 public:
-    Territory(int id, std::string name, int continent);
-    friend std::ostream & operator << (std::ostream &out, const Territory &territory);
-    friend std::istream & operator >> (std::istream &in,  Territory &territory);
     int id;
     std::string name;
     int continent;
     int unitsGarrisoned;
     bool visited;
-    // Owner
     std::vector<Territory*> adjacentTerritories;
+
+    friend std::ostream & operator << (std::ostream &out, const Territory &territory);
+    friend std::istream & operator >> (std::istream &in,  Territory &territory);
+
+    Territory(int id, std::string name, int continent);
+    ~Territory();
 };
 
 class Continent{
 public:
-    Continent(std::string name, int territorialReward);
-    friend std::ostream & operator << (std::ostream &out, const Continent &continent);
-    friend std::istream & operator >> (std::istream &in,  Continent &continent);
     std::string name;
     int territorialReward;
-    // Owner
     std::vector<Territory*> territories;
-    // Color
+
+    friend std::ostream & operator << (std::ostream &out, const Continent &continent);
+    friend std::istream & operator >> (std::istream &in,  Continent &continent);
+
+    Continent(std::string name, int territorialReward);
+    ~Continent();
 };
 
 class Map {
@@ -42,8 +45,8 @@ public:
     std::vector<Territory*> map;
 
     bool Validate();
-    void Print();
-
+    void FancyPrint();
+    ~Map();
 private:
     void MarkContinent(Territory* cur, int continent);
     void MarkMap(Territory* cur);
@@ -56,7 +59,8 @@ public:
     std::vector<Map*> maps;
 
     MapLoader();
-    Map* Load(std::string fileName, bool debug);
+    void Load(const std::string& fileName);
+    ~MapLoader();
 };
 
 
