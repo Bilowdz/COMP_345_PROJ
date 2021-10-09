@@ -8,10 +8,11 @@ Card::Card(){
     cout << "No Type specified please try again" << endl;
 };
 
+//basic constructor
 Card::Card(string t) : cardType(t){
 };
 
-
+//copy constructor
 Card::Card(Card const  &copyCard) {
     cardType = copyCard.cardType;
 }
@@ -34,13 +35,12 @@ Card& Card::operator =(const Card &c) {
     return *this;
 }
 
-
-
 //creating deck constructors
 Deck::Deck(){
 
 };
 
+//copy constructor
 Deck::Deck(const Deck &copyDeck) {
     cardsHeld = copyDeck.cardsHeld;
 };
@@ -57,8 +57,13 @@ Deck::Deck(int numPlayers){
     }
 };
 
+//destructor for the deck
+Deck::~Deck() {
+    for(int i = 0; i < cardsHeld.size(); i++)
+        delete cardsHeld.at(i);
+};
+
 //adds a card to a deck
-//note: a hand of cards can be treated as a deck and that is what is done
 void Deck::ReceiveCard(Card *c)
 {
     cardsHeld.push_back(c);
@@ -69,7 +74,6 @@ void Deck::Draw(Hand *playerHand)
 {
     srand((unsigned) time(0));
     int deckPosition = rand() % this->cardsHeld.size();
-    //Card *dealtCard = new Card(*cardsHeld.at(deckPosition));
     Card *dealtCard = new Card(*cardsHeld.at(deckPosition));
     playerHand->ReceiveCard(dealtCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + deckPosition);
@@ -89,17 +93,23 @@ Deck& Deck::operator =(const Deck &d) {
     this->cardsHeld = d.cardsHeld;
 
     return *this;
-};
+}
 
 //creating Hand constructors
 Hand::Hand()
 {
 };
 
-
-Hand::Hand(const Hand &copyDeck) {
-    cardsHeld = copyDeck.cardsHeld;
+//copy constructor
+Hand::Hand(const Hand &copyHand) {
+    cardsHeld = copyHand.cardsHeld;
 };
+
+//destructor for the deck
+Hand::~Hand() {
+    for(int i = 0; i < cardsHeld.size(); i++)
+        delete cardsHeld.at(i);
+}
 
 //add card to hand
 void Hand::ReceiveCard(Card *c) {
@@ -113,7 +123,6 @@ void Hand::Play(Deck *mainDeck) {
     int chosenCard;
     cin >> chosenCard;
     chosenCard--;
-    //Card *playedCard = new Card(*this->cardsHeld.at(chosenCard));
     Card *playedCard = new Card(*this->cardsHeld.at(chosenCard));
     mainDeck->ReceiveCard(playedCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + chosenCard);
@@ -132,6 +141,6 @@ std::ostream &operator<<(std::ostream &out, const Hand &showHand) {
 //assignment operator
 Hand& Hand::operator =(const Hand &h) {
     this->cardsHeld = h.cardsHeld;
-
     return *this;
 }
+

@@ -15,4 +15,6 @@ int main() {
     TestHand->Play(TestDeck);
     cout <<  *TestDeck << endl;
     cout <<  *TestHand << endl;
+    delete TestDeck;
+    delete TestHand;
 }

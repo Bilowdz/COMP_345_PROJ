@@ -33,6 +33,7 @@ public:
     Deck();
     Deck(int numPlayers);
     Deck(Deck const  &copyDeck);
+    ~Deck();
     void ReceiveCard(Card *c);
     void Draw(Hand *playerHand);
     friend ostream & operator << (ostream &out, const Deck &showDeck);
@@ -43,11 +44,12 @@ class Hand {
 public:
     std::vector<Card*> cardsHeld;
     Hand();
-    Hand(const Hand &copyDeck);
+    Hand(const Hand &copyHand);
+    ~Hand();
     void ReceiveCard(Card *c);
     void Play(Deck *mainDeck);
     friend ostream & operator << (ostream &out, const Hand &showHand);
-    Hand& operator =(const Hand &h);
+    Hand& operator = (const Hand &h);
 };
 
 #endif //COMP_345_PROJ_CARD_H
