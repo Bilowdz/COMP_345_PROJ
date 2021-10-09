@@ -42,7 +42,7 @@ Map::Map(const Map &m1) {
 }
 
 // Assignment operator for the map class
-Map &Map::operator=(const Map &) {
+Map &Map::operator=(const Map &m1) {
     // Add a copy of all territories
     for(Territory *t : m1.map){
         auto *copy (new Territory(*t));
@@ -74,7 +74,7 @@ Map &Map::operator=(const Map &) {
         continentId++;
     }
 
-    return this;
+    return *this;
 }
 
 // Validates the map is correctly structured
@@ -218,7 +218,7 @@ MapLoader::MapLoader(const MapLoader &ml1) {
 }
 
 // Assignment operator for the mapLoader class
-MapLoader &MapLoader::operator=(const MapLoader &) {
+MapLoader &MapLoader::operator=(const MapLoader &ml1) {
 
     // Calls the copy constructor for all maps in the ml1
     for(Map *m : ml1.maps){
@@ -226,7 +226,7 @@ MapLoader &MapLoader::operator=(const MapLoader &) {
         this->maps.push_back(cpM);
     }
 
-    return this;
+    return *this;
 }
 
 // Loads a map file into an instance of the map class
@@ -366,11 +366,11 @@ Continent::Continent(const Continent &c1) {
 
 // Assignment operator for the continent class
 // Does not assign territories into it
-Continent &Continent::operator=(const Continent &) {
+Continent &Continent::operator=(const Continent &c1) {
     this->name = c1.name;
     this->territorialReward = c1.territorialReward;
 
-    return this;
+    return *this;
 }
 
 // Stream insertion operator for the continent class
@@ -417,14 +417,14 @@ Territory::Territory(const Territory &t1) {
 
 // Assignment operator for the territory class
 // Does not assign adjacency's
-Territory &Territory::operator=(const Territory &) {
+Territory &Territory::operator=(const Territory &t1) {
     this->id = t1.id;
     this->name = t1.name;
     this->continent = t1.continent;
     this->unitsGarrisoned = t1.unitsGarrisoned;
     this->visited = t1.visited;
 
-    return this;
+    return *this;
 }
 
 // Stream insertion operator for the territory class
