@@ -15,7 +15,7 @@ GameEngineDriver::GameEngineDriver(const GameEngineDriver &gameEngineDriver): ga
 // destructor
 GameEngineDriver:: ~GameEngineDriver() {
     delete this->game;
-};
+}
 
 // assignment operator overload
 GameEngineDriver& GameEngineDriver::operator =(const GameEngineDriver &ged) {
