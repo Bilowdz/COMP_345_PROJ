@@ -50,6 +50,15 @@ int main(){
     // Creating OrdersList object
     OrdersList ordersListObj;
 
+    cout << "\nostream operator example for each subclass of order: \n\n";
+
+    cout << deploy1;
+    cout << advance1;
+    cout << bomb1;
+    cout << blockade1;
+    cout << airlift1;
+    cout << negotiate1 << "\n";
+
     // Adding all the Orders subclass objects to OrdersList object
     ordersListObj.addDeploy(pDeploy1);
     ordersListObj.addAdvance(pAdvance1);
@@ -62,6 +71,10 @@ int main(){
 
     // Printing original list
     cout << "\nprinting original vector list in the OrdersList object\n\n";
+
+    for (int i = 0; i < ordersListObj.getList().size(); i++) {
+        cout << *ordersListObj.getList().at(i);
+    }
 
     for (int i = 0; i < ordersListObj.getList().size(); i++) {
         ordersListObj.getList().at(i)->identify();

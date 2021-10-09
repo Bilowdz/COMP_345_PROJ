@@ -21,6 +21,14 @@ using namespace std;
 // OrdersList functions
 //------------------------------------------------------
 
+ostream &operator << (ostream &out, const OrdersList &ordersList) {
+    cout << "OrdersList object. Holds a list of objects that are subclasses to the Orders class. \n";
+    return out;
+}
+std::istream &operator >> (istream &in, const OrdersList &ordersList) {
+    return in;
+}
+
 /**
  * Adds a Deploy object to a list of Order objects
  * @param deploy Is the Deploy object to add to the list of Order objects
@@ -87,7 +95,7 @@ OrdersList::~OrdersList() = default;
 
 /**
  * OrdersList copy constructor
- * @param o1 Orderslist object to be copied
+ * @param o1 OrdersList object to be copied
  */
 OrdersList::OrdersList(const OrdersList &o1) = default;
 
@@ -157,6 +165,15 @@ Orders::Orders(const Orders &o1) = default;
  */
 void Orders::identify() {
     std::cout << "Orders object: ";
+}
+
+ostream &operator << (ostream &out, const Orders &orders) {
+    std::cout << "Orders object: ";
+    return out;
+}
+std::istream &operator >> (istream &in, const Orders &orders) {
+    std::cout << "Orders object: ";
+    return in;
 }
 
 /**
@@ -246,6 +263,16 @@ void Deploy::identify() {
     std::cout << "Deploy object. Can deploy armies to territories. It needs " << this->getArmies() << " armies.\n";
 }
 
+ostream &operator << (ostream &out, const Deploy &deploy) {
+    Orders orders;
+    std::cout << orders;
+    std::cout << "Deploy object. Can deploy armies to territories. It needs " << deploy.getArmies() << " armies.\n";
+    return out;
+}
+std::istream &operator >> (istream &in, const Deploy &deploy) {
+    return in;
+}
+
 //------------------------------------------------------
 // Advance functions
 //------------------------------------------------------
@@ -328,7 +355,17 @@ void Advance::execute() {
  */
 void Advance::identify() {
     Orders::identify();
-    std::cout << "Advance object. Can deploy armies to territories owned. It needs " << this->getArmies() << " armies.\n";
+    std::cout << "Advance object. Can advance armies to territories owned. It needs " << this->getArmies() << " armies.\n";
+}
+
+ostream &operator << (ostream &out, const Advance &advance) {
+    Orders orders;
+    std::cout << orders;
+    std::cout << "Advance object. Can advance armies to territories. It needs " << advance.getArmies() << " armies.\n";
+    return out;
+}
+std::istream &operator >> (istream &in, const Advance &advance) {
+    return in;
 }
 
 //------------------------------------------------------
@@ -382,6 +419,16 @@ void Bomb::identify() {
     std::cout << "Bomb object. Can eliminate half of the armies located on an opponent's territory that is adjacent to one of the current player's territories.\n";
 }
 
+ostream &operator << (ostream &out, const Bomb &bomb) {
+    Orders orders;
+    std::cout << orders;
+    std::cout << "Bomb object. Can eliminate half of the armies located on an opponent's territory that is adjacent to one of the current player's territories.\n";
+    return out;
+}
+std::istream &operator >> (istream &in, const Bomb &bomb) {
+    return in;
+}
+
 //------------------------------------------------------
 // Blockade functions
 //------------------------------------------------------
@@ -431,6 +478,16 @@ void Blockade::execute() {
 void Blockade::identify() {
     Orders::identify();
     std::cout << "Blockade object. Can triple the number of armies on one of the current player's territory and make it a neutral territory.\n";
+}
+
+ostream &operator << (ostream &out, const Blockade &blockade) {
+    Orders orders;
+    std::cout << orders;
+    std::cout << "Blockade object. Can triple the number of armies on one of the current player's territory and make it a neutral territory.\n";
+    return out;
+}
+std::istream &operator >> (istream &in, const Blockade &blockade) {
+    return in;
 }
 
 //------------------------------------------------------
@@ -484,6 +541,16 @@ void Airlift::identify() {
     std::cout << "Airlift object. Can advance some armies from one of the current player's territories to any other territory.\n";
 }
 
+ostream &operator << (ostream &out, const Airlift &airlift) {
+    Orders orders;
+    std::cout << orders;
+    std::cout << "Airlift object. Can advance some armies from one of the current player's territories to any other territory.\n";
+    return out;
+}
+std::istream &operator >> (istream &in, const Airlift &airlift) {
+    return in;
+}
+
 //------------------------------------------------------
 // Negotiate functions
 //------------------------------------------------------
@@ -527,4 +594,14 @@ void Negotiate::execute() {
 void Negotiate::identify() {
     Orders::identify();
     std::cout << "Negotiate object. Can prevent attacks between the current player and another player until the end of the turn. \n";
+}
+
+ostream &operator << (ostream &out, const Negotiate &negotiate) {
+    Orders orders;
+    std::cout << orders;
+    std::cout << "Negotiate object. Can prevent attacks between the current player and another player until the end of the turn.\n";
+    return out;
+}
+std::istream &operator >> (istream &in, const Negotiate &negotiate) {
+    return in;
 }
