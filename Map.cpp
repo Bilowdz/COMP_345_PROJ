@@ -41,6 +41,42 @@ Map::Map(const Map &m1) {
     }
 }
 
+// Assignment operator for the map class
+Map &Map::operator=(const Map &) {
+    // Add a copy of all territories
+    for(Territory *t : m1.map){
+        auto *copy (new Territory(*t));
+        this->map.push_back(copy);
+    }
+
+    // Add a copy of all continents
+    for(Continent *c : m1.continents){
+        auto *copy (new Continent(*c));
+        this->continents.push_back(copy);
+    }
+
+    // Add relations
+
+    // Add territories to their continents
+    int continentId = 1;
+    for(Continent *c : m1.continents){
+        Continent *cpC = this->continents.at(continentId-1);
+        for(Territory *t : c->territories){
+            Territory *cpT = this->map.at(t->id-1);
+            cpC->territories.push_back(cpT);
+
+            // Add adjacent territories
+            for(Territory *adj : t->adjacentTerritories){
+                Territory *cpAdj = this->map.at(adj->id-1);
+                cpT->adjacentTerritories.push_back(cpAdj);
+            }
+        }
+        continentId++;
+    }
+
+    return this;
+}
+
 // Validates the map is correctly structured
 bool Map::Validate() {
     // If the map has no nodes then it is not a map
@@ -181,6 +217,18 @@ MapLoader::MapLoader(const MapLoader &ml1) {
     }
 }
 
+// Assignment operator for the mapLoader class
+MapLoader &MapLoader::operator=(const MapLoader &) {
+
+    // Calls the copy constructor for all maps in the ml1
+    for(Map *m : ml1.maps){
+        Map *cpM = new Map(*m);
+        this->maps.push_back(cpM);
+    }
+
+    return this;
+}
+
 // Loads a map file into an instance of the map class
 // Saves the map into the mapLoader if the map is valid
 void MapLoader::Load(const std::string& fileName) {
@@ -316,6 +364,15 @@ Continent::Continent(const Continent &c1) {
     this->territorialReward = c1.territorialReward;
 }
 
+// Assignment operator for the continent class
+// Does not assign territories into it
+Continent &Continent::operator=(const Continent &) {
+    this->name = c1.name;
+    this->territorialReward = c1.territorialReward;
+
+    return this;
+}
+
 // Stream insertion operator for the continent class
 // Ignores color in case it becomes important
 std::istream &operator>>(std::istream &in, Continent &continent) {
@@ -356,6 +413,18 @@ Territory::Territory(const Territory &t1) {
     this->continent = t1.continent;
     this->unitsGarrisoned = t1.unitsGarrisoned;
     this->visited = t1.visited;
+}
+
+// Assignment operator for the territory class
+// Does not assign adjacency's
+Territory &Territory::operator=(const Territory &) {
+    this->id = t1.id;
+    this->name = t1.name;
+    this->continent = t1.continent;
+    this->unitsGarrisoned = t1.unitsGarrisoned;
+    this->visited = t1.visited;
+
+    return this;
 }
 
 // Stream insertion operator for the territory class

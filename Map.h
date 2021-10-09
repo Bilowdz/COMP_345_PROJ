@@ -19,6 +19,7 @@ public:
     bool visited;
     std::vector<Territory*> adjacentTerritories;
 
+    Territory& operator =(const Territory &);
     friend std::ostream & operator << (std::ostream &out, const Territory &territory);
     friend std::istream & operator >> (std::istream &in,  Territory &territory);
 
@@ -33,6 +34,7 @@ public:
     int territorialReward;
     std::vector<Territory*> territories;
 
+    Continent& operator =(const Continent &);
     friend std::ostream & operator << (std::ostream &out, const Continent &continent);
     friend std::istream & operator >> (std::istream &in,  Continent &continent);
 
@@ -46,6 +48,7 @@ public:
     std::vector<Continent*> continents;
     std::vector<Territory*> map;
 
+    Map& operator =(const Map &);
     friend std::ostream & operator << (std::ostream &out, const Map &map);
 
     bool Validate();
@@ -66,6 +69,7 @@ public:
 
     friend std::ostream & operator << (std::ostream &out, const MapLoader &mapLoader);
 
+    MapLoader& operator =(const MapLoader &);
     void Load(const std::string& fileName);
 
     MapLoader();
