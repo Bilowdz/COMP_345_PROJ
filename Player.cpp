@@ -80,6 +80,8 @@ Player::~Player() {
     for (auto &i: vOrder) {
         delete i;
     }
+
+    cout << "Destructor !" << endl;
 }
 
 /**

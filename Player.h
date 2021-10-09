@@ -149,8 +149,10 @@ public:
 
     /**
      * Sets the name of the player
+     *
+     * @param s
      */
-    void setName(string);
+    void setName(string s);
 
 private:
     string name; //Name of the player
