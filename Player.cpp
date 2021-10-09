@@ -57,6 +57,16 @@ Player::Player(Player const &copyPlayer) {
     vOrder = copyPlayer.vOrder;
 }
 
+Player &Player::operator=(const Player &p) {
+
+    this->name = p.name;
+    this->vTerritory = p.vTerritory;
+    this->vHand = p.vHand;
+    this->vOrder = p.vOrder;
+
+    return *this;
+}
+
 /**
  * Destructor
  */
@@ -218,6 +228,8 @@ string Player::getName() const {
 void Player::setName(string s) {
     this->name = std::move(s);
 }
+
+
 
 
 

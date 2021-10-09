@@ -53,6 +53,8 @@ public:
      */
     Player(const Player &copyPlayer);
 
+    Player & operator = (const Player &p);
+
     /**
      * Destructor
      */
