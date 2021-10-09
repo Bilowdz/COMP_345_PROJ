@@ -11,10 +11,11 @@ Card::Card(){
 Card::Card(string t) : cardType(t){
 };
 
-Card::Card(Card *c) {
-    string t = c->getType();
-    cardType = t;
-};
+
+Card::Card(Card const  &copyCard) {
+    cardType = copyCard.cardType;
+}
+
 //returns the card's type
 string Card::getType() const{
     return cardType;
@@ -32,14 +33,16 @@ Card& Card::operator =(const Card &c) {
 
     return *this;
 }
+
+
+
 //creating deck constructors
 Deck::Deck(){
 
 };
 
-Deck::Deck(Deck *d) {
-    vector <Card *> t = d->cardsHeld;
-    cardsHeld = t;
+Deck::Deck(const Deck &copyDeck) {
+    cardsHeld = copyDeck.cardsHeld;
 };
 
 //creates a deck of cards in relation to the number of card (prof didnt specify the number of cards in a deck, can be modified as needed)
@@ -66,6 +69,7 @@ void Deck::Draw(Hand *playerHand)
 {
     srand((unsigned) time(0));
     int deckPosition = rand() % this->cardsHeld.size();
+    //Card *dealtCard = new Card(*cardsHeld.at(deckPosition));
     Card *dealtCard = new Card(*cardsHeld.at(deckPosition));
     playerHand->ReceiveCard(dealtCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + deckPosition);
@@ -85,15 +89,16 @@ Deck& Deck::operator =(const Deck &d) {
     this->cardsHeld = d.cardsHeld;
 
     return *this;
-}
+};
+
 //creating Hand constructors
 Hand::Hand()
 {
 };
 
-Hand::Hand(Hand *h) {
-    vector <Card *> t = h->cardsHeld;
-    cardsHeld = t;
+
+Hand::Hand(const Hand &copyDeck) {
+    cardsHeld = copyDeck.cardsHeld;
 };
 
 //add card to hand
@@ -108,6 +113,7 @@ void Hand::Play(Deck *mainDeck) {
     int chosenCard;
     cin >> chosenCard;
     chosenCard--;
+    //Card *playedCard = new Card(*this->cardsHeld.at(chosenCard));
     Card *playedCard = new Card(*this->cardsHeld.at(chosenCard));
     mainDeck->ReceiveCard(playedCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + chosenCard);
@@ -115,7 +121,7 @@ void Hand::Play(Deck *mainDeck) {
 
 //string insertion operator
 std::ostream &operator<<(std::ostream &out, const Hand &showHand) {
-    cout << "The hand has has" << endl;
+    cout << "The hand has " << endl;
     for(int i = 0; i < showHand.cardsHeld.size(); i++)
     {
         cout << "Card " << (i+1) << " is of type " << showHand.cardsHeld.at(i)->getType() << endl;

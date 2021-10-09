@@ -20,7 +20,7 @@ class Card {
         string cardType;
         Card();
         Card(string type);
-        Card(Card *c);
+        Card(Card const  &copyCard);
         string getType() const;
         friend ostream & operator << (ostream &out, const Card &c);
         Card& operator =(const Card &c);
@@ -32,7 +32,7 @@ public:
     std::vector<Card*> cardsHeld;
     Deck();
     Deck(int numPlayers);
-    Deck(Deck *d);
+    Deck(Deck const  &copyDeck);
     void ReceiveCard(Card *c);
     void Draw(Hand *playerHand);
     friend ostream & operator << (ostream &out, const Deck &showDeck);
@@ -43,7 +43,7 @@ class Hand {
 public:
     std::vector<Card*> cardsHeld;
     Hand();
-    Hand(Hand *h);
+    Hand(const Hand &copyDeck);
     void ReceiveCard(Card *c);
     void Play(Deck *mainDeck);
     friend ostream & operator << (ostream &out, const Hand &showHand);
