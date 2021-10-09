@@ -343,6 +343,8 @@ void MapLoader::Load(const std::string& fileName) {
     // Validate the map before adding
     if(map->Validate())
         maps.push_back(map);
+    else
+        delete map;
 }
 
 // Stream output operator for the mapLoader class

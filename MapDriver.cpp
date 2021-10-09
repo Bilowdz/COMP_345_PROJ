@@ -4,6 +4,7 @@ int main() {
     auto* loader(new MapLoader());
 
     std::cout << *loader;
+
     std::cout << loader->maps.size() << std::endl;
 
     delete loader;
