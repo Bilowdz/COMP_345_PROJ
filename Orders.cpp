@@ -21,12 +21,15 @@ using namespace std;
 // OrdersList functions
 //------------------------------------------------------
 
+/**
+ * output of the OrdersList class
+ * @param out ostream operator of OrdersList
+ * @param ordersList the list of objects to output
+ * @return returns string of text describing ordersList
+ */
 ostream &operator << (ostream &out, const OrdersList &ordersList) {
-    cout << "OrdersList object. Holds a list of objects that are subclasses to the Orders class. \n";
+    out << "OrdersList object. Holds a list of objects that are subclasses to the Orders class. \n";
     return out;
-}
-std::istream &operator >> (istream &in, const OrdersList &ordersList) {
-    return in;
 }
 
 /**
@@ -167,13 +170,15 @@ void Orders::identify() {
     std::cout << "Orders object: ";
 }
 
+/**
+ * output of the OrdersList class
+ * @param out ostream operator of Orders class
+ * @param orders the object being outputted as a string
+ * @return the string output for the Orders class
+ */
 ostream &operator << (ostream &out, const Orders &orders) {
-    std::cout << "Orders object: ";
+    out << "Orders object: ";
     return out;
-}
-std::istream &operator >> (istream &in, const Orders &orders) {
-    std::cout << "Orders object: ";
-    return in;
 }
 
 /**
@@ -263,14 +268,17 @@ void Deploy::identify() {
     std::cout << "Deploy object. Can deploy armies to territories. It needs " << this->getArmies() << " armies.\n";
 }
 
+/**
+ * output of the Deploy class
+ * @param out ostream operator of Deploy class
+ * @param deploy object to be outputted
+ * @return string of text describing the passed Deploy object
+ */
 ostream &operator << (ostream &out, const Deploy &deploy) {
     Orders orders;
-    std::cout << orders;
-    std::cout << "Deploy object. Can deploy armies to territories. It needs " << deploy.getArmies() << " armies.\n";
+    out << orders;
+    out << "Deploy object. Can deploy armies to territories. It needs " << deploy.getArmies() << " armies.\n";
     return out;
-}
-std::istream &operator >> (istream &in, const Deploy &deploy) {
-    return in;
 }
 
 //------------------------------------------------------
@@ -358,14 +366,17 @@ void Advance::identify() {
     std::cout << "Advance object. Can advance armies to territories owned. It needs " << this->getArmies() << " armies.\n";
 }
 
+/**
+ * output of the Advance class
+ * @param out ostream operator of Advance class
+ * @param Advance object to be outputted
+ * @return string of text describing the passed Advance object
+ */
 ostream &operator << (ostream &out, const Advance &advance) {
     Orders orders;
-    std::cout << orders;
-    std::cout << "Advance object. Can advance armies to territories. It needs " << advance.getArmies() << " armies.\n";
+    out << orders;
+    out << "Advance object. Can advance armies to territories. It needs " << advance.getArmies() << " armies.\n";
     return out;
-}
-std::istream &operator >> (istream &in, const Advance &advance) {
-    return in;
 }
 
 //------------------------------------------------------
@@ -419,14 +430,17 @@ void Bomb::identify() {
     std::cout << "Bomb object. Can eliminate half of the armies located on an opponent's territory that is adjacent to one of the current player's territories.\n";
 }
 
+/**
+ * output of the Bomb class
+ * @param out ostream operator of Bomb class
+ * @param Bomb object to be outputted
+ * @return string of text describing the passed Bomb object
+ */
 ostream &operator << (ostream &out, const Bomb &bomb) {
     Orders orders;
-    std::cout << orders;
-    std::cout << "Bomb object. Can eliminate half of the armies located on an opponent's territory that is adjacent to one of the current player's territories.\n";
+    out << orders;
+    out << "Bomb object. Can eliminate half of the armies located on an opponent's territory that is adjacent to one of the current player's territories.\n";
     return out;
-}
-std::istream &operator >> (istream &in, const Bomb &bomb) {
-    return in;
 }
 
 //------------------------------------------------------
@@ -480,14 +494,17 @@ void Blockade::identify() {
     std::cout << "Blockade object. Can triple the number of armies on one of the current player's territory and make it a neutral territory.\n";
 }
 
+/**
+ * output of the Blockade class
+ * @param out ostream operator of Blockade class
+ * @param blockade object to be outputted
+ * @return string of text describing the passed Blockade object
+ */
 ostream &operator << (ostream &out, const Blockade &blockade) {
     Orders orders;
-    std::cout << orders;
-    std::cout << "Blockade object. Can triple the number of armies on one of the current player's territory and make it a neutral territory.\n";
+    out << orders;
+    out << "Blockade object. Can triple the number of armies on one of the current player's territory and make it a neutral territory.\n";
     return out;
-}
-std::istream &operator >> (istream &in, const Blockade &blockade) {
-    return in;
 }
 
 //------------------------------------------------------
@@ -541,14 +558,17 @@ void Airlift::identify() {
     std::cout << "Airlift object. Can advance some armies from one of the current player's territories to any other territory.\n";
 }
 
+/**
+ * output of the Airlift class
+ * @param out ostream operator of Airlift class
+ * @param airlift object to be outputted
+ * @return string of text describing the passed Airlift object
+ */
 ostream &operator << (ostream &out, const Airlift &airlift) {
     Orders orders;
-    std::cout << orders;
-    std::cout << "Airlift object. Can advance some armies from one of the current player's territories to any other territory.\n";
+    out << orders;
+    out << "Airlift object. Can advance some armies from one of the current player's territories to any other territory.\n";
     return out;
-}
-std::istream &operator >> (istream &in, const Airlift &airlift) {
-    return in;
 }
 
 //------------------------------------------------------
@@ -596,12 +616,15 @@ void Negotiate::identify() {
     std::cout << "Negotiate object. Can prevent attacks between the current player and another player until the end of the turn. \n";
 }
 
+/**
+ * output of the Negotiate class
+ * @param out ostream operator of Negotiate class
+ * @param negotiate object to be outputted
+ * @return string of text describing the passed Negotiate object
+ */
 ostream &operator << (ostream &out, const Negotiate &negotiate) {
     Orders orders;
-    std::cout << orders;
-    std::cout << "Negotiate object. Can prevent attacks between the current player and another player until the end of the turn.\n";
+    out << orders;
+    out << "Negotiate object. Can prevent attacks between the current player and another player until the end of the turn.\n";
     return out;
-}
-std::istream &operator >> (istream &in, const Negotiate &negotiate) {
-    return in;
 }
