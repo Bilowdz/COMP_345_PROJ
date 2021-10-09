@@ -56,7 +56,8 @@ public:
     Deploy();
     ~Deploy();
     Deploy(const Deploy &d1);
-    void validate() override;
+    Deploy &operator=(const Deploy &p);
+        void validate() override;
     static void execute();
     void identify() override;
     friend ostream &operator << (ostream &, const Deploy &deploy);
@@ -75,6 +76,7 @@ public:
     Advance();
     ~Advance();
     Advance(const Advance &a1);
+    Advance &operator=(const Advance &p);
     void validate() override;
     static void execute();
     void identify() override;
@@ -92,6 +94,7 @@ public:
     Bomb();
     ~Bomb();
     Bomb(const Bomb &b1);
+    Bomb &operator=(const Bomb &p);
     void validate() override;
     static void execute();
     void identify() override;
@@ -109,6 +112,7 @@ public:
     Blockade();
     ~Blockade();
     Blockade(const Blockade &b1);
+    Blockade &operator=(const Blockade &p);
     void validate() override;
     static void execute();
     void identify() override;
@@ -126,6 +130,7 @@ public:
     Airlift();
     ~Airlift();
     Airlift(const Airlift &a1);
+    Airlift &operator=(const Airlift &p);
     void validate() override;
     static void execute();
     void identify() override;
@@ -143,6 +148,7 @@ public:
     Negotiate();
     ~Negotiate();
     Negotiate(const Negotiate &n1);
+    Negotiate &operator=(const Negotiate &p);
     void validate() override;
     static void execute();
     void identify() override;
@@ -164,6 +170,7 @@ public:
     OrdersList();
     ~OrdersList();
     OrdersList(const OrdersList &o1);
+    OrdersList &operator=(const OrdersList &p);
     void getListMember(int index);
     std::vector<Orders*> getList();
     friend ostream &operator << (ostream &, const OrdersList &ordersList);

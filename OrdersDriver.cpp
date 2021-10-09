@@ -147,4 +147,9 @@ int main(){
 
     ordersListObj.getList().at(6)->validate();
 
+    for (auto & i : ordersListObj.getList()) {
+        delete i;
+    }
+
+    return 0;
 }

@@ -94,7 +94,9 @@ OrdersList::OrdersList() = default;
 /**
  * OrdersList destructor
  */
-OrdersList::~OrdersList() = default;
+OrdersList::~OrdersList() {
+    cout << "OrdersList destroyed\n";
+}
 
 /**
  * OrdersList copy constructor
@@ -155,7 +157,9 @@ Orders::Orders() = default;
 /**
  * Orders destructor
  */
-Orders::~Orders() = default;
+Orders::~Orders() {
+    cout << "Orders destroyed";
+}
 
 /**
  * Orders copy constructor
@@ -216,7 +220,9 @@ Deploy::Deploy() = default;
 /**
  * Deploy destructor
  */
-Deploy::~Deploy() = default;
+Deploy::~Deploy() {
+    cout << "Deploy destroyed";
+}
 
 /**
  * Deploy copy constructor
@@ -224,6 +230,16 @@ Deploy::~Deploy() = default;
  */
 Deploy::Deploy(const Deploy &d1) {
     this->armies = d1.armies;
+}
+
+/**
+ * assignment operator for Deploy
+ * @param p pointer of Deploy
+ * @return returns assigned Deploy
+ */
+Deploy &Deploy::operator=(const Deploy &p) {
+    this->armies = p.armies;
+    return *this;
 }
 
 /**
@@ -320,6 +336,15 @@ Advance::Advance(const Advance &a1) {
 }
 
 /**
+ * assignment operator of Advance
+ * @param p pointer of Advance
+ * @return returns assigned Advance
+ */
+Advance &Advance::operator=(const Advance &p) {
+    this->armies = p.armies;
+}
+
+/**
  * Advance validate checks if the Advance object can execute
  */
 void Advance::validate() {
@@ -402,6 +427,15 @@ Bomb::Bomb(const Bomb &b1) {
 }
 
 /**
+ * assignment operator of Bomb
+ * @param p pointer to Bomb
+ * @return returns assigned Bomb
+ */
+Bomb &Bomb::operator=(const Bomb &p) {
+    return *this;
+}
+
+/**
  * Bomb validate checks if the Bomb object can execute
  */
 void Bomb::validate() {
@@ -463,6 +497,15 @@ Blockade::~Blockade() = default;
  */
 Blockade::Blockade(const Blockade &b1) {
     // empty because Blockade has no members.
+}
+
+/**
+ * assignment operator of Blockade
+ * @param p pointer to Blockade
+ * @return returns assigned Blockade
+ */
+Blockade &Blockade::operator=(const Blockade &p) {
+    return *this;
 }
 
 /**
@@ -530,6 +573,15 @@ Airlift::Airlift(const Airlift &a1) {
 }
 
 /**
+ * assignment operator of Airlift
+ * @param p pointer to Airlift
+ * @return returns assigned Airlift
+ */
+Airlift &Airlift::operator=(const Airlift &p) {
+    return *this;
+}
+
+/**
  * Airlift validate checks if the Airlift object can execute
  */
 void Airlift::validate() {
@@ -591,6 +643,15 @@ Negotiate::~Negotiate() = default;
  */
 Negotiate::Negotiate(const Negotiate &n1) {
     // empty because Negotiate has no members.
+}
+
+/**
+ * assignment operator of Negotiate
+ * @param p pointer to Negotiate
+ * @return returns assigned Negotiate
+ */
+Negotiate &Negotiate::operator=(const Negotiate &p) {
+    return *this;
 }
 
 /**
