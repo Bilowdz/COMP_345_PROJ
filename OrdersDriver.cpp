@@ -73,10 +73,6 @@ int main(){
     cout << "\nprinting original vector list in the OrdersList object\n\n";
 
     for (int i = 0; i < ordersListObj.getList().size(); i++) {
-        cout << *ordersListObj.getList().at(i);
-    }
-
-    for (int i = 0; i < ordersListObj.getList().size(); i++) {
         ordersListObj.getList().at(i)->identify();
     }
 

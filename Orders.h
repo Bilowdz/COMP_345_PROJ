@@ -36,7 +36,6 @@ public:
     virtual void identify();
     virtual void validate();
     friend ostream &operator << (ostream &, const Orders &orders);
-    friend istream &operator >> (istream &, const Orders &orders);
 
 };
 
@@ -53,7 +52,7 @@ private:
     int armies{};
 public:
     void setArmies(int sArmies);
-    int getArmies() const;
+    [[nodiscard]] int getArmies() const;
     Deploy();
     ~Deploy();
     Deploy(const Deploy &d1);
@@ -61,7 +60,6 @@ public:
     static void execute();
     void identify() override;
     friend ostream &operator << (ostream &, const Deploy &deploy);
-    friend istream &operator >> (istream &, const Deploy &deploy);
 };
 
 /**
@@ -73,7 +71,7 @@ private:
     int armies{};
 public:
     void setArmies(int sArmies);
-    int getArmies() const;
+    [[nodiscard]] int getArmies() const;
     Advance();
     ~Advance();
     Advance(const Advance &a1);
@@ -81,7 +79,6 @@ public:
     static void execute();
     void identify() override;
     friend ostream &operator << (ostream &, const Advance &advance);
-    friend istream &operator >> (istream &, const Advance &advance);
 };
 
 /**
@@ -99,7 +96,6 @@ public:
     static void execute();
     void identify() override;
     friend ostream &operator << (ostream &, const Bomb &bomb);
-    friend istream &operator >> (istream &, const Bomb &bomb);
 };
 
 /**
@@ -117,7 +113,6 @@ public:
     static void execute();
     void identify() override;
     friend ostream &operator << (ostream &, const Blockade &blockade);
-    friend istream &operator >> (istream &, const Blockade &blockade);
 };
 
 /**
@@ -135,7 +130,6 @@ public:
     static void execute();
     void identify() override;
     friend ostream &operator << (ostream &, const Airlift &airlift);
-    friend istream &operator >> (istream &, const Airlift &airlift);
 };
 
 /**
@@ -153,7 +147,6 @@ public:
     static void execute();
     void identify() override;
     friend ostream &operator << (ostream &, const Negotiate &negotiate);
-    friend istream &operator >> (istream &, const Negotiate &negotiate);
 };
 
 //--------------------------------------------------------------------------
@@ -174,7 +167,6 @@ public:
     void getListMember(int index);
     std::vector<Orders*> getList();
     friend ostream &operator << (ostream &, const OrdersList &ordersList);
-    friend istream &operator >> (istream &, const OrdersList &ordersList);
 
     void addDeploy(Deploy * deploy);
     void addAdvance(Advance * advance);
