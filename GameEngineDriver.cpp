@@ -13,7 +13,9 @@ GameEngineDriver::GameEngineDriver(): game(new GameEngine()) {}
 GameEngineDriver::GameEngineDriver(const GameEngineDriver &gameEngineDriver): game(new GameEngine(gameEngineDriver.game)) {}
 
 // destructor
-GameEngineDriver:: ~GameEngineDriver() = default;
+GameEngineDriver:: ~GameEngineDriver() {
+    delete this->game;
+};
 
 // assignment operator overload
 GameEngineDriver& GameEngineDriver::operator =(const GameEngineDriver &ged) {
@@ -107,7 +109,6 @@ istream & operator >> (istream &in,  GameEngineDriver &ged) {
             if(ged.game->transition(T_END)) {
                 flag = 1;
 
-                ged.game->isGameDone = true;
             } else {
                 error = "cannot perform transition '" + input + "' from state '" + ged.game->getState() + "'!";
             }

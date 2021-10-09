@@ -102,6 +102,7 @@ bool GameEngine::transition(Transition t) {
             if(currentState == ST_WIN) {
                 currentState = ST_END;
                 this->end();
+                this->isGameDone = true;
                 return true;
             }
             break;
