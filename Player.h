@@ -53,6 +53,12 @@ public:
      */
     Player(const Player &copyPlayer);
 
+    /**
+     * Assignment operator
+     *
+     * @param p constant player class
+     * @return address of Player.
+     */
     Player & operator = (const Player &p);
 
     /**

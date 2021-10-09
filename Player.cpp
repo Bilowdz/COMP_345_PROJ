@@ -52,18 +52,35 @@ Player::Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vH
  */
 Player::Player(Player const &copyPlayer) {
     name = copyPlayer.name;
-    vTerritory = copyPlayer.vTerritory;
-    vHand = copyPlayer.vHand;
-    vOrder = copyPlayer.vOrder;
+    for (int i = 0; i < copyPlayer.vTerritory.size(); ++i) {
+        vTerritory.at(i) = copyPlayer.vTerritory.at(i);
+    }
+    for (int i = 0; i < copyPlayer.vHand.size(); ++i) {
+        vHand.at(i) = copyPlayer.vHand.at(i);
+    }
+    for (int i = 0; i < copyPlayer.vOrder.size(); ++i) {
+        vOrder.at(i) = copyPlayer.vOrder.at(i);
+    }
 }
 
-Player &Player::operator=(const Player &p) {
+/**
+ * Assignment operator
+ *
+ * @param p constant player class
+ * @return address of Player.
+ */
+Player &Player::operator=(const Player &copyPlayer) {
 
-    this->name = p.name;
-    this->vTerritory = p.vTerritory;
-    this->vHand = p.vHand;
-    this->vOrder = p.vOrder;
-
+    this->name = copyPlayer.name;
+    for (int i = 0; i < copyPlayer.vTerritory.size(); ++i) {
+        this->vTerritory.at(i) = copyPlayer.vTerritory.at(i);
+    }
+    for (int i = 0; i < copyPlayer.vHand.size(); ++i) {
+        this->vHand.at(i) = copyPlayer.vHand.at(i);
+    }
+    for (int i = 0; i < copyPlayer.vOrder.size(); ++i) {
+        this->vOrder.at(i) = copyPlayer.vOrder.at(i);
+    }
     return *this;
 }
 
@@ -80,7 +97,6 @@ Player::~Player() {
     for (auto &i: vOrder) {
         delete i;
     }
-
     cout << "Destructor !" << endl;
 }
 
@@ -94,21 +110,21 @@ Player::~Player() {
 ostream &operator<<(ostream &output, Player &player) {
 
     output << "Player Name: " << player.getName() << endl;
-    cout << "Territories Owned: \n";
+    output << "Territories Owned: \n";
     for (int j = 0; j < player.getTerritorySize(); ++j) {
-        cout << "\t" + player.getTerritoriesOwned(j) << endl;
+        output << "\t" + player.getTerritoriesOwned(j) << endl;
     }
-    cout << "Cards Owned: \n";
+    output << "Cards Owned: \n";
     for (int k = 0; k < player.getHandSize(); ++k) {
-        cout << "\tCard Number: " + to_string(player.getCardsOwned(k)) << endl;
+        output << "\tCard Number: " + to_string(player.getCardsOwned(k)) << endl;
     }
-    cout << "Orders Sent: \n";
+    output << "Orders Sent: \n";
     for (int l = 0; l < player.getNumberOfOrders(); ++l) {
-        cout << "\t" + player.getOrder(l) << " " + to_string(l + 1) << endl;
+        output << "\t" + player.getOrder(l) << " " + to_string(l + 1) << endl;
     }
-    cout << "Territories to defend: \n";
+    output << "Territories to defend: \n";
     player.toDefend();
-    cout << "\n";
+    output << "\n";
 
     return output;
 }
