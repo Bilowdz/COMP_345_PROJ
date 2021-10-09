@@ -3,4 +3,4 @@ project(COMP_345_PROJ)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(COMP_345_PROJ MapDriver.cpp Map.cpp Map.h)
+add_executable(COMP_345_PROJ MapDriver.cpp Map.cpp Map.h Player.cpp Player.h)

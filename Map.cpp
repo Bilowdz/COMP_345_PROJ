@@ -194,7 +194,15 @@ std::ostream &operator<<(std::ostream &out, const Map &map) {
 }
 
 // Destructor for the map class
-Map::~Map() = default;
+Map::~Map(){
+    for(Continent *c : continents){
+        delete c;
+    }
+
+    for(Territory *t : map){
+        delete t;
+    }
+}
 
 // Default constructor for the mapLoader
 // Loads all maps in the maps directory
@@ -349,7 +357,11 @@ std::ostream &operator<<(std::ostream &out, const MapLoader &mapLoader) {
 }
 
 // Destructor for the mapLoader class
-MapLoader::~MapLoader() = default;
+MapLoader::~MapLoader(){
+    for(Map *m : maps){
+        delete m;
+    }
+}
 
 // Constructor for the continent class
 Continent::Continent(std::string name, int territorialReward) {
