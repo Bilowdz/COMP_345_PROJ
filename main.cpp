@@ -4,7 +4,7 @@
 using namespace std;
 
 vector<Territory *> generateTerritories(int numTerritoryOwned);
-vector<Hand *> generateHand(int numCardsPerPlayer);
+vector<Hand *> generateHand(int numberCardsPerPlayer);
 vector<Order *> generateOrder();
 
 static int territoryNumber = 1;
@@ -101,10 +101,10 @@ vector<Territory *> generateTerritories(int numTerritoryOwned) {
  * @param numCardsPerPlayer the initial amount of cards per player
  * @return vector of Hands that gets passed into the player vector
  */
-vector<Hand *> generateHand(int numCardsPerPlayer) {
+vector<Hand *> generateHand(int numberCardsPerPlayer) {
     vector<Hand *> vHand;
     Hand *pHand;
-    for (unsigned i = 0; i < numCardsPerPlayer; i++) {
+    for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
         pHand = new Hand(cardNumber);
         vHand.push_back(pHand);
         cardNumber++;
