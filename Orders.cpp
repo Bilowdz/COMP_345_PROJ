@@ -95,6 +95,9 @@ OrdersList::OrdersList() = default;
  * OrdersList destructor
  */
 OrdersList::~OrdersList() {
+    for (auto *o : ordersList) {
+        delete o;
+    }
     cout << "OrdersList destroyed\n";
 }
 
@@ -102,7 +105,11 @@ OrdersList::~OrdersList() {
  * OrdersList copy constructor
  * @param o1 OrdersList object to be copied
  */
-OrdersList::OrdersList(const OrdersList &o1) = default;
+OrdersList::OrdersList(const OrdersList &o1) {
+    for (int i = 0; i < o1.ordersList.size(); i++) {
+        this->ordersList.push_back(o1.ordersList.at(i));
+    }
+}
 
 /**
  * Returns the list of Order objects from the OrdersList object
@@ -145,6 +152,11 @@ void OrdersList::remove(int index) {
     this->ordersList.erase(ordersList.begin()+index);
 }
 
+OrdersList &OrdersList::operator=(const OrdersList &p) {
+
+    return *this;
+}
+
 //------------------------------------------------------
 // Orders functions
 //------------------------------------------------------
@@ -157,9 +169,7 @@ Orders::Orders() = default;
 /**
  * Orders destructor
  */
-Orders::~Orders() {
-    cout << "Orders destroyed";
-}
+Orders::~Orders() = default;
 
 /**
  * Orders copy constructor
@@ -221,7 +231,7 @@ Deploy::Deploy() = default;
  * Deploy destructor
  */
 Deploy::~Deploy() {
-    cout << "Deploy destroyed";
+    cout << "Deploy destroyed\n";
 }
 
 /**
@@ -325,7 +335,9 @@ Advance::Advance() = default;
 /**
  * Advance destructor
  */
-Advance::~Advance() = default;
+Advance::~Advance() {
+    cout << "Advance destroyed\n";
+}
 
 /**
  * Advance copy constructor
@@ -342,6 +354,7 @@ Advance::Advance(const Advance &a1) {
  */
 Advance &Advance::operator=(const Advance &p) {
     this->armies = p.armies;
+    return *this;
 }
 
 /**
@@ -365,7 +378,6 @@ void Advance::validate() {
  */
 void Advance::execute() {
     // check if enemy territory is owned by current player or not
-
     std::cout << "Is the territory destination adjacent to a territory of the current player? (1 for yes, 0 for no)";
     int adjacentTerritory;
     std::cin >> adjacentTerritory;
@@ -416,7 +428,9 @@ Bomb::Bomb() = default;
 /**
  * Bomb destructor
  */
-Bomb::~Bomb() = default;
+Bomb::~Bomb() {
+    cout << "Bomb destroyed\n";
+}
 
 /**
  * Bomb copy constructor
@@ -489,7 +503,9 @@ Blockade::Blockade() = default;
 /**
  * Blockade destructor
  */
-Blockade::~Blockade() = default;
+Blockade::~Blockade() {
+    cout << "Blockade destroyed\n";
+}
 
 /**
  * Blockade copy constructor
@@ -562,7 +578,9 @@ Airlift::Airlift() = default;
 /**
  * Airlift destructor
  */
-Airlift::~Airlift() = default;
+Airlift::~Airlift() {
+    cout << "Airlift destroyed\n";
+}
 
 /**
  * Airlift copy constructor
@@ -635,8 +653,9 @@ Negotiate::Negotiate() = default;
 /**
  * Negotiate destructor
  */
-Negotiate::~Negotiate() = default;
-
+Negotiate::~Negotiate() {
+    cout << "Negotiate destroyed\n";
+}
 /**
  * Negotiate copy constructor
  * @param n1 Negotiate object being copied
