@@ -1,5 +1,6 @@
 #include <iostream>
 #include "GameEngineDriver.h"
+#include "Map.h"
 using namespace std;
 
 void runGameEngine(){
@@ -15,8 +16,18 @@ void runGameEngine(){
     }
 }
 
+void driveMap() {
+    auto* loader(new MapLoader());
+
+    std::cout << *loader;
+
+    std::cout << loader->maps.size() << std::endl;
+
+    delete loader;
+}
+
 int main() {
-    runGameEngine();
+    driveMap();
 
     return 0;
 }
