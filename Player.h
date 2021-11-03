@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 #include "Map.h"
+#include "Order.h"
+#include "Card.h"
 
 using namespace std;
 
@@ -32,7 +34,7 @@ public:
     * @param vHand is the vector Hand pointer of all the hand the player owns
     * @param vOrder is the vector Order pointer of all the orders the player can do
     */
-    Player(vector<Territory *> vTerritories);
+    Player(vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder);
 
     /**
      * Constructor that takes in the following parameters
@@ -42,7 +44,7 @@ public:
      * @param vHand is the vector Hand pointer of all the hand the player owns
      * @param vOrder is the vector Order pointer of all the orders the player can do
      */
-    Player(string *name, vector<Territory *> vTerritories);
+    Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder);
 
     /**
      * Copy constructor
@@ -51,6 +53,12 @@ public:
      */
     Player(const Player &copyPlayer);
 
+    /**
+     * Assignment operator
+     *
+     * @param p constant player class
+     * @return address of Player.
+     */
     Player & operator = (const Player &p);
 
     /**
@@ -147,12 +155,16 @@ public:
 
     /**
      * Sets the name of the player
+     *
+     * @param s
      */
-    void setName(string);
+    void setName(string s);
 
 private:
     string name; //Name of the player
     vector<Territory *> vTerritory; //Vector of all the territories owned
+    vector<Hand *> vHand; //Vector of all the cards the player owns
+    vector<Order *> vOrder; //Vector for all the orders the player can do
 };
 
 #endif //COMP_345_PROJ_PLAYER_H

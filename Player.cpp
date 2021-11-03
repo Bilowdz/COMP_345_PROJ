@@ -24,8 +24,10 @@ Player::Player(string *name) {
 * @param vHand is the vector Hand pointer of all the hand the player owns
 * @param vOrder is the vector Order pointer of all the orders the player can do
 */
-Player::Player(vector<Territory *> vTerritories) {
+Player::Player(vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder) {
     this->vTerritory = vTerritories;
+    this->vHand = vHand;
+    this->vOrder = vOrder;
 }
 
 /**
@@ -36,9 +38,11 @@ Player::Player(vector<Territory *> vTerritories) {
  * @param vHand is the vector Hand pointer of all the hand the player owns
  * @param vOrder is the vector Order pointer of all the orders the player can do
  */
-Player::Player(string *name, vector<Territory *> vTerritories) {
+Player::Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder) {
     (*this).name = *name;
     this->vTerritory = vTerritories;
+    this->vHand = vHand;
+    this->vOrder = vOrder;
 }
 
 /**
@@ -48,14 +52,35 @@ Player::Player(string *name, vector<Territory *> vTerritories) {
  */
 Player::Player(Player const &copyPlayer) {
     name = copyPlayer.name;
-    vTerritory = copyPlayer.vTerritory;
+    for (int i = 0; i < copyPlayer.vTerritory.size(); ++i) {
+        vTerritory.at(i) = copyPlayer.vTerritory.at(i);
+    }
+    for (int i = 0; i < copyPlayer.vHand.size(); ++i) {
+        vHand.at(i) = copyPlayer.vHand.at(i);
+    }
+    for (int i = 0; i < copyPlayer.vOrder.size(); ++i) {
+        vOrder.at(i) = copyPlayer.vOrder.at(i);
+    }
 }
 
-Player &Player::operator=(const Player &p) {
+/**
+ * Assignment operator
+ *
+ * @param p constant player class
+ * @return address of Player.
+ */
+Player &Player::operator=(const Player &copyPlayer) {
 
-    this->name = p.name;
-    this->vTerritory = p.vTerritory;
-
+    this->name = copyPlayer.name;
+    for (int i = 0; i < copyPlayer.vTerritory.size(); ++i) {
+        this->vTerritory.at(i) = copyPlayer.vTerritory.at(i);
+    }
+    for (int i = 0; i < copyPlayer.vHand.size(); ++i) {
+        this->vHand.at(i) = copyPlayer.vHand.at(i);
+    }
+    for (int i = 0; i < copyPlayer.vOrder.size(); ++i) {
+        this->vOrder.at(i) = copyPlayer.vOrder.at(i);
+    }
     return *this;
 }
 
@@ -66,6 +91,13 @@ Player::~Player() {
     for (auto &i: vTerritory) {
         delete i;
     }
+    for (auto &i: vHand) {
+        delete i;
+    }
+    for (auto &i: vOrder) {
+        delete i;
+    }
+    cout << "Destructor !" << endl;
 }
 
 /**
@@ -78,21 +110,21 @@ Player::~Player() {
 ostream &operator<<(ostream &output, Player &player) {
 
     output << "Player Name: " << player.getName() << endl;
-    cout << "Territories Owned: \n";
+    output << "Territories Owned: \n";
     for (int j = 0; j < player.getTerritorySize(); ++j) {
-        cout << "\t" + player.getTerritoriesOwned(j) << endl;
+        output << "\t" + player.getTerritoriesOwned(j) << endl;
     }
-    cout << "Cards Owned: \n";
+    output << "Cards Owned: \n";
     for (int k = 0; k < player.getHandSize(); ++k) {
-        cout << "\tCard Number: " + to_string(player.getCardsOwned(k)) << endl;
+        output << "\tCard Number: " + to_string(player.getCardsOwned(k)) << endl;
     }
-    cout << "Orders Sent: \n";
+    output << "Orders Sent: \n";
     for (int l = 0; l < player.getNumberOfOrders(); ++l) {
-        cout << "\t" + player.getOrder(l) << " " + to_string(l + 1) << endl;
+        output << "\t" + player.getOrder(l) << " " + to_string(l + 1) << endl;
     }
-    cout << "Territories to defend: \n";
+    output << "Territories to defend: \n";
     player.toDefend();
-    cout << "\n";
+    output << "\n";
 
     return output;
 }
@@ -128,7 +160,8 @@ void Player::toAttack(vector<Player *> vPlayers) {
  * @param order string the player wants to do
  */
 void Player::issueOrder(string sOrder) {
-
+    auto *pOrder = new Order(std::move(sOrder));
+    vOrder.push_back(pOrder);
 }
 
 /**
@@ -166,7 +199,7 @@ int Player::getTerritorySize() const {
  * @return the number of the current card
  */
 int Player::getCardsOwned(int vIndex) {
-    return 0;
+    return vHand.at(vIndex)->cardsHeld.size();
 }
 
 /**
@@ -175,7 +208,7 @@ int Player::getCardsOwned(int vIndex) {
  * @return the int for amount of cards
  */
 int Player::getHandSize() const {
-    return 0;
+    return vHand.size();
 }
 
 /**
@@ -185,7 +218,7 @@ int Player::getHandSize() const {
  * @return the name of the order
  */
 string Player::getOrder(int vIndex) {
-    return "";
+    return vOrder.at(vIndex)->getOrder();
 }
 
 /**
@@ -194,7 +227,7 @@ string Player::getOrder(int vIndex) {
  * @return an int of the amount of orders
  */
 int Player::getNumberOfOrders() const {
-    return 0;
+    return vOrder.size();
 }
 
 /**
