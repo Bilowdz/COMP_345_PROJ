@@ -134,7 +134,7 @@ ostream &operator<<(ostream &output, Player &player) {
  */
 void Player::toDefend() {
     for (int i = 0; i < vTerritory.size(); ++i) {
-        cout << "\t" + vTerritory.at(i)->getName() << endl;
+        cout << "\t" + vTerritory.at(i)->name << endl;
     }
 }
 
@@ -148,7 +148,7 @@ void Player::toAttack(vector<Player *> vPlayers) {
         //Compare the names of the players
         if (vPlayers.at(i)->getName().compare(name) != 0) {
             for (int j = 0; j < vPlayers.at(i)->getTerritorySize(); ++j) {
-                cout << "\t" + vPlayers.at(i)->vTerritory.at(j)->getName() << endl;
+                cout << "\t" + vPlayers.at(i)->vTerritory.at(j)->name << endl;
             }
         }
     }
@@ -180,7 +180,7 @@ void Player::setTerritoriesOwned(vector<Territory *> vTerritories) {
  * @return the name of the territory
  */
 string Player::getTerritoriesOwned(int vIndex) {
-    return vTerritory.at(vIndex)->getName();
+    return vTerritory.at(vIndex)->name;
 }
 
 /**
@@ -199,7 +199,7 @@ int Player::getTerritorySize() const {
  * @return the number of the current card
  */
 int Player::getCardsOwned(int vIndex) {
-    return vHand.at(vIndex)->getCardNumber();
+    return vHand.at(vIndex)->cardsHeld.size();
 }
 
 /**

@@ -3,4 +3,4 @@ project(COMP_345_PROJ)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(COMP_345_PROJ main.cpp GameEngine.cpp GameEngine.h GameEngineDriver.cpp GameEngineDriver.h Map.cpp Map.h Player.cpp Player.h Orders.cpp Orders.h Order.cpp Order.h Territory.cpp Territory.h OrdersDriver.cpp Card.cpp Card.h Hand.h Hand.cpp)
+add_executable(COMP_345_PROJ main.cpp GameEngine.cpp GameEngine.h GameEngineDriver.cpp GameEngineDriver.h Map.cpp Map.h Player.cpp Player.h Orders.cpp Orders.h Order.cpp Order.h OrdersDriver.cpp Card.cpp Card.h)

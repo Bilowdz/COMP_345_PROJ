@@ -5,9 +5,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "Territory.h"
+#include "Map.h"
 #include "Order.h"
-#include "Hand.h"
+#include "Card.h"
 
 using namespace std;
 

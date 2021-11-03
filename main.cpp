@@ -89,7 +89,7 @@ vector<Territory *> generateTerritories(int numTerritoryOwned) {
     vector<Territory *> vTerritory;
     Territory *pPlayerTerritory;
     for (int i = 0; i < numTerritoryOwned; ++i) {
-        pPlayerTerritory = new Territory((rand() % 100), "Territory " + to_string(territoryNumber));
+        pPlayerTerritory = new Territory((rand() % 100), "Territory " + to_string(territoryNumber), 1);
         vTerritory.push_back(pPlayerTerritory);
         territoryNumber++;
     }
@@ -106,7 +106,8 @@ vector<Hand *> generateHand(int numberCardsPerPlayer) {
     vector<Hand *> vHand;
     Hand *pHand;
     for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
-        pHand = new Hand(cardNumber);
+        pHand = new Hand();
+        pHand->ReceiveCard(new Card( "Bomb"));
         vHand.push_back(pHand);
         cardNumber++;
     }
@@ -300,9 +301,12 @@ void driveMap() {
 }
 
 int main() {
-    OrdersDriver();
-    RunCardDriver();
-    player();
+    //OrdersDriver();
+    //RunCardDriver();
+    //player();
+    //driveMap();
+    //runGameEngine();
+
     return 0;
 
 }
