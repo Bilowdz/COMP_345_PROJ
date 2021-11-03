@@ -18,7 +18,6 @@ static const int territoriesOwnedPerPlayer = 5;
 static const int numCardsPerPlayer = 3;
 
 void player() {
-
     int numPlayers = 0;
     vector<Player *> vPlayer;
     string playerName;
@@ -77,7 +76,6 @@ void player() {
         delete i;
     }
 }
-
 
 /**
  * Generates the territories for each player.
@@ -308,6 +306,4 @@ int main() {
     //runGameEngine();
 
     return 0;
-
 }
-
