@@ -13,7 +13,7 @@ static int numOfOrders = 2;
 static const int territoriesOwnedPerPlayer = 5;
 static const int numCardsPerPlayer = 3;
 
-int main() {
+void player() {
 
     int numPlayers = 0;
     vector<Player *> vPlayer;
@@ -32,8 +32,6 @@ int main() {
         vPlayer.push_back(pPlayer);
         cout << endl;
     }
-
-
 
     for (int i = 0; i < numPlayers; ++i) {
 
@@ -74,6 +72,12 @@ int main() {
     for (auto & i : vPlayer) {
         delete i;
     }
+}
+
+
+int main() {
+
+    player();
 
     return 0;
 }
