@@ -31,7 +31,7 @@ private:
 
 public:
     Orders();
-    ~Orders();
+    virtual ~Orders();
     Orders(const Orders &o1);
     virtual void identify();
     virtual void validate();
@@ -52,12 +52,12 @@ private:
     int armies{};
 public:
     void setArmies(int sArmies);
-    [[nodiscard]] int getArmies() const;
+    int getArmies() const;
     Deploy();
     ~Deploy();
     Deploy(const Deploy &d1);
     Deploy &operator=(const Deploy &p);
-        void validate() override;
+    void validate() override;
     static void execute();
     void identify() override;
     friend ostream &operator << (ostream &, const Deploy &deploy);
