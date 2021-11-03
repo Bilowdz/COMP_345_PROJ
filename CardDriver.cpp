@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Card.h"
 
-int main() {
+void driver() {
     Deck* TestDeck = new Deck(3);
     Hand* TestHand = new Hand();
     cout <<  *TestDeck << endl;
