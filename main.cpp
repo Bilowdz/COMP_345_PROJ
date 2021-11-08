@@ -301,7 +301,7 @@ void driveMap() {
 int main() {
     //OrdersDriver();
     //RunCardDriver();
-    //player();
+    player();
     //driveMap();
     //runGameEngine();
 
