@@ -95,9 +95,12 @@ OrdersList::OrdersList() = default;
  * OrdersList destructor
  */
 OrdersList::~OrdersList() {
-    for (auto *o : ordersList) {
-        delete o;
-    }
+//    for (auto *o : ordersList) {
+//        delete o;
+//    }
+/*
+ * the previous call breaks it and I don't know how to fix
+ */
     cout << "OrdersList destroyed\n";
 }
 
