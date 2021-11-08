@@ -118,28 +118,7 @@ bool GameEngine::transition(Transition t) {
 
 // return string equivalent of enum value currentState
 string GameEngine::getState() {
-    switch(currentState) {
-        case ST_START:
-            return "start";
-        case ST_MAP_LOADED:
-            return "maploaded";
-        case ST_MAP_VALIDATED:
-            return "mapvalidated";
-        case ST_PLAYERS_ADDED:
-            return "playersadded";
-        case ST_ASSIGN_REINFORCEMENT:
-            return "assignreinforcement";
-        case ST_ISSUE_ORDERS:
-            return "issueorders";
-        case ST_EXECUTE_ORDERS:
-            return "executeorders";
-        case ST_WIN:
-            return "win";
-        case ST_END:
-            return "end";
-        default:
-            return "error";
-    }
+    return enum_state_str[currentState];
 }
 
 void GameEngine::loadmap() {
@@ -196,41 +175,6 @@ GameEngine& GameEngine::operator =(const GameEngine &ge) {
 // stream insertion operator overloads
 ostream & operator << (ostream &out, const GameEngine &ge)
 {
-    switch(ge.currentState) {
-
-        case ST_START:
-            out << "Current State: start" << endl;
-            break;
-        case ST_MAP_LOADED:
-            out << "Current State: maploaded" << endl;
-            break;
-        case ST_MAP_VALIDATED:
-            out << "Current State: mapvalidated" << endl;
-            break;
-        case ST_PLAYERS_ADDED:
-            out << "Current State: playersadded" << endl;
-            break;
-        case ST_ASSIGN_REINFORCEMENT:
-            out << "Current State: assignreinforcement" << endl;
-            break;
-        case ST_ISSUE_ORDERS:
-            out << "Current State: issueorders" << endl;
-            break;
-        case ST_EXECUTE_ORDERS:
-            out << "Current State: executeorders" << endl;
-            break;
-        case ST_WIN:
-            out << "Current State: win" << endl;
-            break;
-        case ST_END:
-            out << "Current State: end" << endl;
-            break;
-        default:
-            try {
-                throw ST_ERROR;
-            } catch (State s) {
-                cout << " An error has occurred. Exception: '" << s << "'" << endl;
-            }            break;
-    }
+    out << "Current State:" << enum_state_str[ge.currentState] << endl;
     return out;
 }

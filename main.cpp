@@ -4,6 +4,7 @@
 #include "Orders.h"
 #include "Card.h"
 #include "Player.h"
+#include "CommandProcessing.h"
 #include <memory>
 using namespace std;
 
@@ -282,7 +283,6 @@ void runGameEngine(){
     while(!driver.isGameDone()) {
 
         // accept user input
-        cin >> driver;
 
         cout << driver << endl;
     }
@@ -304,6 +304,10 @@ int main() {
     //player();
     //driveMap();
     //runGameEngine();
+
+    CommandProcessor cp;
+
+    Command *c = cp.getCommand(ST_MAP_LOADED);
 
     return 0;
 }
