@@ -383,11 +383,11 @@ int main() {
     //RunCardDriver();
     //player();
     //driveMap();
-    runGameEngine();
+    //runGameEngine();
 
-    //CommandProcessor cp;
+    CommandProcessor cp;
 
-    //Command *c = cp.getCommand(ST_MAP_LOADED);
+    Command *c = cp.getCommand(ST_START);
 
     return 0;
 }

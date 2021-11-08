@@ -4,6 +4,7 @@
 
 #include "CommandProcessing.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -45,7 +46,7 @@ Command* CommandProcessor::getCommand(State currentState) {
         }
     }
 
-    return commands.front();
+    return commands.back();
 }
 
 string CommandProcessor::readCommand() {
@@ -53,10 +54,9 @@ string CommandProcessor::readCommand() {
     string input;
     cout << "Please choose an option:";
     // get user input
-    // todo: parses strings delimited by space, loadmap <mapfile> read as 2 commands instead of 1!
-    // todo: should read line instead of delimiting by space, or handle this somehow...
-    cin >> input;
+    getline(cin,input);
 
+    cout << input;
     return input;
 }
 
@@ -71,6 +71,7 @@ string CommandProcessor::validate(string command, State currentState) {
     string addplayer = "addplayer";
     string response;
     if(command.rfind(loadmap,0) == 0) {
+        string delimiter = " ";
 
         // check if map file was provided by comparing length of command against addplayer command
         if(command.length() == loadmap.length()) {
@@ -82,6 +83,13 @@ string CommandProcessor::validate(string command, State currentState) {
             response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[currentState] + "'!";
             cout << response << endl;
             return response;
+        } else {
+            string token = command.substr(8,command.find(delimiter));
+            if(token.length() == 0) {
+                response = "Command '" + command + "' does not specify mapfile!";
+                cout << response << endl;
+                return response;
+            }
         }
     } else if(command == "validatemap"){
         if((currentState != ST_MAP_LOADED)) {
@@ -89,7 +97,8 @@ string CommandProcessor::validate(string command, State currentState) {
             cout << response << endl;
             return response;
         }
-    } else if(command == addplayer) {
+    } else if(command.rfind(addplayer,0) == 0) {
+        string delimiter = " ";
 
         // check if player name was provided by comparing length of command against addplayer command
         if(command.length() == addplayer.length()) {
@@ -101,6 +110,13 @@ string CommandProcessor::validate(string command, State currentState) {
             response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[currentState] + "'!";
             cout << response << endl;
             return response;
+        } else {
+            string token = command.substr(8,command.find(delimiter));
+            if(token.length() == 0) {
+                response = "Command '" + command + "' does not specify player name!";
+                cout << response << endl;
+                return response;
+            }
         }
     } else if(command == "gamestart"){
         if((currentState != ST_PLAYERS_ADDED)) {
