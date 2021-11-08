@@ -5,6 +5,7 @@
 #include "CommandProcessing.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ string Command::getEffect() {
 }
 
 Command* CommandProcessor::getCommand(State currentState) {
+    cout << "calling getCommand from CommandProcessor" << endl;
     bool flag = false;
 
     // accept user input until valid user input selected
@@ -142,4 +144,38 @@ string CommandProcessor::validate(string command, State currentState) {
         return  response;
     }
     return "valid";
+}
+
+FileLineReader::FileLineReader(string path): path(path), pos(0), length(0) {}
+void FileLineReader::load() {
+    string line;
+    ifstream file(path);
+    while(getline(file,line)) {
+        fileData.push_back(line);
+        length++;
+    }
+    cout << "hello" << endl;
+}
+
+string FileLineReader::next() {
+    pos++;
+    return fileData[pos];
+}
+
+bool FileLineReader::isEof() {
+    return pos == (length - 1);
+}
+
+FileCommandProcessorAdapter::FileCommandProcessorAdapter(FileLineReader flr): flr(flr) {}
+Command FileCommandProcessorAdapter::getCommand() {
+    cout << "calling getCommand from FileCommandProcessorAdapter" << endl;
+
+    // receive input from file
+    string input = flr.next();
+
+    return Command();
+}
+
+string FileCommandProcessorAdapter::parseCommand() {
+    return "";
 }

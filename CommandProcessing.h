@@ -34,29 +34,43 @@ class CommandProcessor {
 private:
     vector<Command*> commands;
 
-
+protected:
     // reads command from console
     string readCommand();
+
+    // creates command object and saves to commands vector
+    void saveCommand(string command, string effect ="");
 
     // validate command is valid in current state, returns effect
     string validate(string command, State currentState);
 
-    // creates command object and saves to commands vector
-    void saveCommand(string command,string effect ="");
-
 public:
     // allows user to read/save command
-    Command* getCommand(State currentState);
+    virtual Command* getCommand(State currentState);
+};
+
+// loads file to memory, reads line by line
+class FileLineReader {
+private:
+    string path;
+    vector<string> fileData;
+    int length;
+    int pos;
+public:
+    FileLineReader(string path);
+    void load();
+    string next();
+    bool isEof();
 };
 
 // parses line from file, executes command line by line
-class FileCommandProcessorAdapter {
-
-};
-
-// reads line from file
-class FileLineReader {
-
+class FileCommandProcessorAdapter: public CommandProcessor {
+private:
+    FileLineReader flr;
+public:
+    FileCommandProcessorAdapter(FileLineReader);
+    string parseCommand();
+    Command getCommand();
 };
 
 #endif //CMAKELISTS_TXT_COMMANDPROCESSING_H

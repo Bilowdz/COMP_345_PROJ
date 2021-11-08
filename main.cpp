@@ -385,9 +385,18 @@ int main() {
     //driveMap();
     //runGameEngine();
 
-    CommandProcessor cp;
+    //CommandProcessor cp;
 
-    Command *c = cp.getCommand(ST_START);
+    //Command *c = cp.getCommand(ST_START);
 
+    FileLineReader flr("../CommandProcessorFiles/commands.txt");
+    //flr.load();
+    //while(!flr.isEof()) {
+    //    cout << flr.next() << endl;
+    //}
+
+    FileCommandProcessorAdapter f(flr);
+
+    f.getCommand();
     return 0;
 }
