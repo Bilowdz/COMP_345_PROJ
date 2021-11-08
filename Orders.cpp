@@ -95,9 +95,12 @@ OrdersList::OrdersList() = default;
  * OrdersList destructor
  */
 OrdersList::~OrdersList() {
-    for (auto *o : ordersList) {
-        delete o;
-    }
+    /*
+     * the following for loop breaks everything
+     */
+//    for (auto *o : ordersList) {
+//        delete o;
+//    }
     cout << "OrdersList destroyed\n";
 }
 
@@ -106,8 +109,8 @@ OrdersList::~OrdersList() {
  * @param o1 OrdersList object to be copied
  */
 OrdersList::OrdersList(const OrdersList &o1) {
-    for (int i = 0; i < o1.ordersList.size(); i++) {
-        this->ordersList.push_back(o1.ordersList.at(i));
+    for (auto i : o1.ordersList) {
+        this->ordersList.push_back(i);
     }
 }
 
@@ -201,6 +204,14 @@ ostream &operator << (ostream &out, const Orders &orders) {
 void Orders::validate() {
     std::cout << "Orders validate method.";
 }
+
+/**
+ * Orders execute, a placeholder for the execute method of subclasses
+ */
+void Orders::execute() {
+    std::cout << "\nOrders executed.\n";
+}
+
 
 //------------------------------------------------------
 // Deploy functions
@@ -377,6 +388,12 @@ void Advance::validate() {
  * Executes an Advance order
  */
 void Advance::execute() {
+    //TODO Each attacking army unit involved has a 60% chances of killing one defending army
+    // Each defending army unit has 70% chances of killing one attacking army unit
+    // If all defending armies die, the remaining attacking units occupy the defending territory
+    // A player receives a card at the end of his turn if they successfully conquered at least
+    // one territory during their turn.
+
     // check if enemy territory is owned by current player or not
     std::cout << "Is the territory destination adjacent to a territory of the current player? (1 for yes, 0 for no)";
     int adjacentTerritory;
@@ -542,7 +559,7 @@ void Blockade::validate() {
  * Executes a Blockade order
  */
 void Blockade::execute() {
-    std::cout << "Territory blockade set up! Territory lost.\n";
+    std::cout << "Territory blockade set up! Armies doubled, territory lost, now neutral.\n";
 }
 
 /**
@@ -677,6 +694,10 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
  * Negotiate validate checks if the Negotiate object can execute
  */
 void Negotiate::validate() {
+    //TODO Negotiate happens when playing a Diplomacy card.
+    // Validate that the target player is not the player issuing the order.
+    // The target player and the player issuing the order must not be able to attack
+    // each other during the remainder of the turn.
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
     Negotiate::execute();
 }

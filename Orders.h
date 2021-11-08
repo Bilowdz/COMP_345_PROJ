@@ -35,6 +35,7 @@ public:
     Orders(const Orders &o1);
     virtual void identify();
     virtual void validate();
+    virtual void execute();
     friend ostream &operator << (ostream &, const Orders &orders);
 
 };
@@ -52,13 +53,13 @@ private:
     int armies{};
 public:
     void setArmies(int sArmies);
-    int getArmies() const;
+    [[nodiscard]] int getArmies() const;
     Deploy();
-    ~Deploy();
+    ~Deploy() override;
     Deploy(const Deploy &d1);
     Deploy &operator=(const Deploy &p);
     void validate() override;
-    static void execute();
+    void execute() override;
     void identify() override;
     friend ostream &operator << (ostream &, const Deploy &deploy);
 };
@@ -74,11 +75,11 @@ public:
     void setArmies(int sArmies);
     [[nodiscard]] int getArmies() const;
     Advance();
-    ~Advance();
+    ~Advance() override;
     Advance(const Advance &a1);
     Advance &operator=(const Advance &p);
     void validate() override;
-    static void execute();
+    void execute() override;
     void identify() override;
     friend ostream &operator << (ostream &, const Advance &advance);
 };
@@ -92,11 +93,11 @@ private:
 
 public:
     Bomb();
-    ~Bomb();
+    ~Bomb() override;
     Bomb(const Bomb &b1);
     Bomb &operator=(const Bomb &p);
     void validate() override;
-    static void execute();
+    void execute() override;
     void identify() override;
     friend ostream &operator << (ostream &, const Bomb &bomb);
 };
@@ -110,11 +111,11 @@ private:
 
 public:
     Blockade();
-    ~Blockade();
+    ~Blockade() override;
     Blockade(const Blockade &b1);
     Blockade &operator=(const Blockade &p);
     void validate() override;
-    static void execute();
+    void execute() override;
     void identify() override;
     friend ostream &operator << (ostream &, const Blockade &blockade);
 };
@@ -128,11 +129,11 @@ private:
 
 public:
     Airlift();
-    ~Airlift();
+    ~Airlift() override;
     Airlift(const Airlift &a1);
     Airlift &operator=(const Airlift &p);
     void validate() override;
-    static void execute();
+    void execute() override;
     void identify() override;
     friend ostream &operator << (ostream &, const Airlift &airlift);
 };
@@ -146,11 +147,11 @@ private:
 
 public:
     Negotiate();
-    ~Negotiate();
+    ~Negotiate() override;
     Negotiate(const Negotiate &n1);
     Negotiate &operator=(const Negotiate &p);
     void validate() override;
-    static void execute();
+    void execute() override;
     void identify() override;
     friend ostream &operator << (ostream &, const Negotiate &negotiate);
 };
