@@ -1,9 +1,9 @@
 #include <iostream>
-#include "GameEngineDriver.h"
 #include "Map.h"
 #include "Orders.h"
 #include "Card.h"
 #include "Player.h"
+#include "GameEngine.h"
 #include "CommandProcessing.h"
 #include <memory>
 using namespace std;
@@ -277,14 +277,94 @@ void OrdersDriver(){
 }
 
 void runGameEngine(){
-    GameEngineDriver driver;
+    GameEngine game;
+    int flag = 0;
 
-    // loop until game is done
-    while(!driver.isGameDone()) {
+    // accept user input until valid user input selected
+    while(flag == 0) {
+        string input;
+        string error;
+        cout << "Please choose an option:";
+        // get user input
+        cin >> input;
 
-        // accept user input
+        // check if valid input
+        if(input == "loadmap") {
+            if(game.transition(T_LOAD_MAP)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "validatemap") {
+            if(game.transition(T_VALIDATE_MAP)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "addplayer") {
+            if(game.transition(T_ADD_PLAYER)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "assigncountries") {
+            if(game.transition(T_ASSIGN_COUNTRIES)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "issueorder") {
+            if(game.transition(T_ISSUE_ORDER)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "execorder") {
+            if(game.transition(T_EXEC_ORDER)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "endexecorders") {
+            if(game.transition(T_END_EXEC_ORDERS)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "endissueorders") {
+            if(game.transition(T_END_ISSUE_ORDERS)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "win") {
+            if(game.transition(T_WIN)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else if(input== "end") {
+            if(game.transition(T_END)) {
+                flag = 1;
 
-        cout << driver << endl;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+
+        } else if(input== "play") {
+            if(game.transition(T_PLAY)) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + game.getState() + "'!";
+            }
+        } else {
+            error = "'" + input + "' is an invalid transition!";
+        }
+
+        if (flag == 0){
+            cout << error << endl;
+            error = "";
+        }
     }
 }
 
@@ -303,11 +383,11 @@ int main() {
     //RunCardDriver();
     //player();
     //driveMap();
-    //runGameEngine();
+    runGameEngine();
 
-    CommandProcessor cp;
+    //CommandProcessor cp;
 
-    Command *c = cp.getCommand(ST_MAP_LOADED);
+    //Command *c = cp.getCommand(ST_MAP_LOADED);
 
     return 0;
 }

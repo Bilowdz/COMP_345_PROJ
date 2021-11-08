@@ -27,7 +27,7 @@ Command* CommandProcessor::getCommand(State currentState) {
     // accept user input until valid user input selected
     while(!flag) {
         // read command from command line
-        string userInput = readCommand(currentState);
+        string userInput = readCommand();
 
         // validate command
         string response = validate(userInput, currentState);
@@ -48,7 +48,7 @@ Command* CommandProcessor::getCommand(State currentState) {
     return commands.front();
 }
 
-string CommandProcessor::readCommand(State currentState) {
+string CommandProcessor::readCommand() {
 
     string input;
     cout << "Please choose an option:";

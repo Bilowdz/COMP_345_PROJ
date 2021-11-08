@@ -6,21 +6,7 @@ using namespace std;
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
 #include "State.h"
-
-enum Transition {
-    T_LOAD_MAP,
-    T_VALIDATE_MAP,
-    T_ADD_PLAYER,
-    T_ASSIGN_COUNTRIES,
-    T_ISSUE_ORDER,
-    T_END_ISSUE_ORDERS,
-    T_EXEC_ORDER,
-    T_END_EXEC_ORDERS,
-    T_WIN,
-    T_PLAY,
-    T_END,
-    T_ERROR
-};
+#include "Transition.h"
 
 class GameEngine {
     private:

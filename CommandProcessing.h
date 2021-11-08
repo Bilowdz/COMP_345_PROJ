@@ -36,7 +36,7 @@ private:
 
 
     // reads command from console
-    string readCommand(State currentState);
+    string readCommand();
 
     // validate command is valid in current state, returns effect
     string validate(string command, State currentState);
