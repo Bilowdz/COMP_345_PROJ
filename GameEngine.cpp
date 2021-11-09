@@ -234,3 +234,25 @@ ostream & operator << (ostream &out, const GameEngine &ge)
     }
     return out;
 }
+
+void GameEngine::mainGameLoop() {
+
+    //reinforcement phase: number of territories they own, (# of territories owned divided by 3, rounded down)
+
+
+}
+
+void GameEngine::reinforcementPhase() {
+
+}
+
+//find which neighboring territories the player can attack
+void GameEngine::issueOrdersPhase(Player &player) {
+    
+
+}
+
+void GameEngine::executeOrdersPhase() {
+
+}
+

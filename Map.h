@@ -18,6 +18,7 @@ public:
     int unitsGarrisoned;
     bool visited;
     std::vector<Territory*> adjacentTerritories;
+    static bool isAdjacent(Territory &, Territory &);
 
     Territory& operator =(const Territory &);
     friend std::ostream & operator << (std::ostream &out, const Territory &territory);

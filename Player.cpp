@@ -144,10 +144,14 @@ void Player::toDefend() {
  * @param vPlayer the vector of all Players in the game
  */
 void Player::toAttack(vector<Player *> vPlayers) {
+
+
+
     for (int i = 0; i < vPlayers.size(); ++i) {
         //Compare the names of the players
         if (vPlayers.at(i)->getName().compare(name) != 0) {
-            for (int j = 0; j < vPlayers.at(i)->getTerritorySize(); ++j) {
+
+            for (int j = 0; j < vPlayers.at(i)->getTerritorySize(); ++j) { //loop through each of the owned territories and see if it is adjacent
                 cout << "\t" + vPlayers.at(i)->vTerritory.at(j)->name << endl;
             }
         }

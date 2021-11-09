@@ -5,19 +5,19 @@
 #include "Map.h"
 
 // Default constructor for the map
-Map::Map()= default;
+Map::Map() = default;
 
 // Copy constructor for the map class
 Map::Map(const Map &m1) {
     // Add a copy of all territories
-    for(Territory *t : m1.map){
-        auto *copy (new Territory(*t));
+    for (Territory *t: m1.map) {
+        auto *copy(new Territory(*t));
         this->map.push_back(copy);
     }
 
     // Add a copy of all continents
-    for(Continent *c : m1.continents){
-        auto *copy (new Continent(*c));
+    for (Continent *c: m1.continents) {
+        auto *copy(new Continent(*c));
         this->continents.push_back(copy);
     }
 
@@ -25,15 +25,15 @@ Map::Map(const Map &m1) {
 
     // Add territories to their continents
     int continentId = 1;
-    for(Continent *c : m1.continents){
-        Continent *cpC = this->continents.at(continentId-1);
-        for(Territory *t : c->territories){
-            Territory *cpT = this->map.at(t->id-1);
+    for (Continent *c: m1.continents) {
+        Continent *cpC = this->continents.at(continentId - 1);
+        for (Territory *t: c->territories) {
+            Territory *cpT = this->map.at(t->id - 1);
             cpC->territories.push_back(cpT);
 
             // Add adjacent territories
-            for(Territory *adj : t->adjacentTerritories){
-                Territory *cpAdj = this->map.at(adj->id-1);
+            for (Territory *adj: t->adjacentTerritories) {
+                Territory *cpAdj = this->map.at(adj->id - 1);
                 cpT->adjacentTerritories.push_back(cpAdj);
             }
         }
@@ -44,14 +44,14 @@ Map::Map(const Map &m1) {
 // Assignment operator for the map class
 Map &Map::operator=(const Map &m1) {
     // Add a copy of all territories
-    for(Territory *t : m1.map){
-        auto *copy (new Territory(*t));
+    for (Territory *t: m1.map) {
+        auto *copy(new Territory(*t));
         this->map.push_back(copy);
     }
 
     // Add a copy of all continents
-    for(Continent *c : m1.continents){
-        auto *copy (new Continent(*c));
+    for (Continent *c: m1.continents) {
+        auto *copy(new Continent(*c));
         this->continents.push_back(copy);
     }
 
@@ -59,15 +59,15 @@ Map &Map::operator=(const Map &m1) {
 
     // Add territories to their continents
     int continentId = 1;
-    for(Continent *c : m1.continents){
-        Continent *cpC = this->continents.at(continentId-1);
-        for(Territory *t : c->territories){
-            Territory *cpT = this->map.at(t->id-1);
+    for (Continent *c: m1.continents) {
+        Continent *cpC = this->continents.at(continentId - 1);
+        for (Territory *t: c->territories) {
+            Territory *cpT = this->map.at(t->id - 1);
             cpC->territories.push_back(cpT);
 
             // Add adjacent territories
-            for(Territory *adj : t->adjacentTerritories){
-                Territory *cpAdj = this->map.at(adj->id-1);
+            for (Territory *adj: t->adjacentTerritories) {
+                Territory *cpAdj = this->map.at(adj->id - 1);
                 cpT->adjacentTerritories.push_back(cpAdj);
             }
         }
@@ -80,29 +80,29 @@ Map &Map::operator=(const Map &m1) {
 // Validates the map is correctly structured
 bool Map::Validate() {
     // If the map has no nodes then it is not a map
-    if(map.empty())
+    if (map.empty())
         return false;
 
     // Mark all adjacency's in the map
     MarkMap(map.front());
 
     // Check and reset that all nodes are visited
-    if(!ClearAndCheckMap())
+    if (!ClearAndCheckMap())
         return false;
 
     // Check that each continent is a subgraph
     int continentNum = 1;
-    for(Continent *cont : continents){
+    for (Continent *cont: continents) {
 
         // Check that each continent has a territory
-        if(cont->territories.empty())
+        if (cont->territories.empty())
             return false;
 
         // Mark all adjacency's within the continent
         MarkContinent(cont->territories.front(), continentNum);
 
         // Check and reset that all nodes are visited
-        if(!ClearAndCheckContinent(cont))
+        if (!ClearAndCheckContinent(cont))
             return false;
 
         continentNum++;
@@ -110,19 +110,19 @@ bool Map::Validate() {
 
     // Check that each territory belongs to one and only one continent
     continentNum = 1;
-    for(Continent *cont : continents){
+    for (Continent *cont: continents) {
 
         // Check that no territories already marked
-        for(Territory * t : cont->territories)
-            if(t->visited)
-                return  false;
+        for (Territory *t: cont->territories)
+            if (t->visited)
+                return false;
 
         // Mark all adjacency's within the continent
         MarkContinent(cont->territories.front(), continentNum);
         continentNum++;
     }
     // Check that all territories have been marked
-    if(!ClearAndCheckMap())
+    if (!ClearAndCheckMap())
         return false;
 
     return true;
@@ -131,37 +131,37 @@ bool Map::Validate() {
 // Makes sure that all nodes are marked checked
 // if they are returns true, if not return false
 // resets the status of all nodes
-bool Map::ClearAndCheckMap(){
-    for(Territory *territory : map){
-        if(territory->visited)
+bool Map::ClearAndCheckMap() {
+    for (Territory *territory: map) {
+        if (territory->visited)
             territory->visited = false;
         else
             return false;
     }
 
-    return  true;
+    return true;
 }
 
 // Makes sure that all nodes in continent are marked checked
 // if they are returns true, if not return false
 // resets the status of all nodes
-bool Map::ClearAndCheckContinent(Continent *continent){
-    for(Territory *territory : continent->territories){
-        if(territory->visited)
+bool Map::ClearAndCheckContinent(Continent *continent) {
+    for (Territory *territory: continent->territories) {
+        if (territory->visited)
             territory->visited = false;
         else
             return false;
     }
 
-    return  true;
+    return true;
 }
 
 // Recursively follows adjacency's marking checked
 // Ignores territories with mismatching continents
 // Ignores checked territories
 void Map::MarkContinent(Territory *cur, int continent) {
-    for(Territory* adj : cur->adjacentTerritories){
-        if(adj->continent == continent && !adj->visited){
+    for (Territory *adj: cur->adjacentTerritories) {
+        if (adj->continent == continent && !adj->visited) {
             adj->visited = true;
             MarkContinent(adj, continent);
         }
@@ -171,8 +171,8 @@ void Map::MarkContinent(Territory *cur, int continent) {
 // Recursively follows adjacency's marking checked
 // Ignores checked territories
 void Map::MarkMap(Territory *cur) {
-    for(Territory* adj : cur->adjacentTerritories){
-        if(!adj->visited){
+    for (Territory *adj: cur->adjacentTerritories) {
+        if (!adj->visited) {
             adj->visited = true;
             MarkMap(adj);
         }
@@ -182,9 +182,9 @@ void Map::MarkMap(Territory *cur) {
 // Stream output operator for the map class
 // Outputs a styled version of the data
 std::ostream &operator<<(std::ostream &out, const Map &map) {
-    for(Continent* c : map.continents){
-        out << "Continent: "<< *c;
-        for(Territory* t : c->territories){
+    for (Continent *c: map.continents) {
+        out << "Continent: " << *c;
+        for (Territory *t: c->territories) {
             out << *t;
         }
         out << std::endl;
@@ -194,12 +194,12 @@ std::ostream &operator<<(std::ostream &out, const Map &map) {
 }
 
 // Destructor for the map class
-Map::~Map(){
-    for(Continent *c : continents){
+Map::~Map() {
+    for (Continent *c: continents) {
         delete c;
     }
 
-    for(Territory *t : map){
+    for (Territory *t: map) {
         delete t;
     }
 }
@@ -210,7 +210,7 @@ MapLoader::MapLoader() {
     using recursive_directory_iterator = std::filesystem::recursive_directory_iterator;
 
     std::filesystem::current_path("..");
-    for (const auto& dirEntry : recursive_directory_iterator("Maps")){
+    for (const auto &dirEntry: recursive_directory_iterator("Maps")) {
         Load(dirEntry.path().string());
     }
 }
@@ -219,7 +219,7 @@ MapLoader::MapLoader() {
 MapLoader::MapLoader(const MapLoader &ml1) {
 
     // Calls the copy constructor for all maps in the ml1
-    for(Map *m : ml1.maps){
+    for (Map *m: ml1.maps) {
         Map *cpM = new Map(*m);
         this->maps.push_back(cpM);
     }
@@ -229,7 +229,7 @@ MapLoader::MapLoader(const MapLoader &ml1) {
 MapLoader &MapLoader::operator=(const MapLoader &ml1) {
 
     // Calls the copy constructor for all maps in the ml1
-    for(Map *m : ml1.maps){
+    for (Map *m: ml1.maps) {
         Map *cpM = new Map(*m);
         this->maps.push_back(cpM);
     }
@@ -239,9 +239,9 @@ MapLoader &MapLoader::operator=(const MapLoader &ml1) {
 
 // Loads a map file into an instance of the map class
 // Saves the map into the mapLoader if the map is valid
-void MapLoader::Load(const std::string& fileName) {
+void MapLoader::Load(const std::string &fileName) {
     // Start map object to populate
-    Map *map (new Map);
+    Map *map(new Map);
 
     //Open map file
     std::ifstream input(fileName);
@@ -252,7 +252,7 @@ void MapLoader::Load(const std::string& fileName) {
     int id;
 
     // Skip to continents header
-    while(strcmp(str, "[continents]") != 0 && !input.eof()) {
+    while (strcmp(str, "[continents]") != 0 && !input.eof()) {
         input.getline(str, 255);
     }
 
@@ -263,7 +263,7 @@ void MapLoader::Load(const std::string& fileName) {
     input >> str;
 
     // While not the start of countries or end of file read continent
-    while(strcmp(str, "[countries]") != 0 && !input.eof()) {
+    while (strcmp(str, "[countries]") != 0 && !input.eof()) {
 
         // Return to previous state (to be able to read the continent in full)
         input.seekg(saveState);
@@ -289,7 +289,7 @@ void MapLoader::Load(const std::string& fileName) {
     input >> str;
 
     // While not the start of adjacency's or end of file read territories
-    while(strcmp(str, "[borders]") && !input.eof()) {
+    while (strcmp(str, "[borders]") && !input.eof()) {
 
         // Return to previous state (to be able to read the territory in full)
         input.seekg(saveState);
@@ -299,7 +299,7 @@ void MapLoader::Load(const std::string& fileName) {
         input >> *territory;
 
         // Add territory to its continent
-        auto curContinent = map->continents.at(territory->continent-1);
+        auto curContinent = map->continents.at(territory->continent - 1);
         curContinent->territories.push_back(territory);
 
         // Add territory to the map
@@ -313,23 +313,23 @@ void MapLoader::Load(const std::string& fileName) {
     }
 
     // While not end of file read adjacency's
-    while(!input.eof()) {
+    while (!input.eof()) {
 
         // Get the first territory in the line and its pointer
         // (This is the one to add adjacency's to)
         input.getline(str, 255);
         char *token = strtok(str, " ");
-        if(token){
+        if (token) {
             sscanf(token, "%d", &id);
-            Territory* cur = map->map[id-1];
+            Territory *cur = map->map[id - 1];
 
             // While there is an adjacency to add
             token = strtok(NULL, " ");
-            while(token){
+            while (token) {
 
                 // Add the adjacency
                 sscanf(token, "%d", &id);
-                cur->adjacentTerritories.push_back(map->map[id-1]);
+                cur->adjacentTerritories.push_back(map->map[id - 1]);
 
                 // Prepare the next one (if exists)
                 token = strtok(NULL, " ");
@@ -341,7 +341,7 @@ void MapLoader::Load(const std::string& fileName) {
     input.close();
 
     // Validate the map before adding
-    if(map->Validate())
+    if (map->Validate())
         maps.push_back(map);
     else
         delete map;
@@ -350,7 +350,7 @@ void MapLoader::Load(const std::string& fileName) {
 // Stream output operator for the mapLoader class
 // Outputs a styled version of the data
 std::ostream &operator<<(std::ostream &out, const MapLoader &mapLoader) {
-    for(Map *m : mapLoader.maps){
+    for (Map *m: mapLoader.maps) {
         out << "MAP START: " << std::endl;
         out << *m << std::endl;
     }
@@ -359,8 +359,8 @@ std::ostream &operator<<(std::ostream &out, const MapLoader &mapLoader) {
 }
 
 // Destructor for the mapLoader class
-MapLoader::~MapLoader(){
-    for(Map *m : maps){
+MapLoader::~MapLoader() {
+    for (Map *m: maps) {
         delete m;
     }
 }
@@ -462,6 +462,14 @@ std::ostream &operator<<(std::ostream &out, const Territory &territory) {
     out << ", Continent: " << territory.continent << " }" << std::endl;
 
     return out;
+}
+
+ bool Territory::isAdjacent(Territory &terri1, Territory &adjacentTerri) {
+
+    if (terri1.id == adjacentTerri.id) {
+        return true;
+    }
+    return false;
 }
 
 // Destructor for the territory class

@@ -291,7 +291,7 @@ void Deploy::execute() {
  */
 void Deploy::identify() {
     Orders::identify();
-    std::cout << "Deploy object. Can deploy armies to territories. It needs " << this->getArmies() << " armies.\n";
+    std::cout << "Deploy";
 }
 
 /**

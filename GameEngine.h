@@ -1,6 +1,9 @@
 //
 // Created by Nicolo on 2021-09-24.
 //
+#include "Player.h"
+#include "Map.h"
+
 using namespace std;
 
 #ifndef COMP_345_PROJ_GAMEENGINE_H
@@ -60,6 +63,11 @@ class GameEngine {
 
         string getState();
         bool transition(Transition);
+
+        void mainGameLoop();
+        void reinforcementPhase();
+        void issueOrdersPhase(Player &);
+        void executeOrdersPhase();
 
         GameEngine& operator =(const GameEngine &);
         friend ostream & operator << (ostream &, const GameEngine &ge);

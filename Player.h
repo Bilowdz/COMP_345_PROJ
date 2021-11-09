@@ -87,6 +87,8 @@ public:
      */
     void toAttack(vector<Player *> vPlayer);
 
+    void toAttack(vector<Territory*> vTerritory);
+
     /**
      * The order the player would like to do
      *
