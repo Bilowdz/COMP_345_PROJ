@@ -126,7 +126,7 @@ vector<Order *> generateOrder() {
     return vOrder;
 }
 
-void RunCardDriver()
+/*void RunCardDriver()
 {
     Deck* TestDeck = new Deck(3);
     Hand* TestHand = new Hand();
@@ -140,7 +140,7 @@ void RunCardDriver()
     cout <<  *TestHand << endl;
     delete TestDeck;
     delete TestHand;
-}
+}*/
 
 void OrdersDriver(){
 
