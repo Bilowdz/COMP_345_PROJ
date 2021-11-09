@@ -19,33 +19,39 @@ void Command::saveEffect(string e) {
     effect = e;
 }
 
-string Command::getEffect() {
+string Command::getEffect() const {
     return effect;
 }
 
-Command* CommandProcessor::getCommand(State currentState) {
+string Command::getCommand() const {
+    return command;
+}
+
+// stream insertion operator overloads
+ostream & operator << (ostream &out, const Command &c)
+{
+    out << "Command: " << c.getCommand() << " Effect: " << c.getEffect() << endl;
+    return out;
+}
+
+CommandProcessor::CommandProcessor(GameEngine *ge): ge(ge) {}
+
+Command* CommandProcessor::getCommand() {
     cout << "calling getCommand from CommandProcessor" << endl;
-    bool flag = false;
 
-    // accept user input until valid user input selected
-    while(!flag) {
-        // read command from command line
-        string userInput = readCommand();
+    // read command from command line
+    string userInput = readCommand();
 
-        // validate command
-        string response = validate(userInput, currentState);
+    // validate command
+    string response = validate(userInput);
 
-        // check if response is valid
-        if(response == "valid") {
-            flag = true;
-
-            saveCommand(userInput);
-        // invalid response, save command effect
-        } else {
-
-            // response is the error received from validate function
-            saveCommand(userInput,response);
-        }
+    // check if response is valid
+    if(response == "valid") {
+        saveCommand(userInput);
+    // invalid response, save command effect
+    } else {
+        // response is the error received from validate function
+        saveCommand(userInput,response);
     }
 
     return commands.back();
@@ -62,13 +68,14 @@ string CommandProcessor::readCommand() {
     return input;
 }
 
-void CommandProcessor::saveCommand(string command, string effect) {
+Command* CommandProcessor::saveCommand(string command, string effect) {
     Command *c;
     c = new Command(command,effect);
     commands.push_back(c);
+    return c;
 }
 
-string CommandProcessor::validate(string command, State currentState) {
+string CommandProcessor::validate(string command) {
     string loadmap = "loadmap";
     string addplayer = "addplayer";
     string response;
@@ -81,8 +88,8 @@ string CommandProcessor::validate(string command, State currentState) {
             cout << response << endl;
             return response;
 
-        } else if (!(currentState == ST_START || currentState == ST_MAP_LOADED)) {
-            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[currentState] + "'!";
+        } else if (!(ge.getState() == ST_START || ge.getState() == ST_MAP_LOADED)) {
+            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge.getState()] + "'!";
             cout << response << endl;
             return response;
         } else {
@@ -94,8 +101,8 @@ string CommandProcessor::validate(string command, State currentState) {
             }
         }
     } else if(command == "validatemap"){
-        if((currentState != ST_MAP_LOADED)) {
-            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[currentState] + "'!";
+        if((ge.getState() != ST_MAP_LOADED)) {
+            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge.getState()] + "'!";
             cout << response << endl;
             return response;
         }
@@ -108,12 +115,12 @@ string CommandProcessor::validate(string command, State currentState) {
             cout << response << endl;
             return response;
 
-        } else if (!((currentState == ST_MAP_VALIDATED || currentState == ST_PLAYERS_ADDED))) {
-            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[currentState] + "'!";
+        } else if (!((ge.getState() == ST_MAP_VALIDATED || ge.getState() == ST_PLAYERS_ADDED))) {
+            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge.getState()] + "'!";
             cout << response << endl;
             return response;
         } else {
-            string token = command.substr(8,command.find(delimiter));
+            string token = command.substr(10,command.find(delimiter));
             if(token.length() == 0) {
                 response = "Command '" + command + "' does not specify player name!";
                 cout << response << endl;
@@ -121,20 +128,20 @@ string CommandProcessor::validate(string command, State currentState) {
             }
         }
     } else if(command == "gamestart"){
-        if((currentState != ST_PLAYERS_ADDED)) {
-            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[currentState] + "'!";
+        if((ge.getState() != ST_PLAYERS_ADDED)) {
+            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge.getState()] + "'!";
             cout << response << endl;
             return response;
         }
     } else if(command == "quit"){
-        if((currentState != ST_WIN)) {
-            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[currentState] + "'!";
+        if((ge.getState() != ST_WIN)) {
+            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge.getState()] + "'!";
             cout << response << endl;
             return response;
         }
     } else if(command == "replay"){
-        if((currentState != ST_WIN)) {
-            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[currentState] + "'!";
+        if((ge.getState() != ST_WIN)) {
+            response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge.getState()] + "'!";
             cout << response << endl;
             return response;
         }
@@ -146,7 +153,9 @@ string CommandProcessor::validate(string command, State currentState) {
     return "valid";
 }
 
-FileLineReader::FileLineReader(string path): path(path), pos(0), length(0) {}
+FileLineReader::FileLineReader(string path): path(path), pos(0), length(0) {
+    this->load();
+}
 void FileLineReader::load() {
     string line;
     ifstream file(path);
@@ -154,28 +163,39 @@ void FileLineReader::load() {
         fileData.push_back(line);
         length++;
     }
-    cout << "hello" << endl;
 }
 
 string FileLineReader::next() {
-    pos++;
-    return fileData[pos];
+    return fileData[pos++];
 }
 
 bool FileLineReader::isEof() {
     return pos == (length - 1);
 }
 
-FileCommandProcessorAdapter::FileCommandProcessorAdapter(FileLineReader flr): flr(flr) {}
-Command FileCommandProcessorAdapter::getCommand() {
-    cout << "calling getCommand from FileCommandProcessorAdapter" << endl;
+FileCommandProcessorAdapter::FileCommandProcessorAdapter(FileLineReader flr, GameEngine* ge): CommandProcessor(ge), flr(flr) {}
 
-    // receive input from file
-    string input = flr.next();
+Command* FileCommandProcessorAdapter::getCommand() {
+    Command* c;
+    bool flag = false;
+    while(!flag) {
+        string input = readCommand();
+        string response = validate(input);
 
-    return Command();
+        if(response == "valid") {
+            flag = true;
+            c = saveCommand(input);
+        } else {
+            c = saveCommand(input, response);
+        }
+        cout << *c << endl;
+    }
+    return c;
 }
 
-string FileCommandProcessorAdapter::parseCommand() {
-    return "";
+string FileCommandProcessorAdapter::readCommand() {
+    return flr.next();
+}
+bool FileCommandProcessorAdapter::isEof() {
+    return flr.isEof();
 }

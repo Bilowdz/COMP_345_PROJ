@@ -9,6 +9,7 @@
 #include <vector>
 #include <map>
 #include "State.h"
+#include "GameEngine.h"
 
 using namespace std;
 
@@ -22,31 +23,38 @@ public:
     Command(string command);
     Command(string command, string effect);
 
-    // saves effect of command
+    // setter for effect
     void saveEffect(string effect);
 
-    // gets effect of command
-    string getEffect();
+    // getter for command
+    string getCommand() const;
+
+    // getter for effect
+    string getEffect() const;
+
+    friend ostream & operator << (ostream &, const Command &c);
 };
 
 // controls how commands are processed
 class CommandProcessor {
 private:
     vector<Command*> commands;
+    GameEngine ge;
 
 protected:
     // reads command from console
-    string readCommand();
+    virtual string readCommand();
 
     // creates command object and saves to commands vector
-    void saveCommand(string command, string effect ="");
+    Command* saveCommand(string command, string effect ="");
 
     // validate command is valid in current state, returns effect
-    string validate(string command, State currentState);
+    string validate(string command);
 
 public:
+    CommandProcessor(GameEngine *);
     // allows user to read/save command
-    virtual Command* getCommand(State currentState);
+    virtual Command* getCommand();
 };
 
 // loads file to memory, reads line by line
@@ -68,9 +76,31 @@ class FileCommandProcessorAdapter: public CommandProcessor {
 private:
     FileLineReader flr;
 public:
-    FileCommandProcessorAdapter(FileLineReader);
-    string parseCommand();
-    Command getCommand();
+    FileCommandProcessorAdapter(FileLineReader, GameEngine *);
+    string readCommand();
+    Command* getCommand();
+    bool isEof();
 };
 
 #endif //CMAKELISTS_TXT_COMMANDPROCESSING_H
+/*
+// accept user input until valid user input selected
+while(!flag) {
+// read command from command line
+string userInput = readCommand();
+
+// validate command
+string response = validate(userInput);
+
+// check if response is valid
+if(response == "valid") {
+flag = true;
+
+saveCommand(userInput);
+// invalid response, save command effect
+} else {
+
+// response is the error received from validate function
+saveCommand(userInput,response);
+}
+ */

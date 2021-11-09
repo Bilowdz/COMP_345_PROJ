@@ -6,7 +6,6 @@ using namespace std;
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
 #include "State.h"
-#include "Transition.h"
 
 class GameEngine {
     private:
@@ -30,8 +29,8 @@ class GameEngine {
         GameEngine(GameEngine *);
         ~GameEngine();
 
-        string getState();
-        bool transition(Transition);
+        State getState();
+        bool transition(string);
 
         GameEngine& operator =(const GameEngine &);
         friend ostream & operator << (ostream &, const GameEngine &ge);
