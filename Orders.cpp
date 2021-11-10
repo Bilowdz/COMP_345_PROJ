@@ -263,6 +263,10 @@ Deploy &Deploy::operator=(const Deploy &p) {
     return *this;
 }
 
+//TODO implement validate/execute of Deploy with the other classes
+// validate: check that target territory is owned by the player
+// execute: if validate is true, then the selected number of armies is added to the number of armies on that territory
+
 /**
  * Deploy validate checks if the Deploy object can execute
  */
@@ -466,6 +470,11 @@ Bomb &Bomb::operator=(const Bomb &p) {
     return *this;
 }
 
+//TODO implement validate/execute of Bomb with the other classes
+// validate: check that the target territory does not belong to the player issuing the order
+//          check that the target territory is adjacent to a territory belonging to the player issuing the order
+// execute: if validate returns true, remove half the enemy armies from the target territory
+
 /**
  * Bomb validate checks if the Bomb object can execute
  */
@@ -540,6 +549,9 @@ Blockade::Blockade(const Blockade &b1) {
 Blockade &Blockade::operator=(const Blockade &p) {
     return *this;
 }
+//TODO implement validate/execute of Blockade with the other classes
+// validate: check that the target territory is owned by the current player
+// execute: if validate returns true, double the armies on the target territory and turn the territory neutral (give to the Neutral player)
 
 /**
  * Blockade validate checks if the Blockade object can execute
@@ -615,6 +627,10 @@ Airlift::Airlift(const Airlift &a1) {
 Airlift &Airlift::operator=(const Airlift &p) {
     return *this;
 }
+
+//TODO implement validate/execute of Airlift with the other classes
+// validate: check that the source and target territories are owned by the player (do not need to be adjacent)
+// execute: if validate returns true, then the selected number of armies is moved from the source to the target territory
 
 /**
  * Airlift validate checks if the Airlift object can execute
@@ -695,9 +711,8 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
  */
 void Negotiate::validate() {
     //TODO Negotiate happens when playing a Diplomacy card.
-    // Validate that the target player is not the player issuing the order.
-    // The target player and the player issuing the order must not be able to attack
-    // each other during the remainder of the turn.
+    // Validate: check that the target player is not the player issuing the order.
+    // execute: if validate returns true, the player issuing the order and the target player cannot attack each other for the remainder of the turn
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
     Negotiate::execute();
 }
