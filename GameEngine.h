@@ -57,6 +57,7 @@ class GameEngine {
         GameEngine(const GameEngine &);
         GameEngine(GameEngine *);
         ~GameEngine();
+        void startupPhase();
 
         string getState();
         bool transition(Transition);

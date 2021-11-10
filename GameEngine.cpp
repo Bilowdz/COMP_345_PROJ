@@ -234,3 +234,7 @@ ostream & operator << (ostream &out, const GameEngine &ge)
     }
     return out;
 }
+
+void GameEngine::startupPhase(){
+
+}
