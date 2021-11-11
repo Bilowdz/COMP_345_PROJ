@@ -2,17 +2,19 @@
 // Created by Ryan on 2021-09-24.
 //
 
+#ifndef COMP_345_PROJ_PLAYER_H
+#define COMP_345_PROJ_PLAYER_H
+
 #include <iostream>
 #include <vector>
 #include <string>
 #include "Map.h"
-#include "Order.h"
 #include "Card.h"
+#include "Orders.h"
+
 
 using namespace std;
 
-#ifndef COMP_345_PROJ_PLAYER_H
-#define COMP_345_PROJ_PLAYER_H
 
 class Player {
 public:
@@ -34,7 +36,7 @@ public:
     * @param vHand is the vector Hand pointer of all the hand the player owns
     * @param vOrder is the vector Order pointer of all the orders the player can do
     */
-    Player(vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder);
+    Player(vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * vOrder);
 
     /**
      * Constructor that takes in the following parameters
@@ -44,7 +46,7 @@ public:
      * @param vHand is the vector Hand pointer of all the hand the player owns
      * @param vOrder is the vector Order pointer of all the orders the player can do
      */
-    Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder);
+    Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * vOrder);
 
     /**
      * Copy constructor
@@ -107,7 +109,7 @@ public:
      * @param vIndex is the current territory from the list of territories
      * @return the name of the territory
      */
-    string getTerritoriesOwned(int vIndex);
+    Territory * getTerritoriesOwned(int vIndex);
 
     /**
      * Gets the size of all the territories the player owns
@@ -137,7 +139,7 @@ public:
      * @param vIndex the current index of the order
      * @return the name of the order
      */
-    string getOrder(int vIndex);
+    Orders* getOrder(int vIndex);
 
     /**
      * Indicated the amount of orders the player can do
@@ -160,11 +162,16 @@ public:
      */
     void setName(string s);
 
+    void setReinforcements(int armies);
+
+    int getReinforcements();
+
 private:
     string name; //Name of the player
     vector<Territory *> vTerritory; //Vector of all the territories owned
     vector<Hand *> vHand; //Vector of all the cards the player owns
-    vector<Order *> vOrder; //Vector for all the orders the player can do
+    OrdersList * ordersList; //Vector for all the orders the player can do
+    int reinforcements;
 };
 
 #endif //COMP_345_PROJ_PLAYER_H

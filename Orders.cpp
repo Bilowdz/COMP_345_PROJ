@@ -13,6 +13,7 @@
  */
 
 #include "Orders.h"
+#include "Player.h"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -126,8 +127,8 @@ std::vector<Orders*> OrdersList::getList(){
  * To access a single member of the list of Order objects in OrdersList object
  * @param index The index of the object being accessed
  */
-void OrdersList::getListMember(int index) {
-    this->ordersList.at(index)->identify();
+Orders* OrdersList::getListMember(int index) {
+    return this->ordersList.at(index);
 }
 
 /**
@@ -201,15 +202,22 @@ ostream &operator << (ostream &out, const Orders &orders) {
 /**
  * Orders validate, a placeholder for the validate method of subclasses
  */
-void Orders::validate() {
+void Orders::validate(Player * player) {
     std::cout << "Orders validate method.";
 }
 
 /**
  * Orders execute, a placeholder for the execute method of subclasses
  */
-void Orders::execute() {
+void Orders::execute(Player * player) {
     std::cout << "\nOrders executed.\n";
+}
+
+Player * Orders::getPlayerLink(){
+    return this->playerLink;
+}
+void Orders::setPlayerLink(Player & player){
+    this->playerLink = &player;
 }
 
 
@@ -239,6 +247,16 @@ int Deploy::getArmies() const {
 Deploy::Deploy() = default;
 
 /**
+ * Deploy constructor
+ * @param sArmies armies to be deployed on selected territory
+ * @param territory the selected territory
+ */
+Deploy::Deploy(int sArmies, Territory& sTerritory) {
+    this->armies = sArmies;
+    this->territory = sTerritory;
+}
+
+/**
  * Deploy destructor
  */
 Deploy::~Deploy() {
@@ -263,30 +281,28 @@ Deploy &Deploy::operator=(const Deploy &p) {
     return *this;
 }
 
-//TODO implement validate/execute of Deploy with the other classes
-// validate: check that target territory is owned by the player
-// execute: if validate is true, then the selected number of armies is added to the number of armies on that territory
-
 /**
  * Deploy validate checks if the Deploy object can execute
  */
-void Deploy::validate() {
+void Deploy::validate(Player * player) {
+    int checkRefusal = player->getTerritorySize();
     // validate if player has enough armies
-    std::cout << "How many armies does the current player own?";
-    int totalArmies;
-    std::cin >> totalArmies;
-    if (this->getArmies() <= totalArmies) {
+    if (this->getArmies() <= player->getReinforcements()) {
         // validate if territory is owned by current player
-        std::cout << "Great! Is the territory deployed to owned by the current player? (1 for yes, 0 for no)";
-        int ownedTerritory;
-        std::cin >> ownedTerritory;
-        if (ownedTerritory >= 1) {
-            // deploy vArmies
-            std::cout << "Deploying armies!\n";
-            Deploy::execute();
-        } else {
-            // refuse to deploy vArmies
-            std::cout << "Territory not owned by current player, cannot deploy armies.\n";
+        for (int i = 0; i < player->getTerritorySize(); i++) {
+            if (this->territory.id == (player->getTerritoriesOwned(i)->id)) {
+                std::cout << "Enough armies, and territory owned by player! Deploying armies!";
+                Deploy::execute(player);
+                return;
+            } else {
+                // refuse to deploy vArmies
+                if (checkRefusal == 1) {
+                    std::cout << "Territory not owned by current player, cannot deploy armies.\n";
+                } else {
+                    checkRefusal--;
+                }
+            }
+
         }
     } else {
         // refuse to deploy vArmies
@@ -297,8 +313,9 @@ void Deploy::validate() {
 /**
  * Executes a Deploy order
  */
-void Deploy::execute() {
-    std::cout << "\nDeploy executed.\n";
+void Deploy::execute(Player * player) {
+    this->territory.addArmies(this->armies);
+    std::cout << "\nDeploy executed. New number of armies in territory: \n";
 }
 
 /**
@@ -316,8 +333,6 @@ void Deploy::identify() {
  * @return string of text describing the passed Deploy object
  */
 ostream &operator << (ostream &out, const Deploy &deploy) {
-    Orders orders;
-    out << orders;
     out << "Deploy object. Can deploy armies to territories. It needs " << deploy.getArmies() << " armies.\n";
     return out;
 }
@@ -375,13 +390,13 @@ Advance &Advance::operator=(const Advance &p) {
 /**
  * Advance validate checks if the Advance object can execute
  */
-void Advance::validate() {
+void Advance::validate(Player * player) {
     // validate if player has enough armies
     std::cout << "How many armies does the current player own?";
     int totalArmies;
     std::cin >> totalArmies;
     if (this->getArmies() <= totalArmies) {
-        Advance::execute();
+        Advance::execute(player);
     } else {
         // refuse to deploy vArmies
         std::cout << "Not enough armies available for this advancement.\n";
@@ -391,7 +406,7 @@ void Advance::validate() {
 /**
  * Executes an Advance order
  */
-void Advance::execute() {
+void Advance::execute(Player * player) {
     //TODO Each attacking army unit involved has a 60% chances of killing one defending army
     // Each defending army unit has 70% chances of killing one attacking army unit
     // If all defending armies die, the remaining attacking units occupy the defending territory
@@ -431,8 +446,6 @@ void Advance::identify() {
  * @return string of text describing the passed Advance object
  */
 ostream &operator << (ostream &out, const Advance &advance) {
-    Orders orders;
-    out << orders;
     out << "Advance object. Can advance armies to territories. It needs " << advance.getArmies() << " armies.\n";
     return out;
 }
@@ -478,12 +491,12 @@ Bomb &Bomb::operator=(const Bomb &p) {
 /**
  * Bomb validate checks if the Bomb object can execute
  */
-void Bomb::validate() {
+void Bomb::validate(Player * player) {
     std::cout << "Is the territory being bombed an enemy territory that is adjacent to a territory owned by the current player? (1 for yes, 0 for no)";
     int adjacentTerritory;
     std::cin >> adjacentTerritory;
     if (adjacentTerritory >= 1) {
-        Bomb::execute();
+        Bomb::execute(player);
     } else {
         std::cout << "Cannot bomb territory.\n";
     }
@@ -492,7 +505,7 @@ void Bomb::validate() {
 /**
  * Executes a Bomb order
  */
-void Bomb::execute() {
+void Bomb::execute(Player * player) {
     std::cout << "Bombing half the enemy armies!\n";
 }
 
@@ -511,8 +524,6 @@ void Bomb::identify() {
  * @return string of text describing the passed Bomb object
  */
 ostream &operator << (ostream &out, const Bomb &bomb) {
-    Orders orders;
-    out << orders;
     out << "Bomb object. Can eliminate half of the armies located on an opponent's territory that is adjacent to one of the current player's territories.\n";
     return out;
 }
@@ -556,12 +567,12 @@ Blockade &Blockade::operator=(const Blockade &p) {
 /**
  * Blockade validate checks if the Blockade object can execute
  */
-void Blockade::validate() {
+void Blockade::validate(Player * player) {
     std::cout << "Is the territory being blockaded owned by the current player? (1 for yes, 0 for no)";
     int blockade;
     std::cin >> blockade;
     if (blockade >= 1) {
-        Blockade::execute();
+        Blockade::execute(player);
     } else {
         std::cout << "Cannot blockade territory.\n";
     }
@@ -570,7 +581,7 @@ void Blockade::validate() {
 /**
  * Executes a Blockade order
  */
-void Blockade::execute() {
+void Blockade::execute(Player * player) {
     std::cout << "Territory blockade set up! Armies doubled, territory lost, now neutral.\n";
 }
 
@@ -589,8 +600,6 @@ void Blockade::identify() {
  * @return string of text describing the passed Blockade object
  */
 ostream &operator << (ostream &out, const Blockade &blockade) {
-    Orders orders;
-    out << orders;
     out << "Blockade object. Can triple the number of armies on one of the current player's territory and make it a neutral territory.\n";
     return out;
 }
@@ -635,12 +644,12 @@ Airlift &Airlift::operator=(const Airlift &p) {
 /**
  * Airlift validate checks if the Airlift object can execute
  */
-void Airlift::validate() {
+void Airlift::validate(Player * player) {
     std::cout << "Is starting territory owned by player? (1 for yes, 0 for no)";
     int airlift;
     std::cin >> airlift;
     if (airlift >= 1) {
-        Airlift::execute();
+        Airlift::execute(player);
     } else {
         std::cout << "Cannot take armies from this location!\n";
     }
@@ -649,7 +658,7 @@ void Airlift::validate() {
 /**
  * Executes an Airlift order
  */
-void Airlift::execute() {
+void Airlift::execute(Player * player) {
     std::cout << "Airlifting armies to destination.\n";
 }
 
@@ -668,8 +677,6 @@ void Airlift::identify() {
  * @return string of text describing the passed Airlift object
  */
 ostream &operator << (ostream &out, const Airlift &airlift) {
-    Orders orders;
-    out << orders;
     out << "Airlift object. Can advance some armies from one of the current player's territories to any other territory.\n";
     return out;
 }
@@ -709,18 +716,18 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
 /**
  * Negotiate validate checks if the Negotiate object can execute
  */
-void Negotiate::validate() {
+void Negotiate::validate(Player * player) {
     //TODO Negotiate happens when playing a Diplomacy card.
     // Validate: check that the target player is not the player issuing the order.
     // execute: if validate returns true, the player issuing the order and the target player cannot attack each other for the remainder of the turn
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
-    Negotiate::execute();
+    Negotiate::execute(player);
 }
 
 /**
  * Executes a Negotiate order
  */
-void Negotiate::execute() {
+void Negotiate::execute(Player * player) {
     std::cout << "Negotiate active between the two selected players.\n";
 }
 
@@ -739,8 +746,6 @@ void Negotiate::identify() {
  * @return string of text describing the passed Negotiate object
  */
 ostream &operator << (ostream &out, const Negotiate &negotiate) {
-    Orders orders;
-    out << orders;
     out << "Negotiate object. Can prevent attacks between the current player and another player until the end of the turn.\n";
     return out;
 }

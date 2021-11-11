@@ -22,12 +22,12 @@ Player::Player(string *name) {
 *
 * @param vTerritories is the vector Territory pointer of all the territories the player owns
 * @param vHand is the vector Hand pointer of all the hand the player owns
-* @param vOrder is the vector Order pointer of all the orders the player can do
+* @param ordersList is the vector Order pointer of all the orders the player can do
 */
-Player::Player(vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder) {
+Player::Player(vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * ordersList) {
     this->vTerritory = vTerritories;
     this->vHand = vHand;
-    this->vOrder = vOrder;
+    this->ordersList = ordersList;
 }
 
 /**
@@ -36,13 +36,13 @@ Player::Player(vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Or
  * @param name is the name of the player
  * @param vTerritories is the vector Territory pointer of all the territories the player owns
  * @param vHand is the vector Hand pointer of all the hand the player owns
- * @param vOrder is the vector Order pointer of all the orders the player can do
+ * @param ordersList is the vector Order pointer of all the orders the player can do
  */
-Player::Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder) {
+Player::Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * ordersList) {
     (*this).name = *name;
     this->vTerritory = vTerritories;
     this->vHand = vHand;
-    this->vOrder = vOrder;
+    this->ordersList = ordersList;
 }
 
 /**
@@ -58,9 +58,7 @@ Player::Player(Player const &copyPlayer) {
     for (int i = 0; i < copyPlayer.vHand.size(); ++i) {
         vHand.at(i) = copyPlayer.vHand.at(i);
     }
-    for (int i = 0; i < copyPlayer.vOrder.size(); ++i) {
-        vOrder.at(i) = copyPlayer.vOrder.at(i);
-    }
+    ordersList = copyPlayer.ordersList;
 }
 
 /**
@@ -78,9 +76,7 @@ Player &Player::operator=(const Player &copyPlayer) {
     for (int i = 0; i < copyPlayer.vHand.size(); ++i) {
         this->vHand.at(i) = copyPlayer.vHand.at(i);
     }
-    for (int i = 0; i < copyPlayer.vOrder.size(); ++i) {
-        this->vOrder.at(i) = copyPlayer.vOrder.at(i);
-    }
+    this->ordersList = copyPlayer.ordersList;
     return *this;
 }
 
@@ -92,9 +88,6 @@ Player::~Player() {
         delete i;
     }
     for (auto &i: vHand) {
-        delete i;
-    }
-    for (auto &i: vOrder) {
         delete i;
     }
     cout << "Destructor !" << endl;
@@ -112,16 +105,16 @@ ostream &operator<<(ostream &output, Player &player) {
     output << "Player Name: " << player.getName() << endl;
     output << "Territories Owned: \n";
     for (int j = 0; j < player.getTerritorySize(); ++j) {
-        output << "\t" + player.getTerritoriesOwned(j) << endl;
+       // output << "\t" + player.getTerritoriesOwned(j) << endl;
     }
     output << "Cards Owned: \n";
     for (int k = 0; k < player.getHandSize(); ++k) {
         output << "\tCard Number: " + to_string(player.getCardsOwned(k)) << endl;
     }
     output << "Orders Sent: \n";
-    for (int l = 0; l < player.getNumberOfOrders(); ++l) {
-        output << "\t" + player.getOrder(l) << " " + to_string(l + 1) << endl;
-    }
+//    for (int l = 0; l < player.getNumberOfOrders(); ++l) {
+//        output << "\t" + player.getOrder(l) << " " + to_string(l + 1) << endl;
+//    }
     output << "Territories to defend: \n";
     player.toDefend();
     output << "\n";
@@ -155,16 +148,6 @@ void Player::toAttack(vector<Player *> vPlayers) {
 }
 
 /**
- * The order the player would like to do
- *
- * @param order string the player wants to do
- */
-void Player::issueOrder(string sOrder) {
-    auto *pOrder = new Order(std::move(sOrder));
-    vOrder.push_back(pOrder);
-}
-
-/**
  * Set the territories that the player owns
  *
  * @param vTerritories vector Territory that gets passed in
@@ -179,8 +162,8 @@ void Player::setTerritoriesOwned(vector<Territory *> vTerritories) {
  * @param vIndex is the current territory from the list of territories
  * @return the name of the territory
  */
-string Player::getTerritoriesOwned(int vIndex) {
-    return vTerritory.at(vIndex)->name;
+Territory * Player::getTerritoriesOwned(int vIndex) {
+    return vTerritory.at(vIndex);
 }
 
 /**
@@ -211,23 +194,8 @@ int Player::getHandSize() const {
     return vHand.size();
 }
 
-/**
- * Gets the order from the vector Order list.
- *
- * @param vIndex the current index of the order
- * @return the name of the order
- */
-string Player::getOrder(int vIndex) {
-    return vOrder.at(vIndex)->getOrder();
-}
-
-/**
- * Indicated the amount of orders the player can do
- *
- * @return an int of the amount of orders
- */
-int Player::getNumberOfOrders() const {
-    return vOrder.size();
+Orders* Player::getOrder(int vIndex) {
+    return this->ordersList->getListMember(vIndex);
 }
 
 /**
@@ -247,7 +215,13 @@ void Player::setName(string s) {
     this->name = std::move(s);
 }
 
+void Player::setReinforcements(int armies) {
+    this->reinforcements = armies;
+}
 
+int Player::getReinforcements() {
+    return this->reinforcements;
+}
 
 
 

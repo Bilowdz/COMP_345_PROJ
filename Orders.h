@@ -17,7 +17,11 @@
 
 #include <vector>
 #include <ostream>
+#include "Map.h"
+
 using namespace std;
+
+class Player;
 
 //------------------------------------------------------------------
 // Orders class, the parent class to each order:
@@ -28,14 +32,16 @@ using namespace std;
  */
 class Orders {
 private:
-
+    Player * playerLink;
 public:
     Orders();
     virtual ~Orders();
     Orders(const Orders &o1);
     virtual void identify();
-    virtual void validate();
-    virtual void execute();
+    virtual void validate(Player *);
+    virtual void execute(Player *) = 0;
+    virtual Player * getPlayerLink();
+    virtual void setPlayerLink(Player & player);
     friend ostream &operator << (ostream &, const Orders &orders);
 
 };
@@ -51,15 +57,17 @@ class Deploy : public Orders {
     // place some armies on one of the current player's territories
 private:
     int armies{};
+    Territory territory;
 public:
     void setArmies(int sArmies);
     [[nodiscard]] int getArmies() const;
     Deploy();
     ~Deploy() override;
+    Deploy(int sArmies, Territory&);
     Deploy(const Deploy &d1);
     Deploy &operator=(const Deploy &p);
-    void validate() override;
-    void execute() override;
+    void validate(Player *) override;
+    void execute(Player *) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Deploy &deploy);
 };
@@ -78,8 +86,8 @@ public:
     ~Advance() override;
     Advance(const Advance &a1);
     Advance &operator=(const Advance &p);
-    void validate() override;
-    void execute() override;
+    void validate(Player *) override;
+    void execute(Player *) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Advance &advance);
 };
@@ -96,8 +104,8 @@ public:
     ~Bomb() override;
     Bomb(const Bomb &b1);
     Bomb &operator=(const Bomb &p);
-    void validate() override;
-    void execute() override;
+    void validate(Player *) override;
+    void execute(Player *) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Bomb &bomb);
 };
@@ -114,8 +122,8 @@ public:
     ~Blockade() override;
     Blockade(const Blockade &b1);
     Blockade &operator=(const Blockade &p);
-    void validate() override;
-    void execute() override;
+    void validate(Player *) override;
+    void execute(Player *) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Blockade &blockade);
 };
@@ -132,8 +140,8 @@ public:
     ~Airlift() override;
     Airlift(const Airlift &a1);
     Airlift &operator=(const Airlift &p);
-    void validate() override;
-    void execute() override;
+    void validate(Player *) override;
+    void execute(Player *) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Airlift &airlift);
 };
@@ -150,8 +158,8 @@ public:
     ~Negotiate() override;
     Negotiate(const Negotiate &n1);
     Negotiate &operator=(const Negotiate &p);
-    void validate() override;
-    void execute() override;
+    void validate(Player *) override;
+    void execute(Player *) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Negotiate &negotiate);
 };
@@ -172,7 +180,7 @@ public:
     ~OrdersList();
     OrdersList(const OrdersList &o1);
     OrdersList &operator=(const OrdersList &p);
-    void getListMember(int index);
+    Orders* getListMember(int index);
     std::vector<Orders*> getList();
     friend ostream &operator << (ostream &, const OrdersList &ordersList);
 
