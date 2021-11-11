@@ -371,8 +371,8 @@ Advance::~Advance() {
 
 Advance::Advance(int sArmies, Territory& source, Territory& target) {
     this->armies = sArmies;
-    this->source = source;
-    this->target = target;
+    this->source = &source;
+    this->target = &target;
 }
 
 
@@ -401,7 +401,7 @@ void Advance::validate(Player * player) {
     // check source territory is owned by player
     int checkRefusal = player->getTerritorySize();
     for (int i = 0; i < player->getTerritorySize(); i++) {
-        if (this->source.id == (player->getTerritoriesOwned(i)->id)) {
+        if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
             Advance::execute(player);
             return;
         } else {
@@ -427,7 +427,7 @@ void Advance::execute(Player * player) {
     // check if enemy territory is owned by current player or not
     int checkRefusal = player->getTerritorySize();
     for (int i = 0; i < player->getTerritorySize(); i++) {
-        if (this->source.id == (player->getTerritoriesOwned(i)->id)) {
+        if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
             cout << "Target owned by player, moving armies to target.\n";
             // do more stuff here
             return;

@@ -79,8 +79,8 @@ class Advance : public Orders {
     // move some armies from one of the current player's territories to an adjacent territory
 private:
     int armies{};
-    Territory source;
-    Territory target;
+    Territory * source;
+    Territory * target;
 public:
     void setArmies(int sArmies);
     [[nodiscard]] int getArmies() const;
