@@ -369,6 +369,13 @@ Advance::~Advance() {
     cout << "Advance destroyed\n";
 }
 
+Advance::Advance(int sArmies, Territory& source, Territory& target) {
+    this->armies = sArmies;
+    this->source = source;
+    this->target = target;
+}
+
+
 /**
  * Advance copy constructor
  * @param a1 Advance object to be copied
@@ -391,15 +398,19 @@ Advance &Advance::operator=(const Advance &p) {
  * Advance validate checks if the Advance object can execute
  */
 void Advance::validate(Player * player) {
-    // validate if player has enough armies
-    std::cout << "How many armies does the current player own?";
-    int totalArmies;
-    std::cin >> totalArmies;
-    if (this->getArmies() <= totalArmies) {
-        Advance::execute(player);
-    } else {
-        // refuse to deploy vArmies
-        std::cout << "Not enough armies available for this advancement.\n";
+    // check source territory is owned by player
+    int checkRefusal = player->getTerritorySize();
+    for (int i = 0; i < player->getTerritorySize(); i++) {
+        if (this->source.id == (player->getTerritoriesOwned(i)->id)) {
+            Advance::execute(player);
+            return;
+        } else {
+            if (checkRefusal == 1) {
+                cout << "Source territory not owned by player! Advance order not executed.\n";
+            } else {
+                checkRefusal--;
+            }
+        }
     }
 }
 
@@ -414,6 +425,22 @@ void Advance::execute(Player * player) {
     // one territory during their turn.
 
     // check if enemy territory is owned by current player or not
+    int checkRefusal = player->getTerritorySize();
+    for (int i = 0; i < player->getTerritorySize(); i++) {
+        if (this->source.id == (player->getTerritoriesOwned(i)->id)) {
+            cout << "Target owned by player, moving armies to target.\n";
+            // do more stuff here
+            return;
+        } else {
+            if (checkRefusal == 1) {
+                cout << "ATTACKING!!!!!\n";
+                // do a lot more stuff here
+            } else {
+                checkRefusal--;
+            }
+        }
+    }
+
     std::cout << "Is the territory destination adjacent to a territory of the current player? (1 for yes, 0 for no)";
     int adjacentTerritory;
     std::cin >> adjacentTerritory;

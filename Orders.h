@@ -79,11 +79,14 @@ class Advance : public Orders {
     // move some armies from one of the current player's territories to an adjacent territory
 private:
     int armies{};
+    Territory source;
+    Territory target;
 public:
     void setArmies(int sArmies);
     [[nodiscard]] int getArmies() const;
     Advance();
     ~Advance() override;
+    Advance(int sArmies, Territory& source, Territory& target);
     Advance(const Advance &a1);
     Advance &operator=(const Advance &p);
     void validate(Player *) override;
