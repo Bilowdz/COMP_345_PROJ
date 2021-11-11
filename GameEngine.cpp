@@ -201,8 +201,7 @@ void GameEngine::addplayer() {
         Players.push_back(new Player(name));
     }
 
-    std::random_shuffle(Players.begin(), Players.end(), 15);
-
+    shuffle(Players.begin(), Players.end(), 15);
 }
 
 void GameEngine::assigncountries() {
