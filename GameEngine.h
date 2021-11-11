@@ -1,7 +1,11 @@
 //
 // Created by Nicolo on 2021-09-24.
 //
+#include <iostream>
 using namespace std;
+#include <algorithm>
+#include "Map.h"
+#include "Player.h"
 
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
@@ -39,6 +43,8 @@ enum Transition {
 class GameEngine {
     private:
         State currentState;
+        Map gameMap;
+        std::vector<Player*> Players;
         void loadmap();
         void validatemap();
         void addplayer();

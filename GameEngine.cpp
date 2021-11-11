@@ -1,7 +1,6 @@
 //
 // Created by Nicolo on 2021-09-24.
 //
-#include <iostream>
 #include "GameEngine.h"
 using namespace std;
 
@@ -143,46 +142,106 @@ string GameEngine::getState() {
 }
 
 void GameEngine::loadmap() {
-    cout << "Executing function loadmap" << endl;
+    transition(T_LOAD_MAP);
+
+    cout << "Chose between any of the following files:\n" <<
+        "1: Europe\n"<<
+        "2: Canada\n"<<
+        "3: Middle Earth\n"<<
+        "4: Broken Map\n"<<
+        "5: Zertina\n"<<endl;
+    int mapChosen;
+    cin >> mapChosen;
+    MapLoader load;
+    switch (mapChosen) {
+        case 1:
+            load.Load("Maps/bigeurope.map");
+            break;
+        case 2:
+            load.Load("Maps/canada.map");
+            break;
+        case 3:
+            load.Load("Maps/middleearth.map");
+            break;
+        case 4:
+            load.Load("Maps/bigeurope.map");
+            break;
+        case 5:
+            load.Load("Maps/bigeurope.map");
+            break;
+        default:
+            cout << "Incorrect input";
+            exit(0);
+    }
+    gameMap = *load.maps.at(0);
+
 }
 
 void GameEngine::validatemap() {
-    cout << "Executing function validatemap" << endl;
+    transition(T_VALIDATE_MAP);
+    cout << "Validating Map";
+    if(gameMap.Validate())
+        cout << "Map is valid";
+    else {
+        cout << "Map is not valid";
+        exit(0);
+    }
 }
 
 void GameEngine::addplayer() {
-    cout << "Executing function addplayer" << endl;
+    transition(T_ADD_PLAYER);
+    cout << "How many players do you want to add" << endl;
+    int numPlayers;
+    cin >> numPlayers;
+    for(int i = 0; i < numPlayers; i++)
+    {
+        cout << "Select a name for this player";
+        string *name;
+        cin >> *name;
+        Players.push_back(new Player(name));
+    }
+
+    std::random_shuffle(Players.begin(), Players.end(), 15);
+
 }
 
 void GameEngine::assigncountries() {
+    transition(T_ASSIGN_COUNTRIES);
     cout << "Executing function assigncountries" << endl;
 }
 
 void GameEngine::issueorder() {
+    transition(T_ISSUE_ORDER);
     cout << "Executing function issueorder" << endl;
 }
 
 void GameEngine::execorder() {
+    transition(T_EXEC_ORDER);
     cout << "Executing function execorder" << endl;
 }
 
 void GameEngine::endexecorders() {
+    transition(T_END_EXEC_ORDERS);
     cout << "Executing function endexecorders" << endl;
 }
 
 void GameEngine::endissueorders() {
+    transition(T_END_ISSUE_ORDERS);
     cout << "Executing function endissueorders" << endl;
 }
 
 void GameEngine::win() {
+    transition(T_WIN);
     cout << "Executing function win" << endl;
 }
 
 void GameEngine::end() {
+    transition(T_END);
     cout << "Executing function end" << endl;
 }
 
 void GameEngine::play() {
+    transition(T_PLAY);
     cout << "Executing function play" << endl;
 }
 
@@ -236,5 +295,7 @@ ostream & operator << (ostream &out, const GameEngine &ge)
 }
 
 void GameEngine::startupPhase(){
+    loadmap();
+    validatemap();
 
 }
