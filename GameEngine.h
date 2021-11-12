@@ -6,6 +6,7 @@ using namespace std;
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
 
+#include "Player.h"
 
 enum State
 {
@@ -57,6 +58,14 @@ class GameEngine {
         GameEngine(const GameEngine &);
         GameEngine(GameEngine *);
         ~GameEngine();
+
+        //added from ryan
+        //TODO implement this shit
+        void mainGameLoop();
+        void reinforcementPhase();
+        void issueOrdersPhase(Player &);
+        void executeOrdersPhase();
+        //end ryan
 
         string getState();
         bool transition(Transition);
