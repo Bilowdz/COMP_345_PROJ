@@ -263,9 +263,7 @@ void Player::issueOrder() {
                 }
                 break;
         }
-
     }
-
 }
 
 Territory * Player::isOwnedTerritory(int id) {

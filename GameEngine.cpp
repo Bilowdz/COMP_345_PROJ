@@ -281,6 +281,7 @@ vector<Hand *> generateHand(int numberCardsPerPlayer) {
 //reinforcement phase: number of territories they own, (# of territories owned divided by 3, rounded down)
 void GameEngine::mainGameLoop() {
 //call issue order to each player
+    //TODO add a loop until one player wins, and remove players that do not own anymore territories
 
     OrdersList * ordersListObj = new OrdersList();
     Territory * territory = new Territory(5, "territory 1", 1);
@@ -304,8 +305,6 @@ void GameEngine::mainGameLoop() {
 
     player1->issueOrder();
 
-
-
     delete ordersListObj;
     delete territory;
     delete deploy1;
@@ -321,8 +320,6 @@ are placed in the player’s reinforcement pool. This must be implemented in a f
 reinforcementPhase() in the game engine.
  */
 void GameEngine::reinforcementPhase() {
-
-
 
 }
 /*
