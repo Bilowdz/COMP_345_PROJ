@@ -237,22 +237,51 @@ ostream & operator << (ostream &out, const GameEngine &ge)
 
 //added by ryan
 //TODO implement this shit
+//TODO mainGameLoop loops the reinforcment, issueorder and executeorder phases
+//TODO continues until one player owns all territories
+//TODO must also remove players that do not own any territories
+
+//reinforcement phase: number of territories they own, (# of territories owned divided by 3, rounded down)
 void GameEngine::mainGameLoop() {
-    //reinforcement phase: number of territories they own, (# of territories owned divided by 3, rounded down)
+
 
 }
 
+/*
+Reinforcement Phase: Players are given a number of armies that depends on the number of territories
+they own, (# of territories owned divided by 3, rounded down). If the player owns all the territories of an
+entire continent, the player is given a number of armies corresponding to the continent’s control bonus
+value. In any case, the minimal number of reinforcement armies per turn for any player is 3. These armies
+are placed in the player’s reinforcement pool. This must be implemented in a function/method named
+reinforcementPhase() in the game engine.
+ */
 void GameEngine::reinforcementPhase() {
 
-}
 
+
+}
+/*
+Issuing Orders Phase: Players issue orders and place them in their order list through a call to the
+Player::issueOrder() method. This method is called in round-robin fashion across all players by the
+game engine. This must be implemented in a function/method named issueOrdersPhase() in the game
+engine
+ */
 //find which neighboring territories the player can attack
 void GameEngine::issueOrdersPhase(Player &player) {
-
+//TODO must call Player:issueOrder() func to add to the vector list
 
 }
 
+
+/*
+Orders Execution Phase—Once all the players have signified in the same turn that they are not issuing
+one more order, the game engine proceeds to execute the top order on the list of orders of each player in
+a round-robin fashion (i.e. the “Order Execution Phase”—see below). Once all the players’ orders have
+been executed, the main game loop goes back to the reinforcement phase. This must be implemented in
+a function/method named executeOrdersPhase() in the game engine
+ */
 void GameEngine::executeOrdersPhase() {
+
 
 }
 //end ryan
