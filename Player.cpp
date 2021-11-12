@@ -223,6 +223,10 @@ int Player::getReinforcements() {
     return this->reinforcements;
 }
 
+void Player::issueOrder(string order) {
+
+}
+
 
 
 
