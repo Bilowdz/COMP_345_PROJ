@@ -223,8 +223,64 @@ int Player::getReinforcements() {
     return this->reinforcements;
 }
 
-void Player::issueOrder(string order) {
+void Player::issueOrder() {
+    //make a menu to select what order to add
+    bool isOrderDone = false;
+    while(!isOrderDone) {
+        int choice;
+        cout << "1. Deploy order\n"
+                "2. Advance army\n"
+                "3. Bomb\n"
+                "4. Blockade\n"
+                "5. Airlift\n"
+                "6. Negotiate\n"
+                "0. Finished adding orders\n";
+        cout << "What order would you like to issue:";
+        cin >> choice;
 
+        switch (choice) {
+            case 0:
+                isOrderDone = true;
+                break;
+            case 1:
+                int numArmies;
+                int idOfTerri;
+                cout << "How many armies do you want to deploy?:";
+                cin >> numArmies;
+                bool isCorrectTerriName = false;
+                while (!isCorrectTerriName) {
+                    this->displayTerritoriesOwned();
+                    cout << "What territory do you want to deploy to?:" << endl;
+                    cin >> idOfTerri;
+                    Territory *myTerri = isOwnedTerritory(idOfTerri);
+                    if (myTerri) {
+                        Deploy *newDeploy = new Deploy(numArmies, *myTerri);
+                        this->ordersList->addDeploy(newDeploy);
+                        isCorrectTerriName = true;
+                    } else {
+                        cout << "Please enter a territory that you own" << endl;
+                    }
+                }
+                break;
+        }
+
+    }
+
+}
+
+Territory * Player::isOwnedTerritory(int id) {
+    for (int i = 0; i < vTerritory.size(); i++) {
+        if(vTerritory.at(i)->id == id) {
+            return vTerritory.at(i);
+        }
+    }
+    return nullptr;
+}
+
+void Player::displayTerritoriesOwned() {
+    for (int i = 0; i < vTerritory.size(); i++) {
+        cout << "Name: " << vTerritory.at(i)->name << " ID: " << vTerritory.at(i)->id << endl;
+    }
 }
 
 

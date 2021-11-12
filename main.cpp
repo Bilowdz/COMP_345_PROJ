@@ -7,13 +7,13 @@
 #include <memory>
 using namespace std;
 
-vector<Territory *> generateTerritories(int numTerritoryOwned);
-vector<Hand *> generateHand(int numberCardsPerPlayer);
-
-static int territoryNumber = 1;
-static int cardNumber = 1;
-static const int territoriesOwnedPerPlayer = 5;
-static const int numCardsPerPlayer = 3;
+//vector<Territory *> generateTerritories(int numTerritoryOwned);
+//vector<Hand *> generateHand(int numberCardsPerPlayer);
+//
+//static int territoryNumber = 1;
+//static int cardNumber = 1;
+//static const int territoriesOwnedPerPlayer = 5;
+//static const int numCardsPerPlayer = 3;
 
 //void player() {
 //    int numPlayers = 0;
@@ -81,77 +81,77 @@ static const int numCardsPerPlayer = 3;
  * @param numTerritoryOwned the initial amount of territories
  * @return vector of Territories that gets passed into the player vector
  */
-vector<Territory *> generateTerritories(int numTerritoryOwned) {
-    vector<Territory *> vTerritory;
-    Territory *pPlayerTerritory;
-    for (int i = 0; i < numTerritoryOwned; i++) {
-        pPlayerTerritory = new Territory(i, "Territory " + to_string(territoryNumber), 1);
-        vTerritory.push_back(pPlayerTerritory);
-        territoryNumber++;
-    }
-    return vTerritory;
-}
-
-/**
- * Generates the cards for each player
- *
- * @param numCardsPerPlayer the initial amount of cards per player
- * @return vector of Hands that gets passed into the player vector
- */
-vector<Hand *> generateHand(int numberCardsPerPlayer) {
-    vector<Hand *> vHand;
-    Hand *pHand;
-    for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
-        pHand = new Hand();
-        pHand->ReceiveCard(new Card( "Bomb"));
-        vHand.push_back(pHand);
-        cardNumber++;
-    }
-    return vHand;
-}
-
-void RunCardDriver()
-{
-    Deck* TestDeck = new Deck(3);
-    Hand* TestHand = new Hand();
-    cout <<  *TestDeck << endl;
-    TestDeck->Draw(TestHand);
-    TestDeck->Draw(TestHand);
-    TestDeck->Draw(TestHand);
-    cout <<  *TestDeck << endl;
-    TestHand->Play(TestDeck);
-    cout <<  *TestDeck << endl;
-    cout <<  *TestHand << endl;
-    delete TestDeck;
-    delete TestHand;
-}
+//vector<Territory *> generateTerritories(int numTerritoryOwned) {
+//    vector<Territory *> vTerritory;
+//    Territory *pPlayerTerritory;
+//    for (int i = 0; i < numTerritoryOwned; i++) {
+//        pPlayerTerritory = new Territory(i, "Territory " + to_string(territoryNumber), 1);
+//        vTerritory.push_back(pPlayerTerritory);
+//        territoryNumber++;
+//    }
+//    return vTerritory;
+//}
+//
+///**
+// * Generates the cards for each player
+// *
+// * @param numCardsPerPlayer the initial amount of cards per player
+// * @return vector of Hands that gets passed into the player vector
+// */
+//vector<Hand *> generateHand(int numberCardsPerPlayer) {
+//    vector<Hand *> vHand;
+//    Hand *pHand;
+//    for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
+//        pHand = new Hand();
+//        pHand->ReceiveCard(new Card( "Bomb"));
+//        vHand.push_back(pHand);
+//        cardNumber++;
+//    }
+//    return vHand;
+//}
+//
+//void RunCardDriver()
+//{
+//    Deck* TestDeck = new Deck(3);
+//    Hand* TestHand = new Hand();
+//    cout <<  *TestDeck << endl;
+//    TestDeck->Draw(TestHand);
+//    TestDeck->Draw(TestHand);
+//    TestDeck->Draw(TestHand);
+//    cout <<  *TestDeck << endl;
+//    TestHand->Play(TestDeck);
+//    cout <<  *TestDeck << endl;
+//    cout <<  *TestHand << endl;
+//    delete TestDeck;
+//    delete TestHand;
+//}
 
 void OrdersDriver(){
 
-    OrdersList * ordersListObj = new OrdersList();
-    Territory * territory = new Territory(5, "territory 1", 1);
-    Deploy * deploy1 = new Deploy(11, *territory);
-    ordersListObj->addDeploy(deploy1);
-
-    string ryan = "Ryan";
-
-    auto *player1 = new Player(&ryan, generateTerritories(territoriesOwnedPerPlayer),
-                               generateHand(numCardsPerPlayer), ordersListObj);
-
-    deploy1->setPlayerLink(*player1);
-
-    player1->setReinforcements(12);
-
-    for (int i = 0; i < territoriesOwnedPerPlayer; i++) {
-        cout << player1->getTerritoriesOwned(i)->id << endl;
-    }
-
-    player1->getOrder(0)->validate(player1);
-
-    delete ordersListObj;
-    delete territory;
-    delete deploy1;
-    delete player1;
+//    OrdersList * ordersListObj = new OrdersList();
+//    Territory * territory = new Territory(5, "territory 1", 1);
+//    Deploy * deploy1 = new Deploy(11, *territory);
+//    ordersListObj->addDeploy(deploy1);
+//
+//    string ryan = "Ryan";
+//
+//    auto *player1 = new Player(&ryan, generateTerritories(territoriesOwnedPerPlayer),
+//                               generateHand(numCardsPerPlayer), ordersListObj);
+//
+//    deploy1->setPlayerLink(*player1);
+//
+//    player1->setReinforcements(12);
+//
+//    for (int i = 0; i < territoriesOwnedPerPlayer; i++) {
+//        cout << player1->getTerritoriesOwned(i)->id << endl;
+//    }
+//
+//    player1->getOrder(0)->validate(player1);
+//
+//    delete ordersListObj;
+//    delete territory;
+//    delete deploy1;
+//    delete player1;
 
 //    menu
 //        deploy order
@@ -321,7 +321,11 @@ void driveMap() {
 
 int main() {
 
-    OrdersDriver();
+    GameEngine ge = new GameEngine();
+
+    ge.mainGameLoop();
+
+    //OrdersDriver();
     //RunCardDriver();
     //player();
     //driveMap();

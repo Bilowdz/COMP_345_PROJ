@@ -94,7 +94,7 @@ public:
      *
      * @param order string the player wants to do
      */
-    void issueOrder(string order);
+    void issueOrder();
 
     /**
      * Set the territories that the player owns
@@ -165,6 +165,8 @@ public:
     void setReinforcements(int armies);
 
     int getReinforcements();
+    Territory * isOwnedTerritory(int id);
+    void displayTerritoriesOwned();
 
 private:
     string name; //Name of the player
