@@ -236,9 +236,7 @@ ostream & operator << (ostream &out, const GameEngine &ge)
 }
 
 void GameEngine::mainGameLoop() {
-
     //reinforcement phase: number of territories they own, (# of territories owned divided by 3, rounded down)
-
 
 }
 
