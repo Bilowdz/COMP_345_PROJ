@@ -103,6 +103,8 @@ public:
      */
     void setTerritoriesOwned(vector<Territory *> vTerritories);
 
+    void addTerritory(Territory * territory);
+
     /**
      * Gets all the territories the current player owns.
      *

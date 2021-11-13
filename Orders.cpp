@@ -400,17 +400,21 @@ Advance &Advance::operator=(const Advance &p) {
 void Advance::validate(Player * player) {
     // check source territory is owned by player
     int checkRefusal = player->getTerritorySize();
-    for (int i = 0; i < player->getTerritorySize(); i++) {
-        if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
-            Advance::execute(player);
-            return;
-        } else {
-            if (checkRefusal == 1) {
-                cout << "Source territory not owned by player! Advance order not executed.\n";
+    if (source->IsAdjacent(*target)) {
+        for (int i = 0; i < player->getTerritorySize(); i++) {
+            if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
+                Advance::execute(player);
+                return;
             } else {
-                checkRefusal--;
+                if (checkRefusal == 1) {
+                    cout << "Source territory not owned by player! Advance order not executed.\n";
+                } else {
+                    checkRefusal--;
+                }
             }
         }
+    } else {
+        cout << "Cannot execute advance order because territories are not adjacent!\n";
     }
 }
 
@@ -418,23 +422,44 @@ void Advance::validate(Player * player) {
  * Executes an Advance order
  */
 void Advance::execute(Player * player) {
-    //TODO Each attacking army unit involved has a 60% chances of killing one defending army
-    // Each defending army unit has 70% chances of killing one attacking army unit
-    // If all defending armies die, the remaining attacking units occupy the defending territory
-    // A player receives a card at the end of his turn if they successfully conquered at least
-    // one territory during their turn.
-
     // check if enemy territory is owned by current player or not
     int checkRefusal = player->getTerritorySize();
     for (int i = 0; i < player->getTerritorySize(); i++) {
         if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
             cout << "Target owned by player, moving armies to target.\n";
-            // do more stuff here
+            target->unitsGarrisoned = target->unitsGarrisoned + this->getArmies();
+            source->unitsGarrisoned = source->unitsGarrisoned - this->getArmies();
+            cout << "Target now has " << target->unitsGarrisoned << " armies, and Source now has "
+                 << source->unitsGarrisoned << " armies.";
             return;
         } else {
             if (checkRefusal == 1) {
-                cout << "ATTACKING!!!!!\n";
-                // do a lot more stuff here
+                int sourceAttack = 0;
+                int targetDefense = 0;
+                for (int j = 0; j < source->unitsGarrisoned; i++) {
+                    bool victoryDefeat = (rand() % 100) < 60;
+                    if (victoryDefeat)
+                        sourceAttack++;
+                }
+                for (int j = 0; j < target->unitsGarrisoned; i++) {
+                    bool victoryDefeat = (rand() % 100) < 70;
+                    if (victoryDefeat)
+                        targetDefense++;
+                }
+                source->unitsGarrisoned = source->unitsGarrisoned - targetDefense;
+                target->unitsGarrisoned = target->unitsGarrisoned - sourceAttack;
+                if (source->unitsGarrisoned > 0) {
+                    if (target->unitsGarrisoned <= 0){
+                        target->unitsGarrisoned = 0;
+                        player->addTerritory(target);
+                        //TODO normally, remove territory from other player's pool
+                        // add a card to conquering player's pool of cards
+                    } else {
+                        cout << "Units left on both sides, no territories conquered.\n";
+                    }
+                } else {
+                    source->unitsGarrisoned = 0;
+                }
             } else {
                 checkRefusal--;
             }
@@ -493,6 +518,10 @@ Bomb::~Bomb() {
     cout << "Bomb destroyed\n";
 }
 
+Bomb::Bomb(Territory& target){
+    this->target = &target;
+}
+
 /**
  * Bomb copy constructor
  * @param b1 Bomb object being copied
@@ -510,22 +539,35 @@ Bomb &Bomb::operator=(const Bomb &p) {
     return *this;
 }
 
-//TODO implement validate/execute of Bomb with the other classes
-// validate: check that the target territory does not belong to the player issuing the order
-//          check that the target territory is adjacent to a territory belonging to the player issuing the order
-// execute: if validate returns true, remove half the enemy armies from the target territory
-
 /**
  * Bomb validate checks if the Bomb object can execute
  */
 void Bomb::validate(Player * player) {
-    std::cout << "Is the territory being bombed an enemy territory that is adjacent to a territory owned by the current player? (1 for yes, 0 for no)";
-    int adjacentTerritory;
-    std::cin >> adjacentTerritory;
-    if (adjacentTerritory >= 1) {
-        Bomb::execute(player);
-    } else {
-        std::cout << "Cannot bomb territory.\n";
+    bool checkTerritories = false;
+    //check if the target territory is adjacent to a player territory
+    for (int i = 0; i < player->getTerritorySize(); i++) {
+        if (player->getTerritoriesOwned(i)->IsAdjacent(*target)){
+            checkTerritories = true;
+        } else {
+            // invalidates the order
+            cout << "Territory not adjacent to an owned territory! Target too far to bomb.";
+        }
+    }
+    if (checkTerritories) {
+        //check if the territory target is owned by the player bombing
+        int checkRefusal = player->getTerritorySize();
+        for (int i = 0; i < player->getTerritorySize(); i++) {
+            if (this->target->id == (player->getTerritoriesOwned(i)->id)) {
+                // invalidates the order
+                cout << "You are trying to bomb your own territory! Don't do that!";
+            } else {
+                if (checkRefusal == 1) {
+                    Bomb::execute(player);
+                } else {
+                    checkRefusal--;
+                }
+            }
+        }
     }
 }
 
@@ -534,6 +576,7 @@ void Bomb::validate(Player * player) {
  */
 void Bomb::execute(Player * player) {
     std::cout << "Bombing half the enemy armies!\n";
+    target->unitsGarrisoned = target->unitsGarrisoned/2;
 }
 
 /**
@@ -571,6 +614,11 @@ Blockade::~Blockade() {
     cout << "Blockade destroyed\n";
 }
 
+Blockade::Blockade(Territory& target) {
+    this->target = &target;
+}
+
+
 /**
  * Blockade copy constructor
  * @param b1 Blockade object being copied
@@ -587,21 +635,23 @@ Blockade::Blockade(const Blockade &b1) {
 Blockade &Blockade::operator=(const Blockade &p) {
     return *this;
 }
-//TODO implement validate/execute of Blockade with the other classes
-// validate: check that the target territory is owned by the current player
-// execute: if validate returns true, double the armies on the target territory and turn the territory neutral (give to the Neutral player)
 
 /**
  * Blockade validate checks if the Blockade object can execute
  */
 void Blockade::validate(Player * player) {
-    std::cout << "Is the territory being blockaded owned by the current player? (1 for yes, 0 for no)";
-    int blockade;
-    std::cin >> blockade;
-    if (blockade >= 1) {
-        Blockade::execute(player);
-    } else {
-        std::cout << "Cannot blockade territory.\n";
+    int checkRefusal = player->getTerritorySize();
+    for (int i = 0; i < player->getTerritorySize(); i++) {
+        if (this->target->id == (player->getTerritoriesOwned(i)->id)) {
+            Blockade::execute(player);
+        } else {
+            if (checkRefusal == 1) {
+                // invalidates order
+                cout << "The territory you are trying to Blockade is not owned by you!";
+            } else {
+                checkRefusal--;
+            }
+        }
     }
 }
 
@@ -609,6 +659,8 @@ void Blockade::validate(Player * player) {
  * Executes a Blockade order
  */
 void Blockade::execute(Player * player) {
+    target->unitsGarrisoned = target->unitsGarrisoned * 2;
+    //TODO set target owner to Neutral Player
     std::cout << "Territory blockade set up! Armies doubled, territory lost, now neutral.\n";
 }
 
@@ -647,6 +699,12 @@ Airlift::~Airlift() {
     cout << "Airlift destroyed\n";
 }
 
+Airlift::Airlift(int sArmies, Territory& source, Territory& target){
+    this->armies = sArmies;
+    this->source = &source;
+    this->target = &target;
+}
+
 /**
  * Airlift copy constructor
  * @param a1 Airlift object being copied
@@ -664,21 +722,27 @@ Airlift &Airlift::operator=(const Airlift &p) {
     return *this;
 }
 
-//TODO implement validate/execute of Airlift with the other classes
-// validate: check that the source and target territories are owned by the player (do not need to be adjacent)
-// execute: if validate returns true, then the selected number of armies is moved from the source to the target territory
-
 /**
  * Airlift validate checks if the Airlift object can execute
  */
 void Airlift::validate(Player * player) {
-    std::cout << "Is starting territory owned by player? (1 for yes, 0 for no)";
-    int airlift;
-    std::cin >> airlift;
-    if (airlift >= 1) {
+    bool sourceBool = false;
+    bool targetBool = false;
+    for (int i = 0; i < player->getTerritorySize(); i++) {
+        if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
+            sourceBool = true;
+        }
+    }
+    for (int i = 0; i < player->getTerritorySize(); i++) {
+        if (this->target->id == (player->getTerritoriesOwned(i)->id)) {
+            targetBool = true;
+        }
+    }
+    if (sourceBool && targetBool) {
         Airlift::execute(player);
     } else {
-        std::cout << "Cannot take armies from this location!\n";
+        // invalidates order
+        cout << "One of the selected territories is not owned by the player. Order not executed.";
     }
 }
 
@@ -686,7 +750,13 @@ void Airlift::validate(Player * player) {
  * Executes an Airlift order
  */
 void Airlift::execute(Player * player) {
-    std::cout << "Airlifting armies to destination.\n";
+    if (this->source->unitsGarrisoned - this->armies != 0) {
+        this->source->unitsGarrisoned = this->source->unitsGarrisoned - this->armies;
+        this->target->unitsGarrisoned = this->target->unitsGarrisoned + this->armies;
+        std::cout << "Airlifting armies to destination.\n";
+    } else {
+        cout << "Too many armies selected! Source territory cannot provide so many. Order not executed.";
+    }
 }
 
 /**
@@ -723,6 +793,11 @@ Negotiate::Negotiate() = default;
 Negotiate::~Negotiate() {
     cout << "Negotiate destroyed\n";
 }
+
+Negotiate::Negotiate(Player * targetPlayer) {
+    this->targetPlayer = targetPlayer;
+}
+
 /**
  * Negotiate copy constructor
  * @param n1 Negotiate object being copied
@@ -745,16 +820,20 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
  */
 void Negotiate::validate(Player * player) {
     //TODO Negotiate happens when playing a Diplomacy card.
-    // Validate: check that the target player is not the player issuing the order.
-    // execute: if validate returns true, the player issuing the order and the target player cannot attack each other for the remainder of the turn
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
-    Negotiate::execute(player);
+    if (this->getPlayerLink()->getName().compare(this->targetPlayer->getName())) {
+        cout << "Cannot negotiate with yourself. Order not executed.";
+    } else {
+        Negotiate::execute(player);
+    }
 }
 
 /**
  * Executes a Negotiate order
  */
 void Negotiate::execute(Player * player) {
+    // TODO make it so if this is executed this->getPlayerLink() 
+    //  and passed player cannot attack each other for the remainder of the turn.
     std::cout << "Negotiate active between the two selected players.\n";
 }
 

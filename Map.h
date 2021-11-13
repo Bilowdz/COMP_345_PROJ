@@ -25,6 +25,8 @@ public:
     bool visited;
     std::vector<Territory*> adjacentTerritories;
 
+    bool IsAdjacent(Territory &adj);
+
     Territory& operator =(const Territory &);
     friend std::ostream & operator << (std::ostream &out, const Territory &territory);
     friend std::istream & operator >> (std::istream &in,  Territory &territory);

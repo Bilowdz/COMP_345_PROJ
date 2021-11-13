@@ -479,3 +479,11 @@ void Territory::addArmies(int armiesToAdd){
 
 // Destructor for the territory class
 Territory::~Territory() = default;
+
+
+bool Territory::IsAdjacent(Territory &adj) {
+  for(Territory* ter : adjacentTerritories)
+    if(ter->id == adj.id)
+      return true;
+  return false;
+}

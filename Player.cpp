@@ -281,6 +281,10 @@ void Player::displayTerritoriesOwned() {
     }
 }
 
+void Player::addTerritory(Territory * territory) {
+    vTerritory.push_back(territory);
+}
+
 
 
 

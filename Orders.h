@@ -101,10 +101,11 @@ public:
 class Bomb : public Orders {
     // destroy half of the armies located on an opponent's territory that is adjacent to one of the current player's territories
 private:
-
+    Territory * target;
 public:
     Bomb();
     ~Bomb() override;
+    Bomb(Territory& target);
     Bomb(const Bomb &b1);
     Bomb &operator=(const Bomb &p);
     void validate(Player *) override;
@@ -119,10 +120,11 @@ public:
 class Blockade : public Orders {
     // triple the number of armies on one of the current player's territories and make it a neutral territory
 private:
-
+    Territory * target;
 public:
     Blockade();
     ~Blockade() override;
+    Blockade(Territory& target);
     Blockade(const Blockade &b1);
     Blockade &operator=(const Blockade &p);
     void validate(Player *) override;
@@ -137,10 +139,13 @@ public:
 class Airlift : public Orders {
     // advance some armies from one of the current player's territories to any other territory
 private:
-
+    int armies{};
+    Territory * source;
+    Territory * target;
 public:
     Airlift();
     ~Airlift() override;
+    Airlift(int sArmies, Territory& source, Territory& target);
     Airlift(const Airlift &a1);
     Airlift &operator=(const Airlift &p);
     void validate(Player *) override;
@@ -155,10 +160,11 @@ public:
 class Negotiate : public Orders {
     // prevent attacks between the current player and another player until the end of the turn
 private:
-
+    Player * targetPlayer;
 public:
     Negotiate();
     ~Negotiate() override;
+    Negotiate(Player * targetPlayer);
     Negotiate(const Negotiate &n1);
     Negotiate &operator=(const Negotiate &p);
     void validate(Player *) override;
