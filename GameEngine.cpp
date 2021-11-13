@@ -2,6 +2,7 @@
 // Created by Nicolo on 2021-09-24.
 //
 #include "GameEngine.h"
+#include "CommandProcessing.h"
 using namespace std;
 
 // constructor
@@ -16,14 +17,14 @@ GameEngine::GameEngine(const GameEngine &game): isGameDone(false), currentState(
 
 GameEngine::GameEngine(GameEngine *const pGameEngine): isGameDone(false), currentState(pGameEngine->currentState) {
     cout << "GameEngine copy constructor 2 called" << endl;
-
 }
 
 // destructor
 GameEngine:: ~GameEngine() = default;
 
 // validate and execute transitions based on current state
-bool GameEngine::transition(string command) {
+bool GameEngine::transition(Command *c) {
+    string command= c->getCommand();
     string loadmap = "loadmap";
     string addplayer = "addplayer";
 
@@ -35,7 +36,7 @@ bool GameEngine::transition(string command) {
             currentState = ST_MAP_LOADED;
 
             // execute game engine function
-            this->loadmap();
+            this->loadmap(c);
             return true;
         }
     }else if(command == "validatemap") {
@@ -47,7 +48,7 @@ bool GameEngine::transition(string command) {
     }else if(command == "addplayer") {
         if(currentState == ST_MAP_VALIDATED || currentState == ST_PLAYERS_ADDED) {
             currentState = ST_PLAYERS_ADDED;
-            this->addplayer();
+            this->addplayer(c);
             return true;
         }
     }else if(command == "assigncountries") {
@@ -116,20 +117,34 @@ State GameEngine::getState() {
     return currentState;
 }
 
-void GameEngine::loadmap() {
-    transition("loadmap");
+void GameEngine::loadmap(Command *c) {
+    /*
     cout << "Chose between any of the following files:\n" <<
         "1: Europe\n"<<
         "2: Canada\n"<<
         "3: Zertina\n"<<endl;
+*/
+    string command = c->getCommand(); //command = "loadmap zertina.map"
     int mapChosen;
-    cin >> mapChosen;
+
+    if(command == "loadmap zertina.map") {
+        mapChosen=3;
+    } else if(command == "loadmap bigeurope.map") {
+        mapChosen=1;
+    } else if(command == "loadmap canada.map") {
+        mapChosen=2;
+
+        // invalid map
+    } else {
+
+    }
+
     MapLoader load;
     gameMap = *load.maps.at(mapChosen-1);
+
 }
 
 void GameEngine::validatemap() {
-    transition("validatemap");
     cout << "Validating Map";
     if(gameMap.Validate())
         cout << "Map is valid";
@@ -139,18 +154,12 @@ void GameEngine::validatemap() {
     }
 }
 
-void GameEngine::addplayer() {
-    transition("addplayer");
-    cout << "How many players do you want to add" << endl;
-    int numPlayers;
-    cin >> numPlayers;
-    for(int i = 0; i < numPlayers; i++)
-    {
-        cout << "Select a name for this player";
-        string *name;
-        cin >> *name;
-        Players.push_back(new Player(name));
-    }
+void GameEngine::addplayer(Command * c) {
+
+    // get the name from command object
+    string *name = new string((c->getCommand()).substr(10));
+
+    Players.push_back(new Player(name));
 
     //shuffle(Players.begin(), Players.end(), 15); todo uncommment
 }
@@ -165,7 +174,6 @@ void GameEngine::gamestart() {
 }
 
 void GameEngine::assigncountries() {
-    transition("assigncountries");
     for(int i = 0; i < gameMap.map.size(); i++)
     {
         Players.at(i%Players.size())->vTerritory.push_back(gameMap.map.at(i));
@@ -221,11 +229,20 @@ ostream & operator << (ostream &out, const GameEngine &ge)
     return out;
 }
 
-void GameEngine::startupPhase(){
-    loadmap();
-    validatemap();
-    addplayer();
-    gamestart();
+void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge){
+    while(true) {
+
+        // get command
+        Command *c = cp.getCommand(ge);
+        string commandName = c->getCommand();
+
+        // stop startup phase once game started
+        if(commandName == "gamestart") {
+            break;
+        } else {
+            transition(c);
+        }
+    }
 }
 
 

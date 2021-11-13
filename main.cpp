@@ -277,6 +277,7 @@ void OrdersDriver(){
 }
 
 void runGameEngine(){
+    /*
     GameEngine game;
     int flag = 0;
 
@@ -366,6 +367,7 @@ void runGameEngine(){
             error = "";
         }
     }
+     */
 }
 
 void driveMap() {
@@ -396,9 +398,10 @@ int main() {
     //}
 
     GameEngine* ge = new GameEngine();
-    FileCommandProcessorAdapter adapter(flr, ge);
-
-    Command* c = adapter.getCommand();
+    cout << &ge << endl;
+    CommandProcessor cp;
+    ge->startupPhase(cp, ge);
+    //FileCommandProcessorAdapter adapter(flr, ge);
 
     return 0;
 }

@@ -11,6 +11,8 @@ using namespace std;
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
 #include "State.h"
+class Command;
+class CommandProcessor;
 
 class GameEngine {
     private:
@@ -18,9 +20,9 @@ class GameEngine {
         Map gameMap;
         Deck *MainDeck;
         std::vector<Player*> Players;
-        void loadmap();
+        void loadmap(Command *);
         void validatemap();
-        void addplayer();
+        void addplayer(Command *);
         void gamestart();
         void assigncountries();
         void issueorder();
@@ -37,10 +39,10 @@ class GameEngine {
         GameEngine(const GameEngine &);
         GameEngine(GameEngine *);
         ~GameEngine();
-        void startupPhase();
+        void startupPhase(CommandProcessor cp, GameEngine *);
 
         State getState();
-        bool transition(string);
+        bool transition(Command *);
 
         GameEngine& operator =(const GameEngine &);
         friend ostream & operator << (ostream &, const GameEngine &ge);
