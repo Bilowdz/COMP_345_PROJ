@@ -23,6 +23,8 @@ public:
     friend std::ostream &operator<<(std::ostream &out, const Territory &territory);
     friend std::istream &operator>>(std::istream &in, Territory &territory);
 
+    bool IsAdjacent(Territory & adj);
+
     Territory(int id, std::string name, int continent);
     Territory(const Territory &t1);
     ~Territory();

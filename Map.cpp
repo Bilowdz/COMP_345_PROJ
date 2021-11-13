@@ -464,5 +464,14 @@ std::ostream &operator<<(std::ostream &out, const Territory &territory) {
     return out;
 }
 
+// Loops through adjacent territory in search for
+// the given territory
+bool Territory::IsAdjacent(Territory &adj) {
+    for(Territory* ter : adjacentTerritories)
+        if(ter->id == adj.id)
+            return true;
+    return false;
+}
+
 // Destructor for the territory class
 Territory::~Territory() = default;
