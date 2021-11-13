@@ -19,9 +19,17 @@ private:
     string command;
     string effect;
 public:
+    // constructors
     Command();
     Command(string command);
     Command(string command, string effect);
+
+    // copy constructors
+    Command(Command *);
+    Command(const Command &);
+
+    // destructor
+    ~Command();
 
     // setter for effect
     void saveEffect(string effect);
@@ -32,6 +40,10 @@ public:
     // getter for effect
     string getEffect() const;
 
+    // assignment operator
+    Command& operator =(const Command &);
+
+    // stream insertion operator overload
     friend ostream & operator << (ostream &, const Command &c);
 };
 
@@ -52,9 +64,24 @@ protected:
     string validate(string command);
 
 public:
+    // constructors
     CommandProcessor(GameEngine *);
+
+    // copy constructors
+    CommandProcessor(CommandProcessor *);
+    CommandProcessor(const CommandProcessor &);
+
+    // destructor
+    virtual ~CommandProcessor();
+
     // allows user to read/save command
     virtual Command* getCommand();
+
+    // assignment operator
+    CommandProcessor& operator =(const CommandProcessor &);
+
+    // stream insertion operator overload
+    friend ostream & operator << (ostream &, const CommandProcessor &cp);
 };
 
 // loads file to memory, reads line by line
@@ -65,42 +92,50 @@ private:
     int length;
     int pos;
 public:
+    // constructor
     FileLineReader(string path);
+
+    // copy constructors
+    FileLineReader(FileLineReader *);
+    FileLineReader(const FileLineReader &);
+
+    // destructor
+    ~FileLineReader();
+
     void load();
     string next();
     bool isEof();
+
+
+    // assignment operator
+    FileLineReader& operator =(const FileLineReader &);
+
+    // stream insertion operator overload
+    friend ostream & operator << (ostream &, const FileLineReader &fr);
 };
 
 // parses line from file, executes command line by line
 class FileCommandProcessorAdapter: public CommandProcessor {
 private:
     FileLineReader flr;
+
+    bool isEof();
 public:
     FileCommandProcessorAdapter(FileLineReader, GameEngine *);
+
+    // copy constructors
+    FileCommandProcessorAdapter(FileCommandProcessorAdapter *);
+    FileCommandProcessorAdapter(const FileCommandProcessorAdapter &);
+
+
     string readCommand();
     Command* getCommand();
-    bool isEof();
+
+    // assignment operator
+    FileCommandProcessorAdapter& operator =(const FileCommandProcessorAdapter &);
+
+    // stream insertion operator overload
+    friend ostream & operator << (ostream &, const FileCommandProcessorAdapter &fcpa);
 };
 
 #endif //CMAKELISTS_TXT_COMMANDPROCESSING_H
-/*
-// accept user input until valid user input selected
-while(!flag) {
-// read command from command line
-string userInput = readCommand();
-
-// validate command
-string response = validate(userInput);
-
-// check if response is valid
-if(response == "valid") {
-flag = true;
-
-saveCommand(userInput);
-// invalid response, save command effect
-} else {
-
-// response is the error received from validate function
-saveCommand(userInput,response);
-}
- */

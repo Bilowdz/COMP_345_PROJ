@@ -9,11 +9,35 @@
 
 using namespace std;
 
-Command::Command(): command(""), effect(""){}
+/**
+ * --- --- --- Command ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ **/
 
-Command::Command(string command): command(command) {}
+// constructors
+Command::Command(): command(""), effect(""){
+    cout << "CommandProcessor constructor called (no params)" << endl;
+}
 
-Command::Command(string command, string effect): command(command), effect(effect){}
+Command::Command(string command): command(command) {
+    cout << "CommandProcessor constructor called (1 param)" << endl;
+}
+
+Command::Command(string command, string effect): command(command), effect(effect) {
+    cout << "CommandProcessor constructor called (2 params)" << endl;
+}
+
+// copy constructors
+Command::Command(Command *const pc): command(pc->command), effect(pc->effect) {
+    cout << "Command copy constructor called (pointer)" << endl;
+}
+
+Command::Command(const Command &c): command(c.command), effect(c.effect) {
+    cout << "Command copy constructor called (object)" << endl;
+}
+
+// destructor
+Command:: ~Command() = default;
+
 
 void Command::saveEffect(string e) {
     effect = e;
@@ -27,6 +51,14 @@ string Command::getCommand() const {
     return command;
 }
 
+// assignment operator overload
+Command& Command::operator =(const Command &c) {
+    this->command = c.command;
+    this->effect = c.effect;
+
+    return *this;
+}
+
 // stream insertion operator overloads
 ostream & operator << (ostream &out, const Command &c)
 {
@@ -34,7 +66,25 @@ ostream & operator << (ostream &out, const Command &c)
     return out;
 }
 
-CommandProcessor::CommandProcessor(GameEngine *ge): ge(ge) {}
+/**
+ * --- --- --- CommandProcessor ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ **/
+// constructors
+CommandProcessor::CommandProcessor(GameEngine *ge): ge(ge) {
+    cout << "CommandProcessor constructor called" << endl;
+}
+
+// copy constructors
+CommandProcessor::CommandProcessor(CommandProcessor *const cp): commands(cp->commands), ge(cp->ge) {
+    cout << "CommandProcessor copy constructor called (pointer)" << endl;
+}
+
+CommandProcessor::CommandProcessor(const CommandProcessor & c): commands(c.commands), ge(c.ge) {
+    cout << "CommandProcessor copy constructor called (object)" << endl;
+}
+
+// destructor
+CommandProcessor:: ~CommandProcessor() = default;
 
 Command* CommandProcessor::getCommand() {
     cout << "calling getCommand from CommandProcessor" << endl;
@@ -153,9 +203,47 @@ string CommandProcessor::validate(string command) {
     return "valid";
 }
 
+// assignment operator overload
+CommandProcessor& CommandProcessor::operator =(const CommandProcessor &cp) {
+    this->commands = cp.commands;
+    this->ge = cp.ge;
+
+    return *this;
+}
+
+// stream insertion operator overloads
+ostream & operator << (ostream &out, const CommandProcessor &cp)
+{
+    out << "CommandProcessor: " << endl;
+    out << cp.ge << endl;
+    for(Command *c : cp.commands){
+        out << "Command: " << *c << " " << endl;
+    }
+
+    return out;
+}
+
+/**
+ * --- --- --- FileLineReader ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ **/
+// constructor
 FileLineReader::FileLineReader(string path): path(path), pos(0), length(0) {
     this->load();
 }
+
+// copy constructors
+FileLineReader::FileLineReader(FileLineReader *const fr): path(fr->path), pos(fr->pos), length(fr->length) {
+    this->load();
+    cout << "FileLineReader copy constructor called (pointer)" << endl;
+}
+
+FileLineReader::FileLineReader(const FileLineReader & fr): path(fr.path), pos(fr.pos), length(fr.length) {
+    this->load();
+    cout << "FileLineReader copy constructor called (object)" << endl;
+}
+
+FileLineReader:: ~FileLineReader() = default;
+
 void FileLineReader::load() {
     string line;
     ifstream file(path);
@@ -173,29 +261,79 @@ bool FileLineReader::isEof() {
     return pos == (length - 1);
 }
 
+// assignment operator overload
+FileLineReader& FileLineReader::operator =(const FileLineReader &fr) {
+    this->path = fr.path;
+    this->length = fr.length;
+    this->pos = fr.pos;
+
+    return *this;
+}
+
+// stream insertion operator overloads
+ostream & operator << (ostream &out, const FileLineReader &fr)
+{
+    out << "FileLineReader: " << endl;
+    out << "Path:" << fr.path << ", Length: " << fr.length << ", Position: " << fr.pos << " " << endl;
+
+    return out;
+}
+
+/**
+ * --- --- --- FileCommandProcessorAdapter ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ **/
+ // constructors
 FileCommandProcessorAdapter::FileCommandProcessorAdapter(FileLineReader flr, GameEngine* ge): CommandProcessor(ge), flr(flr) {}
+
+// copy constructors
+FileCommandProcessorAdapter::FileCommandProcessorAdapter(FileCommandProcessorAdapter *const fcpa): CommandProcessor(fcpa), flr(fcpa->flr) {
+    cout << "FileCommandProcessorAdapter copy constructor called (pointer)" << endl;
+}
+
+// FileCommandProcessorAdapter is a child of base class CommandProcessor, so instance of fcpa can be passed to CommandProcessor() via its copy constructor
+FileCommandProcessorAdapter::FileCommandProcessorAdapter(const FileCommandProcessorAdapter &fcpa): CommandProcessor(fcpa), flr(fcpa.flr) {
+    cout << "FileCommandProcessorAdapter copy constructor called (object)" << endl;
+}
 
 Command* FileCommandProcessorAdapter::getCommand() {
     Command* c;
-    bool flag = false;
-    while(!flag) {
-        string input = readCommand();
-        string response = validate(input);
+    string input = readCommand();
+    string response = validate(input);
 
-        if(response == "valid") {
-            flag = true;
-            c = saveCommand(input);
-        } else {
-            c = saveCommand(input, response);
-        }
-        cout << *c << endl;
+    if(response == "valid") {
+        c = saveCommand(input);
+    } else {
+        c = saveCommand(input, response);
     }
+    cout << *c << endl;
     return c;
 }
 
 string FileCommandProcessorAdapter::readCommand() {
-    return flr.next();
+
+    // check if end of file reached
+    if(isEof()) {
+        return "Error: end of file reached!";
+    } else {
+        return flr.next();
+    }
 }
 bool FileCommandProcessorAdapter::isEof() {
     return flr.isEof();
+}
+
+// assignment operator overload
+FileCommandProcessorAdapter& FileCommandProcessorAdapter::operator =(const FileCommandProcessorAdapter &fcpa) {
+    this->flr = fcpa.flr;
+
+    return *this;
+}
+
+// stream insertion operator overloads
+ostream & operator << (ostream &out, const FileCommandProcessorAdapter &fcpa)
+{
+    out << "FileCommandProcessorAdapter: " << endl;
+    //out << fcpa.flr << endl;
+
+    return out;
 }
