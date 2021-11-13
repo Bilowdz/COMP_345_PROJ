@@ -1,9 +1,9 @@
-#include <iostream>
+#include "Card.h"
 #include "GameEngineDriver.h"
 #include "Map.h"
 #include "Orders.h"
-#include "Card.h"
 #include "Player.h"
+#include <iostream>
 #include <memory>
 using namespace std;
 
@@ -38,7 +38,7 @@ void player() {
 
     for (int i = 0; i < numPlayers; ++i) {
 
-        cout << *vPlayer.at(i); //ostream called
+        cout << *vPlayer.at(i);//ostream called
         cout << "Territories to attack: \n";
         vPlayer.at(i)->toAttack(vPlayer);
         cout << endl;
@@ -46,33 +46,33 @@ void player() {
 
     int playing = false;
 
-    while(!playing) {
+    while (!playing) {
         string input;
         string order;
         cout << "Would you like to issue an order (y/n)? ";
         cin >> input;
 
-        if(input == "y") {
+        if (input == "y") {
             cout << "Enter your order: ";
             cin >> order;
-            vPlayer.at(0)->issueOrder(order); //showing issueOrder Function
+            vPlayer.at(0)->issueOrder(order);//showing issueOrder Function
             playing = false;
-        } else if(input == "n") {
+        } else if (input == "n") {
             cout << "Orders Sent: \n";
             for (int l = 0; l < vPlayer.at(0)->getNumberOfOrders(); ++l) {
                 cout << "\t" + vPlayer.at(0)->getOrder(l) << endl;
             }
             cout << "End of program!" << endl;
             playing = true;
-        }
-        else {
-            cout << "Sorry try again\n" << endl;
+        } else {
+            cout << "Sorry try again\n"
+                 << endl;
             playing = false;
         }
     }
 
     //delete the pointers of vPlayer
-    for (auto & i : vPlayer) {
+    for (auto &i : vPlayer) {
         delete i;
     }
 }
@@ -105,7 +105,7 @@ vector<Hand *> generateHand(int numberCardsPerPlayer) {
     Hand *pHand;
     for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
         pHand = new Hand();
-        pHand->ReceiveCard(new Card( "Bomb"));
+        pHand->ReceiveCard(new Card("Bomb"));
         vHand.push_back(pHand);
         cardNumber++;
     }
@@ -126,23 +126,22 @@ vector<Order *> generateOrder() {
     return vOrder;
 }
 
-void RunCardDriver()
-{
-    Deck* TestDeck = new Deck(3);
-    Hand* TestHand = new Hand();
-    cout <<  *TestDeck << endl;
+void RunCardDriver() {
+    Deck *TestDeck = new Deck(3);
+    Hand *TestHand = new Hand();
+    cout << *TestDeck << endl;
     TestDeck->Draw(TestHand);
     TestDeck->Draw(TestHand);
     TestDeck->Draw(TestHand);
-    cout <<  *TestDeck << endl;
+    cout << *TestDeck << endl;
     TestHand->Play(TestDeck);
-    cout <<  *TestDeck << endl;
-    cout <<  *TestHand << endl;
+    cout << *TestDeck << endl;
+    cout << *TestHand << endl;
     delete TestDeck;
     delete TestHand;
 }
 
-void OrdersDriver(){
+void OrdersDriver() {
 
     // Creating objects of Orders subclasses
     Deploy deploy1;
@@ -210,7 +209,7 @@ void OrdersDriver(){
     // Testing move method
     cout << "\nmoving index 3 to index 0\n\n";
 
-    ordersListObj.move(3,0);
+    ordersListObj.move(3, 0);
 
     for (int i = 0; i < ordersListObj.getList().size(); i++) {
         ordersListObj.getList().at(i)->identify();
@@ -228,7 +227,7 @@ void OrdersDriver(){
     // Testing move method differently
     cout << "\nmoving index 2 to index 5\n\n";
 
-    ordersListObj.move(2,5);
+    ordersListObj.move(2, 5);
 
     for (int i = 0; i < ordersListObj.getList().size(); i++) {
         ordersListObj.getList().at(i)->identify();
@@ -237,7 +236,7 @@ void OrdersDriver(){
     // Testing final case for move method
     cout << "\nmoving index 4 to index 4\n\n";
 
-    ordersListObj.move(4,4);
+    ordersListObj.move(4, 4);
 
     for (int i = 0; i < ordersListObj.getList().size(); i++) {
         ordersListObj.getList().at(i)->identify();
@@ -272,14 +271,13 @@ void OrdersDriver(){
     cout << "\nexample validate/execute on an negotiate object at index 6\n\n";
 
     ordersListObj.getList().at(6)->validate();
-
 }
 
-void runGameEngine(){
+void runGameEngine() {
     GameEngineDriver driver;
 
     // loop until game is done
-    while(!driver.isGameDone()) {
+    while (!driver.isGameDone()) {
 
         // accept user input
         cin >> driver;
@@ -289,7 +287,7 @@ void runGameEngine(){
 }
 
 void driveMap() {
-    auto* loader(new MapLoader());
+    auto *loader(new MapLoader());
 
     std::cout << *loader;
 
