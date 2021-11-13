@@ -322,7 +322,7 @@ void driveMap() {
 int main() {
 
     GameEngine ge = new GameEngine();
-
+    //startup phase called here
     ge.mainGameLoop();
 
     //OrdersDriver();
