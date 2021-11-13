@@ -34,7 +34,7 @@ public:
     * @param vHand is the vector Hand pointer of all the hand the player owns
     * @param vOrder is the vector Order pointer of all the orders the player can do
     */
-    Player(vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder);
+    Player(vector<Territory *> vTerritories, Hand * vHand, vector<Order *> vOrder);
 
     /**
      * Constructor that takes in the following parameters
@@ -44,7 +44,7 @@ public:
      * @param vHand is the vector Hand pointer of all the hand the player owns
      * @param vOrder is the vector Order pointer of all the orders the player can do
      */
-    Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, vector<Order *> vOrder);
+    Player(string *name, vector<Territory *> vTerritories, Hand * vHand, vector<Order *> vOrder);
 
     /**
      * Copy constructor
@@ -160,10 +160,11 @@ public:
      */
     void setName(string s);
 
+    vector<Territory *> vTerritory; //Vector of all the territories owned
+    Hand * vHand; //Vector of all the cards the player owns
+
 private:
     string name; //Name of the player
-    vector<Territory *> vTerritory; //Vector of all the territories owned
-    vector<Hand *> vHand; //Vector of all the cards the player owns
     vector<Order *> vOrder; //Vector for all the orders the player can do
 };
 

@@ -126,21 +126,21 @@ vector<Order *> generateOrder() {
     return vOrder;
 }
 
-void RunCardDriver()
-{
-    Deck* TestDeck = new Deck(3);
-    Hand* TestHand = new Hand();
-    cout <<  *TestDeck << endl;
-    TestDeck->Draw(TestHand);
-    TestDeck->Draw(TestHand);
-    TestDeck->Draw(TestHand);
-    cout <<  *TestDeck << endl;
-    TestHand->Play(TestDeck);
-    cout <<  *TestDeck << endl;
-    cout <<  *TestHand << endl;
-    delete TestDeck;
-    delete TestHand;
-}
+//void RunCardDriver()
+//{
+//    Deck* TestDeck = new Deck(3);
+//    Hand* TestHand = new Hand();
+//    cout <<  *TestDeck << endl;
+//    TestDeck->Draw(TestHand);
+//    TestDeck->Draw(TestHand);
+//    TestDeck->Draw(TestHand);
+//    cout <<  *TestDeck << endl;
+//    TestHand->Play(TestDeck);
+//    cout <<  *TestDeck << endl;
+//    cout <<  *TestHand << endl;
+//    delete TestDeck;
+//    delete TestHand;
+//}
 
 void OrdersDriver(){
 
@@ -381,7 +381,7 @@ int main() {
     //OrdersDriver();
     //RunCardDriver();
     //player();
-    //driveMap();
+    driveMap();
     //runGameEngine();
 
     //CommandProcessor cp;
