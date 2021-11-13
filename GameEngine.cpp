@@ -143,38 +143,14 @@ string GameEngine::getState() {
 
 void GameEngine::loadmap() {
     transition(T_LOAD_MAP);
-
     cout << "Chose between any of the following files:\n" <<
         "1: Europe\n"<<
         "2: Canada\n"<<
-        "3: Middle Earth\n"<<
-        "4: Broken Map\n"<<
-        "5: Zertina\n"<<endl;
+        "3: Zertina\n"<<endl;
     int mapChosen;
     cin >> mapChosen;
     MapLoader load;
-    switch (mapChosen) {
-        case 1:
-            load.Load("Maps/bigeurope.map");
-            break;
-        case 2:
-            load.Load("Maps/canada.map");
-            break;
-        case 3:
-            load.Load("Maps/middleearth.map");
-            break;
-        case 4:
-            load.Load("Maps/bigeurope.map");
-            break;
-        case 5:
-            load.Load("Maps/bigeurope.map");
-            break;
-        default:
-            cout << "Incorrect input";
-            exit(0);
-    }
-    gameMap = *load.maps.at(0);
-
+    gameMap = *load.maps.at(mapChosen-1);
 }
 
 void GameEngine::validatemap() {
@@ -204,9 +180,21 @@ void GameEngine::addplayer() {
     shuffle(Players.begin(), Players.end(), 15);
 }
 
+void GameEngine::gamestart() {
+    *MainDeck = *new Deck(Players.size());
+    for(auto & Player : Players){
+       MainDeck->Draw(Player->vHand);
+       MainDeck->Draw(Player->vHand);
+    }
+    assigncountries();
+}
+
 void GameEngine::assigncountries() {
     transition(T_ASSIGN_COUNTRIES);
-    cout << "Executing function assigncountries" << endl;
+    for(int i = 0; i < gameMap.map.size(); i++)
+    {
+        Players.at(i%Players.size())->vTerritory.push_back(gameMap.map.at(i));
+    }
 }
 
 void GameEngine::issueorder() {
@@ -296,5 +284,9 @@ ostream & operator << (ostream &out, const GameEngine &ge)
 void GameEngine::startupPhase(){
     loadmap();
     validatemap();
+    addplayer();
+    gamestart();
 
 }
+
+

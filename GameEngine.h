@@ -6,6 +6,7 @@ using namespace std;
 #include <algorithm>
 #include "Map.h"
 #include "Player.h"
+#include "Card.h"
 
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
@@ -44,10 +45,12 @@ class GameEngine {
     private:
         State currentState;
         Map gameMap;
+        Deck *MainDeck;
         std::vector<Player*> Players;
         void loadmap();
         void validatemap();
         void addplayer();
+        void gamestart();
         void assigncountries();
         void issueorder();
         void execorder();
