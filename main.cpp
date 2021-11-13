@@ -27,13 +27,14 @@ void player() {
     for (unsigned i = 0; i < numPlayers; ++i) {
         cout << "Please enter your name: ";
         cin >> playerName;
-
+    /* todo uncommment
         auto *pPlayer = new Player(&playerName,
                                    generateTerritories(territoriesOwnedPerPlayer),
                                    generateHand(numCardsPerPlayer),
                                    generateOrder());
         vPlayer.push_back(pPlayer);
         cout << endl;
+        */
     }
 
     for (int i = 0; i < numPlayers; ++i) {
@@ -381,7 +382,7 @@ int main() {
     //OrdersDriver();
     //RunCardDriver();
     //player();
-    driveMap();
+    //driveMap();
     //runGameEngine();
 
     //CommandProcessor cp;

@@ -117,7 +117,7 @@ State GameEngine::getState() {
 }
 
 void GameEngine::loadmap() {
-    transition(T_LOAD_MAP);
+    transition("loadmap");
     cout << "Chose between any of the following files:\n" <<
         "1: Europe\n"<<
         "2: Canada\n"<<
@@ -129,7 +129,7 @@ void GameEngine::loadmap() {
 }
 
 void GameEngine::validatemap() {
-    transition(T_VALIDATE_MAP);
+    transition("validatemap");
     cout << "Validating Map";
     if(gameMap.Validate())
         cout << "Map is valid";
@@ -140,7 +140,7 @@ void GameEngine::validatemap() {
 }
 
 void GameEngine::addplayer() {
-    transition(T_ADD_PLAYER);
+    transition("addplayer");
     cout << "How many players do you want to add" << endl;
     int numPlayers;
     cin >> numPlayers;
@@ -152,7 +152,7 @@ void GameEngine::addplayer() {
         Players.push_back(new Player(name));
     }
 
-    shuffle(Players.begin(), Players.end(), 15);
+    //shuffle(Players.begin(), Players.end(), 15); todo uncommment
 }
 
 void GameEngine::gamestart() {
@@ -165,7 +165,7 @@ void GameEngine::gamestart() {
 }
 
 void GameEngine::assigncountries() {
-    transition(T_ASSIGN_COUNTRIES);
+    transition("assigncountries");
     for(int i = 0; i < gameMap.map.size(); i++)
     {
         Players.at(i%Players.size())->vTerritory.push_back(gameMap.map.at(i));
@@ -173,37 +173,37 @@ void GameEngine::assigncountries() {
 }
 
 void GameEngine::issueorder() {
-    transition(T_ISSUE_ORDER);
+    //transition(T_ISSUE_ORDER);
     cout << "Executing function issueorder" << endl;
 }
 
 void GameEngine::execorder() {
-    transition(T_EXEC_ORDER);
+    //transition(T_EXEC_ORDER);
     cout << "Executing function execorder" << endl;
 }
 
 void GameEngine::endexecorders() {
-    transition(T_END_EXEC_ORDERS);
+    //transition(T_END_EXEC_ORDERS);
     cout << "Executing function endexecorders" << endl;
 }
 
 void GameEngine::endissueorders() {
-    transition(T_END_ISSUE_ORDERS);
+    //transition(T_END_ISSUE_ORDERS);
     cout << "Executing function endissueorders" << endl;
 }
 
 void GameEngine::win() {
-    transition(T_WIN);
+    //transition(T_WIN);
     cout << "Executing function win" << endl;
 }
 
 void GameEngine::end() {
-    transition(T_END);
+    //transition(T_END);
     cout << "Executing function end" << endl;
 }
 
 void GameEngine::play() {
-    transition(T_PLAY);
+    //transition(T_PLAY);
     cout << "Executing function play" << endl;
 }
 
@@ -226,7 +226,6 @@ void GameEngine::startupPhase(){
     validatemap();
     addplayer();
     gamestart();
-
 }
 
 

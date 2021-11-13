@@ -199,9 +199,10 @@ int Player::getTerritorySize() const {
 // * @param vIndex the current card from the list of Hands
 // * @return the number of the current card
 // */
-//int Player::getCardsOwned(int vIndex) {
-//    return vHand->at(vIndex).size();
-//}
+int Player::getCardsOwned(int vIndex) {
+    return 0;
+    //return vHand->at(vIndex).size(); todo uncommment
+}
 
 /**
  * Gets the number of cards in the players hand
