@@ -12,12 +12,6 @@
 
 class Territory{
 public:
-    // what I added
-    int armies;
-    int getArmies();
-    void setArmies(int armies);
-    void addArmies(int armiesToAdd);
-    // ends here
     int id;
     std::string name;
     int continent;

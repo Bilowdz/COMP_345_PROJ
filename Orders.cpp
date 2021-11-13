@@ -314,7 +314,7 @@ void Deploy::validate(Player * player) {
  * Executes a Deploy order
  */
 void Deploy::execute(Player * player) {
-    this->territory.addArmies(this->armies);
+    this->territory.unitsGarrisoned = this->territory.unitsGarrisoned + this->armies;
     std::cout << "\nDeploy executed. New number of armies in territory: \n";
 }
 
@@ -832,7 +832,7 @@ void Negotiate::validate(Player * player) {
  * Executes a Negotiate order
  */
 void Negotiate::execute(Player * player) {
-    // TODO make it so if this is executed this->getPlayerLink() 
+    // TODO make it so if this is executed this->getPlayerLink()
     //  and passed player cannot attack each other for the remainder of the turn.
     std::cout << "Negotiate active between the two selected players.\n";
 }

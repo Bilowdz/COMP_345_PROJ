@@ -464,19 +464,6 @@ std::ostream &operator<<(std::ostream &out, const Territory &territory) {
     return out;
 }
 
-// stuff I added
-Territory::Territory() = default;
-int Territory::getArmies(){
-    return this->armies;
-}
-void Territory::setArmies(int armies){
-    this->armies = armies;
-}
-void Territory::addArmies(int armiesToAdd){
-    this->armies = armies + armiesToAdd;
-}
-// ends here
-
 // Destructor for the territory class
 Territory::~Territory() = default;
 
