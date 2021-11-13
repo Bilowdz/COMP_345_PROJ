@@ -10,11 +10,12 @@
 #include <map>
 #include "State.h"
 #include "GameEngine.h"
+#include "LoggingObserver.h"
 
 using namespace std;
 
 // holds data of commands
-class Command {
+class Command : public Subject, public ILoggable {
 private:
     string command;
     string effect;
@@ -45,11 +46,15 @@ public:
 
     // stream insertion operator overload
     friend ostream & operator << (ostream &, const Command &c);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 // controls how commands are processed
-class CommandProcessor {
+class CommandProcessor : public Subject, public ILoggable {
 private:
+    Command* currentCommand;
     vector<Command*> commands;
     GameEngine ge;
 
@@ -82,6 +87,9 @@ public:
 
     // stream insertion operator overload
     friend ostream & operator << (ostream &, const CommandProcessor &cp);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 // loads file to memory, reads line by line

@@ -41,6 +41,7 @@ Command:: ~Command() = default;
 
 void Command::saveEffect(string e) {
     effect = e;
+    Notify(this);
 }
 
 string Command::getEffect() const {
@@ -64,6 +65,12 @@ ostream & operator << (ostream &out, const Command &c)
 {
     out << "Command: " << c.getCommand() << " Effect: " << c.getEffect() << endl;
     return out;
+}
+
+// logging call
+string Command::stringToLog() {
+    string log = "Log :: Effect: " + getEffect();
+    return log;
 }
 
 /**
@@ -120,8 +127,16 @@ string CommandProcessor::readCommand() {
 
 Command* CommandProcessor::saveCommand(string command, string effect) {
     Command *c;
-    c = new Command(command,effect);
+    c = new Command(command);
+    currentCommand = c;
     commands.push_back(c);
+
+    Notify(this);
+
+    for(Observer* observer : *_observers)
+        c->Attach(observer);
+    c->saveEffect(effect);
+
     return c;
 }
 
@@ -221,6 +236,11 @@ ostream & operator << (ostream &out, const CommandProcessor &cp)
     }
 
     return out;
+}
+
+string CommandProcessor::stringToLog() {
+    string log = "Log :: Command: " + currentCommand->getCommand();
+    return log;
 }
 
 /**

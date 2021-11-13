@@ -13,8 +13,8 @@
 
 class ILoggable {
 public:
-    virtual ~ILoggable();
-    virtual std::string stringToLog();
+    ~ILoggable();
+    virtual std::string stringToLog() = 0;
 };
 
 class Observer {
@@ -34,7 +34,7 @@ public:
     Subject();
     ~Subject();
 
-private:
+protected:
     std::list<Observer *> *_observers;
 };
 

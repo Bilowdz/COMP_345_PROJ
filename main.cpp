@@ -3,6 +3,7 @@
 #include "Orders.h"
 #include "Player.h"
 #include "CommandProcessing.h"
+#include "LoggingObserver.h"
 #include <iostream>
 #include <memory>
 using namespace std;
@@ -385,6 +386,7 @@ int main() {
 
     //Command *c = cp.getCommand(ST_START);
 
+    LogObserver* log = new LogObserver();
     FileLineReader flr("../CommandProcessorFiles/commands.txt");
     //flr.load();
     //while(!flr.isEof()) {
@@ -393,8 +395,10 @@ int main() {
 
     GameEngine* ge = new GameEngine();
     FileCommandProcessorAdapter adapter(flr, ge);
+    adapter.Attach(log);
 
     Command* c = adapter.getCommand();
+    c->Attach(log);
 
     return 0;
 }

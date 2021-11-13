@@ -4,6 +4,8 @@
 
 #include "LoggingObserver.h"
 
+ILoggable::~ILoggable() {}
+
 Observer::Observer() {}
 
 Observer::~Observer() {}
@@ -38,9 +40,11 @@ void LogObserver::Update(ILoggable *loggable) {
     std::string LogFile = "gamelog.txt";
     std::filesystem::current_path("../Logs");
     std::ofstream output;
-    output.open(LogFile, std::ios_base::app);
 
-    output << loggable->stringToLog() << std::endl;
+    output.open(LogFile, std::ios_base::app);
+    std::string log = loggable->stringToLog();
+
+    output << log << std::endl;
 
     output.close();
 }
