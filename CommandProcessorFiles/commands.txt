@@ -1,0 +1,8 @@
+loadmap canada.map
+validatemap
+addplayer Bilowdz
+addplayer NotRyan
+addplayer Nathan "The Hacker" Ziri
+addplayer Sean "The Philosopher" Meath
+addplayer Nicolo
+gamestart

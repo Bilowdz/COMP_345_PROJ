@@ -1,8 +1,8 @@
 #include "Card.h"
-#include "GameEngineDriver.h"
 #include "Map.h"
 #include "Orders.h"
 #include "Player.h"
+#include "CommandProcessing.h"
 #include <iostream>
 #include <memory>
 using namespace std;
@@ -273,16 +273,94 @@ void OrdersDriver() {
     ordersListObj.getList().at(6)->validate();
 }
 
-void runGameEngine() {
-    GameEngineDriver driver;
+void runGameEngine(){
+    GameEngine game;
+    int flag = 0;
 
-    // loop until game is done
-    while (!driver.isGameDone()) {
+    // accept user input until valid user input selected
+    while(flag == 0) {
+        string input;
+        string error;
+        cout << "Please choose an option:";
+        // get user input
+        cin >> input;
 
-        // accept user input
-        cin >> driver;
+        // check if valid input
+        if(input=="loadmap") {
+            if(game.transition("loadmap")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="validatemap") {
+            if(game.transition("validatemap")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="addplayer") {
+            if(game.transition("addplayer")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="assigncountries") {
+            if(game.transition("assigncountries")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="issueorder") {
+            if(game.transition("issueorder")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="execorder") {
+            if(game.transition("execorder")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="endexecorders") {
+            if(game.transition("endexecorders")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="endissueorders") {
+            if(game.transition("endissueorders")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="win") {
+            if(game.transition("win")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="end") {
+            if(game.transition("end")) {
+                flag = 1;
 
-        cout << driver << endl;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="play") {
+            if(game.transition("play")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else {
+            error = "'" + input + "' is an invalid transition!";
+        }
+
+        if (flag == 0){
+            cout << error << endl;
+            error = "";
+        }
     }
 }
 
@@ -302,6 +380,21 @@ int main() {
     //player();
     //driveMap();
     //runGameEngine();
+
+    //CommandProcessor cp;
+
+    //Command *c = cp.getCommand(ST_START);
+
+    FileLineReader flr("../CommandProcessorFiles/commands.txt");
+    //flr.load();
+    //while(!flr.isEof()) {
+    //    cout << flr.next() << endl;
+    //}
+
+    GameEngine* ge = new GameEngine();
+    FileCommandProcessorAdapter adapter(flr, ge);
+
+    Command* c = adapter.getCommand();
 
     return 0;
 }
