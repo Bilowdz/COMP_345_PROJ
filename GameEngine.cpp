@@ -113,9 +113,9 @@ bool GameEngine::transition(Command *c) {
 }
 
 // return enum value currentState
-State GameEngine::getState() {
-    return currentState;
-}
+//State GameEngine::getState() {
+//    return currentState;
+//}
 
 void GameEngine::loadmap(Command *c) {
     /*
@@ -167,8 +167,8 @@ void GameEngine::addplayer(Command * c) {
 void GameEngine::gamestart() {
     *MainDeck = *new Deck(Players.size());
     for(auto & Player : Players){
-       MainDeck->Draw(Player->vHand);
-       MainDeck->Draw(Player->vHand);
+       MainDeck->Draw(Player->getHand());
+       MainDeck->Draw(Player->getHand());
     }
     assigncountries();
 }
@@ -176,7 +176,7 @@ void GameEngine::gamestart() {
 void GameEngine::assigncountries() {
     for(int i = 0; i < gameMap.map.size(); i++)
     {
-        Players.at(i%Players.size())->vTerritory.push_back(gameMap.map.at(i));
+        Players.at(i%Players.size())->addTerritory(gameMap.map.at(i));
     }
 }
 
@@ -223,11 +223,11 @@ GameEngine& GameEngine::operator =(const GameEngine &ge) {
 }
 
 // stream insertion operator overloads
-ostream & operator << (ostream &out, const GameEngine &ge)
-{
-    out << "Current State:" << enum_state_str[ge.currentState] << endl;
-    return out;
-}
+//ostream & operator << (ostream &out, const GameEngine &ge)
+//{
+//    out << "Current State:" << enum_state_str[ge.currentState] << endl;
+//    return out;
+//}
 
 void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge){
     while(true) {
@@ -243,8 +243,7 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge){
             transition(c);
         }
     }
-<<<<<<< HEAD
-    return out;
+   // return out;
 }
 
 //added by ryan
@@ -253,74 +252,74 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge){
 //TODO continues until one player owns all territories
 //TODO must also remove players that do not own any territories
 
-vector<Territory *> generateTerritories(int numTerritoryOwned);
-vector<Hand *> generateHand(int numberCardsPerPlayer);
-
-static int territoryNumber = 1;
-static int cardNumber = 1;
-static const int territoriesOwnedPerPlayer = 5;
-static const int numCardsPerPlayer = 3;
-
-vector<Territory *> generateTerritories(int numTerritoryOwned) {
-    vector<Territory *> vTerritory;
-    Territory *pPlayerTerritory;
-    for (int i = 0; i < numTerritoryOwned; i++) {
-        pPlayerTerritory = new Territory(i, "Territory " + to_string(territoryNumber), 1);
-        vTerritory.push_back(pPlayerTerritory);
-        territoryNumber++;
-    }
-    return vTerritory;
-}
-
-/**
- * Generates the cards for each player
- *
- * @param numCardsPerPlayer the initial amount of cards per player
- * @return vector of Hands that gets passed into the player vector
- */
-vector<Hand *> generateHand(int numberCardsPerPlayer) {
-    vector<Hand *> vHand;
-    Hand *pHand;
-    for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
-        pHand = new Hand();
-        pHand->ReceiveCard(new Card( "Bomb"));
-        vHand.push_back(pHand);
-        cardNumber++;
-    }
-    return vHand;
-}
+//vector<Territory *> generateTerritories(int numTerritoryOwned);
+//vector<Hand *> generateHand(int numberCardsPerPlayer);
+//
+//static int territoryNumber = 1;
+//static int cardNumber = 1;
+//static const int territoriesOwnedPerPlayer = 5;
+//static const int numCardsPerPlayer = 3;
+//
+//vector<Territory *> generateTerritories(int numTerritoryOwned) {
+//    vector<Territory *> vTerritory;
+//    Territory *pPlayerTerritory;
+//    for (int i = 0; i < numTerritoryOwned; i++) {
+//        pPlayerTerritory = new Territory(i, "Territory " + to_string(territoryNumber), 1);
+//        vTerritory.push_back(pPlayerTerritory);
+//        territoryNumber++;
+//    }
+//    return vTerritory;
+//}
+//
+///**
+// * Generates the cards for each player
+// *
+// * @param numCardsPerPlayer the initial amount of cards per player
+// * @return vector of Hands that gets passed into the player vector
+// */
+//vector<Hand *> generateHand(int numberCardsPerPlayer) {
+//    vector<Hand *> vHand;
+//    Hand *pHand;
+//    for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
+//        pHand = new Hand();
+//        pHand->ReceiveCard(new Card( "Bomb"));
+//        vHand.push_back(pHand);
+//        cardNumber++;
+//    }
+//    return vHand;
+//}
 
 //reinforcement phase: number of territories they own, (# of territories owned divided by 3, rounded down)
 void GameEngine::mainGameLoop() {
 //call issue order to each player
     //TODO add a loop until one player wins, and remove players that do not own anymore territories
 
-    OrdersList * ordersListObj = new OrdersList();
-    Territory * territory = new Territory(5, "territory 1", 1);
-    Deploy * deploy1 = new Deploy(11, *territory);
-    ordersListObj->addDeploy(deploy1);
-
-    string ryan = "Ryan";
-
-    auto *player1 = new Player(&ryan, generateTerritories(territoriesOwnedPerPlayer),
-                               generateHand(numCardsPerPlayer), ordersListObj);
-
-    deploy1->setPlayerLink(*player1);
-
-    player1->setReinforcements(12);
-
-    for (int i = 0; i < territoriesOwnedPerPlayer; i++) {
-        cout << player1->getTerritoriesOwned(i)->id << endl;
-    }
-
-    //player1->getOrder(0)->validate(player1);
-
-    player1->issueOrder();
-
-    delete ordersListObj;
-    delete territory;
-    delete deploy1;
-    delete player1;
+//    OrdersList * ordersListObj = new OrdersList();
+//    Territory * territory = new Territory(5, "territory 1", 1);
+//    Deploy * deploy1 = new Deploy(11, *territory);
+//    ordersListObj->addDeploy(deploy1);
+//
+//    string ryan = "Ryan";
+//
+//    auto *player1 = new Player(&ryan, generateTerritories(territoriesOwnedPerPlayer),
+//                               generateHand(numCardsPerPlayer), ordersListObj);
+//
+//    deploy1->setPlayerLink(*player1);
+//
+//    player1->setReinforcements(12);
+//
+//    for (int i = 0; i < territoriesOwnedPerPlayer; i++) {
+//        cout << player1->getTerritoriesOwned(i)->id << endl;
+//    }
+//
+//    //player1->getOrder(0)->validate(player1);
+//
+//    player1->issueOrder();
+//
+//    delete ordersListObj;
+//    delete territory;
+//    delete deploy1;
+//    delete player1;
 }
 
 /*
@@ -359,8 +358,3 @@ void GameEngine::executeOrdersPhase() {
 
 }
 //end ryan
-=======
-}
-
-
->>>>>>> commandProcessingMergedStartupPhase

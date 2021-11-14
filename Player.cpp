@@ -24,11 +24,7 @@ Player::Player(string *name) {
 * @param vHand is the vector Hand pointer of all the hand the player owns
 * @param ordersList is the vector Order pointer of all the orders the player can do
 */
-<<<<<<< HEAD
-Player::Player(vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * ordersList) {
-=======
-Player::Player(vector<Territory *> vTerritories, Hand* vHand, vector<Order *> vOrder) {
->>>>>>> commandProcessingMergedStartupPhase
+Player::Player(vector<Territory *> vTerritories, Hand* vHand, OrdersList * ordersList) {
     this->vTerritory = vTerritories;
     this->vHand = vHand;
     this->ordersList = ordersList;
@@ -42,11 +38,7 @@ Player::Player(vector<Territory *> vTerritories, Hand* vHand, vector<Order *> vO
  * @param vHand is the vector Hand pointer of all the hand the player owns
  * @param ordersList is the vector Order pointer of all the orders the player can do
  */
-<<<<<<< HEAD
-Player::Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * ordersList) {
-=======
-Player::Player(string *name, vector<Territory *> vTerritories, Hand * vHand, vector<Order *> vOrder) {
->>>>>>> commandProcessingMergedStartupPhase
+Player::Player(string *name, vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList) {
     (*this).name = *name;
     this->vTerritory = vTerritories;
     this->vHand = vHand;
@@ -296,7 +288,9 @@ void Player::addTerritory(Territory * territory) {
 }
 
 
-
+Hand * Player::getHand() {
+    return this->vHand;
+}
 
 
 

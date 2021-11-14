@@ -126,7 +126,7 @@ OrdersList Hand::Play(Deck *mainDeck, OrdersList *o) {
     Card *playedCard = new Card(*this->cardsHeld.at(chosenCard));
     mainDeck->ReceiveCard(playedCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + chosenCard);
-    Orders newOrder;
+    //Orders newOrder;
 
     if(this->cardsHeld.at(chosenCard)->cardType.compare("Bomb")){
         o->addBomb(new Bomb());

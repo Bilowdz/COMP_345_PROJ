@@ -36,11 +36,8 @@ public:
     * @param vHand is the vector Hand pointer of all the hand the player owns
     * @param vOrder is the vector Order pointer of all the orders the player can do
     */
-<<<<<<< HEAD
-    Player(vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * vOrder);
-=======
-    Player(vector<Territory *> vTerritories, Hand * vHand, vector<Order *> vOrder);
->>>>>>> commandProcessingMergedStartupPhase
+
+    Player(vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
 
     /**
      * Constructor that takes in the following parameters
@@ -50,11 +47,8 @@ public:
      * @param vHand is the vector Hand pointer of all the hand the player owns
      * @param vOrder is the vector Order pointer of all the orders the player can do
      */
-<<<<<<< HEAD
-    Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * vOrder);
-=======
-    Player(string *name, vector<Territory *> vTerritories, Hand * vHand, vector<Order *> vOrder);
->>>>>>> commandProcessingMergedStartupPhase
+
+    Player(string *name, vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
 
     /**
      * Copy constructor
@@ -172,27 +166,20 @@ public:
      */
     void setName(string s);
 
-<<<<<<< HEAD
     void setReinforcements(int armies);
 
     int getReinforcements();
     Territory * isOwnedTerritory(int id);
     void displayTerritoriesOwned();
+    Hand * getHand();
 
 private:
     string name; //Name of the player
-    vector<Territory *> vTerritory; //Vector of all the territories owned
-    vector<Hand *> vHand; //Vector of all the cards the player owns
-    OrdersList * ordersList; //Vector for all the orders the player can do
-    int reinforcements;
-=======
     vector<Territory *> vTerritory; //Vector of all the territories owned
     Hand * vHand; //Vector of all the cards the player owns
+    OrdersList * ordersList; //Vector for all the orders the player can do
+    int reinforcements;
 
-private:
-    string name; //Name of the player
-    vector<Order *> vOrder; //Vector for all the orders the player can do
->>>>>>> commandProcessingMergedStartupPhase
 };
 
 #endif //COMP_345_PROJ_PLAYER_H
