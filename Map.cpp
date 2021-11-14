@@ -410,6 +410,8 @@ std::ostream &operator<<(std::ostream &out, const Continent &continent) {
 // Destructor for the continent class
 Continent::~Continent() = default;
 
+Territory::Territory() = default;
+
 // Constructor for the territory class
 Territory::Territory(int id, std::string name, int continent) {
     this->id = id;

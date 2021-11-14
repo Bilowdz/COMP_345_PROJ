@@ -80,9 +80,9 @@ class GameEngine {
         void executeOrdersPhase();
         //end ryan
 
-        string getState();
+        //string getState();
         //bool transition(Transition);
-        //State getState();
+        State getState();
         bool transition(Command *);
 
         GameEngine& operator =(const GameEngine &);

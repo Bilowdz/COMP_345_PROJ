@@ -102,20 +102,20 @@ bool GameEngine::transition(Command *c) {
         }
     }
 
-       /*
-            try {
-                throw T_ERROR;
-            } catch (Transition t) {
-                cout << " An error has occurred. Exception: '" << t << "'" << endl;
-            }
-            */
+    /*
+         try {
+             throw T_ERROR;
+         } catch (Transition t) {
+             cout << " An error has occurred. Exception: '" << t << "'" << endl;
+         }
+         */
     return false;
 }
 
 // return enum value currentState
-//State GameEngine::getState() {
-//    return currentState;
-//}
+State GameEngine::getState() {
+    return currentState;
+}
 
 void GameEngine::loadmap(Command *c) {
     /*
@@ -167,8 +167,8 @@ void GameEngine::addplayer(Command * c) {
 void GameEngine::gamestart() {
     *MainDeck = *new Deck(Players.size());
     for(auto & Player : Players){
-       MainDeck->Draw(Player->getHand());
-       MainDeck->Draw(Player->getHand());
+        MainDeck->Draw(Player->getHand());
+        MainDeck->Draw(Player->getHand());
     }
     assigncountries();
 }
@@ -223,11 +223,11 @@ GameEngine& GameEngine::operator =(const GameEngine &ge) {
 }
 
 // stream insertion operator overloads
-//ostream & operator << (ostream &out, const GameEngine &ge)
-//{
-//    out << "Current State:" << enum_state_str[ge.currentState] << endl;
-//    return out;
-//}
+ostream & operator << (ostream &out, const GameEngine &ge)
+{
+    out << "Current State:" << enum_state_str[ge.currentState] << endl;
+    return out;
+}
 
 void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge){
     while(true) {
@@ -243,8 +243,8 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge){
             transition(c);
         }
     }
-   // return out;
 }
+
 
 //added by ryan
 //TODO implement this shit
