@@ -1,188 +1,217 @@
 //
 // Created by Nicolo on 2021-09-24.
 //
-#include <iostream>
 #include "GameEngine.h"
+#include "CommandProcessing.h"
 using namespace std;
 
 // constructor
-GameEngine::GameEngine(): isGameDone(false), currentState(ST_START) {}
+GameEngine::GameEngine(): isGameDone(false), currentState(ST_START) {
+    cout << "GameEngine constructor called" << endl;
+}
 
 // copy constructors
-GameEngine::GameEngine(const GameEngine &game): isGameDone(false), currentState(game.currentState) {}
+GameEngine::GameEngine(const GameEngine &game): isGameDone(false), currentState(game.currentState) {
+    cout << "GameEngine copy constructor called" << endl;
+}
 
-GameEngine::GameEngine(GameEngine *const pGameEngine): isGameDone(false), currentState(pGameEngine->currentState) {}
+GameEngine::GameEngine(GameEngine *const pGameEngine): isGameDone(false), currentState(pGameEngine->currentState) {
+    cout << "GameEngine copy constructor 2 called" << endl;
+}
 
 // destructor
 GameEngine:: ~GameEngine() = default;
 
 // validate and execute transitions based on current state
-bool GameEngine::transition(Transition t) {
-    switch(t) {
-        case T_LOAD_MAP:
+bool GameEngine::transition(Command *c) {
+    string command= c->getCommand();
+    string loadmap = "loadmap";
+    string addplayer = "addplayer";
 
-            // only transition from valid states
-            if(currentState == ST_START || currentState == ST_MAP_LOADED) {
+    if(command.rfind(loadmap,0) == 0) {
+        // only transition from valid states
+        if(currentState == ST_START || currentState == ST_MAP_LOADED) {
 
-                    // valid transition to state map loaded, so travel to state
-                    currentState = ST_MAP_LOADED;
+            // valid transition to state map loaded, so travel to state
+            currentState = ST_MAP_LOADED;
 
-                // execute game engine function
-                this->loadmap();
-                return true;
-            }
+            // execute game engine function
+            this->loadmap(c);
+            return true;
+        }
+    }else if(command == "validatemap") {
+        if(currentState == ST_MAP_LOADED) {
+            currentState = ST_MAP_VALIDATED;
+            this->validatemap();
+            return true;
+        }
+    }else if(command == "addplayer") {
+        if(currentState == ST_MAP_VALIDATED || currentState == ST_PLAYERS_ADDED) {
+            currentState = ST_PLAYERS_ADDED;
+            this->addplayer(c);
+            return true;
+        }
+    }else if(command == "assigncountries") {
+        if(currentState == ST_PLAYERS_ADDED) {
+            currentState = ST_ASSIGN_REINFORCEMENT;
+            this->assigncountries();
+            return true;
+        }
+    }else if(command == "issueorders") {
+        if(currentState == ST_ASSIGN_REINFORCEMENT || currentState == ST_ISSUE_ORDERS) {
+            currentState = ST_ISSUE_ORDERS;
+            this->issueorder();
+            return true;
+        }
+    }else if(command == "endissueorders") {
+        if(currentState == ST_ISSUE_ORDERS) {
+            currentState = ST_EXECUTE_ORDERS;
+            this->endissueorders();
+            return true;
+        }
+    }else if(command == "execorder") {
+        if(currentState == ST_ISSUE_ORDERS || currentState == ST_EXECUTE_ORDERS) {
+            currentState = ST_EXECUTE_ORDERS;
+            this->execorder();
+            return true;
+        }
+    }else if(command == "endexecorders") {
+        if(currentState == ST_EXECUTE_ORDERS) {
+            currentState = ST_ASSIGN_REINFORCEMENT;
+            this->endexecorders();
+            return true;
+        }
+    }else if(command == "win") {
+        if(currentState == ST_EXECUTE_ORDERS) {
+            currentState = ST_WIN;
+            this->win();
+            return true;
+        }
+    }else if(command == "play") {
+        if(currentState == ST_WIN) {
+            currentState = ST_START;
+            this->play();
+            return true;
+        }
+    }else if(command == "end") {
+        if(currentState == ST_WIN) {
+            currentState = ST_END;
+            this->end();
+            this->isGameDone = true;
+            return true;
+        }
+    }
 
-            break;
-        case T_VALIDATE_MAP:
-            if(currentState == ST_MAP_LOADED) {
-                currentState = ST_MAP_VALIDATED;
-                this->validatemap();
-                return true;
-            }
-
-            break;
-
-        case T_ADD_PLAYER:
-            if(currentState == ST_MAP_VALIDATED || currentState == ST_PLAYERS_ADDED) {
-                currentState = ST_PLAYERS_ADDED;
-                this->addplayer();
-                return true;
-            }
-            break;
-        case T_ASSIGN_COUNTRIES:
-            if(currentState == ST_PLAYERS_ADDED) {
-                currentState = ST_ASSIGN_REINFORCEMENT;
-                this->assigncountries();
-                return true;
-            }
-            break;
-        case T_ISSUE_ORDER:
-            if(currentState == ST_ASSIGN_REINFORCEMENT || currentState == ST_ISSUE_ORDERS) {
-                currentState = ST_ISSUE_ORDERS;
-                this->issueorder();
-                return true;
-            }
-            break;
-        case T_END_ISSUE_ORDERS:
-            if(currentState == ST_ISSUE_ORDERS) {
-                currentState = ST_EXECUTE_ORDERS;
-                this->endissueorders();
-                return true;
-            }
-            break;
-        case T_EXEC_ORDER:
-            if(currentState == ST_ISSUE_ORDERS || currentState == ST_EXECUTE_ORDERS) {
-                currentState = ST_EXECUTE_ORDERS;
-                this->execorder();
-                return true;
-            }
-            break;
-        case T_END_EXEC_ORDERS:
-            if(currentState == ST_EXECUTE_ORDERS) {
-                currentState = ST_ASSIGN_REINFORCEMENT;
-                this->endexecorders();
-                return true;
-            }
-            break;
-        case T_WIN:
-            if(currentState == ST_EXECUTE_ORDERS) {
-                currentState = ST_WIN;
-                this->win();
-                return true;
-            }
-            break;
-        case T_PLAY:
-            if(currentState == ST_WIN) {
-                currentState = ST_START;
-                this->play();
-                return true;
-            }
-            break;
-        case T_END:
-            if(currentState == ST_WIN) {
-                currentState = ST_END;
-                this->end();
-                this->isGameDone = true;
-                return true;
-            }
-            break;
-        default:
+       /*
             try {
                 throw T_ERROR;
             } catch (Transition t) {
                 cout << " An error has occurred. Exception: '" << t << "'" << endl;
             }
-    }
+            */
     return false;
 }
 
-// return string equivalent of enum value currentState
-string GameEngine::getState() {
-    switch(currentState) {
-        case ST_START:
-            return "start";
-        case ST_MAP_LOADED:
-            return "maploaded";
-        case ST_MAP_VALIDATED:
-            return "mapvalidated";
-        case ST_PLAYERS_ADDED:
-            return "playersadded";
-        case ST_ASSIGN_REINFORCEMENT:
-            return "assignreinforcement";
-        case ST_ISSUE_ORDERS:
-            return "issueorders";
-        case ST_EXECUTE_ORDERS:
-            return "executeorders";
-        case ST_WIN:
-            return "win";
-        case ST_END:
-            return "end";
-        default:
-            return "error";
-    }
+// return enum value currentState
+State GameEngine::getState() {
+    return currentState;
 }
 
-void GameEngine::loadmap() {
-    cout << "Executing function loadmap" << endl;
+void GameEngine::loadmap(Command *c) {
+    /*
+    cout << "Chose between any of the following files:\n" <<
+        "1: Europe\n"<<
+        "2: Canada\n"<<
+        "3: Zertina\n"<<endl;
+*/
+    string command = c->getCommand(); //command = "loadmap zertina.map"
+    int mapChosen;
+
+    if(command == "loadmap zertina.map") {
+        mapChosen=3;
+    } else if(command == "loadmap bigeurope.map") {
+        mapChosen=1;
+    } else if(command == "loadmap canada.map") {
+        mapChosen=2;
+
+        // invalid map
+    } else {
+
+    }
+
+    MapLoader load;
+    gameMap = *load.maps.at(mapChosen-1);
+
 }
 
 void GameEngine::validatemap() {
-    cout << "Executing function validatemap" << endl;
+    cout << "Validating Map";
+    if(gameMap.Validate())
+        cout << "Map is valid";
+    else {
+        cout << "Map is not valid";
+        exit(0);
+    }
 }
 
-void GameEngine::addplayer() {
-    cout << "Executing function addplayer" << endl;
+void GameEngine::addplayer(Command * c) {
+
+    // get the name from command object
+    string *name = new string((c->getCommand()).substr(10));
+
+    Players.push_back(new Player(name));
+
+    //shuffle(Players.begin(), Players.end(), 15); todo uncommment
+}
+
+void GameEngine::gamestart() {
+    *MainDeck = *new Deck(Players.size());
+    for(auto & Player : Players){
+       MainDeck->Draw(Player->vHand);
+       MainDeck->Draw(Player->vHand);
+    }
+    assigncountries();
 }
 
 void GameEngine::assigncountries() {
-    cout << "Executing function assigncountries" << endl;
+    for(int i = 0; i < gameMap.map.size(); i++)
+    {
+        Players.at(i%Players.size())->vTerritory.push_back(gameMap.map.at(i));
+    }
 }
 
 void GameEngine::issueorder() {
+    //transition(T_ISSUE_ORDER);
     cout << "Executing function issueorder" << endl;
 }
 
 void GameEngine::execorder() {
+    //transition(T_EXEC_ORDER);
     cout << "Executing function execorder" << endl;
 }
 
 void GameEngine::endexecorders() {
+    //transition(T_END_EXEC_ORDERS);
     cout << "Executing function endexecorders" << endl;
 }
 
 void GameEngine::endissueorders() {
+    //transition(T_END_ISSUE_ORDERS);
     cout << "Executing function endissueorders" << endl;
 }
 
 void GameEngine::win() {
+    //transition(T_WIN);
     cout << "Executing function win" << endl;
 }
 
 void GameEngine::end() {
+    //transition(T_END);
     cout << "Executing function end" << endl;
 }
 
 void GameEngine::play() {
+    //transition(T_PLAY);
     cout << "Executing function play" << endl;
 }
 
@@ -196,42 +225,25 @@ GameEngine& GameEngine::operator =(const GameEngine &ge) {
 // stream insertion operator overloads
 ostream & operator << (ostream &out, const GameEngine &ge)
 {
-    switch(ge.currentState) {
+    out << "Current State:" << enum_state_str[ge.currentState] << endl;
+    return out;
+}
 
-        case ST_START:
-            out << "Current State: start" << endl;
+void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge){
+    while(true) {
+
+        // get command
+        Command *c = cp.getCommand(ge);
+        string commandName = c->getCommand();
+
+        // stop startup phase once game started
+        if(commandName == "gamestart") {
             break;
-        case ST_MAP_LOADED:
-            out << "Current State: maploaded" << endl;
-            break;
-        case ST_MAP_VALIDATED:
-            out << "Current State: mapvalidated" << endl;
-            break;
-        case ST_PLAYERS_ADDED:
-            out << "Current State: playersadded" << endl;
-            break;
-        case ST_ASSIGN_REINFORCEMENT:
-            out << "Current State: assignreinforcement" << endl;
-            break;
-        case ST_ISSUE_ORDERS:
-            out << "Current State: issueorders" << endl;
-            break;
-        case ST_EXECUTE_ORDERS:
-            out << "Current State: executeorders" << endl;
-            break;
-        case ST_WIN:
-            out << "Current State: win" << endl;
-            break;
-        case ST_END:
-            out << "Current State: end" << endl;
-            break;
-        default:
-            try {
-                throw ST_ERROR;
-            } catch (State s) {
-                cout << " An error has occurred. Exception: '" << s << "'" << endl;
-            }            break;
+        } else {
+            transition(c);
+        }
     }
+<<<<<<< HEAD
     return out;
 }
 
@@ -347,3 +359,8 @@ void GameEngine::executeOrdersPhase() {
 
 }
 //end ryan
+=======
+}
+
+
+>>>>>>> commandProcessingMergedStartupPhase

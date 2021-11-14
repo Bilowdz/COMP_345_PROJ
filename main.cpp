@@ -1,12 +1,13 @@
 #include <iostream>
-#include "GameEngineDriver.h"
 #include "Map.h"
 #include "Orders.h"
 #include "Card.h"
 #include "Player.h"
+#include "CommandProcessing.h"
 #include <memory>
 using namespace std;
 
+<<<<<<< HEAD
 //vector<Territory *> generateTerritories(int numTerritoryOwned);
 //vector<Hand *> generateHand(int numberCardsPerPlayer);
 //
@@ -74,6 +75,78 @@ using namespace std;
 //        delete i;
 //    }
 //}
+=======
+vector<Territory *> generateTerritories(int numTerritoryOwned);
+vector<Hand *> generateHand(int numberCardsPerPlayer);
+vector<Order *> generateOrder();
+
+static int territoryNumber = 1;
+static int cardNumber = 1;
+static int numOfOrders = 2;
+static const int territoriesOwnedPerPlayer = 5;
+static const int numCardsPerPlayer = 3;
+
+void player() {
+    int numPlayers = 0;
+    vector<Player *> vPlayer;
+    string playerName;
+    cout << "Enter number of players: \n";
+    cin >> numPlayers;
+
+    for (unsigned i = 0; i < numPlayers; ++i) {
+        cout << "Please enter your name: ";
+        cin >> playerName;
+    /* todo uncommment
+        auto *pPlayer = new Player(&playerName,
+                                   generateTerritories(territoriesOwnedPerPlayer),
+                                   generateHand(numCardsPerPlayer),
+                                   generateOrder());
+        vPlayer.push_back(pPlayer);
+        cout << endl;
+        */
+    }
+
+    for (int i = 0; i < numPlayers; ++i) {
+
+        cout << *vPlayer.at(i); //ostream called
+        cout << "Territories to attack: \n";
+        vPlayer.at(i)->toAttack(vPlayer);
+        cout << endl;
+    }
+
+    int playing = false;
+
+    while(!playing) {
+        string input;
+        string order;
+        cout << "Would you like to issue an order (y/n)? ";
+        cin >> input;
+
+        if(input == "y") {
+            cout << "Enter your order: ";
+            cin >> order;
+            vPlayer.at(0)->issueOrder(order); //showing issueOrder Function
+            playing = false;
+        } else if(input == "n") {
+            cout << "Orders Sent: \n";
+            for (int l = 0; l < vPlayer.at(0)->getNumberOfOrders(); ++l) {
+                cout << "\t" + vPlayer.at(0)->getOrder(l) << endl;
+            }
+            cout << "End of program!" << endl;
+            playing = true;
+        }
+        else {
+            cout << "Sorry try again\n" << endl;
+            playing = false;
+        }
+    }
+
+    //delete the pointers of vPlayer
+    for (auto & i : vPlayer) {
+        delete i;
+    }
+}
+>>>>>>> commandProcessingMergedStartupPhase
 
 /**
  * Generates the territories for each player.
@@ -81,6 +154,7 @@ using namespace std;
  * @param numTerritoryOwned the initial amount of territories
  * @return vector of Territories that gets passed into the player vector
  */
+<<<<<<< HEAD
 //vector<Territory *> generateTerritories(int numTerritoryOwned) {
 //    vector<Territory *> vTerritory;
 //    Territory *pPlayerTerritory;
@@ -110,6 +184,51 @@ using namespace std;
 //    return vHand;
 //}
 //
+=======
+vector<Territory *> generateTerritories(int numTerritoryOwned) {
+    vector<Territory *> vTerritory;
+    Territory *pPlayerTerritory;
+    for (int i = 0; i < numTerritoryOwned; ++i) {
+        pPlayerTerritory = new Territory((rand() % 100), "Territory " + to_string(territoryNumber), 1);
+        vTerritory.push_back(pPlayerTerritory);
+        territoryNumber++;
+    }
+    return vTerritory;
+}
+
+/**
+ * Generates the cards for each player
+ *
+ * @param numCardsPerPlayer the initial amount of cards per player
+ * @return vector of Hands that gets passed into the player vector
+ */
+vector<Hand *> generateHand(int numberCardsPerPlayer) {
+    vector<Hand *> vHand;
+    Hand *pHand;
+    for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
+        pHand = new Hand();
+        pHand->ReceiveCard(new Card( "Bomb"));
+        vHand.push_back(pHand);
+        cardNumber++;
+    }
+    return vHand;
+}
+
+/**
+ * Generates Orders that each player can execute
+ *
+ * @return a vector of Orders that gets passed into player vector
+ */
+vector<Order *> generateOrder() {
+    vector<Order *> vOrder;
+    for (unsigned i = 0; i <= numOfOrders; ++i) {
+        auto *pOrder = new Order;
+        vOrder.push_back(pOrder);
+    }
+    return vOrder;
+}
+
+>>>>>>> commandProcessingMergedStartupPhase
 //void RunCardDriver()
 //{
 //    Deck* TestDeck = new Deck(3);
@@ -297,16 +416,97 @@ void OrdersDriver(){
 }
 
 void runGameEngine(){
-    GameEngineDriver driver;
+    /*
+    GameEngine game;
+    int flag = 0;
 
-    // loop until game is done
-    while(!driver.isGameDone()) {
+    // accept user input until valid user input selected
+    while(flag == 0) {
+        string input;
+        string error;
+        cout << "Please choose an option:";
+        // get user input
+        cin >> input;
 
-        // accept user input
-        cin >> driver;
+        // check if valid input
+        if(input=="loadmap") {
+            if(game.transition("loadmap")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="validatemap") {
+            if(game.transition("validatemap")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="addplayer") {
+            if(game.transition("addplayer")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="assigncountries") {
+            if(game.transition("assigncountries")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="issueorder") {
+            if(game.transition("issueorder")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="execorder") {
+            if(game.transition("execorder")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="endexecorders") {
+            if(game.transition("endexecorders")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="endissueorders") {
+            if(game.transition("endissueorders")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="win") {
+            if(game.transition("win")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else if(input=="end") {
+            if(game.transition("end")) {
+                flag = 1;
 
-        cout << driver << endl;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+
+        } else if(input=="play") {
+            if(game.transition("play")) {
+                flag = 1;
+            } else {
+                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
+            }
+        } else {
+            error = "'" + input + "' is an invalid transition!";
+        }
+
+        if (flag == 0){
+            cout << error << endl;
+            error = "";
+        }
     }
+     */
 }
 
 void driveMap() {
@@ -330,6 +530,22 @@ int main() {
     //player();
     //driveMap();
     //runGameEngine();
+
+    //CommandProcessor cp;
+
+    //Command *c = cp.getCommand(ST_START);
+
+    FileLineReader flr("../CommandProcessorFiles/commands.txt");
+    //flr.load();
+    //while(!flr.isEof()) {
+    //    cout << flr.next() << endl;
+    //}
+
+    GameEngine* ge = new GameEngine();
+    cout << &ge << endl;
+    CommandProcessor cp;
+    ge->startupPhase(cp, ge);
+    //FileCommandProcessorAdapter adapter(flr, ge);
 
     return 0;
 }

@@ -1,10 +1,16 @@
 //
 // Created by Nicolo on 2021-09-24.
 //
+#include <iostream>
 using namespace std;
+#include <algorithm>
+#include "Map.h"
+#include "Player.h"
+#include "Card.h"
 
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
+<<<<<<< HEAD
 
 #include "Player.h"
 
@@ -36,13 +42,22 @@ enum Transition {
     T_END,
     T_ERROR
 };
+=======
+#include "State.h"
+class Command;
+class CommandProcessor;
+>>>>>>> commandProcessingMergedStartupPhase
 
 class GameEngine {
     private:
         State currentState;
-        void loadmap();
+        Map gameMap;
+        Deck *MainDeck;
+        std::vector<Player*> Players;
+        void loadmap(Command *);
         void validatemap();
-        void addplayer();
+        void addplayer(Command *);
+        void gamestart();
         void assigncountries();
         void issueorder();
         void execorder();
@@ -58,7 +73,9 @@ class GameEngine {
         GameEngine(const GameEngine &);
         GameEngine(GameEngine *);
         ~GameEngine();
+        void startupPhase(CommandProcessor cp, GameEngine *);
 
+<<<<<<< HEAD
         //added from ryan
         //TODO implement this shit
         void mainGameLoop();
@@ -69,6 +86,10 @@ class GameEngine {
 
         string getState();
         bool transition(Transition);
+=======
+        State getState();
+        bool transition(Command *);
+>>>>>>> commandProcessingMergedStartupPhase
 
         GameEngine& operator =(const GameEngine &);
         friend ostream & operator << (ostream &, const GameEngine &ge);

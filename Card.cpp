@@ -117,7 +117,7 @@ void Hand::ReceiveCard(Card *c) {
 };
 
 //displays all cards in the hand, user can then choose a card to play, the card is then returned to the deck
-void Hand::Play(Deck *mainDeck) {
+OrdersList Hand::Play(Deck *mainDeck, OrdersList *o) {
     cout << *this << endl;
     cout << "Choose the card you wish to play (enter a in form of a number)";
     int chosenCard;
@@ -126,6 +126,20 @@ void Hand::Play(Deck *mainDeck) {
     Card *playedCard = new Card(*this->cardsHeld.at(chosenCard));
     mainDeck->ReceiveCard(playedCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + chosenCard);
+    Orders newOrder;
+
+    if(this->cardsHeld.at(chosenCard)->cardType.compare("Bomb")){
+        o->addBomb(new Bomb());
+    } else if(this->cardsHeld.at(chosenCard)->cardType.compare("Reinforcement")){
+        o->addAdvance(new Advance());
+    } else if(this->cardsHeld.at(chosenCard)->cardType.compare("Blockade")){
+        o->addBlockade(new Blockade());
+    } else if(this->cardsHeld.at(chosenCard)->cardType.compare("Airlift")){
+        o->addAirlift(new Airlift());
+    } else if(this->cardsHeld.at(chosenCard)->cardType.compare("Diplomacy")){
+        o->addNegotiate(new Negotiate());
+    }
+    return *o;
 };
 
 //string insertion operator

@@ -24,7 +24,11 @@ Player::Player(string *name) {
 * @param vHand is the vector Hand pointer of all the hand the player owns
 * @param ordersList is the vector Order pointer of all the orders the player can do
 */
+<<<<<<< HEAD
 Player::Player(vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * ordersList) {
+=======
+Player::Player(vector<Territory *> vTerritories, Hand* vHand, vector<Order *> vOrder) {
+>>>>>>> commandProcessingMergedStartupPhase
     this->vTerritory = vTerritories;
     this->vHand = vHand;
     this->ordersList = ordersList;
@@ -38,7 +42,11 @@ Player::Player(vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersLis
  * @param vHand is the vector Hand pointer of all the hand the player owns
  * @param ordersList is the vector Order pointer of all the orders the player can do
  */
+<<<<<<< HEAD
 Player::Player(string *name, vector<Territory *> vTerritories, vector<Hand *> vHand, OrdersList * ordersList) {
+=======
+Player::Player(string *name, vector<Territory *> vTerritories, Hand * vHand, vector<Order *> vOrder) {
+>>>>>>> commandProcessingMergedStartupPhase
     (*this).name = *name;
     this->vTerritory = vTerritories;
     this->vHand = vHand;
@@ -55,8 +63,8 @@ Player::Player(Player const &copyPlayer) {
     for (int i = 0; i < copyPlayer.vTerritory.size(); ++i) {
         vTerritory.at(i) = copyPlayer.vTerritory.at(i);
     }
-    for (int i = 0; i < copyPlayer.vHand.size(); ++i) {
-        vHand.at(i) = copyPlayer.vHand.at(i);
+    for (int i = 0; i < copyPlayer.vHand->cardsHeld.size(); ++i) {
+        vHand->cardsHeld.at(i) = copyPlayer.vHand->cardsHeld.at(i);
     }
     ordersList = copyPlayer.ordersList;
 }
@@ -73,8 +81,9 @@ Player &Player::operator=(const Player &copyPlayer) {
     for (int i = 0; i < copyPlayer.vTerritory.size(); ++i) {
         this->vTerritory.at(i) = copyPlayer.vTerritory.at(i);
     }
-    for (int i = 0; i < copyPlayer.vHand.size(); ++i) {
-        this->vHand.at(i) = copyPlayer.vHand.at(i);
+    for (int i = 0; i < copyPlayer.vHand->cardsHeld.size(); ++i) {
+        this->vHand->cardsHeld.at(i) = copyPlayer.vHand->cardsHeld.at(i);
+        this->vHand->cardsHeld.at(i) = copyPlayer.vHand->cardsHeld.at(i);
     }
     this->ordersList = copyPlayer.ordersList;
     return *this;
@@ -87,7 +96,7 @@ Player::~Player() {
     for (auto &i: vTerritory) {
         delete i;
     }
-    for (auto &i: vHand) {
+    for (auto &i: vHand->cardsHeld) {
         delete i;
     }
     cout << "Destructor !" << endl;
@@ -175,14 +184,15 @@ int Player::getTerritorySize() const {
     return vTerritory.size();
 }
 
-/**
- * Gets the number of cards the player has in its hand
- *
- * @param vIndex the current card from the list of Hands
- * @return the number of the current card
- */
+///**
+// * Gets the number of cards the player has in its hand
+// *
+// * @param vIndex the current card from the list of Hands
+// * @return the number of the current card
+// */
 int Player::getCardsOwned(int vIndex) {
-    return vHand.at(vIndex)->cardsHeld.size();
+    return 0;
+    //return vHand->at(vIndex).size(); todo uncommment
 }
 
 /**
@@ -191,7 +201,7 @@ int Player::getCardsOwned(int vIndex) {
  * @return the int for amount of cards
  */
 int Player::getHandSize() const {
-    return vHand.size();
+    return vHand->cardsHeld.size();
 }
 
 Orders* Player::getOrder(int vIndex) {
@@ -284,10 +294,6 @@ void Player::displayTerritoriesOwned() {
 void Player::addTerritory(Territory * territory) {
     vTerritory.push_back(territory);
 }
-
-
-
-
 
 
 
