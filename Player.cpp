@@ -295,16 +295,16 @@ void Player::issueOrder() {
                 }
             }
         }
-        else if (choice == 3) {
+        else if (choice == 3) { // Bomb order
             cout << "choice 3";
         }
-        else if (choice == 4) {
+        else if (choice == 4) { // Blockade order
             cout << "choice 4";
         }
-        else if (choice == 5) {
+        else if (choice == 5) { // Airlift order
             cout << "choice 5";
         }
-        else if (choice == 6) {
+        else if (choice == 6) { // Negotiate order
             cout << "choice 6";
         }
     }
