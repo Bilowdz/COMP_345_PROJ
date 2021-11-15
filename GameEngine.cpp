@@ -293,6 +293,7 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge){
 void GameEngine::mainGameLoop() {
 //call issue order to each player
     //TODO add a loop until one player wins, and remove players that do not own anymore territories
+    //TODO implement all of the below functions into this mainGameLoop function
 
 //    OrdersList * ordersListObj = new OrdersList();
 //    Territory * territory = new Territory(5, "territory 1", 1);
@@ -336,7 +337,7 @@ void GameEngine::reinforcementPhase(Player & player, Map & map) {
     int numArmies = floor(player.getTerritorySize() / 3);
     player.setReinforcements(numArmies);
 
-    Continent * playerOwnedContinentTemp;
+    Continent * playerOwnedContinentTemp; //temp continent
     bool continentOwned = false;
     //TODO make a variable in map.cpp to keep track if someone owns a continent
 
@@ -352,19 +353,19 @@ void GameEngine::reinforcementPhase(Player & player, Map & map) {
                 }
                 if (terriCounter == map.continents.at(i)->territories.size()) {
                     //the player owns all the territories in this continent, do something
-                    playerOwnedContinentTemp = new Continent(*map.continents.at(i));
+                    playerOwnedContinentTemp = new Continent(*map.continents.at(i)); //used just to get the terri reward
                     continentOwned = true;
                 }
             }
         }
     }
 
-    //add armies to the players army pool
+    //add armies to the players army pool based on the terri reward
     if(continentOwned) {
         player.setReinforcements(player.getReinforcements() + playerOwnedContinentTemp->territorialReward);
     }
 
-    //delete pointer of Continent after done
+    //delete pointer of the temp Continent after done
     delete playerOwnedContinentTemp;
 
 }
@@ -392,7 +393,6 @@ a function/method named executeOrdersPhase() in the game engine
 void GameEngine::executeOrdersPhase() {
 //TODO destroy all the pointers
 
-    
 
 }
 //end ryan
