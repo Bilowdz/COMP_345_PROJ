@@ -252,7 +252,7 @@ void Player::issueOrder() {
                 bool isCorrectTerriName = false;
                 while (!isCorrectTerriName) {
                     this->displayTerritoriesOwned();
-                    cout << "What territory do you want to deploy to?:" << endl;
+                    cout << "What territory do you want to deploy to? (write in territory id):" << endl;
                     cin >> idOfTerri;
                     Territory *myTerri = isOwnedTerritory(idOfTerri);
                     if (myTerri) {
@@ -260,10 +260,14 @@ void Player::issueOrder() {
                         this->ordersList->addDeploy(newDeploy);
                         isCorrectTerriName = true;
                     } else {
-                        cout << "Please enter a territory that you own" << endl;
+                        cout << "Please enter a territory id that you own." << endl;
                     }
                 }
                 break;
+            case 2:
+                cout << "case 2";
+                break;
+
         }
     }
 }
