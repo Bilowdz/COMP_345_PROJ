@@ -421,7 +421,7 @@ void Advance::validate(Player * player) {
 /**
  * Executes an Advance order
  */
-void Advance::execute(Player * player) {
+void Advance::execute(Player * player, Deck * deck) {
     // int to check if all territories have been checked
     int checkRefusal = player->getTerritorySize();
     // loop though all owned territories
@@ -458,11 +458,10 @@ void Advance::execute(Player * player) {
                         // if target has no units left, but attacker does, transfer territory to attacker
                         target->unitsGarrisoned = 0;
                         player->addTerritory(target);
-                        // TODO ask Sean what the continent int is for in terriories
-                        player->setIncrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent);
+                        player->setIncrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent-1);
                         target->playerLink->removeTerritory(target);
                         target->playerLink->setDecrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent);
-                        // TODO add a card to conquering player's pool of cards
+                        deck->Draw(player->getHand());
                     } else { // if both sides have units left, nobody moves
                         cout << "Units left on both sides, no territories conquered.\n";
                     }

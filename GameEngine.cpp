@@ -159,8 +159,10 @@ void GameEngine::addplayer(Command *c) {
 
     // get the name from command object
     string *name = new string((c->getCommand()).substr(10));
+    Player *newPlayer = new Player(name);
+    newPlayer->setReinforcements(50);
+    Players.push_back(newPlayer);
 
-    Players.push_back(new Player(name));
 
     //shuffle(Players.begin(), Players.end(), 15); todo uncommment
 }
@@ -364,6 +366,7 @@ void GameEngine::reinforcementPhase(Player &player, Map &map) {
 
 
     //TODO this must be done right after the map loads and the players are chosen
+
     map.countTerritoriesPerContinent(); //TODO this should only be run once
     player.setTerritoriesOwnedPerContinent(
             map.numberOfTerritoriesPerContinent.size()); //TODO this should only be run once
