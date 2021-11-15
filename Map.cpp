@@ -407,6 +407,8 @@ std::ostream &operator<<(std::ostream &out, const Continent &continent) {
     return out;
 }
 
+Continent::Continent() = default;
+
 // Destructor for the continent class
 Continent::~Continent() = default;
 

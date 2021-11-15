@@ -75,7 +75,7 @@ class GameEngine {
         //added from ryan
         //TODO implement this shit
         void mainGameLoop();
-        void reinforcementPhase();
+        void reinforcementPhase(Player &, Map &);
         void issueOrdersPhase(Player &);
         void executeOrdersPhase();
         //end ryan

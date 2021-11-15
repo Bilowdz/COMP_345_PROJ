@@ -330,7 +330,42 @@ value. In any case, the minimal number of reinforcement armies per turn for any 
 are placed in the player’s reinforcement pool. This must be implemented in a function/method named
 reinforcementPhase() in the game engine.
  */
-void GameEngine::reinforcementPhase() {
+void GameEngine::reinforcementPhase(Player & player, Map & map) {
+
+    //sets the number of armies based on territory size
+    int numArmies = floor(player.getTerritorySize() / 3);
+    player.setReinforcements(numArmies);
+
+    Continent * playerOwnedContinentTemp;
+    bool continentOwned = false;
+    //TODO make a variable in map.cpp to keep track if someone owns a continent
+
+    //check to see if player owns all terri in a continent
+    //TODO this is disgusting change it
+    for (int i = 0; i < map.continents.size(); ++i) {
+        for (int j = 0; j < player.getTerritorySize(); ++j) {
+            Territory * currentTerritory = player.getTerritoriesOwned(j);
+            int terriCounter = 0;
+            for (int k = 0; k < map.continents.at(i)->territories.size(); ++k) {
+                if (currentTerritory->id == map.continents.at(i)->territories.at(k)->id) {
+                    terriCounter++;
+                }
+                if (terriCounter == map.continents.at(i)->territories.size()) {
+                    //the player owns all the territories in this continent, do something
+                    playerOwnedContinentTemp = new Continent(*map.continents.at(i));
+                    continentOwned = true;
+                }
+            }
+        }
+    }
+
+    //add armies to the players army pool
+    if(continentOwned) {
+        player.setReinforcements(player.getReinforcements() + playerOwnedContinentTemp->territorialReward);
+    }
+
+    //delete pointer of Continent after done
+    delete playerOwnedContinentTemp;
 
 }
 /*
@@ -342,6 +377,7 @@ engine
 //find which neighboring territories the player can attack
 void GameEngine::issueOrdersPhase(Player &player) {
 //TODO must call Player:issueOrder() func to add to the vector list
+    player.issueOrder();
 
 }
 
@@ -355,6 +391,8 @@ a function/method named executeOrdersPhase() in the game engine
  */
 void GameEngine::executeOrdersPhase() {
 //TODO destroy all the pointers
+
+    
 
 }
 //end ryan

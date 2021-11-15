@@ -43,6 +43,7 @@ public:
 
     Continent(std::string name, int territorialReward);
     Continent(const Continent &c1);
+    Continent();
     ~Continent();
 };
 
