@@ -421,7 +421,7 @@ void Advance::validate(Player * player) {
 /**
  * Executes an Advance order
  */
-void Advance::execute(Player * player, Deck * deck) {
+void Advance::execute(Player * player) {
     // int to check if all territories have been checked
     int checkRefusal = player->getTerritorySize();
     // loop though all owned territories
@@ -461,7 +461,7 @@ void Advance::execute(Player * player, Deck * deck) {
                         player->setIncrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent-1);
                         target->playerLink->removeTerritory(target);
                         target->playerLink->setDecrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent);
-                        deck->Draw(player->getHand());
+                        player->deckLink->Draw(player->getHand());
                     } else { // if both sides have units left, nobody moves
                         cout << "Units left on both sides, no territories conquered.\n";
                     }

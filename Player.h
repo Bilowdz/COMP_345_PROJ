@@ -15,9 +15,14 @@
 
 using namespace std;
 
+class Deck;
+class Map;
 
 class Player {
 public:
+
+    Map * mapLink;
+    Deck * deckLink;
 
     Player();
     explicit Player(string *name);

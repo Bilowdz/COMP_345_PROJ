@@ -240,9 +240,9 @@ void Player::issueOrder() {
         cout << "What order would you like to issue:";
         cin >> choice;
 
-        if (choice == 0)
+        if (choice == 0) // finish adding orders
                 isOrderDone = true;
-        else if (choice == 1) {
+        else if (choice == 1) { // Deploy order
             int numArmiesDeploy;
             int idOfTerri;
             cout << "How many armies do you want to deploy?:";
@@ -254,7 +254,7 @@ void Player::issueOrder() {
                 cin >> idOfTerri;
                 Territory *myTerri = isOwnedTerritory(idOfTerri);
                 if (myTerri) {
-                    Deploy *newDeploy = new Deploy(numArmiesDeploy, *myTerri);
+                    auto *newDeploy = new Deploy(numArmiesDeploy, *myTerri);
                     this->ordersList->addDeploy(newDeploy);
                     isCorrectTerriName = true;
                 } else {
@@ -262,7 +262,7 @@ void Player::issueOrder() {
                 }
             }
         }
-        else if (choice == 2) {
+        else if (choice == 2) { // Advance order
             int numArmiesAdvance;
             int idOfTerriSource;
             int idOfTerriTarget;
@@ -275,33 +275,41 @@ void Player::issueOrder() {
                 cin >> idOfTerriSource;
                 Territory *myTerriSource = isOwnedTerritory(idOfTerriSource);
                 if (myTerriSource) {
+                    isCorrectTerriNameAdvanceSource = true;
                     bool isCorrectTerriNameAdvanceTarget = false;
                     while (!isCorrectTerriNameAdvanceTarget) {
-                        this->displayTerritoriesOwned();
+                        this->mapLink->displayTerritories();
                         cout << "To which territory do you want to move units? (write in territory id):" << endl;
                         cin >> idOfTerriTarget;
-                        Territory *myTerriTarget = isOwnedTerritory(idOfTerriTarget);
-
+                        Territory *myTerriTarget = this->mapLink->isTerritory(idOfTerriTarget);
+                        if (myTerriTarget) {
+                            isCorrectTerriNameAdvanceTarget = true;
+                            Advance *advanceOrder = new Advance(numArmiesAdvance, *myTerriSource, *myTerriTarget);
+                            this->ordersList->addAdvance(advanceOrder);
+                        } else {
+                            cout << "Entered territory that does not exist. Enter a valid territory id.";
+                        }
                     }
-                }
-                else if (!myTerriSource){
-                    cout << "Please enter a territory id that you own." << endl;
+                } else {
+                    cout << "Entered territory that does not exist. Enter a valid territory id.";
                 }
             }
         }
         else if (choice == 3) {
+            cout << "choice 3";
         }
         else if (choice == 4) {
+            cout << "choice 4";
         }
         else if (choice == 5) {
+            cout << "choice 5";
         }
         else if (choice == 6) {
-        }
-
-
+            cout << "choice 6";
         }
     }
 }
+
 
 Territory * Player::isOwnedTerritory(int id) {
     for (int i = 0; i < vTerritory.size(); i++) {

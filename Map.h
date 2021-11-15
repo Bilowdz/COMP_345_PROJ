@@ -17,7 +17,7 @@ public:
     Player * playerLink;
     int id;
     std::string name;
-    int continent; //must do -1
+    int continent; // -1 to get index
     int unitsGarrisoned;
     bool visited;
     std::vector<Territory*> adjacentTerritories;
@@ -30,7 +30,7 @@ public:
 
     Territory(int id, std::string name, int continent);
     Territory(const Territory &t1);
-    Territory();// added this
+    Territory();
     ~Territory();
 };
 
@@ -67,11 +67,15 @@ public:
     Map();
     Map(const Map &m1);
     ~Map();
+    void displayTerritories();
+    Territory *isTerritory(int id);
+
 private:
     void MarkContinent(Territory* cur, int continent);
     void MarkMap(Territory* cur);
     bool ClearAndCheckMap();
     bool ClearAndCheckContinent(Continent* continent);
+
 };
 
 class MapLoader{

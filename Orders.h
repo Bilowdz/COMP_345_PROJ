@@ -18,7 +18,6 @@
 #include <vector>
 #include <ostream>
 #include "Map.h"
-#include "Card.h"
 
 using namespace std;
 
@@ -91,7 +90,7 @@ public:
     Advance(const Advance &a1);
     Advance &operator=(const Advance &p);
     void validate(Player *) override;
-    void execute(Player *, Deck *) override;
+    void execute(Player *) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Advance &advance);
 };
