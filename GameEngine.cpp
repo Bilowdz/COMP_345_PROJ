@@ -357,6 +357,7 @@ void GameEngine::reinforcementPhase(Player & player, Map & map) {
                     continentOwned = true;
                 }
             }
+            delete currentTerritory;
         }
     }
 
