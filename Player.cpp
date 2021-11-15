@@ -296,15 +296,35 @@ void Player::issueOrder() {
             }
         }
         else if (choice == 3) { // Bomb order
+
+            int idOfTerriToBomb;
+            bool isCorrectBomb = false;
+
+            while(!isCorrectBomb) {
+
+                cout << "Where would you like to bomb?" << endl;
+                this->mapLink->displayTerritories();
+                cin >> idOfTerriToBomb;
+
+                if (idOfTerriToBomb)
+
+            }
+
+
+            // If the terri exists we can bomb it. Use the mapLink
+            //call the addBomb, pass the bomb object
             cout << "choice 3";
         }
         else if (choice == 4) { // Blockade order
+            //make sure the target terrirityo is a real terri
             cout << "choice 4";
         }
         else if (choice == 5) { // Airlift order
+            // number of armies that we move from source territory to target territory
             cout << "choice 5";
         }
         else if (choice == 6) { // Negotiate order
+            //
             cout << "choice 6";
         }
     }
