@@ -240,68 +240,65 @@ void Player::issueOrder() {
         cout << "What order would you like to issue:";
         cin >> choice;
 
-        switch (choice) {
-            case 0:
+        if (choice == 0)
                 isOrderDone = true;
-                break;
-            case 2:
-                int numArmiesAdvance;
-                int idOfTerriSource;
-                int idOfTerriTarget;
-                cout << "How many armies do you want to advance?:";
-                cin >> numArmiesAdvance;
-                bool isCorrectTerriNameAdvanceSource = false;
-                while (!isCorrectTerriNameAdvanceSource) {
-                    this->displayTerritoriesOwned();
-                    cout << "From which territory do you want to move units? (write in territory id):" << endl;
-                    cin >> idOfTerriSource;
-                    Territory *myTerriSource = isOwnedTerritory(idOfTerriSource);
-                    if (myTerriSource) {
-                        bool isCorrectTerriNameAdvanceTarget = false;
-                        while (!isCorrectTerriNameAdvanceTarget) {
-                            this->displayTerritoriesOwned();
-                            cout << "To which territory do you want to move units? (write in territory id):" << endl;
-                            cin >> idOfTerriTarget;
-                            Territory *myTerriTarget = isOwnedTerritory(idOfTerriTarget);
+        else if (choice == 1) {
+            int numArmiesDeploy;
+            int idOfTerri;
+            cout << "How many armies do you want to deploy?:";
+            cin >> numArmiesDeploy;
+            bool isCorrectTerriName = false;
+            while (!isCorrectTerriName) {
+                this->displayTerritoriesOwned();
+                cout << "What territory do you want to deploy to? (write in territory id):" << endl;
+                cin >> idOfTerri;
+                Territory *myTerri = isOwnedTerritory(idOfTerri);
+                if (myTerri) {
+                    Deploy *newDeploy = new Deploy(numArmiesDeploy, *myTerri);
+                    this->ordersList->addDeploy(newDeploy);
+                    isCorrectTerriName = true;
+                } else {
+                    cout << "Please enter a territory id that you own." << endl;
+                }
+            }
+        }
+        else if (choice == 2) {
+            int numArmiesAdvance;
+            int idOfTerriSource;
+            int idOfTerriTarget;
+            cout << "How many armies do you want to advance?:";
+            cin >> numArmiesAdvance;
+            bool isCorrectTerriNameAdvanceSource = false;
+            while (!isCorrectTerriNameAdvanceSource) {
+                this->displayTerritoriesOwned();
+                cout << "From which territory do you want to move units? (write in territory id):" << endl;
+                cin >> idOfTerriSource;
+                Territory *myTerriSource = isOwnedTerritory(idOfTerriSource);
+                if (myTerriSource) {
+                    bool isCorrectTerriNameAdvanceTarget = false;
+                    while (!isCorrectTerriNameAdvanceTarget) {
+                        this->displayTerritoriesOwned();
+                        cout << "To which territory do you want to move units? (write in territory id):" << endl;
+                        cin >> idOfTerriTarget;
+                        Territory *myTerriTarget = isOwnedTerritory(idOfTerriTarget);
 
-                        }
-                    } else {
-                        cout << "Please enter a territory id that you own." << endl;
                     }
                 }
-                break;
-            case 3:
-                cout << "case 3";
-                break;
-            case 4:
-                cout << "case 4";
-                break;
-            case 5:
-                cout << "case 5";
-                break;
-            case 6:
-                cout << "case 6";
-                break;
-            case 1:
-                int numArmiesDeploy;
-                int idOfTerri;
-                cout << "How many armies do you want to deploy?:";
-                cin >> numArmiesDeploy;
-                bool isCorrectTerriName = false;
-                while (!isCorrectTerriName) {
-                    this->displayTerritoriesOwned();
-                    cout << "What territory do you want to deploy to? (write in territory id):" << endl;
-                    cin >> idOfTerri;
-                    Territory *myTerri = isOwnedTerritory(idOfTerri);
-                    if (myTerri) {
-                        Deploy *newDeploy = new Deploy(numArmiesDeploy, *myTerri);
-                        this->ordersList->addDeploy(newDeploy);
-                        isCorrectTerriName = true;
-                    } else {
-                        cout << "Please enter a territory id that you own." << endl;
-                    }
+                else if (!myTerriSource){
+                    cout << "Please enter a territory id that you own." << endl;
                 }
-                break;
+            }
+        }
+        else if (choice == 3) {
+        }
+        else if (choice == 4) {
+        }
+        else if (choice == 5) {
+        }
+        else if (choice == 6) {
+        }
+
+
         }
     }
 }

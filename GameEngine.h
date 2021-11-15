@@ -74,7 +74,7 @@ class GameEngine {
 
         //added from ryan
         //TODO implement this shit
-        void mainGameLoop(Map*, vector<Player*>);
+        void mainGameLoop();
         void reinforcementPhase(Player &, Map &);
         void issueOrdersPhase(Player &);
         void executeOrdersPhase();

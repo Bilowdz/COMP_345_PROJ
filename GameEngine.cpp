@@ -291,61 +291,36 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
 //}
 
 //reinforcement phase: number of territories they own, (# of territories owned divided by 3, rounded down)
-void GameEngine::mainGameLoop(Map * map, vector<Player *> vPlayers) {
+void GameEngine::mainGameLoop() {
 //call issue order to each player
     //TODO add a loop until one player wins, and remove players that do not own anymore territories
     //TODO implement all of the below functions into this mainGameLoop function
 
-//    OrdersList * ordersListObj = new OrdersList();
-//    Territory * territory = new Territory(5, "territory 1", 1);
-//    Deploy * deploy1 = new Deploy(11, *territory);
-//    ordersListObj->addDeploy(deploy1);
-//
-//    string ryan = "Ryan";
-//
-//    auto *player1 = new Player(&ryan, generateTerritories(territoriesOwnedPerPlayer),
-//                               generateHand(numCardsPerPlayer), ordersListObj);
-//
-//    deploy1->setPlayerLink(*player1);
-//
-//    player1->setReinforcements(12);
-//
-//    for (int i = 0; i < territoriesOwnedPerPlayer; i++) {
-//        cout << player1->getTerritoriesOwned(i)->id << endl;
-//    }
-//
-//    //player1->getOrder(0)->validate(player1);
-//
-//    player1->issueOrder();
-//
-//    delete ordersListObj;
-//    delete territory;
-//    delete deploy1;
-//    delete player1;
+
 
     bool noWinner = false;
 
     while (!noWinner) {
 
         //check to see if the players dont own a territory
-        for (int i = 0; i < vPlayers.size(); ++i) {
-            if (vPlayers.at(i)->getTerritorySize() == 0) {
+        for (int i = 0; i < Players.size(); ++i) {
+            if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
-                vPlayers.erase(vPlayers.begin() + i);
+                Players.erase(Players.begin() + i);
             }
         }
 
-        if (vPlayers.size() == 1) {
+        if (Players.size() == 1) {
             int doneCounter = 0;
-            for (int i = 0; i < map->numberOfTerritoriesPerContinent.size(); ++i) {
-                if (vPlayers.at(0)->getTerritoriesOwnedPerContinent().at(i) == map->numberOfTerritoriesPerContinent.at(i)) {
+            for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size(); ++i) {
+                if (Players.at(0)->getTerritoriesOwnedPerContinent().at(i) == gameMap.numberOfTerritoriesPerContinent.at(i)) {
                     doneCounter++;
                 }
             }
-            if (doneCounter == map->continents.size()) {
+            if (doneCounter == gameMap.continents.size()) {
                 //if there are neutral territories then he might not win
                 noWinner = true;
-                cout << "The winner is " << vPlayers.at(0)->getName();
+                cout << "The winner is " << Players.at(0)->getName();
             }
         }
 
