@@ -10,11 +10,14 @@
 #include <vector>
 #include <filesystem>
 
+class Player;
+
 class Territory{
 public:
+    Player * playerLink;
     int id;
     std::string name;
-    int continent;
+    int continent; //must do -1
     int unitsGarrisoned;
     bool visited;
     std::vector<Territory*> adjacentTerritories;
@@ -37,6 +40,8 @@ public:
     int territorialReward;
     std::vector<Territory*> territories;
 
+    //make a function
+
     Continent& operator =(const Continent &);
     friend std::ostream & operator << (std::ostream &out, const Continent &continent);
     friend std::istream & operator >> (std::istream &in,  Continent &continent);
@@ -51,12 +56,14 @@ class Map {
 public:
     std::vector<Continent*> continents;
     std::vector<Territory*> map;
+    std::vector<int*> numberOfTerritoriesPerContinent; //this index should match with continents index.
 
+    void countTerritoriesPerContinent();
     Map& operator =(const Map &);
+
     friend std::ostream & operator << (std::ostream &out, const Map &map);
 
     bool Validate();
-
     Map();
     Map(const Map &m1);
     ~Map();

@@ -204,6 +204,15 @@ Map::~Map(){
     }
 }
 
+void Map::countTerritoriesPerContinent() {
+
+    for (int i = 0; i < this->continents.size(); ++i) {
+        numberOfTerritoriesPerContinent.push_back(
+                reinterpret_cast<int *const>(this->continents.at(i)->territories.size()));
+    }
+
+}
+
 // Default constructor for the mapLoader
 // Loads all maps in the maps directory
 MapLoader::MapLoader() {

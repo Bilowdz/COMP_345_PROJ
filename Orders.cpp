@@ -422,17 +422,20 @@ void Advance::validate(Player * player) {
  * Executes an Advance order
  */
 void Advance::execute(Player * player) {
-    // check if enemy territory is owned by current player or not
+    // int to check if all territories have been checked
     int checkRefusal = player->getTerritorySize();
+    // loop though all owned territories
     for (int i = 0; i < player->getTerritorySize(); i++) {
+        // check if source is owned by payer
         if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
+            // if owned by player, simply move armies to that territory
             cout << "Target owned by player, moving armies to target.\n";
             target->unitsGarrisoned = target->unitsGarrisoned + this->getArmies();
             source->unitsGarrisoned = source->unitsGarrisoned - this->getArmies();
             cout << "Target now has " << target->unitsGarrisoned << " armies, and Source now has "
                  << source->unitsGarrisoned << " armies.";
             return;
-        } else {
+        } else { // if not owned by player, attack target territory
             if (checkRefusal == 1) {
                 int sourceAttack = 0;
                 int targetDefense = 0;
@@ -448,17 +451,26 @@ void Advance::execute(Player * player) {
                 }
                 source->unitsGarrisoned = source->unitsGarrisoned - targetDefense;
                 target->unitsGarrisoned = target->unitsGarrisoned - sourceAttack;
+                // check attacker has units left
                 if (source->unitsGarrisoned > 0) {
+                    // check if target has units left
                     if (target->unitsGarrisoned <= 0){
+                        // if target has no units left, but attacker does, transfer territory to attacker
                         target->unitsGarrisoned = 0;
                         player->addTerritory(target);
-                        //TODO normally, remove territory from other player's pool
-                        // add a card to conquering player's pool of cards
-                    } else {
+                        // TODO ask Sean what the continent int is for in terriories
+                        player->setIncrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent);
+                        target->playerLink->removeTerritory(target);
+                        target->playerLink->setDecrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent);
+                        // TODO add a card to conquering player's pool of cards
+                    } else { // if both sides have units left, nobody moves
                         cout << "Units left on both sides, no territories conquered.\n";
                     }
-                } else {
+                } else { // if attacker has no units left, make sure target still does and set attacker units to 0
                     source->unitsGarrisoned = 0;
+                    if (target->unitsGarrisoned < 0){
+                        target->unitsGarrisoned = 0;
+                    }
                 }
             } else {
                 checkRefusal--;

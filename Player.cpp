@@ -287,9 +287,40 @@ void Player::addTerritory(Territory * territory) {
     vTerritory.push_back(territory);
 }
 
+void Player::removeTerritory(Territory *territory) {
+
+    for (int i = 0; i < vTerritory.size(); ++i) {
+
+        if(territory->id == vTerritory.at(i)->id) {
+            vTerritory.erase(vTerritory.begin() + i);
+        }
+    }
+
+}
 
 Hand * Player::getHand() {
     return this->vHand;
+}
+
+const vector<int *> &Player::getTerritoriesOwnedPerContinent() const {
+    return territoriesOwnedPerContinent;
+}
+
+void Player::setTerritoriesOwnedPerContinent(int size) {
+    for (int i = 0; i < size; ++i) {
+        //if the total number of continents is 3 then it will loop 3 times and set the vector to a size of 3
+        this->territoriesOwnedPerContinent.push_back(0);
+    }
+}
+
+void Player::setIncrementTerritoryCount(int index) {
+
+    this->territoriesOwnedPerContinent.at(index) = this->territoriesOwnedPerContinent.at(index) + 1;
+}
+
+void Player::setDecrementTerritoryCount(int index) {
+
+    this->territoriesOwnedPerContinent.at(index) = this->territoriesOwnedPerContinent.at(index) - 1;
 }
 
 

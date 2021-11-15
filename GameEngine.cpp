@@ -337,6 +337,17 @@ void GameEngine::reinforcementPhase(Player & player, Map & map) {
     int numArmies = floor(player.getTerritorySize() / 3);
     player.setReinforcements(numArmies);
 
+    //TODO this must be done right after the map loads and the players are chosen
+    map.countTerritoriesPerContinent(); //TODO this should only be run once
+    player.setTerritoriesOwnedPerContinent(map.numberOfTerritoriesPerContinent.size()); //TODO this should only be run once
+
+    for (int i = 0; i < map.numberOfTerritoriesPerContinent.size(); ++i) {
+        if (map.numberOfTerritoriesPerContinent.at(i) == player.getTerritoriesOwnedPerContinent().at(i)) {
+            //give reward
+            player.setReinforcements(player.getReinforcements() + map.continents.at(i)->territorialReward);
+        }
+    }
+
     Continent * playerOwnedContinentTemp; //temp continent
     bool continentOwned = false;
     //TODO make a variable in map.cpp to keep track if someone owns a continent
@@ -344,6 +355,9 @@ void GameEngine::reinforcementPhase(Player & player, Map & map) {
     //check to see if player owns all terri in a continent
     //TODO this is disgusting change it
     for (int i = 0; i < map.continents.size(); ++i) {
+
+
+
         for (int j = 0; j < player.getTerritorySize(); ++j) {
             Territory * currentTerritory = player.getTerritoriesOwned(j);
             int terriCounter = 0;
