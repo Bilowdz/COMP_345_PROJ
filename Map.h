@@ -56,7 +56,7 @@ class Map {
 public:
     std::vector<Continent*> continents;
     std::vector<Territory*> map;
-    std::vector<int*> numberOfTerritoriesPerContinent; //this index should match with continents index.
+    std::vector<int> numberOfTerritoriesPerContinent; //this index should match with continents index.
 
     void countTerritoriesPerContinent();
     Map& operator =(const Map &);

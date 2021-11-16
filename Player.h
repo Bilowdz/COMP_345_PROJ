@@ -50,7 +50,7 @@ public:
     int getTerritorySize() const;
     Territory * isOwnedTerritory(int id);
     void displayTerritoriesOwned();
-    const vector<int *> &getTerritoriesOwnedPerContinent() const;
+    const vector<int> &getTerritoriesOwnedPerContinent() const;
     void setIncrementTerritoryCount(int index);
     void setDecrementTerritoryCount(int index);
     void setTerritoriesOwnedPerContinent(int size);
@@ -76,7 +76,7 @@ private:
     Hand * vHand; //Vector of all the cards the player owns
     OrdersList * ordersList; //Vector for all the orders the player can do
     int reinforcements; //number of armies
-    vector<int *> territoriesOwnedPerContinent; //when a player captures a territory increment the value at the continent
+    vector<int> territoriesOwnedPerContinent; //when a player captures a territory increment the value at the continent
 
 };
 

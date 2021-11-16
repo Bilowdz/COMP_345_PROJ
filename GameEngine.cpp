@@ -46,7 +46,7 @@ bool GameEngine::transition(Command *c) {
             this->validatemap();
             return true;
         }
-    } else if (command == "addplayer") {
+    } else if (command.rfind(addplayer, 0) == 0) {
         if (currentState == ST_MAP_VALIDATED || currentState == ST_PLAYERS_ADDED) {
             currentState = ST_PLAYERS_ADDED;
             this->addplayer(c);
@@ -119,12 +119,7 @@ State GameEngine::getState() {
 }
 
 void GameEngine::loadmap(Command *c) {
-    /*
-    cout << "Chose between any of the following files:\n" <<
-        "1: Europe\n"<<
-        "2: Canada\n"<<
-        "3: Zertina\n"<<endl;
-*/
+
     string command = c->getCommand(); //command = "loadmap zertina.map"
     int mapChosen;
 
@@ -146,11 +141,11 @@ void GameEngine::loadmap(Command *c) {
 }
 
 void GameEngine::validatemap() {
-    cout << "Validating Map";
+    cout << "Validating Map" << endl;
     if (gameMap.Validate())
-        cout << "Map is valid";
+        cout << "Map is valid" << endl;
     else {
-        cout << "Map is not valid";
+        cout << "Map is not valid" << endl;
         exit(0);
     }
 }
@@ -161,14 +156,14 @@ void GameEngine::addplayer(Command *c) {
     string *name = new string((c->getCommand()).substr(10));
     Player *newPlayer = new Player(name);
     newPlayer->setReinforcements(50);
-    Players.push_back(newPlayer);
+    this->Players.push_back(newPlayer);
 
 
-    //shuffle(Players.begin(), Players.end(), 15); todo uncommment
+   // shuffle(Players.begin(), Players.end(), 15); todo uncomment
 }
 
 void GameEngine::gamestart() {
-    *MainDeck = *new Deck(Players.size());
+    MainDeck = new Deck(Players.size());
     for (auto &Player: Players) {
         MainDeck->Draw(Player->getHand());
         MainDeck->Draw(Player->getHand());
@@ -239,6 +234,8 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
 
         // stop startup phase once game started
         if (commandName == "gamestart") {
+            gamestart();
+            mainGameLoop();
             break;
         } else {
             transition(c);
@@ -246,58 +243,22 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
     }
 }
 
-//added by ryan
-//vector<Territory *> generateTerritories(int numTerritoryOwned);
-//vector<Hand *> generateHand(int numberCardsPerPlayer);
-//
-//static int territoryNumber = 1;
-//static int cardNumber = 1;
-//static const int territoriesOwnedPerPlayer = 5;
-//static const int numCardsPerPlayer = 3;
-//
-//vector<Territory *> generateTerritories(int numTerritoryOwned) {
-//    vector<Territory *> vTerritory;
-//    Territory *pPlayerTerritory;
-//    for (int i = 0; i < numTerritoryOwned; i++) {
-//        pPlayerTerritory = new Territory(i, "Territory " + to_string(territoryNumber), 1);
-//        vTerritory.push_back(pPlayerTerritory);
-//        territoryNumber++;
-//    }
-//    return vTerritory;
-//}
-//
-///**
-// * Generates the cards for each player
-// *
-// * @param numCardsPerPlayer the initial amount of cards per player
-// * @return vector of Hands that gets passed into the player vector
-// */
-//vector<Hand *> generateHand(int numberCardsPerPlayer) {
-//    vector<Hand *> vHand;
-//    Hand *pHand;
-//    for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
-//        pHand = new Hand();
-//        pHand->ReceiveCard(new Card( "Bomb"));
-//        vHand.push_back(pHand);
-//        cardNumber++;
-//    }
-//    return vHand;
-//}
-
 void GameEngine::mainGameLoop() {
-    //TODO Load map here
+    //TODO Load map here; simon: don't think we need to loadmap here. I think its already loaded
 
     //TODO this must be done right after the map loads and the players are chosen. Run only once
     gameMap.countTerritoriesPerContinent();
     for (int i = 0; i < Players.size(); ++i) {
-        Players.at(i)->setTerritoriesOwnedPerContinent(
-                gameMap.numberOfTerritoriesPerContinent.size());
+        this->Players.at(i)->setTerritoriesOwnedPerContinent(gameMap.numberOfTerritoriesPerContinent.size());
     }
 
     bool noWinner = false;
     while (!noWinner) {
 
         reinforcementPhase();
+        issueOrdersPhase();
+        executeOrdersPhase();
+
         //Check to see if players owns a territory, if they dont remove them from game
         for (int i = 0; i < Players.size(); ++i) {
             if (Players.at(i)->getTerritorySize() == 0) {
@@ -322,24 +283,22 @@ void GameEngine::mainGameLoop() {
             //TODO final player can request to end the game
         }
 
-        issueOrdersPhase();
-        executeOrdersPhase();
     }
 }
 
 void GameEngine::reinforcementPhase() {
 
     //Adds armies to the reinforcement pool
-    for (int i = 0; i < Players.size(); ++i) {
+    for (int i = 0; i < Players.size()-1; i++) {
         //sets the number of armies based on territory size
         int numArmies = floor(Players.at(i)->getTerritorySize() / 3);
         Players.at(i)->setReinforcements(numArmies);
 
-        for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size(); ++i) {
-            if (gameMap.numberOfTerritoriesPerContinent.at(i) == Players.at(i)->getTerritoriesOwnedPerContinent().at(i)) {
+        for (int j = 0; j < gameMap.numberOfTerritoriesPerContinent.size()-1; j++) {
+            if (gameMap.numberOfTerritoriesPerContinent.at(j) == Players.at(i)->getTerritoriesOwnedPerContinent().at(j)) {
                 //give reward
                 Players.at(i)->setReinforcements(Players.at(i)->getReinforcements() +
-                                                    gameMap.continents.at(i)->territorialReward);
+                                                    gameMap.continents.at(j)->territorialReward);
             }
         }
     }

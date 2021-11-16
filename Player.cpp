@@ -517,7 +517,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     cout << "That name is not on the list. Please enter a valid name" << endl;
                 }
             }
-            Negotiate *negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
+            Negotiate * negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
             this->ordersList->addNegotiate(negotiating);
         } else {
             cout << "Please enter a valid number." << endl;
@@ -554,7 +554,7 @@ Hand *Player::getHand() {
     return this->vHand;
 }
 
-const vector<int *> &Player::getTerritoriesOwnedPerContinent() const {
+const vector<int > &Player::getTerritoriesOwnedPerContinent() const {
     return territoriesOwnedPerContinent;
 }
 

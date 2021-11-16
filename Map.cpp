@@ -208,7 +208,7 @@ void Map::countTerritoriesPerContinent() {
 
     for (int i = 0; i < this->continents.size(); ++i) {
         numberOfTerritoriesPerContinent.push_back(
-                reinterpret_cast<int *const>(this->continents.at(i)->territories.size()));
+                this->continents.at(i)->territories.size());
     }
 
 }
