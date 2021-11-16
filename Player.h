@@ -75,7 +75,7 @@ private:
     vector<Territory *> vTerritory; //Vector of all the territories owned
     Hand * vHand; //Vector of all the cards the player owns
     OrdersList * ordersList; //Vector for all the orders the player can do
-    int reinforcements;
+    int reinforcements; //number of armies
     vector<int *> territoriesOwnedPerContinent; //when a player captures a territory increment the value at the continent
 
 };

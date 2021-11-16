@@ -186,19 +186,6 @@ void Player::displayAdjacentTerritoriesNotOwned() {
         cout << "Name: " << this->toAttack().at(i)->name <<
              " ID: " << this->toAttack().at(i)->id << endl;
     }
-
-
-    //loop through player owned territories
-//    for (int i = 0; i < getTerritorySize(); ++i) {
-//        //loop through the adjacent territories of the owned territories
-//        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); ++j) {
-//            //check if that territory is already owned, if its not owned then display it
-//            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr) {
-//                cout << "Name: " << vTerritory.at(i)->adjacentTerritories.at(j)->name <<
-//                        " ID: " << vTerritory.at(i)->adjacentTerritories.at(j)->id << endl;
-//            }
-//        }
-//    }
 }
 
 void Player::displayOwnedAdjacentTerritories() {
@@ -207,18 +194,6 @@ void Player::displayOwnedAdjacentTerritories() {
         cout << "Name: " << this->toDefend().at(i)->name <<
              " ID: " << this->toDefend().at(i)->id << endl;
     }
-
-    //loop through player owned territories
-//    for (int i = 0; i < getTerritorySize(); ++i) {
-//        //loop through the adjacent territories of the owned territories
-//        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); ++j) {
-//            //check if that territory is already owned, if its owned then display it
-//            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id)) {
-//                cout << "Name: " << vTerritory.at(i)->adjacentTerritories.at(j)->name <<
-//                     " ID: " << vTerritory.at(i)->adjacentTerritories.at(j)->id << endl;
-//            }
-//        }
-//    }
 }
 
 /**
@@ -431,7 +406,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else if (choice == 3) { // Blockade order
-            //make sure the target terriritory is a real terri
+            //make sure the target territory is a real terri
             int idOfTerriToBlockade;
             bool isCorrectBlockade;
             while (!isCorrectBlockade) {
