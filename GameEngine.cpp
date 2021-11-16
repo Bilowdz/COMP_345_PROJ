@@ -290,25 +290,32 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
 //    return vHand;
 //}
 
-//reinforcement phase: number of territories they own, (# of territories owned divided by 3, rounded down)
-void GameEngine::mainGameLoop() {
-//call issue order to each player
-    //TODO add a loop until one player wins, and remove players that do not own anymore territories
-    //TODO implement all of the below functions into this mainGameLoop function
+void GameEngine::mainGameLoop(vector<Player*> & vPlayersInPlay) {
+    //TODO Load map here
 
+    //TODO this must be done right after the map loads and the players are chosen. Run only once
+    for (int i = 0; i < Players.size(); ++i) {
+        gameMap.countTerritoriesPerContinent();
+        Players.at(i)->setTerritoriesOwnedPerContinent(
+                gameMap.numberOfTerritoriesPerContinent.size());
 
+    }
 
     bool noWinner = false;
 
     while (!noWinner) {
 
-        //check to see if the players dont own a territory
+        reinforcementPhase();
+        //Check to see if players owns a territory
         for (int i = 0; i < Players.size(); ++i) {
             if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
                 Players.erase(Players.begin() + i);
             }
         }
+
+        issueOrdersPhase(vPlayersInPlay);
+        executeOrdersPhase(vPlayersInPlay);
 
         if (Players.size() == 1) {
             int doneCounter = 0;
@@ -325,8 +332,6 @@ void GameEngine::mainGameLoop() {
         }
 
     }
-
-
 }
 
 /*
@@ -338,15 +343,6 @@ are placed in the player’s reinforcement pool. This must be implemented in a f
 reinforcementPhase() in the game engine.
  */
 void GameEngine::reinforcementPhase() {
-    //TODO this must be done right after the map loads and the players are chosen
-
-    for (int i = 0; i < Players.size(); ++i) {
-        gameMap.countTerritoriesPerContinent(); //TODO this should only be run once
-        Players.at(i)->setTerritoriesOwnedPerContinent(
-                gameMap.numberOfTerritoriesPerContinent.size()); //TODO this should only be run once
-
-    }
-
 
     for (int i = 0; i < Players.size(); ++i) {
         //sets the number of armies based on territory size
@@ -369,14 +365,11 @@ Player::issueOrder() method. This method is called in round-robin fashion across
 game engine. This must be implemented in a function/method named issueOrdersPhase() in the game
 engine
  */
-//find which neighboring territories the player can attack
-void GameEngine::issueOrdersPhase(vector<Player*> vPlayersInPlay) {
-
+void GameEngine::issueOrdersPhase(vector<Player*> &vPlayersInPlay) {
     //loop through each player and allow them to issue orders
     for (int i = 0; i < vPlayersInPlay.size(); ++i) {
         vPlayersInPlay.at(i)->issueOrder(vPlayersInPlay);
     }
-
 }
 
 
@@ -387,17 +380,14 @@ a round-robin fashion (i.e. the “Order Execution Phase”—see below). Once a
 been executed, the main game loop goes back to the reinforcement phase. This must be implemented in
 a function/method named executeOrdersPhase() in the game engine
  */
-void GameEngine::executeOrdersPhase(vector<Player*> vPlayersInPlay) {
-//TODO destroy all the pointers
-
-    //the order of execution is which order was passed into the orderslist first
+void GameEngine::executeOrdersPhase(vector<Player*> &vPlayersInPlay) {
+    //TODO destroy all the pointers
+    //Order of execution is which order was passed into the orderslist first
     for (int i = 0; i < vPlayersInPlay.size(); ++i) {
         for (int j = 0; j < vPlayersInPlay.at(i)->getOrdersList()->getList().size(); ++j) {
             //validates the order and executes the order if it is good.
             vPlayersInPlay.at(i)->getOrdersList()->getList().at(j)->validate(vPlayersInPlay.at(i));
         }
     }
-
-
 }
 //end ryan

@@ -74,10 +74,10 @@ class GameEngine {
 
         //added from ryan
         //TODO implement this shit
-        void mainGameLoop();
+        void mainGameLoop(vector<Player*> &vPlayersInPlay);
         void reinforcementPhase();
-        void issueOrdersPhase(vector<Player*> vPlayersInPlay);
-        void executeOrdersPhase(vector<Player*> vPlayersInPlay);
+        void issueOrdersPhase(vector<Player*> &vPlayersInPlay);
+        void executeOrdersPhase(vector<Player*> &vPlayersInPlay);
         //end ryan
 
         //string getState();
