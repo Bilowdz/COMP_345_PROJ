@@ -33,8 +33,9 @@ public:
     ~Player();
 
     friend ostream &operator<<(ostream &output, Player &player);
-    vector<Territory *> toDefend();
     void toAttack(vector<Player*> &vPlayersInPlay);
+    vector<Territory *> toDefend();
+    void displayAdjacentTerritories();
     void issueOrder(vector<Player*> &vPlayersInPlay);
 
     //make function to check it matched player is in the list

@@ -130,15 +130,6 @@ void Player::displayTerritoriesOwned() {
 }
 
 /**
- * All the territories that the current player can defend
- * Returns a list of territories that the player owns
- */
-vector<Territory*> Player::toDefend() {
-    //TODO show adjaceny
-    return this->vTerritory;
-}
-
-/**
  * All the territories adjacent to the player that he can attack
  *
  * @param vPlayer the vector of all Players in the game
@@ -150,6 +141,29 @@ void Player::toAttack(vector<Player*> &vPlayersInPlay) {
         if (vPlayersInPlay.at(i)->getName().compare(name) != 0) {
             for (int j = 0; j < vPlayersInPlay.at(i)->getTerritorySize(); ++j) {
                 cout << "\t" + vPlayersInPlay.at(i)->vTerritory.at(j)->name << endl;
+            }
+        }
+    }
+}
+
+/**
+ * All the territories that the current player can defend
+ * Returns a list of territories that the player owns
+ */
+vector<Territory*> Player::toDefend() {
+    //TODO show adjacency
+    return this->vTerritory;
+}
+
+void Player::displayAdjacentTerritories() {
+    //loop through player owned territories
+    for (int i = 0; i < getTerritorySize(); ++i) {
+        //loop through the adjacent territories of the owned territories
+        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); ++j) {
+            //check if that territory is already owned, if its now owned then display it
+            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr) {
+                cout << "Name: " << vTerritory.at(i)->adjacentTerritories.at(j)->name <<
+                        " ID: " << vTerritory.at(i)->adjacentTerritories.at(j)->id << endl;
             }
         }
     }
@@ -264,7 +278,7 @@ void Player::issueOrder(vector<Player*> &vPlayersInPlay) {
         }
     }
 
-    //MENU 
+    //MENU
     bool isOrderDone = false;
     while(!isOrderDone) {
         int choice;
