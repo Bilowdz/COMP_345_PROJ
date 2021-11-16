@@ -116,10 +116,20 @@ void Hand::ReceiveCard(Card *c) {
     cardsHeld.push_back(c);
 };
 
+bool Hand::isCardOwned(string playerCardType) {
+
+    for (int i = 0; i < this->cardsHeld.size(); ++i) {
+        if (this->cardsHeld.at(i)->cardType.compare(playerCardType) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
 //displays all cards in the hand, user can then choose a card to play, the card is then returned to the deck
 OrdersList Hand::Play(Deck *mainDeck, OrdersList *o) {
     cout << *this << endl;
-    cout << "Choose the card you wish to play (enter a in form of a number)";
+    cout << "Choose the card you wish to play (enter in the form of a number)";
     int chosenCard;
     cin >> chosenCard;
     chosenCard--;

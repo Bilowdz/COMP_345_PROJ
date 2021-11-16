@@ -502,3 +502,12 @@ Territory * Map::isTerritory(int id) {
     }
     return nullptr;
 }
+
+Territory * Map::getTerritory(int id) {
+    for (int i = 0; i < map.size(); ++i) {
+        if(map.at(i)->id == id) {
+            return map.at(i);
+        }
+    }
+    return nullptr;
+}

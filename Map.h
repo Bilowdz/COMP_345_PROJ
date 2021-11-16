@@ -69,6 +69,7 @@ public:
     ~Map();
     void displayTerritories();
     Territory *isTerritory(int id);
+    Territory *getTerritory(int id);
 
 private:
     void MarkContinent(Territory* cur, int continent);

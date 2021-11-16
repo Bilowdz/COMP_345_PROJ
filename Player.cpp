@@ -295,6 +295,14 @@ int Player::getReinforcements() {
 
 void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
+    string input;
+    cout << "You own a reinforcement card, would you like to use it (type y if yes)? ";
+    cin >> input;
+    if (input == "y") {
+        int reinforcementCardReward = 5;
+        this->setReinforcements(this->getReinforcements() + reinforcementCardReward);
+    }
+
     bool isOutOfReinforcementsToDeploy = false;
     while (!isOutOfReinforcementsToDeploy) {
         int numArmiesDeploy;
@@ -303,7 +311,12 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
         cin >> numArmiesDeploy;
         bool isCorrectTerriName = false;
         while (!isCorrectTerriName) {
+            cout << "Here are all the territories you own:" << endl;
             this->displayTerritoriesOwned();
+
+            cout << "Here are the adjacent territories to enemy territories that you own:" << endl;
+            this->displayOwnedAdjacentTerritories();
+
             cout << "What territory do you want to deploy to? (write in a territory id):" << endl;
             cin >> idOfTerri;
             Territory *myTerri = isOwnedTerritory(idOfTerri);
@@ -321,11 +334,22 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
         }
     }
 
-    //MENU
+    //display the cards owned by the player:
+    cout << "Cards owned by Player " << this->getName() << ":" << endl;
+
+    if (vHand->cardsHeld.size() == 0) {
+        cout << "You do not own any cards." << endl;
+    } else {
+        for (int i = 0; i < vHand->cardsHeld.size(); ++i) {
+            cout << "Name of Card: " << vHand->cardsHeld.at(i)->cardType << " ID: " << i << endl;
+        }
+    }
+
+    cout << "==========MENU==========" << endl;
     bool isOrderDone = false;
     while (!isOrderDone) {
         int choice;
-        cout << "1. Advance army\n"
+        cout << "\n1. Advance army\n"
                 "2. Bomb\n"
                 "3. Blockade\n"
                 "4. Airlift\n"
@@ -341,21 +365,12 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             int idOfTerriSource;
             int idOfTerriTarget;
 
-            int defendOrAttack;
-            cout << "Do you want to defend or Attack?:" << endl;
-            cout << "1. Defend\n"
-                    "2. Attack\n";
-            cin >> defendOrAttack;
-            vector<Territory *> listOfTerritoriesToDefendOrAttack;
-            if (defendOrAttack == 1) {
-                cout << "Here are the adjacent territories that you own:" << endl;
-                this->displayOwnedAdjacentTerritories();
-                listOfTerritoriesToDefendOrAttack = this->toDefend();
-            } else if (defendOrAttack == 2) {
-                cout << "Here are the adjacent territories that you do not own:" << endl;
-                this->displayAdjacentTerritoriesNotOwned();
-                listOfTerritoriesToDefendOrAttack = this->toAttack();
-            }
+            cout << "Here are the adjacent territories to enemy territories that you own:" << endl;
+            this->displayOwnedAdjacentTerritories();
+            cout << "Here are the adjacent territories that you do not own:" << endl;
+            this->displayAdjacentTerritoriesNotOwned();
+            vector<Territory *> listOfTerritoriesToDefend = this->toDefend();
+            vector<Territory *> listOfTerritoriesToAttack = this->toAttack();
 
             cout << "How many armies do you want to advance?:";
             cin >> numArmiesAdvance;
@@ -373,11 +388,14 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                         cout << "To which territory do you want to move units? (write in territory id):" << endl;
                         cin >> idOfTerriTarget;
 
-                        bool isValidTargetTerritory =  this->isTerritoryInList(listOfTerritoriesToDefendOrAttack,
-                                                                               idOfTerriTarget);
-                        Territory *myTerriTarget = this->mapLink->isTerritory(idOfTerriTarget);
+                        bool isValidTargetTerritoryToDefend = this->isTerritoryInList(listOfTerritoriesToDefend,
+                                                                                      idOfTerriTarget);
 
-                        if (isValidTargetTerritory) {
+                        bool isValidTargetTerritoryToAttack = this->isTerritoryInList(listOfTerritoriesToAttack,
+                                                                                      idOfTerriTarget);
+
+                        if (isValidTargetTerritoryToDefend || isValidTargetTerritoryToAttack) {
+                            Territory *myTerriTarget = this->mapLink->getTerritory(idOfTerriTarget);
                             isCorrectTerriNameAdvanceTarget = true;
                             Advance *advanceOrder = new Advance(numArmiesAdvance, *myTerriSource, *myTerriTarget);
                             this->ordersList->addAdvance(advanceOrder);
@@ -390,6 +408,13 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else if (choice == 2) { // Bomb order
+
+            //check to see if we own Bomb card
+            if (!vHand->isCardOwned("Bomb")) {
+                cout << "You do not own a Bomb card" << endl;
+                return;
+            }
+
             int idOfTerriToBomb;
             bool isCorrectBomb = false;
             while (!isCorrectBomb) {
@@ -406,6 +431,12 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else if (choice == 3) { // Blockade order
+
+            if (!vHand->isCardOwned("Blockade")) {
+                cout << "You do not own a Blockade card" << endl;
+                return;
+            }
+
             //make sure the target territory is a real terri
             int idOfTerriToBlockade;
             bool isCorrectBlockade;
@@ -423,6 +454,12 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else if (choice == 4) { // Airlift order
+
+            if (!vHand->isCardOwned("Airlift")) {
+                cout << "You do not own a Airlift card" << endl;
+                return;
+            }
+
             // number of armies that we move from source territory to target territory
             int numberOfArmiesToSend;
             int idOfTerriSource;
@@ -457,6 +494,12 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else if (choice == 5) { // Negotiate order
+
+            if (!vHand->isCardOwned("Diplomacy")) {
+                cout << "You do not own a Diplomacy card" << endl;
+                return;
+            }
+
             string nameOfPlayerToNegotiate;
             bool isNameValid = false;
             int playerIndex;
@@ -473,10 +516,12 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             }
             Negotiate *negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
             this->ordersList->addNegotiate(negotiating);
+        } else {
+            cout << "Please enter a valid number." << endl;
+            return;
         }
     }
 }
-
 
 Territory *Player::isOwnedTerritory(int id) {
     for (int i = 0; i < vTerritory.size(); i++) {
