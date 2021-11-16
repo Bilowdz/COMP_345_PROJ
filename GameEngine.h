@@ -73,10 +73,10 @@ class GameEngine {
         void startupPhase(CommandProcessor cp, GameEngine *);
 
         //added from ryan
-        void mainGameLoop(vector<Player*> &vPlayersInPlay);
+        void mainGameLoop();
         void reinforcementPhase();
-        void issueOrdersPhase(vector<Player*> &vPlayersInPlay);
-        void executeOrdersPhase(vector<Player*> &vPlayersInPlay);
+        void issueOrdersPhase();
+        void executeOrdersPhase();
         //end ryan
 
         //string getState();

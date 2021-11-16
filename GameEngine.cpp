@@ -284,7 +284,7 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
 //    return vHand;
 //}
 
-void GameEngine::mainGameLoop(vector<Player*> & vPlayersInPlay) {
+void GameEngine::mainGameLoop() {
     //TODO Load map here
 
     //TODO this must be done right after the map loads and the players are chosen. Run only once
@@ -296,7 +296,6 @@ void GameEngine::mainGameLoop(vector<Player*> & vPlayersInPlay) {
     }
 
     bool noWinner = false;
-
     while (!noWinner) {
 
         reinforcementPhase();
@@ -308,8 +307,8 @@ void GameEngine::mainGameLoop(vector<Player*> & vPlayersInPlay) {
             }
         }
 
-        issueOrdersPhase(vPlayersInPlay);
-        executeOrdersPhase(vPlayersInPlay);
+        issueOrdersPhase();
+        executeOrdersPhase();
 
         //Check to see if final player owns all territories on the map
         if (Players.size() == 1) {
@@ -325,7 +324,6 @@ void GameEngine::mainGameLoop(vector<Player*> & vPlayersInPlay) {
                 cout << "The winner is " << Players.at(0)->getName();
             }
         }
-
     }
 }
 
@@ -347,20 +345,20 @@ void GameEngine::reinforcementPhase() {
 
 }
 
-void GameEngine::issueOrdersPhase(vector<Player*> &vPlayersInPlay) {
+void GameEngine::issueOrdersPhase() {
     //loop through each player and allow them to issue orders
-    for (int i = 0; i < vPlayersInPlay.size(); ++i) {
-        vPlayersInPlay.at(i)->issueOrder(vPlayersInPlay);
+    for (int i = 0; i < Players.size(); ++i) {
+        Players.at(i)->issueOrder(Players);
     }
 }
 
-void GameEngine::executeOrdersPhase(vector<Player*> &vPlayersInPlay) {
+void GameEngine::executeOrdersPhase() {
     //TODO destroy all the pointers
     //Order of execution is which order was passed into the orderslist first
-    for (int i = 0; i < vPlayersInPlay.size(); ++i) {
-        for (int j = 0; j < vPlayersInPlay.at(i)->getOrdersList()->getList().size(); ++j) {
+    for (int i = 0; i < Players.size(); ++i) {
+        for (int j = 0; j < Players.at(i)->getOrdersList()->getList().size(); ++j) {
             //validates the order and executes the order if it is good.
-            vPlayersInPlay.at(i)->getOrdersList()->getList().at(j)->validate(vPlayersInPlay.at(i));
+            Players.at(i)->getOrdersList()->getList().at(j)->validate(Players.at(i));
         }
     }
 }

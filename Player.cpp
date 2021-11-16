@@ -230,7 +230,6 @@ int Player::getReinforcements() {
 }
 
 void Player::issueOrder(vector<Player*> &vPlayersInPlay) {
-    //make a menu to select what order to add
     bool isOrderDone = false;
     while(!isOrderDone) {
         int choice;
@@ -433,7 +432,6 @@ void Player::removeTerritory(Territory *territory) {
             vTerritory.erase(vTerritory.begin() + i);
         }
     }
-
 }
 
 Hand * Player::getHand() {
