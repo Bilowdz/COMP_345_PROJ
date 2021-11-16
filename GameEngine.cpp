@@ -387,8 +387,16 @@ a round-robin fashion (i.e. the “Order Execution Phase”—see below). Once a
 been executed, the main game loop goes back to the reinforcement phase. This must be implemented in
 a function/method named executeOrdersPhase() in the game engine
  */
-void GameEngine::executeOrdersPhase() {
+void GameEngine::executeOrdersPhase(vector<Player*> vPlayersInPlay) {
 //TODO destroy all the pointers
+
+    //the order of execution is which order was passed into the orderslist first
+    for (int i = 0; i < vPlayersInPlay.size(); ++i) {
+        for (int j = 0; j < vPlayersInPlay.at(i)->getOrdersList()->getList().size(); ++j) {
+            //validates the order and executes the order if it is good.
+            vPlayersInPlay.at(i)->getOrdersList()->getList().at(j)->validate(vPlayersInPlay.at(i));
+        }
+    }
 
 
 }

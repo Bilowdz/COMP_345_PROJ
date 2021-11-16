@@ -200,6 +200,10 @@ Orders* Player::getOrder(int vIndex) {
     return this->ordersList->getListMember(vIndex);
 }
 
+OrdersList* Player::getOrdersList() {
+    return this->ordersList;
+}
+
 /**
  * Gets the name of the current player
  *
@@ -468,6 +472,7 @@ int Player::validPlayer(vector<Player *> validPlayers, string name) {
         }
     }
 }
+
 
 
 

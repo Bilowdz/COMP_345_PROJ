@@ -77,7 +77,7 @@ class GameEngine {
         void mainGameLoop();
         void reinforcementPhase();
         void issueOrdersPhase(vector<Player*> vPlayersInPlay);
-        void executeOrdersPhase();
+        void executeOrdersPhase(vector<Player*> vPlayersInPlay);
         //end ryan
 
         //string getState();

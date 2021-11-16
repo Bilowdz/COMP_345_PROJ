@@ -56,10 +56,13 @@ public:
     Hand * getHand();
     int getHandSize() const;
 
+    OrdersList* getOrdersList();
     Orders* getOrder(int vIndex);
     int getNumberOfOrders() const;
     void setReinforcements(int armies);
     int getReinforcements();
+
+    void setOrdersList(OrdersList *ordersList);
 
     string getName() const;
     void setName(string s);
