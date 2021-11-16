@@ -32,8 +32,9 @@ class Player;
  */
 class Orders {
 private:
-    Player * playerLink;
+
 public:
+    Player * playerLink;
     Orders();
     virtual ~Orders();
     Orders(const Orders &o1);

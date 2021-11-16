@@ -4,7 +4,6 @@
 
 #ifndef COMP_345_PROJ_CARD_H
 #define COMP_345_PROJ_CARD_H
-#pragma  once
 #include <vector>
 #include <iostream>
 #include <string>

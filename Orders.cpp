@@ -315,6 +315,7 @@ void Deploy::validate(Player * player) {
  */
 void Deploy::execute(Player * player) {
     this->territory.unitsGarrisoned = this->territory.unitsGarrisoned + this->armies;
+    player->setReinforcements(player->getReinforcements()-this->armies);
     std::cout << "\nDeploy executed. New number of armies in territory: \n";
 }
 

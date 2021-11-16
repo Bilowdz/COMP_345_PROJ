@@ -7,100 +7,6 @@
 #include <memory>
 using namespace std;
 
-void runGameEngine(){
-    /*
-    GameEngine game;
-    int flag = 0;
-
-    // accept user input until valid user input selected
-    while(flag == 0) {
-        string input;
-        string error;
-        cout << "Please choose an option:";
-        // get user input
-        cin >> input;
-
-        // check if valid input
-        if(input=="loadmap") {
-            if(game.transition("loadmap")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="validatemap") {
-            if(game.transition("validatemap")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="addplayer") {
-            if(game.transition("addplayer")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="assigncountries") {
-            if(game.transition("assigncountries")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="issueorder") {
-            if(game.transition("issueorder")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="execorder") {
-            if(game.transition("execorder")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="endexecorders") {
-            if(game.transition("endexecorders")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="endissueorders") {
-            if(game.transition("endissueorders")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="win") {
-            if(game.transition("win")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else if(input=="end") {
-            if(game.transition("end")) {
-                flag = 1;
-
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-
-        } else if(input=="play") {
-            if(game.transition("play")) {
-                flag = 1;
-            } else {
-                error = "cannot perform transition '" + input + "' from state '" + enum_state_str[game.getState()] + "'!";
-            }
-        } else {
-            error = "'" + input + "' is an invalid transition!";
-        }
-
-        if (flag == 0){
-            cout << error << endl;
-            error = "";
-        }
-    }
-     */
-}
-
 void driveMap() {
     auto* loader(new MapLoader());
 
@@ -109,6 +15,25 @@ void driveMap() {
     std::cout << loader->maps.size() << std::endl;
 
     delete loader;
+}
+
+void chooseComandProcessor() {
+    cout << "Choose between accepting the commands from the console (1) or from a file (2): " << endl;
+    int input = 0;
+    cin >> input;
+
+    // user selected console
+    if(input == 1) {
+        cout << "hello world" << endl;
+    } else {
+        cout << "goodbye world" << endl;
+        string filename;
+
+        cout << "Please enter a filename (commands.txt is the only available file):" << endl;
+        cin >> filename;
+        cout << "Your filename is: " << filename << endl;
+        // user selected from file
+    }
 }
 
 int main() {

@@ -156,8 +156,10 @@ void GameEngine::addplayer(Command *c) {
     string *name = new string((c->getCommand()).substr(10));
     vector<Territory*> vTerritories;
     Hand *vHand = new Hand();
-    OrdersList *ordersList = nullptr;
+    OrdersList *ordersList = new OrdersList();
     Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
+    newPlayer->setDeckLink(MainDeck);
+    newPlayer->setMapLink(&gameMap);
     newPlayer->setReinforcements(50);
     this->Players.push_back(newPlayer);
 
@@ -260,7 +262,7 @@ void GameEngine::mainGameLoop() {
 
     //TODO this must be done right after the map loads and the players are chosen. Run only once
     gameMap.countTerritoriesPerContinent();
-    for (int i = 0; i < Players.size(); ++i) {
+    for (int i = 0; i < Players.size(); i++) {
         this->Players.at(i)->setTerritoriesOwnedPerContinent(gameMap.numberOfTerritoriesPerContinent.size());
     }
 
@@ -272,7 +274,7 @@ void GameEngine::mainGameLoop() {
         executeOrdersPhase();
 
         //Check to see if players owns a territory, if they dont remove them from game
-        for (int i = 0; i < Players.size()-1; ++i) {
+        for (int i = 0; i < Players.size()-1; i++) {
             if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
                 Players.erase(Players.begin() + i);
@@ -282,7 +284,7 @@ void GameEngine::mainGameLoop() {
         //Check to see if final player owns all territories on the map
         if (Players.size() == 1) {
             int doneCounter = 0;
-            for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size()-1; ++i) {
+            for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size()-1; i++) {
                 if (Players.at(0)->getTerritoriesOwnedPerContinent().at(i) == gameMap.numberOfTerritoriesPerContinent.at(i)) {
                     doneCounter++;
                 }
@@ -318,7 +320,8 @@ void GameEngine::reinforcementPhase() {
 
 void GameEngine::issueOrdersPhase() {
     //loop through each player and allow them to issue orders
-    for (int i = 0; i < Players.size()-1; ++i) {
+    for (int i = 0; i < Players.size()-1; i++) {
+        cout << endl << Players.at(i)->getName() << "\'s turn to issue orders\n";
         Players.at(i)->issueOrder(Players);
     }
 }
@@ -326,8 +329,8 @@ void GameEngine::issueOrdersPhase() {
 void GameEngine::executeOrdersPhase() {
     //TODO destroy all the pointers
     //Order of execution is which order was passed into the orderslist first
-    for (int i = 0; i < Players.size()-1; ++i) {
-        for (int j = 0; j < Players.at(i)->getOrdersList()->getList().size()-1; ++j) {
+    for (int i = 0; i < Players.size()-1; i++) {
+        for (int j = 0; j < Players.at(i)->getOrdersList()->getList().size()-1; j++) {
             //validates the order and executes the order if it is good.
             Players.at(i)->getOrdersList()->getList().at(j)->validate(Players.at(i));
         }
