@@ -442,7 +442,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
             //make sure the target territory is a real terri
             int idOfTerriToBlockade;
-            bool isCorrectBlockade;
+            bool isCorrectBlockade = false;
             while (!isCorrectBlockade) {
                 this->mapLink->displayTerritories();
                 cout << "Where would you like to blockade" << endl;
@@ -554,6 +554,10 @@ Hand *Player::getHand() {
     return this->vHand;
 }
 
+//Hand * Player::setHand() {
+//
+//}
+
 const vector<int > &Player::getTerritoriesOwnedPerContinent() const {
     return territoriesOwnedPerContinent;
 }
@@ -584,6 +588,7 @@ int Player::validPlayer(vector<Player *> validPlayers, string name) {
             return -1;
         }
     }
+    return -1;
 }
 
 

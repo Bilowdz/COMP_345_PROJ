@@ -154,7 +154,10 @@ void GameEngine::addplayer(Command *c) {
 
     // get the name from command object
     string *name = new string((c->getCommand()).substr(10));
-    Player *newPlayer = new Player(name);
+    vector<Territory*> vTerritories;
+    Hand *vHand = new Hand();
+    OrdersList *ordersList = nullptr;
+    Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
     newPlayer->setReinforcements(50);
     this->Players.push_back(newPlayer);
 
@@ -231,14 +234,23 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
         // get command
         Command *c = cp.getCommand(ge);
         string commandName = c->getCommand();
+        string effect = c->getEffect();
 
-        // stop startup phase once game started
-        if (commandName == "gamestart") {
-            gamestart();
-            mainGameLoop();
-            break;
+        // process commands that have no errors
+        if(effect.length() == 0) {
+
+            // stop startup phase once game started
+            if (commandName == "gamestart") {
+                gamestart();
+                mainGameLoop();
+                break;
+            } else {
+                transition(c);
+            }
         } else {
-            transition(c);
+
+            // output the error message
+            cout << "ERROR" << effect << endl;
         }
     }
 }
@@ -260,7 +272,7 @@ void GameEngine::mainGameLoop() {
         executeOrdersPhase();
 
         //Check to see if players owns a territory, if they dont remove them from game
-        for (int i = 0; i < Players.size(); ++i) {
+        for (int i = 0; i < Players.size()-1; ++i) {
             if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
                 Players.erase(Players.begin() + i);
@@ -270,7 +282,7 @@ void GameEngine::mainGameLoop() {
         //Check to see if final player owns all territories on the map
         if (Players.size() == 1) {
             int doneCounter = 0;
-            for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size(); ++i) {
+            for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size()-1; ++i) {
                 if (Players.at(0)->getTerritoriesOwnedPerContinent().at(i) == gameMap.numberOfTerritoriesPerContinent.at(i)) {
                     doneCounter++;
                 }
@@ -306,7 +318,7 @@ void GameEngine::reinforcementPhase() {
 
 void GameEngine::issueOrdersPhase() {
     //loop through each player and allow them to issue orders
-    for (int i = 0; i < Players.size(); ++i) {
+    for (int i = 0; i < Players.size()-1; ++i) {
         Players.at(i)->issueOrder(Players);
     }
 }
@@ -314,8 +326,8 @@ void GameEngine::issueOrdersPhase() {
 void GameEngine::executeOrdersPhase() {
     //TODO destroy all the pointers
     //Order of execution is which order was passed into the orderslist first
-    for (int i = 0; i < Players.size(); ++i) {
-        for (int j = 0; j < Players.at(i)->getOrdersList()->getList().size(); ++j) {
+    for (int i = 0; i < Players.size()-1; ++i) {
+        for (int j = 0; j < Players.at(i)->getOrdersList()->getList().size()-1; ++j) {
             //validates the order and executes the order if it is good.
             Players.at(i)->getOrdersList()->getList().at(j)->validate(Players.at(i));
         }

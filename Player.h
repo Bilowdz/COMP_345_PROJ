@@ -57,6 +57,7 @@ public:
 
     int getCardsOwned(int vIndex);
     Hand * getHand();
+    //Hand * setHand();
     int getHandSize() const;
 
     OrdersList* getOrdersList();

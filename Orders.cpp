@@ -830,7 +830,6 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
  * Negotiate validate checks if the Negotiate object can execute
  */
 void Negotiate::validate(Player * player) {
-    //TODO Negotiate happens when playing a Diplomacy card.
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
     if (this->getPlayerLink()->getName().compare(this->targetPlayer->getName())) {
         cout << "Cannot negotiate with yourself. Order not executed.";

@@ -45,6 +45,7 @@ class Hand {
 public:
     std::vector<Card*> cardsHeld;
     Hand();
+    Hand(vector<Card*> cardsHeld);
     Hand(const Hand &copyHand);
     ~Hand();
     void ReceiveCard(Card *c);

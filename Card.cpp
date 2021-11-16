@@ -96,9 +96,11 @@ Deck& Deck::operator =(const Deck &d) {
 }
 
 //creating Hand constructors
-Hand::Hand()
-{
-};
+Hand::Hand() = default;
+
+Hand::Hand(vector<Card*> cardsHeld) {
+    this->cardsHeld = cardsHeld;
+}
 
 //copy constructor
 Hand::Hand(const Hand &copyHand) {
@@ -113,7 +115,7 @@ Hand::~Hand() {
 
 //add card to hand
 void Hand::ReceiveCard(Card *c) {
-    cardsHeld.push_back(c);
+    this->cardsHeld.push_back(c);
 };
 
 bool Hand::isCardOwned(string playerCardType) {
