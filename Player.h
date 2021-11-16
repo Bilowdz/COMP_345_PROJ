@@ -35,7 +35,10 @@ public:
     friend ostream &operator<<(ostream &output, Player &player);
     void toDefend();
     void toAttack(vector<Player *> vPlayer);
-    void issueOrder();
+    void issueOrder(vector<Player*> &vPlayersInPlay);
+
+    //make function to check it matched player is in the list
+    int validPlayer(vector<Player *> validPlayers, string name);
 
     void setTerritoriesOwned(vector<Territory *> vTerritories);
     void addTerritory(Territory * territory);

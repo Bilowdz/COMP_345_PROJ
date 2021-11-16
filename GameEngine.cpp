@@ -337,23 +337,28 @@ value. In any case, the minimal number of reinforcement armies per turn for any 
 are placed in the player’s reinforcement pool. This must be implemented in a function/method named
 reinforcementPhase() in the game engine.
  */
-void GameEngine::reinforcementPhase(Player &player, Map &map) {
-
-
+void GameEngine::reinforcementPhase() {
     //TODO this must be done right after the map loads and the players are chosen
 
-    map.countTerritoriesPerContinent(); //TODO this should only be run once
-    player.setTerritoriesOwnedPerContinent(
-            map.numberOfTerritoriesPerContinent.size()); //TODO this should only be run once
+    for (int i = 0; i < Players.size(); ++i) {
+        gameMap.countTerritoriesPerContinent(); //TODO this should only be run once
+        Players.at(i)->setTerritoriesOwnedPerContinent(
+                gameMap.numberOfTerritoriesPerContinent.size()); //TODO this should only be run once
 
-    //sets the number of armies based on territory size
-    int numArmies = floor(player.getTerritorySize() / 3);
-    player.setReinforcements(numArmies);
+    }
 
-    for (int i = 0; i < map.numberOfTerritoriesPerContinent.size(); ++i) {
-        if (map.numberOfTerritoriesPerContinent.at(i) == player.getTerritoriesOwnedPerContinent().at(i)) {
-            //give reward
-            player.setReinforcements(player.getReinforcements() + map.continents.at(i)->territorialReward);
+
+    for (int i = 0; i < Players.size(); ++i) {
+        //sets the number of armies based on territory size
+        int numArmies = floor(Players.at(i)->getTerritorySize() / 3);
+        Players.at(i)->setReinforcements(numArmies);
+
+        for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size(); ++i) {
+            if (gameMap.numberOfTerritoriesPerContinent.at(i) == Players.at(i)->getTerritoriesOwnedPerContinent().at(i)) {
+                //give reward
+                Players.at(i)->setReinforcements(Players.at(i)->getReinforcements() +
+                                                    gameMap.continents.at(i)->territorialReward);
+            }
         }
     }
 
@@ -365,9 +370,12 @@ game engine. This must be implemented in a function/method named issueOrdersPhas
 engine
  */
 //find which neighboring territories the player can attack
-void GameEngine::issueOrdersPhase(Player &player) {
-//TODO must call Player:issueOrder() func to add to the vector list
-    player.issueOrder();
+void GameEngine::issueOrdersPhase(vector<Player*> vPlayersInPlay) {
+
+    //loop through each player and allow them to issue orders
+    for (int i = 0; i < vPlayersInPlay.size(); ++i) {
+        vPlayersInPlay.at(i)->issueOrder(vPlayersInPlay);
+    }
 
 }
 

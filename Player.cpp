@@ -225,7 +225,7 @@ int Player::getReinforcements() {
     return this->reinforcements;
 }
 
-void Player::issueOrder() {
+void Player::issueOrder(vector<Player*> &vPlayersInPlay) {
     //make a menu to select what order to add
     bool isOrderDone = false;
     while(!isOrderDone) {
@@ -301,30 +301,101 @@ void Player::issueOrder() {
             bool isCorrectBomb = false;
 
             while(!isCorrectBomb) {
-
-                cout << "Where would you like to bomb?" << endl;
                 this->mapLink->displayTerritories();
+                cout << "Where would you like to bomb?" << endl;
                 cin >> idOfTerriToBomb;
+                Territory *territoryToBomb = this->mapLink->isTerritory(idOfTerriToBomb);
 
-                if (idOfTerriToBomb)
+                if(territoryToBomb) {
+                    isCorrectBomb = true;
+                    Bomb * bombOrder = new Bomb(*territoryToBomb);
+                    this->ordersList->addBomb(bombOrder);
 
+                } else {
+                    cout << "Entered territory that does not exist. Enter a valid territory id.";
+                }
             }
 
-
-            // If the terri exists we can bomb it. Use the mapLink
-            //call the addBomb, pass the bomb object
             cout << "choice 3";
         }
         else if (choice == 4) { // Blockade order
-            //make sure the target terrirityo is a real terri
+            //make sure the target terriritory is a real terri
+            int idOfTerriToBlockade;
+            bool isCorrectBlockade;
+
+            while(!isCorrectBlockade) {
+                this->mapLink->displayTerritories();
+                cout << "Where would you like to blockade" << endl;
+                cin >> idOfTerriToBlockade;
+                Territory *territoryToBlockade = this->mapLink->isTerritory(idOfTerriToBlockade);
+
+                if(territoryToBlockade) {
+                    isCorrectBlockade = true;
+                    Blockade * blockadeOrder = new Blockade(*territoryToBlockade);
+                    this->ordersList->addBlockade(blockadeOrder);
+
+                } else {
+                    cout << "Entered territory that does not exist. Enter a valid territory id.";
+                }
+            }
             cout << "choice 4";
         }
         else if (choice == 5) { // Airlift order
             // number of armies that we move from source territory to target territory
+            int numberOfArmiesToSend;
+            int idOfTerriSource;
+            int idOfTerriTarget;
+            bool isCorrectAirlift = false;
+
+            while (!isCorrectAirlift) {
+                this->displayTerritoriesOwned();
+                cout << "From which territory do you want to move units? (write in territory id):" << endl;
+                cin >> idOfTerriSource;
+                Territory *myTerriSource = isOwnedTerritory(idOfTerriSource);
+                if (myTerriSource) {
+                    isCorrectAirlift = true;
+                    cout << "How many armies do you want to advance?:";
+                    cin >> numberOfArmiesToSend;
+                    bool isCorrectTerriNameAirLift = false;
+                    while (!isCorrectTerriNameAirLift) {
+                        this->mapLink->displayTerritories();
+                        cout << "To which territory do you want to move units? (write in territory id):" << endl;
+                        cin >> idOfTerriTarget;
+                        Territory *myTerriTarget = this->mapLink->isTerritory(idOfTerriTarget);
+                        if (myTerriTarget) {
+                            isCorrectTerriNameAirLift = true;
+                            Airlift *airliftOrder = new Airlift(numberOfArmiesToSend, *myTerriSource, *myTerriTarget);
+                            this->ordersList->addAirlift(airliftOrder);
+                        } else {
+                            cout << "Entered territory that does not exist. Enter a valid territory id.";
+                        }
+                    }
+                } else {
+                    cout << "Entered territory that does not exist. Enter a valid territory id.";
+                }
+            }
+
             cout << "choice 5";
         }
         else if (choice == 6) { // Negotiate order
-            //
+            string nameOfPlayerToNegotiate;
+            bool isNameValid = false;
+            int playerIndex;
+
+            while (!isNameValid) {
+                cout << "Which player do you want to negotiate with?" << endl;
+                cin >> nameOfPlayerToNegotiate;
+                playerIndex = validPlayer(vPlayersInPlay, nameOfPlayerToNegotiate);
+
+                if ( playerIndex != -1) {
+                    isNameValid = true;
+                } else {
+                    cout << "That name is not on the list. Please enter a valid name" << endl;
+                }
+            }
+            Negotiate *negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
+            this->ordersList->addNegotiate(negotiating);
+
             cout << "choice 6";
         }
     }
@@ -384,6 +455,18 @@ void Player::setIncrementTerritoryCount(int index) {
 void Player::setDecrementTerritoryCount(int index) {
 
     this->territoriesOwnedPerContinent.at(index) = this->territoriesOwnedPerContinent.at(index) - 1;
+}
+
+int Player::validPlayer(vector<Player *> validPlayers, string name) {
+
+    for (int i = 0; i < validPlayers.size(); ++i) {
+        if(name.compare(validPlayers.at(i)->getName()) == 0) {
+            return i;
+        }
+        else {
+            return -1;
+        }
+    }
 }
 
 
