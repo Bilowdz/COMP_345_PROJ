@@ -118,6 +118,19 @@ void Hand::ReceiveCard(Card *c) {
     this->cardsHeld.push_back(c);
 };
 
+int Hand::getCardIndex(string playerCardType) {
+    for (int i = 0; i < cardsHeld.size(); i++) {
+        if (playerCardType.compare(cardsHeld.at(i)->cardType) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void Hand::removeCard(int index) {
+    cardsHeld.erase(cardsHeld.begin() + index);
+}
+
 bool Hand::isCardOwned(string playerCardType) {
 
     for (int i = 0; i < this->cardsHeld.size(); ++i) {

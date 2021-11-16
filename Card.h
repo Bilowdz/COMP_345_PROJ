@@ -48,6 +48,8 @@ public:
     Hand(const Hand &copyHand);
     ~Hand();
     void ReceiveCard(Card *c);
+    int getCardIndex(string playerCardType);
+    void removeCard(int index);
     bool isCardOwned(string playerCardType);
     OrdersList Play(Deck *mainDeck, OrdersList *o);
     friend ostream & operator << (ostream &out, const Hand &showHand);

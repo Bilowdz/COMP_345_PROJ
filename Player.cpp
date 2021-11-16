@@ -303,7 +303,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
         if (input == "y") {
             int reinforcementCardReward = 5;
             this->setReinforcements(this->getReinforcements() + reinforcementCardReward);
-            this->vHand.
+            vHand->removeCard(vHand->getCardIndex("Reinforcement"));
         }
     }
 
@@ -437,6 +437,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     Bomb *bombOrder = new Bomb(*territoryToBomb);
                     bombOrder->setPlayerLink(*this);
                     this->ordersList->addBomb(bombOrder);
+                    vHand->removeCard(vHand->getCardIndex("Bomb"));
                 } else {
                     cout << "Entered territory that does not exist. Enter a valid territory id.";
                 }
@@ -461,6 +462,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     Blockade *blockadeOrder = new Blockade(*territoryToBlockade);
                     blockadeOrder->setPlayerLink(*this);
                     this->ordersList->addBlockade(blockadeOrder);
+                    vHand->removeCard(vHand->getCardIndex("Blockade"));
                 } else {
                     cout << "Entered territory that does not exist. Enter a valid territory id.";
                 }
@@ -498,6 +500,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                             Airlift *airliftOrder = new Airlift(numberOfArmiesToSend, *myTerriSource, *myTerriTarget);
                             airliftOrder->setPlayerLink(*this);
                             this->ordersList->addAirlift(airliftOrder);
+                            vHand->removeCard(vHand->getCardIndex("Airlift"));
                         } else {
                             cout << "Entered territory that does not exist. Enter a valid territory id.";
                         }
@@ -523,13 +526,14 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
                 if (playerIndex != -1) {
                     isNameValid = true;
+                    Negotiate * negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
+                    negotiating->setPlayerLink(*this);
+                    this->ordersList->addNegotiate(negotiating);
+                    vHand->removeCard(vHand->getCardIndex("Diplomacy"));
                 } else {
                     cout << "That name is not on the list. Please enter a valid name" << endl;
                 }
             }
-            Negotiate * negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
-            negotiating->setPlayerLink(*this);
-            this->ordersList->addNegotiate(negotiating);
         } else {
             cout << "Please enter a valid number." << endl;
             return;
