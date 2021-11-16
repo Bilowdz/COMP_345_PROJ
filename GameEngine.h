@@ -73,7 +73,6 @@ class GameEngine {
         void startupPhase(CommandProcessor cp, GameEngine *);
 
         //added from ryan
-        //TODO implement this shit
         void mainGameLoop(vector<Player*> &vPlayersInPlay);
         void reinforcementPhase();
         void issueOrdersPhase(vector<Player*> &vPlayersInPlay);
