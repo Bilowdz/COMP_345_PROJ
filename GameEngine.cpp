@@ -246,13 +246,7 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
     }
 }
 
-
 //added by ryan
-//TODO implement this shit
-//TODO mainGameLoop loops the reinforcment, issueorder and executeorder phases
-//TODO continues until one player owns all territories
-//TODO must also remove players that do not own any territories
-
 //vector<Territory *> generateTerritories(int numTerritoryOwned);
 //vector<Hand *> generateHand(int numberCardsPerPlayer);
 //
@@ -317,6 +311,7 @@ void GameEngine::mainGameLoop(vector<Player*> & vPlayersInPlay) {
         issueOrdersPhase(vPlayersInPlay);
         executeOrdersPhase(vPlayersInPlay);
 
+        //Check to see if final player owns all territories on the map
         if (Players.size() == 1) {
             int doneCounter = 0;
             for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size(); ++i) {
@@ -334,14 +329,6 @@ void GameEngine::mainGameLoop(vector<Player*> & vPlayersInPlay) {
     }
 }
 
-/*
-Reinforcement Phase: Players are given a number of armies that depends on the number of territories
-they own, (# of territories owned divided by 3, rounded down). If the player owns all the territories of an
-entire continent, the player is given a number of armies corresponding to the continent’s control bonus
-value. In any case, the minimal number of reinforcement armies per turn for any player is 3. These armies
-are placed in the player’s reinforcement pool. This must be implemented in a function/method named
-reinforcementPhase() in the game engine.
- */
 void GameEngine::reinforcementPhase() {
 
     for (int i = 0; i < Players.size(); ++i) {
@@ -359,12 +346,7 @@ void GameEngine::reinforcementPhase() {
     }
 
 }
-/*
-Issuing Orders Phase: Players issue orders and place them in their order list through a call to the
-Player::issueOrder() method. This method is called in round-robin fashion across all players by the
-game engine. This must be implemented in a function/method named issueOrdersPhase() in the game
-engine
- */
+
 void GameEngine::issueOrdersPhase(vector<Player*> &vPlayersInPlay) {
     //loop through each player and allow them to issue orders
     for (int i = 0; i < vPlayersInPlay.size(); ++i) {
@@ -372,14 +354,6 @@ void GameEngine::issueOrdersPhase(vector<Player*> &vPlayersInPlay) {
     }
 }
 
-
-/*
-Orders Execution Phase—Once all the players have signified in the same turn that they are not issuing
-one more order, the game engine proceeds to execute the top order on the list of orders of each player in
-a round-robin fashion (i.e. the “Order Execution Phase”—see below). Once all the players’ orders have
-been executed, the main game loop goes back to the reinforcement phase. This must be implemented in
-a function/method named executeOrdersPhase() in the game engine
- */
 void GameEngine::executeOrdersPhase(vector<Player*> &vPlayersInPlay) {
     //TODO destroy all the pointers
     //Order of execution is which order was passed into the orderslist first
