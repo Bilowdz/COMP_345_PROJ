@@ -142,20 +142,14 @@ vector<Territory *> Player::toAttack() {
         //loop through the adjacent territories of the owned territories
         for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); j++) {
             //check if that territory is already owned, if its now owned then add to list
-            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr) {
+            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr &&
+                !(isTerritoryInList(territoriesToAttack, vTerritory.at(i)->adjacentTerritories.at(j)->id))) {
                 territoriesToAttack.push_back(vTerritory.at(i)->adjacentTerritories.at(j));
             }
         }
     }
     return territoriesToAttack;
-//    for (int i = 0; i < vPlayersInPlay.size(); i++) {
-//        //Compare the names of the players
-//        if (vPlayersInPlay.at(i)->getName().compare(name) != 0) {
-//            for (int j = 0; j < vPlayersInPlay.at(i)->getTerritorySize(); j++) {
-//                cout << "\t" + vPlayersInPlay.at(i)->vTerritory.at(j)->name << endl;
-//            }
-//        }
-//    }
+
 }
 
 /**
@@ -190,7 +184,7 @@ void Player::displayAdjacentTerritoriesNotOwned() {
 
 void Player::displayOwnedAdjacentTerritories() {
 
-    for (int i = 0; i < this->toDefend().size()-1; i++) {
+    for (int i = 0; i < this->toDefend().size() - 1; i++) {
         cout << "Name: " << this->toDefend().at(i)->name <<
              " ID: " << this->toDefend().at(i)->id << endl;
     }
@@ -368,8 +362,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
         if (choice == 0) {// finish adding orders
             isOrderDone = true;
-        }
-        else if (choice == 1) { // Advance order
+        } else if (choice == 1) { // Advance order
             int numArmiesAdvance;
             int idOfTerriSource;
             int idOfTerriTarget;
@@ -526,7 +519,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
                 if (playerIndex != -1) {
                     isNameValid = true;
-                    Negotiate * negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
+                    Negotiate *negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
                     negotiating->setPlayerLink(*this);
                     this->ordersList->addNegotiate(negotiating);
                     vHand->removeCard(vHand->getCardIndex("Diplomacy"));
@@ -542,7 +535,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 }
 
 Territory *Player::isOwnedTerritory(int id) {
-    for (int i = 0; i < vTerritory.size()-1; i++) {
+    for (int i = 0; i < vTerritory.size() - 1; i++) {
         if (vTerritory.at(i)->id == id) {
             return vTerritory.at(i);
         }
@@ -573,7 +566,7 @@ Hand *Player::getHand() {
 //
 //}
 
-const vector<int > &Player::getTerritoriesOwnedPerContinent() const {
+const vector<int> &Player::getTerritoriesOwnedPerContinent() const {
     return territoriesOwnedPerContinent;
 }
 
@@ -606,11 +599,11 @@ int Player::validPlayer(vector<Player *> validPlayers, string name) {
     return -1;
 }
 
-void Player::setMapLink(Map * map){
+void Player::setMapLink(Map *map) {
     this->mapLink = map;
 }
 
-void Player::setDeckLink(Deck * deck){
+void Player::setDeckLink(Deck *deck) {
     this->deckLink = deck;
 }
 
