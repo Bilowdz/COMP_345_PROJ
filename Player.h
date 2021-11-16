@@ -33,7 +33,7 @@ public:
     ~Player();
 
     friend ostream &operator<<(ostream &output, Player &player);
-    void toDefend();
+    vector<Territory *> toDefend(int index);
     void toAttack(vector<Player *> vPlayer);
     void issueOrder(vector<Player*> &vPlayersInPlay);
 

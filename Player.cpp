@@ -123,12 +123,21 @@ ostream &operator<<(ostream &output, Player &player) {
     return output;
 }
 
+void Player::displayTerritoriesOwned() {
+    for (int i = 0; i < vTerritory.size(); i++) {
+        cout << "Name: " << vTerritory.at(i)->name << " ID: " << vTerritory.at(i)->id << endl;
+    }
+}
+
 /**
  * All the territories that the current player can defend
+ * Returns a list of territories that the player owns
  */
-void Player::toDefend() {
-    for (int i = 0; i < vTerritory.size(); ++i) {
-        cout << "\t" + vTerritory.at(i)->name << endl;
+vector<Territory*> Player::toDefend(int index) {
+    
+
+    for (int i = 0; i < vTerritory.size(); i++) {
+        cout << "Name: " << vTerritory.at(i)->name << " ID: " << vTerritory.at(i)->id << endl;
     }
 }
 
@@ -176,12 +185,12 @@ int Player::getTerritorySize() const {
     return vTerritory.size();
 }
 
-///**
-// * Gets the number of cards the player has in its hand
-// *
-// * @param vIndex the current card from the list of Hands
-// * @return the number of the current card
-// */
+/**
+ * Gets the number of cards the player has in its hand
+ *
+ * @param vIndex the current card from the list of Hands
+ * @return the number of the current card
+ */
 int Player::getCardsOwned(int vIndex) {
     return 0;
     //return vHand->at(vIndex).size(); todo uncommment
@@ -253,7 +262,7 @@ void Player::issueOrder(vector<Player*> &vPlayersInPlay) {
             bool isCorrectTerriName = false;
             while (!isCorrectTerriName) {
                 this->displayTerritoriesOwned();
-                cout << "What territory do you want to deploy to? (write in territory id):" << endl;
+                cout << "What territory do you want to deploy to? (write in a territory id):" << endl;
                 cin >> idOfTerri;
                 Territory *myTerri = isOwnedTerritory(idOfTerri);
                 if (myTerri) {
@@ -414,11 +423,7 @@ Territory * Player::isOwnedTerritory(int id) {
     return nullptr;
 }
 
-void Player::displayTerritoriesOwned() {
-    for (int i = 0; i < vTerritory.size(); i++) {
-        cout << "Name: " << vTerritory.at(i)->name << " ID: " << vTerritory.at(i)->id << endl;
-    }
-}
+
 
 void Player::addTerritory(Territory * territory) {
     vTerritory.push_back(territory);
