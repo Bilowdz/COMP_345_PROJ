@@ -295,12 +295,15 @@ int Player::getReinforcements() {
 
 void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
-    string input;
-    cout << "You own a reinforcement card, would you like to use it (type y if yes)? ";
-    cin >> input;
-    if (input == "y") {
-        int reinforcementCardReward = 5;
-        this->setReinforcements(this->getReinforcements() + reinforcementCardReward);
+
+    if (vHand->isCardOwned("Reinforcement")) {
+        string input;
+        cout << "You own a reinforcement card, would you like to use it (type y if yes)? ";
+        cin >> input;
+        if (input == "y") {
+            int reinforcementCardReward = 5;
+            this->setReinforcements(this->getReinforcements() + reinforcementCardReward);
+        }
     }
 
     bool isOutOfReinforcementsToDeploy = false;

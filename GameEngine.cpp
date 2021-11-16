@@ -288,27 +288,23 @@ void GameEngine::mainGameLoop() {
     //TODO Load map here
 
     //TODO this must be done right after the map loads and the players are chosen. Run only once
+    gameMap.countTerritoriesPerContinent();
     for (int i = 0; i < Players.size(); ++i) {
-        gameMap.countTerritoriesPerContinent();
         Players.at(i)->setTerritoriesOwnedPerContinent(
                 gameMap.numberOfTerritoriesPerContinent.size());
-
     }
 
     bool noWinner = false;
     while (!noWinner) {
 
         reinforcementPhase();
-        //Check to see if players owns a territory
+        //Check to see if players owns a territory, if they dont remove them from game
         for (int i = 0; i < Players.size(); ++i) {
             if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
                 Players.erase(Players.begin() + i);
             }
         }
-
-        issueOrdersPhase();
-        executeOrdersPhase();
 
         //Check to see if final player owns all territories on the map
         if (Players.size() == 1) {
@@ -323,12 +319,17 @@ void GameEngine::mainGameLoop() {
                 noWinner = true;
                 cout << "The winner is " << Players.at(0)->getName();
             }
+            //TODO final player can request to end the game
         }
+
+        issueOrdersPhase();
+        executeOrdersPhase();
     }
 }
 
 void GameEngine::reinforcementPhase() {
 
+    //Adds armies to the reinforcement pool
     for (int i = 0; i < Players.size(); ++i) {
         //sets the number of armies based on territory size
         int numArmies = floor(Players.at(i)->getTerritorySize() / 3);
@@ -342,7 +343,6 @@ void GameEngine::reinforcementPhase() {
             }
         }
     }
-
 }
 
 void GameEngine::issueOrdersPhase() {
