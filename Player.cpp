@@ -366,8 +366,9 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
         cout << "What order would you like to issue:";
         cin >> choice;
 
-        if (choice == 0) // finish adding orders
+        if (choice == 0) {// finish adding orders
             isOrderDone = true;
+        }
         else if (choice == 1) { // Advance order
             int numArmiesAdvance;
             int idOfTerriSource;
