@@ -490,13 +490,6 @@ bool Territory::IsAdjacent(Territory &adj) {
 Territory::~Territory() = default;
 
 
-bool Territory::IsAdjacent(Territory &adj) {
-  for(Territory* ter : adjacentTerritories)
-    if(ter->id == adj.id)
-      return true;
-  return false;
-}
-
 void Map::displayTerritories() {
     for (int i = 0; i < map.size(); i++) {
         std::cout << "Name: " << map.at(i)->name << " ID: " << map.at(i)->id << std::endl;
