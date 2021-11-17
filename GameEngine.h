@@ -67,7 +67,6 @@ class GameEngine : public Subject, public ILoggable {
         void play();
 
     public:
-        LogObserver obs;
         bool isGameDone;
         GameEngine();
         GameEngine(const GameEngine &);

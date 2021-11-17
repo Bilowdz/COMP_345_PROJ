@@ -18,83 +18,8 @@ Log :: Added Order : Advance to Player : NotRyan
 Log :: Added Order : Deploy to Player : Bilowdz
 Log :: New Game State : 6
 Log :: New Game State : 6
-Log :: NotRyan Deployed 26 Units to TestTerritory1
-Log :: NotRyan Deployed 25 Units to TestTerritory5
-Log :: NotRyan Advanced 20 Units from TestTerritory1 to TestTerritory2
-Log :: NotRyan Advanced 20 Units from TestTerritory5 to TestTerritory4
-Log :: New Game State : 7
-Log :: Command: validatemap
-Log :: Effect: 
-Log :: New Game State : 2
-Log :: Command: addplayer Bilowdz
-Log :: Effect: 
-Log :: New Game State : 3
-Log :: Command: addplayer NotRyan
-Log :: Effect: 
-Log :: New Game State : 3
-Log :: Command: gamestart
-Log :: Effect: 
-Log :: New Game State : 4
-Log :: New Game State : 5
-Log :: Added Order : Deploy to Player : NotRyan
-Log :: Added Order : Deploy to Player : NotRyan
-Log :: Added Order : Advance to Player : NotRyan
-Log :: Added Order : Advance to Player : NotRyan
-Log :: Added Order : Deploy to Player : Bilowdz
-Log :: New Game State : 6
-Log :: New Game State : 6
 Log :: NotRyan Deployed 25 Units to TestTerritory1
 Log :: NotRyan Deployed 26 Units to TestTerritory5
-Log :: NotRyan Advanced 20 Units from TestTerritory1 to TestTerritory2
-Log :: NotRyan Advanced 20 Units from TestTerritory5 to TestTerritory4
-Log :: New Game State : 7
-Log :: Command: validatemap
-Log :: Effect: 
-Log :: New Game State : 2
-Log :: Command: addplayer Bilowdz
-Log :: Effect: 
-Log :: New Game State : 3
-Log :: Command: addplayer NotRyan
-Log :: Effect: 
-Log :: New Game State : 3
-Log :: Command: gamestart
-Log :: Effect: 
-Log :: New Game State : 4
-Log :: New Game State : 5
-Log :: Added Order : Deploy to Player : NotRyan
-Log :: Added Order : Deploy to Player : NotRyan
-Log :: Added Order : Advance to Player : NotRyan
-Log :: Added Order : Advance to Player : NotRyan
-Log :: Added Order : Deploy to Player : Bilowdz
-Log :: New Game State : 6
-Log :: New Game State : 6
-Log :: NotRyan Deployed 25 Units to TestTerritory1
-Log :: NotRyan Deployed 26 Units to TestTerritory5
-Log :: NotRyan Advanced 20 Units from TestTerritory1 to TestTerritory2
-Log :: NotRyan Advanced 20 Units from TestTerritory5 to TestTerritory4
-Log :: New Game State : 7
-Log :: Command: validatemap
-Log :: Effect: 
-Log :: New Game State : 2
-Log :: Command: addplayer Bilowdz
-Log :: Effect: 
-Log :: New Game State : 3
-Log :: Command: addplayer NotRyan
-Log :: Effect: 
-Log :: New Game State : 3
-Log :: Command: gamestart
-Log :: Effect: 
-Log :: New Game State : 4
-Log :: New Game State : 5
-Log :: Added Order : Deploy to Player : NotRyan
-Log :: Added Order : Deploy to Player : NotRyan
-Log :: Added Order : Advance to Player : NotRyan
-Log :: Added Order : Advance to Player : NotRyan
-Log :: Added Order : Deploy to Player : Bilowdz
-Log :: New Game State : 6
-Log :: New Game State : 6
-Log :: NotRyan Deployed 26 Units to TestTerritory1
-Log :: NotRyan Deployed 25 Units to TestTerritory5
 Log :: NotRyan Advanced 20 Units from TestTerritory1 to TestTerritory2
 Log :: NotRyan Advanced 20 Units from TestTerritory5 to TestTerritory4
 Log :: New Game State : 7

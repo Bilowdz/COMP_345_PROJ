@@ -58,29 +58,19 @@ void cpDriver() {
 }
 
 int main() {
+    ofstream file("../gamelog.txt");
+    file.close();
+
     auto *neutralName = new string("neutral");
     vector<Territory*> neutralTerritories;
     Hand *neutralHand = new Hand();
     auto *neutralOrdersList = new OrdersList();
     Player::neutralPlayer() = *new Player(neutralName, neutralTerritories, neutralHand, neutralOrdersList);
     cpDriver();
-    //GameEngine* ge = new GameEngine();
-    //CommandProcessor cp;
-    //ge->startupPhase(cp, ge);
 
-    // LogObserver* log = new LogObserver();
-    // FileLineReader flr("../CommandProcessorFiles/commands.txt");
-    // //flr.load();
-    // //while(!flr.isEof()) {
-    // //    cout << flr.next() << endl;
-    // //}
-
-    // GameEngine* ge = new GameEngine();
-    // FileCommandProcessorAdapter adapter(flr, ge);
-    // adapter.Attach(log);
-
-    // Command* c = adapter.getCommand();
-    // c->Attach(log);
+    delete neutralName;
+    delete neutralHand;
+    delete neutralOrdersList;
 
     return 0;
 }
