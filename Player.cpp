@@ -609,7 +609,7 @@ void Player::removeReinforcements(int armiesToRemove) {
 }
 
 void Player::removeNegotiations(int index) {
-    this->negotiatingWith.erase(negotiatingWith.begin()+index);
+    this->negotiatingWith.erase(negotiatingWith.cbegin());
 }
 
 Player &Player::neutralPlayer() {

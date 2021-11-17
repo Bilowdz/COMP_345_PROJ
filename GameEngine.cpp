@@ -373,8 +373,9 @@ void GameEngine::executeOrdersPhase() {
         }
     }
     for (int i = 0; i < Players.size(); i++) {
-        for (int j = 0; j < Players.at(i)->negotiatingWith.size(); j++) {
-            Players.at(i)->removeNegotiations(j);
+        int sizeOfNegotiating = Players.at(i)->negotiatingWith.size();
+        for (int j = 0; j < sizeOfNegotiating; j++) {
+            Players.at(i)->removeNegotiations(0);
         }
     }
 }
