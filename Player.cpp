@@ -307,6 +307,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
     while (!isOutOfReinforcementsToDeploy) {
         int numArmiesDeploy;
         int idOfTerri;
+        cout << "You have " << this->getReinforcements()-numArmiesDeployed << " armies left to deploy." << endl;
         cout << "How many armies do you want to deploy?:";
         cin >> numArmiesDeploy;
         numArmiesDeployed = numArmiesDeployed + numArmiesDeploy;
@@ -343,7 +344,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
         cout << "You do not own any cards." << endl;
     } else {
         for (int i = 0; i < vHand->cardsHeld.size(); i++) {
-            cout << "Name of Card: " << vHand->cardsHeld.at(i)->cardType << " ID: " << i << endl;
+            cout << "Name of Card: " << vHand->cardsHeld.at(i)->cardType << endl;
         }
     }
 
@@ -367,10 +368,6 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             int idOfTerriSource;
             int idOfTerriTarget;
 
-            cout << "Here are the adjacent territories to enemy territories that you own:" << endl;
-            this->displayOwnedAdjacentTerritories();
-            cout << "Here are the adjacent territories that you do not own:" << endl;
-            this->displayAdjacentTerritoriesNotOwned();
             vector<Territory *> listOfTerritoriesToDefend = this->toDefend();
             vector<Territory *> listOfTerritoriesToAttack = this->toAttack();
 
@@ -446,7 +443,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             int idOfTerriToBlockade;
             bool isCorrectBlockade = false;
             while (!isCorrectBlockade) {
-                this->mapLink->displayTerritories();
+                this->displayOwnedAdjacentTerritories();
                 cout << "Where would you like to blockade" << endl;
                 cin >> idOfTerriToBlockade;
                 Territory *territoryToBlockade = this->mapLink->isTerritory(idOfTerriToBlockade);
@@ -519,7 +516,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
                 if (playerIndex != -1) {
                     isNameValid = true;
-                    Negotiate *negotiating = new Negotiate(vPlayersInPlay.at(playerIndex));
+                    Negotiate *negotiating = new Negotiate(*vPlayersInPlay.at(playerIndex));
                     negotiating->setPlayerLink(*this);
                     this->ordersList->addNegotiate(negotiating);
                     vHand->removeCard(vHand->getCardIndex("Diplomacy"));
