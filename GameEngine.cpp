@@ -105,14 +105,6 @@ bool GameEngine::transition(Command *c) {
             return true;
         }
     }
-
-    /*
-         try {
-             throw T_ERROR;
-         } catch (Transition t) {
-             cout << " An error has occurred. Exception: '" << t << "'" << endl;
-         }
-         */
     return false;
 }
 
@@ -123,7 +115,7 @@ State GameEngine::getState() {
 
 void GameEngine::loadmap(Command *c) {
 
-    string command = c->getCommand(); //command = "loadmap zertina.map"
+    string command = c->getCommand();
     int mapChosen;
 
     if (command == "loadmap zertina.map") {
@@ -133,7 +125,7 @@ void GameEngine::loadmap(Command *c) {
     } else if (command == "loadmap canada.map") {
         mapChosen = 2;
 
-        // invalid map
+    // invalid map
     } else {
 
     }
@@ -176,7 +168,8 @@ void GameEngine::gamestart() {
         MainDeck->Draw(Player->getHand());
         MainDeck->Draw(Player->getHand());
     }
-    assigncountries();
+
+    this->transition(new Command("assigncountries"));
 }
 
 void GameEngine::assigncountries() {
@@ -186,37 +179,31 @@ void GameEngine::assigncountries() {
 }
 
 void GameEngine::issueorder() {
-    //transition(T_ISSUE_ORDER);
-    cout << "Executing function issueorder" << endl;
+    issueOrdersPhase();
 }
 
 void GameEngine::execorder() {
-    //transition(T_EXEC_ORDER);
-    cout << "Executing function execorder" << endl;
+    executeOrdersPhase();
 }
 
 void GameEngine::endexecorders() {
-    //transition(T_END_EXEC_ORDERS);
     cout << "Executing function endexecorders" << endl;
 }
 
 void GameEngine::endissueorders() {
-    //transition(T_END_ISSUE_ORDERS);
     cout << "Executing function endissueorders" << endl;
 }
 
 void GameEngine::win() {
-    //transition(T_WIN);
     cout << "Executing function win" << endl;
+    // todo: prompt user to play again or quit using command processor
 }
 
 void GameEngine::end() {
-    //transition(T_END);
     cout << "Executing function end" << endl;
 }
 
 void GameEngine::play() {
-    //transition(T_PLAY);
     cout << "Executing function play" << endl;
 }
 
@@ -273,8 +260,12 @@ void GameEngine::mainGameLoop() {
     while (!noWinner) {
 
         reinforcementPhase();
-        issueOrdersPhase();
-        executeOrdersPhase();
+
+        this->transition(new Command("issueorders"));
+        this->transition(new Command("endissueorders"));
+        this->transition(new Command("endissueorders"));
+        this->transition(new Command("execorder"));
+        this->transition(new Command("endexecorders"));
 
         //Check to see if players owns a territory, if they dont remove them from game
         for (int i = 0; i < Players.size()-1; i++) {
@@ -299,12 +290,12 @@ void GameEngine::mainGameLoop() {
             }
             //TODO final player can request to end the game
         }
-
     }
+    this->transition(new Command("win"));
 }
 
 void GameEngine::reinforcementPhase() {
-
+    this->currentState = ST_ASSIGN_REINFORCEMENT;
     //Adds armies to the reinforcement pool
     for (int i = 0; i < Players.size()-1; i++) {
         //sets the number of armies based on territory size
