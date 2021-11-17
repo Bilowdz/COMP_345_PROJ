@@ -442,6 +442,7 @@ void GameEngine::printAvailableOptions() {
  * @return the game state
  */
 string GameEngine::stringToLog(){
-    string log = "Log :: New Game State : " + to_string(*enum_state_str[currentState]);
+    string state = enum_state_str[currentState];
+    string log = "Log :: New Game State : " + state;
     return log;
 }
