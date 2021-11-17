@@ -158,12 +158,14 @@ void GameEngine::addplayer(Command *c) {
     Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
     newPlayer->setDeckLink(MainDeck);
     newPlayer->setMapLink(&gameMap);
+    newPlayer->setTerritoriesOwnedPerContinent();
     newPlayer->addReinforcements(50);
     this->Players.push_back(newPlayer);
 
 }
 
 void GameEngine::gamestart() {
+    gameMap.countTerritoriesPerContinent();
     std::shuffle(std::begin(Players), std::end(Players), std::default_random_engine());
     cout << "The player order is: " << endl;
     for (int i = 0; i < Players.size(); i++) {
@@ -183,7 +185,6 @@ void GameEngine::assigncountries() {
         int randomPlayer = i % Players.size();
         Players.at(randomPlayer)->addTerritory(gameMap.map.at(i));
         gameMap.map.at(i)->playerLink = Players.at(randomPlayer);
-        //Players.at(randomPlayer)->setIncrementTerritoryCount(Players.at(randomPlayer)->getTerritoriesOwned(Players.at(randomPlayer)->getTerritorySize()-1)->continent-1);
     }
 }
 
@@ -257,13 +258,6 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
 }
 
 void GameEngine::mainGameLoop() {
-    //TODO Load map here; simon: don't think we need to loadmap here. I think its already loaded
-
-    //TODO this must be done right after the map loads and the players are chosen. Run only once
-    gameMap.countTerritoriesPerContinent();
-    for (int i = 0; i < Players.size(); i++) {
-        this->Players.at(i)->setTerritoriesOwnedPerContinent(gameMap.numberOfTerritoriesPerContinent.size());
-    }
 
     bool noWinner = false;
     while (!noWinner) {

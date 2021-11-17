@@ -399,23 +399,34 @@ Advance &Advance::operator=(const Advance &p) {
  * Advance validate checks if the Advance object can execute
  */
 void Advance::validate(Player & player) {
-    // check source territory is owned by player
-    int checkRefusal = player.getTerritorySize();
-    if (source->IsAdjacent(*target)) {
-        for (int i = 0; i < player.getTerritorySize(); i++) {
-            if (this->source->id == (player.getTerritoriesOwned(i)->id)) {
-                Advance::execute(player);
-                return;
-            } else {
-                if (checkRefusal == 1) {
-                    cout << "Source territory not owned by player! Advance order not executed.\n";
+    bool canAttack = false;
+    for (int j = 0; j < player.negotiatingWith.size(); j++) {
+        if (player.getName().rfind(player.negotiatingWith.at(j)->getName(), 0) == 0) {
+            canAttack = true;
+        }
+
+    }
+    if (!canAttack) {
+        // check source territory is owned by player
+        int checkRefusal = player.getTerritorySize();
+        if (source->IsAdjacent(*target)) {
+            for (int i = 0; i < player.getTerritorySize(); i++) {
+                if (this->source->id == (player.getTerritoriesOwned(i)->id)) {
+                    Advance::execute(player);
+                    return;
                 } else {
-                    checkRefusal--;
+                    if (checkRefusal == 1) {
+                        cout << "Source territory not owned by player! Advance order not executed.\n";
+                    } else {
+                        checkRefusal--;
+                    }
                 }
             }
+        } else {
+            cout << "Cannot execute advance order because territories are not adjacent!\n";
         }
     } else {
-        cout << "Cannot execute advance order because territories are not adjacent!\n";
+        cout << "You are currently in Negotiations with " << target->playerLink->getName() << " and can't advance to there territory!" << endl;
     }
 }
 
@@ -459,9 +470,9 @@ void Advance::execute(Player & player) {
                         // if target has no units left, but attacker does, transfer territory to attacker
                         target->unitsGarrisoned = 0;
                         player.addTerritory(target);
-                        player.setIncrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent-1);
+                        //player.setIncrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent-1);
                         target->playerLink->removeTerritory(target);
-                        target->playerLink->setDecrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent);
+                        //target->playerLink->setDecrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent);
                         player.deckLink->Draw(player.getHand());
                         target->playerLink = &player;
                         cout << "win";
@@ -662,7 +673,6 @@ void Blockade::validate(Player & player) {
 void Blockade::execute(Player & player) {
     target->unitsGarrisoned = target->unitsGarrisoned * 2;
     target->playerLink->removeTerritory(target);
-    target->playerLink->setDecrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent);
     std::cout << "Territory blockade set up! " << target->name << " now has " << target->unitsGarrisoned << " armies, and is not owned by " << player.getName() << " anymore." << endl;
 }
 
@@ -833,8 +843,7 @@ void Negotiate::validate(Player & player) {
  * Executes a Negotiate order
  */
 void Negotiate::execute(Player & player) {
-    // TODO make it so if this is executed this->getPlayerLink()
-    //  and passed player cannot attack each other for the remainder of the turn.
+    player.negotiatingWith.push_back(playerLink);
     std::cout << "Negotiate active between the two selected players.\n";
 }
 
