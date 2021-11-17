@@ -3,6 +3,7 @@
 //
 #include "GameEngine.h"
 #include "CommandProcessing.h"
+#include <vector>
 #include <algorithm>
 #include <random>
 
@@ -164,10 +165,9 @@ void GameEngine::addplayer(Command *c) {
     newPlayer->setMapLink(&gameMap);
     newPlayer->addReinforcements(50);
     this->Players.push_back(newPlayer);
-    int randomNumber = (rand() % 100); //0-99
-    //std::shuffle(std::begin(Players), std::end(Players), randomNumber);
-    
-   // shuffle(Players.begin(), Players.end(), 15); todo uncomment
+    //shuffles the players around
+    std::shuffle(std::begin(Players), std::end(Players), std::default_random_engine());
+
 }
 
 void GameEngine::gamestart() {
