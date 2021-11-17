@@ -24,8 +24,8 @@ public:
     Deck * deckLink;
     Map * mapLink;
 
-    void setMapLink(Map * map);
-    void setDeckLink(Deck * deck);
+    void setMapLink(Map & map);
+    void setDeckLink(Deck & deck);
 
     Player();
     explicit Player(string *name);

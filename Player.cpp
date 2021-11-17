@@ -126,7 +126,7 @@ ostream &operator<<(ostream &output, Player &player) {
 
 void Player::displayTerritoriesOwned() {
     for (int i = 0; i < vTerritory.size(); i++) {
-        cout << "Name: " << vTerritory.at(i)->name << " ID: " << vTerritory.at(i)->id << endl;
+        cout << "Name: " << vTerritory.at(i)->name << " ID: " << vTerritory.at(i)->id << " units: " << vTerritory.at(i)->unitsGarrisoned << endl;
     }
 }
 
@@ -371,11 +371,11 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             vector<Territory *> listOfTerritoriesToDefend = this->toDefend();
             vector<Territory *> listOfTerritoriesToAttack = this->toAttack();
 
+            this->displayTerritoriesOwned();
             cout << "How many armies do you want to advance?:";
             cin >> numArmiesAdvance;
             bool isCorrectTerriNameAdvanceSource = false;
             while (!isCorrectTerriNameAdvanceSource) {
-                this->displayTerritoriesOwned();
                 cout << "From which territory do you want to move units? (write in territory id):" << endl;
                 cin >> idOfTerriSource;
                 Territory *myTerriSource = isOwnedTerritory(idOfTerriSource);
@@ -593,12 +593,12 @@ int Player::validPlayer(vector<Player *> validPlayers, string name) {
     return -1;
 }
 
-void Player::setMapLink(Map *map) {
-    this->mapLink = map;
+void Player::setMapLink(Map &map) {
+    this->mapLink = &map;
 }
 
-void Player::setDeckLink(Deck *deck) {
-    this->deckLink = deck;
+void Player::setDeckLink(Deck &deck) {
+    this->deckLink = &deck;
 }
 
 void Player::addReinforcements(int armiesToAdd) {

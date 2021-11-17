@@ -109,7 +109,6 @@ bool GameEngine::transition(Command *c) {
         }
     } else if (command =="gamestart") {
         if (currentState == ST_PLAYERS_ADDED) {
-            currentState = ST_ASSIGN_REINFORCEMENT;
             gamestart();
             mainGameLoop();
             return true;
@@ -164,7 +163,7 @@ void GameEngine::addplayer(Command *c) {
     OrdersList *ordersList = new OrdersList();
     Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
     newPlayer->setDeckLink(MainDeck);
-    newPlayer->setMapLink(&gameMap);
+    newPlayer->setMapLink(gameMap);
     newPlayer->setTerritoriesOwnedPerContinent();
     newPlayer->addReinforcements(50);
     this->Players.push_back(newPlayer);
@@ -178,10 +177,10 @@ void GameEngine::gamestart() {
     for (int i = 0; i < Players.size(); i++) {
         cout << i + 1 << ": " << Players.at(i)->getName() << endl;
     }
-    MainDeck = new Deck(Players.size());
+    MainDeck = *new Deck(Players.size());
     for (auto &Player: Players) {
-        MainDeck->Draw(Player->getHand());
-        MainDeck->Draw(Player->getHand());
+        MainDeck.Draw(Player->getHand());
+        MainDeck.Draw(Player->getHand());
     }
 
     this->transition(new Command("assigncountries"));

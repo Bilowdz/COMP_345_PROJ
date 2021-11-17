@@ -50,7 +50,7 @@ class GameEngine {
         bool debug = false;
         State currentState;
         Map gameMap;
-        Deck *MainDeck;
+        Deck MainDeck;
         std::vector<Player*> Players;
         void loadmap(Command *);
         void validatemap();
