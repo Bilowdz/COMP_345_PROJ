@@ -56,7 +56,7 @@ public:
     const vector<int> &getTerritoriesOwnedPerContinent() const;
     void setIncrementTerritoryCount(int index);
     void setDecrementTerritoryCount(int index);
-    void setTerritoriesOwnedPerContinent(int size);
+    void setTerritoriesOwnedPerContinent();
 
     int getCardsOwned(int vIndex);
     Hand * getHand();
@@ -76,6 +76,7 @@ public:
 
     string getName() const;
     void setName(string s);
+    vector<Player*> negotiatingWith;
 
 private:
     string name; //Name of the player
