@@ -2,5 +2,4 @@ loadmap canada.map
 validatemap
 addplayer Bilowdz
 addplayer NotRyan
-addplayer Nicolo
 gamestart

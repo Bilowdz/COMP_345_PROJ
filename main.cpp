@@ -45,8 +45,6 @@ void chooseComandProcessor() {
         ge->transition(c4);
         Command * c5 =adapter.getCommand(ge);
         ge->transition(c5);
-        Command * c6 =adapter.getCommand(ge);
-        ge->transition(c6);
     }
 }
 

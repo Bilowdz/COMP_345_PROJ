@@ -586,8 +586,6 @@ int Player::validPlayer(vector<Player *> validPlayers, string name) {
     for (int i = 0; i < validPlayers.size(); i++) {
         if (name.rfind(validPlayers.at(i)->getName(), 0) == 0) {
             return i;
-        } else {
-            return -1;
         }
     }
     return -1;

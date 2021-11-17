@@ -448,14 +448,26 @@ void Advance::execute(Player & player) {
             return;
         } else { // if not owned by player, attack target territory
             if (checkRefusal == 1) {
+                if (target->unitsGarrisoned == 0) {
+                    target->unitsGarrisoned = target->unitsGarrisoned + this->getArmies();
+                    source->unitsGarrisoned = source->unitsGarrisoned - this->getArmies();
+                    player.addTerritory(target);
+                    target->playerLink->removeTerritory(target);
+                    target->playerLink = &player;
+                    player.deckLink->Draw(player.getHand());
+                    cout << target->name << " now has " << target->unitsGarrisoned << " armies, and " << source->name << " now has "
+                            << source->unitsGarrisoned << " armies, and they have gained a card!" << endl;
+                    return;
+                }
                 int sourceAttack = 0;
                 int targetDefense = 0;
+
                 for (int j = 0; j < this->getArmies(); j++) {
                     bool victoryDefeat = (rand() % 100) < 60;
                     if (victoryDefeat)
                         sourceAttack++;
                 }
-                for (int j = 0; j < this->getArmies(); j++) {
+                for (int j = 0; j < target->unitsGarrisoned; j++) {
                     bool victoryDefeat = (rand() % 100) < 70;
                     if (victoryDefeat)
                         targetDefense++;
@@ -467,14 +479,17 @@ void Advance::execute(Player & player) {
                     // check if target has units left
                     if (target->unitsGarrisoned <= 0){
                         // if target has no units left, but attacker does, transfer territory to attacker
-                        target->unitsGarrisoned = 0;
+                        target->unitsGarrisoned = this->getArmies() - targetDefense;
+                        source->unitsGarrisoned = source->unitsGarrisoned - (this->getArmies() - targetDefense);
+
                         player.addTerritory(target);
                         //player.setIncrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent-1);
                         target->playerLink->removeTerritory(target);
                         //target->playerLink->setDecrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent);
                         player.deckLink->Draw(player.getHand());
                         target->playerLink = &player;
-                        cout << "win";
+                        cout << player.getName() << " won " << target->name << " and now has " << target->unitsGarrisoned << " units there." << endl;
+                        return;
                     } else { // if both sides have units left, nobody moves
                         cout << "Units left on both sides, no territories conquered.\n";
                         cout << source->name << " has " << source->unitsGarrisoned << " armies left, and " << target->name << " has " << target->unitsGarrisoned << " armies left." << endl;
@@ -585,7 +600,6 @@ void Bomb::validate(Player & player) {
  */
 void Bomb::execute(Player & player) {
     int bomb = target->unitsGarrisoned / 2;
-    cout << bomb << endl;
     target->unitsGarrisoned = bomb;
     std::cout << "Bombing half the enemy armies! " << target->name << " now has " << target->unitsGarrisoned << " armies!" << endl;
 }
@@ -672,6 +686,7 @@ void Blockade::validate(Player & player) {
 void Blockade::execute(Player & player) {
     target->unitsGarrisoned = target->unitsGarrisoned * 2;
     target->playerLink->removeTerritory(target);
+    target->playerLink = nullptr;
     std::cout << "Territory blockade set up! " << target->name << " now has " << target->unitsGarrisoned << " armies, and is not owned by " << player.getName() << " anymore." << endl;
 }
 
