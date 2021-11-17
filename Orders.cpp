@@ -24,7 +24,7 @@ using namespace std;
 
 /**
  * output of the OrdersList class
- * @param out ostream operator of OrdersList
+ * @param out ostream insertion operator of OrdersList
  * @param ordersList the list of objects to output
  * @return returns string of text describing ordersList
  */
@@ -216,7 +216,7 @@ void Orders::identify() {
 
 /**
  * output of the OrdersList class
- * @param out ostream operator of Orders class
+ * @param out ostream insertion operator of Orders class
  * @param orders the object being outputted as a string
  * @return the string output for the Orders class
  */
@@ -378,7 +378,7 @@ void Deploy::identify() {
 
 /**
  * output of the Deploy class
- * @param out ostream operator of Deploy class
+ * @param out ostream insertion operator of Deploy class
  * @param deploy object to be outputted
  * @return string of text describing the passed Deploy object
  */
@@ -591,7 +591,7 @@ void Advance::identify() {
 
 /**
  * output of the Advance class
- * @param out ostream operator of Advance class
+ * @param out ostream insertion operator of Advance class
  * @param Advance object to be outputted
  * @return string of text describing the passed Advance object
  */
@@ -705,7 +705,7 @@ void Bomb::identify() {
 
 /**
  * output of the Bomb class
- * @param out ostream operator of Bomb class
+ * @param out ostream insertion operator of Bomb class
  * @param Bomb object to be outputted
  * @return string of text describing the passed Bomb object
  */
@@ -810,7 +810,7 @@ void Blockade::identify() {
 
 /**
  * output of the Blockade class
- * @param out ostream operator of Blockade class
+ * @param out ostream insertion operator of Blockade class
  * @param blockade object to be outputted
  * @return string of text describing the passed Blockade object
  */
@@ -924,7 +924,7 @@ void Airlift::identify() {
 
 /**
  * output of the Airlift class
- * @param out ostream operator of Airlift class
+ * @param out ostream insertion operator of Airlift class
  * @param airlift object to be outputted
  * @return string of text describing the passed Airlift object
  */
@@ -1019,7 +1019,7 @@ void Negotiate::identify() {
 
 /**
  * output of the Negotiate class
- * @param out ostream operator of Negotiate class
+ * @param out ostream insertion operator of Negotiate class
  * @param negotiate object to be outputted
  * @return string of text describing the passed Negotiate object
  */

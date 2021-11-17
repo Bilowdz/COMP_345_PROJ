@@ -96,7 +96,7 @@ Player::~Player() {
 }
 
 /**
- * Ostream operator to output territory, hand and order of each player
+ * Ostream insertion operator to output territory, hand and order of each player
  *
  * @param output operator
  * @param player is the player we are currently looking at
@@ -114,9 +114,7 @@ ostream &operator<<(ostream &output, Player &player) {
         output << "\tCard Number: " + to_string(player.getCardsOwned(k)) << endl;
     }
     output << "Orders Sent: \n";
-//    for (int l = 0; l < player.getNumberOfOrders(); ++l) {
-//        output << "\t" + player.getOrder(l) << " " + to_string(l + 1) << endl;
-//    }
+
     output << "Territories to defend: \n";
     player.toDefend();
     output << "\n";
