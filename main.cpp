@@ -19,7 +19,9 @@ void driveMap() {
 }
 
 void chooseComandProcessor() {
+    LogObserver* logger = new LogObserver();
     GameEngine* ge = new GameEngine();
+    ge->Attach(logger);
     cout << "Choose between accepting the commands from the console (1) or from a file (2):";
     int input = 0;
     cin >> input;
@@ -27,6 +29,7 @@ void chooseComandProcessor() {
     // user selected console
     if(input == 1) {
         CommandProcessor cp;
+        cp.Attach(logger);
         ge->startupPhase(cp, ge);
     } else {
         string filename;
@@ -36,6 +39,7 @@ void chooseComandProcessor() {
 
         FileLineReader flr("../CommandProcessorFiles/" + filename);
         FileCommandProcessorAdapter adapter(flr);
+        adapter.Attach(logger);
         Command * c1 = adapter.getCommand(ge);
         ge->transition(c1);
         Command * c2 =adapter.getCommand(ge);
@@ -54,7 +58,6 @@ void cpDriver() {
 }
 
 int main() {
-
     auto *neutralName = new string("neutral");
     vector<Territory*> neutralTerritories;
     Hand *neutralHand = new Hand();

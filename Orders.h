@@ -18,6 +18,7 @@
 #include <vector>
 #include <ostream>
 #include "Map.h"
+#include "LoggingObserver.h"
 
 using namespace std;
 
@@ -30,10 +31,11 @@ class Player;
 /**
  * Orders class definitions
  */
-class Orders {
+class Orders : public Subject, public ILoggable {
 private:
 
 public:
+    string name;
     Player * playerLink;
     Orders();
     virtual ~Orders();
@@ -45,6 +47,8 @@ public:
     virtual void setPlayerLink(Player & player);
     friend ostream &operator << (ostream &, const Orders &orders);
 
+    // logging output
+    std::string stringToLog() override;
 };
 
 //------------------------------------------------------------------
@@ -71,6 +75,9 @@ public:
     void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Deploy &deploy);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 /**
@@ -94,6 +101,9 @@ public:
     void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Advance &advance);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 /**
@@ -113,6 +123,9 @@ public:
     void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Bomb &bomb);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 /**
@@ -132,6 +145,9 @@ public:
     void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Blockade &blockade);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 /**
@@ -153,6 +169,9 @@ public:
     void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Airlift &airlift);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 /**
@@ -172,6 +191,9 @@ public:
     void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Negotiate &negotiate);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 //--------------------------------------------------------------------------
@@ -181,7 +203,7 @@ public:
 /**
  * OrdersList class definitions
  */
-class OrdersList {
+class OrdersList : public Subject, public ILoggable {
     // contains a list of Orders objects
 private:
     std::vector<Orders*> ordersList;
@@ -203,6 +225,9 @@ public:
 
     void move(int indexFrom, int indexTo);
     void remove(int index);
+
+    // logging output
+    std::string stringToLog() override;
 };
 
 #endif //COMP_345_PROJ_ORDERS_H

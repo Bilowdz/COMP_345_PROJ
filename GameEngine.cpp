@@ -41,6 +41,7 @@ bool GameEngine::transition(Command *c) {
 
             // valid transition to state map loaded, so travel to state
             currentState = ST_MAP_LOADED;
+            Notify(this);
 
             // execute game engine function
             this->loadmap(c);
@@ -49,60 +50,70 @@ bool GameEngine::transition(Command *c) {
     } else if (command == "validatemap") {
         if (currentState == ST_MAP_LOADED) {
             currentState = ST_MAP_VALIDATED;
+            Notify(this);
             this->validatemap();
             return true;
         }
     } else if (command.rfind(addplayer, 0) == 0) {
         if (currentState == ST_MAP_VALIDATED || currentState == ST_PLAYERS_ADDED) {
             currentState = ST_PLAYERS_ADDED;
+            Notify(this);
             this->addplayer(c);
             return true;
         }
     } else if (command == "assigncountries") {
         if (currentState == ST_PLAYERS_ADDED) {
             currentState = ST_ASSIGN_REINFORCEMENT;
+            Notify(this);
             this->assigncountries();
             return true;
         }
     } else if (command == "issueorders") {
         if (currentState == ST_ASSIGN_REINFORCEMENT || currentState == ST_ISSUE_ORDERS) {
             currentState = ST_ISSUE_ORDERS;
+            Notify(this);
             this->issueorder();
             return true;
         }
     } else if (command == "endissueorders") {
         if (currentState == ST_ISSUE_ORDERS) {
             currentState = ST_EXECUTE_ORDERS;
+            Notify(this);
             this->endissueorders();
             return true;
         }
     } else if (command == "execorder") {
         if (currentState == ST_ISSUE_ORDERS || currentState == ST_EXECUTE_ORDERS) {
             currentState = ST_EXECUTE_ORDERS;
+            Notify(this);
             this->execorder();
             return true;
         }
     } else if (command == "endexecorders") {
         if (currentState == ST_EXECUTE_ORDERS) {
             currentState = ST_ASSIGN_REINFORCEMENT;
+            Notify(this);
             this->endexecorders();
             return true;
         }
     } else if (command == "win") {
         if (currentState == ST_EXECUTE_ORDERS) {
             currentState = ST_WIN;
+            Notify(this);
             this->win();
             return true;
         }
     } else if (command == "play") {
         if (currentState == ST_WIN) {
             currentState = ST_START;
+            Notify(this);
             this->play();
             return true;
         }
     } else if (command == "end") {
         if (currentState == ST_WIN) {
             currentState = ST_END;
+            Notify(this);
             this->end();
             this->isGameDone = true;
             return true;
@@ -162,6 +173,9 @@ void GameEngine::addplayer(Command *c) {
     vector<Territory*> vTerritories;
     Hand *vHand = new Hand();
     OrdersList *ordersList = new OrdersList();
+    for(Observer* observer : *_observers)
+        ordersList->Attach(observer);
+
     Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
     newPlayer->setDeckLink(MainDeck);
     newPlayer->setMapLink(gameMap);
@@ -360,4 +374,10 @@ void GameEngine::executeOrdersPhase() {
         }
     }
 }
+
+string GameEngine::stringToLog(){
+    string log = "Log :: New Game State : " + to_string(currentState);
+    return log;
+}
+
 //end ryan

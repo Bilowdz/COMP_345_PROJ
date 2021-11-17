@@ -7,6 +7,7 @@ using namespace std;
 #include "Map.h"
 #include "Player.h"
 #include "Card.h"
+#include "LoggingObserver.h"
 
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
@@ -45,7 +46,7 @@ using namespace std;
 class Command;
 class CommandProcessor;
 
-class GameEngine {
+class GameEngine : public Subject, public ILoggable {
     private:
         bool debug = false;
         State currentState;
@@ -66,6 +67,7 @@ class GameEngine {
         void play();
 
     public:
+        LogObserver obs;
         bool isGameDone;
         GameEngine();
         GameEngine(const GameEngine &);
@@ -87,6 +89,9 @@ class GameEngine {
 
         GameEngine& operator =(const GameEngine &);
         friend ostream & operator << (ostream &, const GameEngine &ge);
+
+        // logging output
+        std::string stringToLog() override;
 };
 
 #endif //COMP_345_PROJ_GAMEENGINE_H

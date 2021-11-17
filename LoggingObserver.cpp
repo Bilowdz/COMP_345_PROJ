@@ -38,7 +38,7 @@ LogObserver::~LogObserver() {}
 
 void LogObserver::Update(ILoggable *loggable) {
     std::string LogFile = "gamelog.txt";
-    std::filesystem::current_path("../Logs");
+    //std::filesystem::current_path("../Logs");
     std::ofstream output;
 
     output.open(LogFile, std::ios_base::app);

@@ -1,0 +1,14 @@
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : 2
+Log :: Command: addplayer Bilowdz
+Log :: Effect: 
+Log :: New Game State : 3
+Log :: Command: addplayer NotRyan
+Log :: Effect: 
+Log :: New Game State : 3
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : 4
+Log :: New Game State : 5
+Log :: Added Order : Deploy to Player : NotRyan

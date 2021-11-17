@@ -39,7 +39,10 @@ ostream &operator << (ostream &out, const OrdersList &ordersList) {
  */
 void OrdersList::addDeploy(Deploy * deploy) {
     this->ordersList.push_back(deploy);
+    for(Observer* observer : *_observers)
+        deploy->Attach(observer);
     cout << "Deploy order added." << endl;
+    Notify(this);
 }
 
 /**
@@ -48,7 +51,10 @@ void OrdersList::addDeploy(Deploy * deploy) {
  */
 void OrdersList::addAdvance(Advance * advance) {
     this->ordersList.push_back(advance);
+    for(Observer* observer : *_observers)
+        advance->Attach(observer);
     cout << "Advance order added." << endl;
+    Notify(this);
 }
 
 /**
@@ -57,7 +63,10 @@ void OrdersList::addAdvance(Advance * advance) {
  */
 void OrdersList::addBomb(Bomb * bomb) {
     this->ordersList.push_back(bomb);
+    for(Observer* observer : *_observers)
+        bomb->Attach(observer);
     cout << "Bomb order added." << endl;
+    Notify(this);
 }
 
 /**
@@ -66,7 +75,10 @@ void OrdersList::addBomb(Bomb * bomb) {
  */
 void OrdersList::addBlockade(Blockade * blockade) {
     this->ordersList.push_back(blockade);
+    for(Observer* observer : *_observers)
+        blockade->Attach(observer);
     cout << "Blockade order added." << endl;
+    Notify(this);
 }
 
 /**
@@ -75,7 +87,10 @@ void OrdersList::addBlockade(Blockade * blockade) {
  */
 void OrdersList::addAirlift(Airlift * airlift) {
     this->ordersList.push_back(airlift);
+    for(Observer* observer : *_observers)
+        airlift->Attach(observer);
     cout << "Airlift order added." << endl;
+    Notify(this);
 }
 
 /**
@@ -84,7 +99,10 @@ void OrdersList::addAirlift(Airlift * airlift) {
  */
 void OrdersList::addNegotiate(Negotiate * negotiate) {
     this->ordersList.push_back(negotiate);
+    for(Observer* observer : *_observers)
+        negotiate->Attach(observer);
     cout << "Negotiate order added." << endl;
+    Notify(this);
 }
 
 /**
@@ -162,6 +180,11 @@ OrdersList &OrdersList::operator=(const OrdersList &p) {
     return *this;
 }
 
+string OrdersList::stringToLog(){
+    string log = "Log :: Added Order : " + ordersList.back()->name + " to Player : " + ordersList.back()->playerLink->getName();
+    return log;
+}
+
 //------------------------------------------------------
 // Orders functions
 //------------------------------------------------------
@@ -211,6 +234,7 @@ void Orders::validate(Player & player) {
  * Orders execute, a placeholder for the execute method of subclasses
  */
 void Orders::execute(Player & player) {
+    Notify(this);
     std::cout << "\nOrders executed.\n";
 }
 
@@ -219,6 +243,11 @@ Player * Orders::getPlayerLink(){
 }
 void Orders::setPlayerLink(Player & player){
     this->playerLink = &player;
+}
+
+string Orders::stringToLog(){
+    string log = "Log :: Generic Order Executed";
+    return log;
 }
 
 
@@ -253,6 +282,7 @@ Deploy::Deploy() = default;
  * @param territory the selected territory
  */
 Deploy::Deploy(int sArmies, Territory& sTerritory) {
+    name = "Deploy";
     this->armies = sArmies;
     this->territory = &sTerritory;
 }
@@ -318,6 +348,7 @@ void Deploy::execute(Player & player) {
     this->territory->unitsGarrisoned = this->territory->unitsGarrisoned + this->armies;
     player.setReinforcements(player.getReinforcements()-this->armies);
     std::cout << "\nDeploy executed. New number of armies in " << territory->name << ": " << this->territory->unitsGarrisoned << endl;
+    Notify(this);
 }
 
 /**
@@ -337,6 +368,11 @@ void Deploy::identify() {
 ostream &operator << (ostream &out, const Deploy &deploy) {
     out << "Deploy object. Can deploy armies to territories. It needs " << deploy.getArmies() << " armies.\n";
     return out;
+}
+
+string Deploy::stringToLog(){
+    string log = "Log :: " + playerLink->getName() + " Deployed " + to_string(getArmies()) + " Units to " + territory->name;
+    return log;
 }
 
 //------------------------------------------------------
@@ -372,6 +408,7 @@ Advance::~Advance() {
 }
 
 Advance::Advance(int sArmies, Territory& source, Territory& target) {
+    name = "Advance";
     this->armies = sArmies;
     this->source = &source;
     this->target = &target;
@@ -446,6 +483,7 @@ void Advance::execute(Player & player) {
             source->unitsGarrisoned = source->unitsGarrisoned - this->getArmies();
             cout << target->name << " now has " << target->unitsGarrisoned << " armies, and " << source->name << " now has "
                  << source->unitsGarrisoned << " armies.";
+            Notify(this);
             return;
         } else { // if not owned by player, attack target territory
             if (checkRefusal == 1) {
@@ -459,6 +497,7 @@ void Advance::execute(Player & player) {
                     cout << player.getName() << " has won " << target->name << "!" << endl;
                     cout << target->name << " now has " << target->unitsGarrisoned << " armies, and " << source->name << " now has "
                             << source->unitsGarrisoned << " armies, and they have gained a card!" << endl;
+                    Notify(this);
                     return;
                 }
                 int sourceAttack = 0;
@@ -491,10 +530,12 @@ void Advance::execute(Player & player) {
                         player.deckLink->Draw(player.getHand());
                         target->playerLink = &player;
                         cout << player.getName() << " won " << target->name << " and now has " << target->unitsGarrisoned << " units there." << endl;
+                        Notify(this);
                         return;
                     } else { // if both sides have units left, nobody moves
                         cout << "Units left on both sides, no territories conquered.\n";
                         cout << source->name << " has " << source->unitsGarrisoned << " armies left, and " << target->name << " has " << target->unitsGarrisoned << " armies left." << endl;
+                        Notify(this);
                     }
                 } else { // if attacker has no units left, make sure target still does and set attacker units to 0
                     source->unitsGarrisoned = 0;
@@ -502,6 +543,7 @@ void Advance::execute(Player & player) {
                         target->unitsGarrisoned = 0;
                     }
                     cout << source->name << " has " << source->unitsGarrisoned << " armies left, and " << target->name << " has " << target->unitsGarrisoned << " armies left." << endl;
+                    Notify(this);
                 }
             } else {
                 checkRefusal--;
@@ -529,6 +571,11 @@ ostream &operator << (ostream &out, const Advance &advance) {
     return out;
 }
 
+string Advance::stringToLog(){
+    string log = "Log :: " + playerLink->getName() + " Advanced " + to_string(getArmies()) + " Units from " + source->name + " to " + target->name;
+    return log;
+}
+
 //------------------------------------------------------
 // Bomb functions
 //------------------------------------------------------
@@ -546,6 +593,7 @@ Bomb::~Bomb() {
 }
 
 Bomb::Bomb(Territory& target){
+    name = "Bomb";
     this->target = &target;
 }
 
@@ -605,6 +653,7 @@ void Bomb::execute(Player & player) {
     int bomb = target->unitsGarrisoned / 2;
     target->unitsGarrisoned = bomb;
     std::cout << "Bombing half the enemy armies! " << target->name << " now has " << target->unitsGarrisoned << " armies!" << endl;
+    Notify(this);
 }
 
 /**
@@ -626,6 +675,11 @@ ostream &operator << (ostream &out, const Bomb &bomb) {
     return out;
 }
 
+string Bomb::stringToLog(){
+    string log = "Log :: " + playerLink->getName() + " Bombed " + target->name;
+    return log;
+}
+
 //------------------------------------------------------
 // Blockade functions
 //------------------------------------------------------
@@ -643,6 +697,7 @@ Blockade::~Blockade() {
 }
 
 Blockade::Blockade(Territory& target) {
+    name = "Blockade";
     this->target = &target;
 }
 
@@ -693,6 +748,7 @@ void Blockade::execute(Player & player) {
     target->playerLink = &Player::neutralPlayer();
     std::cout << "Territory blockade set up! " << target->name << " now has " << target->unitsGarrisoned << " armies, and is not owned by " << player.getName() << " anymore." << endl;
     std::cout << target->name << " now owned by " << Player::neutralPlayer().getName() << endl;
+    Notify(this);
 }
 
 /**
@@ -714,6 +770,11 @@ ostream &operator << (ostream &out, const Blockade &blockade) {
     return out;
 }
 
+string Blockade::stringToLog(){
+    string log = "Log :: " + playerLink->getName() + " Blockaded " + target->name + ", Now owned by NEUTRAL PLAYER";
+    return log;
+}
+
 //------------------------------------------------------
 // Airlift functions
 //------------------------------------------------------
@@ -731,6 +792,7 @@ Airlift::~Airlift() {
 }
 
 Airlift::Airlift(int sArmies, Territory& source, Territory& target){
+    name = "Airlift";
     this->armies = sArmies;
     this->source = &source;
     this->target = &target;
@@ -785,6 +847,7 @@ void Airlift::execute(Player & player) {
         this->source->unitsGarrisoned = this->source->unitsGarrisoned - this->armies;
         this->target->unitsGarrisoned = this->target->unitsGarrisoned + this->armies;
         std::cout << "Airlifting " << this->armies << " armies to " << target->name << " from " << source->name << "!\n";
+        Notify(this);
     } else {
         cout << "Too many armies selected! Source territory cannot provide so many. Order not executed.";
     }
@@ -809,6 +872,11 @@ ostream &operator << (ostream &out, const Airlift &airlift) {
     return out;
 }
 
+string Airlift::stringToLog(){
+    string log = "Log :: " + playerLink->getName() + " Airlifted from " + source->name + " to " + target->name;
+    return log;
+}
+
 //------------------------------------------------------
 // Negotiate functions
 //------------------------------------------------------
@@ -826,6 +894,7 @@ Negotiate::~Negotiate() {
 }
 
 Negotiate::Negotiate(Player & targetPlayer) {
+    name = "Negotiate";
     this->targetPlayer = &targetPlayer;
 }
 
@@ -866,6 +935,7 @@ void Negotiate::execute(Player & player) {
     player.negotiatingWith.push_back(playerLink);
     playerLink->negotiatingWith.push_back(&player);
     std::cout << "Negotiate active between the two selected players.\n";
+    Notify(this);
 }
 
 /**
@@ -885,4 +955,9 @@ void Negotiate::identify() {
 ostream &operator << (ostream &out, const Negotiate &negotiate) {
     out << "Negotiate object. Can prevent attacks between the current player and another player until the end of the turn.\n";
     return out;
+}
+
+string Negotiate::stringToLog(){
+    string log = "Log :: " + playerLink->getName() + " Negotiated with " + targetPlayer->getName();
+    return log;
 }
