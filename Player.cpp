@@ -446,7 +446,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             //check to see if we own Bomb card
             if (!vHand->isCardOwned("Bomb")) {
                 cout << "You do not own a Bomb card" << endl;
-                return;
+                continue;
             }
 
             int idOfTerriToBomb;
@@ -469,7 +469,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             //Checks to see if we own a blockade card in our hand
             if (!vHand->isCardOwned("Blockade")) {
                 cout << "You do not own a Blockade card" << endl;
-                return;
+                continue;
             }
 
             //make sure the target territory is a real terri
@@ -494,7 +494,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             //Checks to see if player owns an airlift card
             if (!vHand->isCardOwned("Airlift")) {
                 cout << "You do not own a Airlift card" << endl;
-                return;
+                continue;
             }
 
             // number of armies that we move from source territory to target territory
@@ -536,7 +536,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             //Checks in hand if the player owns a diplomacy
             if (!vHand->isCardOwned("Diplomacy")) {
                 cout << "You do not own a Diplomacy card" << endl;
-                return;
+                continue;
             }
 
             string nameOfPlayerToNegotiate;
@@ -562,7 +562,6 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
         } else {
             //If they did not eneter a number in the menu it runs again
             cout << "Please enter a valid number." << endl;
-            return;
         }
     }
 }
