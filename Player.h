@@ -88,4 +88,6 @@ private:
     vector<int> territoriesOwnedPerContinent; //when a player captures a territory increment the value at the continent
 };
 
+static Player neutralPlayer;
+
 #endif //COMP_345_PROJ_PLAYER_H

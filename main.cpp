@@ -53,6 +53,13 @@ void cpDriver() {
 }
 
 int main() {
+
+    auto *neutralName = new string("neutral");
+    vector<Territory*> neutralTerritories;
+    Hand *neutralHand = new Hand();
+    auto *neutralOrdersList = new OrdersList();
+    neutralPlayer = *new Player(neutralName, neutralTerritories, neutralHand, neutralOrdersList);
+
     cpDriver();
     //GameEngine* ge = new GameEngine();
     //CommandProcessor cp;

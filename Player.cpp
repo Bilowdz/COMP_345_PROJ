@@ -242,7 +242,7 @@ int Player::getTerritorySize() const {
  */
 int Player::getCardsOwned(int vIndex) {
     return 0;
-    //return vHand->at(vIndex).size(); todo uncommment
+    //return vHand->at(vIndex).size();
 }
 
 /**

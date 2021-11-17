@@ -153,6 +153,7 @@ void OrdersList::move(int indexFrom, int indexTo) {
  * @param index The index of the object being removed
  */
 void OrdersList::remove(int index) {
+    delete this->ordersList.at(index);
     this->ordersList.erase(ordersList.begin()+index);
 }
 
@@ -499,7 +500,7 @@ void Advance::execute(Player & player) {
                     if (target->unitsGarrisoned < 0){
                         target->unitsGarrisoned = 0;
                     }
-                    cout << "no win";
+                    cout << source->name << " has " << source->unitsGarrisoned << " armies left, and " << target->name << " has " << target->unitsGarrisoned << " armies left." << endl;
                 }
             } else {
                 checkRefusal--;
@@ -581,7 +582,7 @@ void Bomb::validate(Player & player) {
         for (int j = 0; j < player.getTerritorySize(); j++) {
             if (this->target->id == (player.getTerritoriesOwned(j)->id)) {
                 // invalidates the order
-                cout << "You are trying to bomb your own territory! Don't do that!";
+                cout << "You are trying to bomb your own territory! Don't do that!" << endl;
             } else {
                 if (checkRefusal == 1) {
                     Bomb::execute(player);
@@ -591,7 +592,7 @@ void Bomb::validate(Player & player) {
             }
         }
     } else {
-        cout << "Territory not adjacent to an owned territory! Target too far to bomb.";
+        cout << "Territory not adjacent to an owned territory! Target too far to bomb." << endl;
     }
 }
 
@@ -686,6 +687,8 @@ void Blockade::validate(Player & player) {
 void Blockade::execute(Player & player) {
     target->unitsGarrisoned = target->unitsGarrisoned * 2;
     target->playerLink->removeTerritory(target);
+    neutralPlayer.addTerritory(target);
+    target->playerLink = &neutralPlayer;
     std::cout << "Territory blockade set up! " << target->name << " now has " << target->unitsGarrisoned << " armies, and is not owned by " << player.getName() << " anymore." << endl;
 }
 
@@ -845,8 +848,8 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
  */
 void Negotiate::validate(Player & player) {
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
-    if (this->getPlayerLink()->getName().compare(this->targetPlayer->getName())) {
-        cout << "Cannot negotiate with yourself. Order not executed.";
+    if (player.getName().compare(this->targetPlayer->getName())) {
+        cout << "Cannot negotiate with yourself. Order not executed." << endl;
     } else {
         Negotiate::execute(player);
     }

@@ -173,6 +173,9 @@ void GameEngine::addplayer(Command *c) {
 
 void GameEngine::gamestart() {
     gameMap.countTerritoriesPerContinent();
+    neutralPlayer.setDeckLink(MainDeck);
+    neutralPlayer.setMapLink(gameMap);
+    neutralPlayer.setTerritoriesOwnedPerContinent();
     std::shuffle(std::begin(Players), std::end(Players), std::default_random_engine());
     cout << "\nThe player order is: " << endl;
     for (int i = 0; i < Players.size(); i++) {
