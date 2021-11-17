@@ -204,6 +204,15 @@ Map::~Map(){
     }
 }
 
+void Map::countTerritoriesPerContinent() {
+
+    for (int i = 0; i < this->continents.size(); ++i) {
+        numberOfTerritoriesPerContinent.push_back(
+                this->continents.at(i)->territories.size());
+    }
+
+}
+
 // Default constructor for the mapLoader
 // Loads all maps in the maps directory
 MapLoader::MapLoader() {
@@ -407,8 +416,12 @@ std::ostream &operator<<(std::ostream &out, const Continent &continent) {
     return out;
 }
 
+Continent::Continent() = default;
+
 // Destructor for the continent class
 Continent::~Continent() = default;
+
+Territory::Territory() = default;
 
 // Constructor for the territory class
 Territory::Territory(int id, std::string name, int continent) {
@@ -475,3 +488,35 @@ bool Territory::IsAdjacent(Territory &adj) {
 
 // Destructor for the territory class
 Territory::~Territory() = default;
+
+
+bool Territory::IsAdjacent(Territory &adj) {
+  for(Territory* ter : adjacentTerritories)
+    if(ter->id == adj.id)
+      return true;
+  return false;
+}
+
+void Map::displayTerritories() {
+    for (int i = 0; i < map.size(); i++) {
+        std::cout << "Name: " << map.at(i)->name << " ID: " << map.at(i)->id << std::endl;
+    }
+}
+
+Territory * Map::isTerritory(int id) {
+    for (int i = 0; i < map.size(); i++) {
+        if(map.at(i)->id == id) {
+            return map.at(i);
+        }
+    }
+    return nullptr;
+}
+
+Territory * Map::getTerritory(int id) {
+    for (int i = 0; i < map.size(); ++i) {
+        if(map.at(i)->id == id) {
+            return map.at(i);
+        }
+    }
+    return nullptr;
+}

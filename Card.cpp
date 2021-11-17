@@ -73,7 +73,7 @@ void Deck::ReceiveCard(Card *c)
 void Deck::Draw(Hand *playerHand)
 {
     srand((unsigned) time(0));
-    int deckPosition = rand() % this->cardsHeld.size();
+    int deckPosition = (rand() % this->cardsHeld.size());
     Card *dealtCard = new Card(*cardsHeld.at(deckPosition));
     playerHand->ReceiveCard(dealtCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + deckPosition);
@@ -96,9 +96,11 @@ Deck& Deck::operator =(const Deck &d) {
 }
 
 //creating Hand constructors
-Hand::Hand()
-{
-};
+Hand::Hand() = default;
+
+Hand::Hand(vector<Card*> cardsHeld) {
+    this->cardsHeld = cardsHeld;
+}
 
 //copy constructor
 Hand::Hand(const Hand &copyHand) {
@@ -113,19 +115,56 @@ Hand::~Hand() {
 
 //add card to hand
 void Hand::ReceiveCard(Card *c) {
-    cardsHeld.push_back(c);
+    this->cardsHeld.push_back(c);
 };
 
+int Hand::getCardIndex(string playerCardType) {
+    for (int i = 0; i < cardsHeld.size(); i++) {
+        if (playerCardType.compare(cardsHeld.at(i)->cardType) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void Hand::removeCard(int index) {
+    cardsHeld.erase(cardsHeld.begin() + index);
+}
+
+bool Hand::isCardOwned(string playerCardType) {
+
+    for (int i = 0; i < this->cardsHeld.size(); ++i) {
+        if (this->cardsHeld.at(i)->cardType.compare(playerCardType) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
 //displays all cards in the hand, user can then choose a card to play, the card is then returned to the deck
-void Hand::Play(Deck *mainDeck) {
+OrdersList Hand::Play(Deck *mainDeck, OrdersList *o) {
     cout << *this << endl;
-    cout << "Choose the card you wish to play (enter a in form of a number)";
+    cout << "Choose the card you wish to play (enter in the form of a number)";
     int chosenCard;
     cin >> chosenCard;
     chosenCard--;
     Card *playedCard = new Card(*this->cardsHeld.at(chosenCard));
     mainDeck->ReceiveCard(playedCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + chosenCard);
+    //Orders newOrder;
+
+    if(this->cardsHeld.at(chosenCard)->cardType.compare("Bomb")){
+        o->addBomb(new Bomb());
+    } else if(this->cardsHeld.at(chosenCard)->cardType.compare("Reinforcement")){
+        o->addAdvance(new Advance());
+    } else if(this->cardsHeld.at(chosenCard)->cardType.compare("Blockade")){
+        o->addBlockade(new Blockade());
+    } else if(this->cardsHeld.at(chosenCard)->cardType.compare("Airlift")){
+        o->addAirlift(new Airlift());
+    } else if(this->cardsHeld.at(chosenCard)->cardType.compare("Diplomacy")){
+        o->addNegotiate(new Negotiate());
+    }
+    return *o;
 };
 
 //string insertion operator

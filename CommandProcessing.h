@@ -17,6 +17,7 @@ using namespace std;
 // holds data of commands
 class Command : public Subject, public ILoggable {
 private:
+    bool debug = false;
     string command;
     string effect;
 public:
@@ -55,9 +56,8 @@ public:
 class CommandProcessor : public Subject, public ILoggable {
 private:
     Command* currentCommand;
+    bool debug = false;
     vector<Command*> commands;
-    GameEngine ge;
-
 protected:
     // reads command from console
     virtual string readCommand();
@@ -66,11 +66,11 @@ protected:
     Command* saveCommand(string command, string effect ="");
 
     // validate command is valid in current state, returns effect
-    string validate(string command);
+    string validate(string command, GameEngine *);
 
 public:
     // constructors
-    CommandProcessor(GameEngine *);
+    CommandProcessor();
 
     // copy constructors
     CommandProcessor(CommandProcessor *);
@@ -80,7 +80,7 @@ public:
     virtual ~CommandProcessor();
 
     // allows user to read/save command
-    virtual Command* getCommand();
+    virtual Command* getCommand(GameEngine *);
 
     // assignment operator
     CommandProcessor& operator =(const CommandProcessor &);
@@ -95,6 +95,7 @@ public:
 // loads file to memory, reads line by line
 class FileLineReader {
 private:
+    bool debug = false;
     string path;
     vector<string> fileData;
     int length;
@@ -125,11 +126,12 @@ public:
 // parses line from file, executes command line by line
 class FileCommandProcessorAdapter: public CommandProcessor {
 private:
+    bool debug = false;
     FileLineReader flr;
 
     bool isEof();
 public:
-    FileCommandProcessorAdapter(FileLineReader, GameEngine *);
+    FileCommandProcessorAdapter(FileLineReader);
 
     // copy constructors
     FileCommandProcessorAdapter(FileCommandProcessorAdapter *);
@@ -137,7 +139,7 @@ public:
 
 
     string readCommand();
-    Command* getCommand();
+    Command* getCommand(GameEngine *);
 
     // assignment operator
     FileCommandProcessorAdapter& operator =(const FileCommandProcessorAdapter &);
