@@ -33,7 +33,7 @@ void chooseComandProcessor() {
 
         // loop until user chooses to exit game
         while(!ge->isGameDone) {
-            GameEngine ge = new GameEngine();
+            //GameEngine ge = new GameEngine();
             ge->startupPhase(cp, ge);
 
             // check for win condition
