@@ -162,7 +162,7 @@ void GameEngine::addplayer(Command *c) {
     newPlayer->setMapLink(&gameMap);
     newPlayer->addReinforcements(50);
     this->Players.push_back(newPlayer);
-
+    std::shuffle(std::begin(Players), std::end(Players), 15);
    // shuffle(Players.begin(), Players.end(), 15); todo uncomment
 }
 
@@ -305,7 +305,7 @@ void GameEngine::reinforcementPhase() {
     for (int i = 0; i < Players.size()-1; i++) {
         //sets the number of armies based on territory size
         int numArmies = floor(Players.at(i)->getTerritorySize() / 3);
-        Players.at(i)->setReinforcements(numArmies);
+        Players.at(i)->addReinforcements(numArmies);
 
         for (int j = 0; j < gameMap.numberOfTerritoriesPerContinent.size()-1; j++) {
             if (gameMap.numberOfTerritoriesPerContinent.at(j) == Players.at(i)->getTerritoriesOwnedPerContinent().at(j)) {

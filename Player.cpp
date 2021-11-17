@@ -43,6 +43,7 @@ Player::Player(string *name, vector<Territory *> vTerritories, Hand *vHand, Orde
     this->vTerritory = vTerritories;
     this->vHand = vHand;
     this->ordersList = ordersList;
+    this->reinforcements = 0;
 }
 
 /**
@@ -607,11 +608,11 @@ void Player::setDeckLink(Deck *deck) {
 }
 
 void Player::addReinforcements(int armiesToAdd) {
-    reinforcements += armiesToAdd;
+    this->reinforcements += armiesToAdd;
 }
 
 void Player::removeReinforcements(int armiesToRemove) {
-    reinforcements -= armiesToRemove;
+    this->reinforcements -= armiesToRemove;
 }
 
 
