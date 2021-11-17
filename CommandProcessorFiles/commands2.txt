@@ -1,0 +1,5 @@
+loadmap canada.map
+validatemap
+addplayer Joey Paquet
+addplayer Jeff Bezos
+gamestart
