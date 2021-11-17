@@ -401,10 +401,9 @@ Advance &Advance::operator=(const Advance &p) {
 void Advance::validate(Player & player) {
     bool canAttack = false;
     for (int j = 0; j < player.negotiatingWith.size(); j++) {
-        if (player.getName().rfind(player.negotiatingWith.at(j)->getName(), 0) == 0) {
+        if (playerLink->getName().rfind(player.negotiatingWith.at(j)->getName(), 0) == 0) {
             canAttack = true;
         }
-
     }
     if (!canAttack) {
         // check source territory is owned by player
@@ -844,6 +843,7 @@ void Negotiate::validate(Player & player) {
  */
 void Negotiate::execute(Player & player) {
     player.negotiatingWith.push_back(playerLink);
+    playerLink->negotiatingWith.push_back(&player);
     std::cout << "Negotiate active between the two selected players.\n";
 }
 

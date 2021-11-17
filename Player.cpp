@@ -584,7 +584,7 @@ void Player::setDecrementTerritoryCount(int index) {
 
 int Player::validPlayer(vector<Player *> validPlayers, string name) {
     for (int i = 0; i < validPlayers.size(); i++) {
-        if (name.compare(validPlayers.at(i)->getName()) == 0) {
+        if (name.rfind(validPlayers.at(i)->getName(), 0) == 0) {
             return i;
         } else {
             return -1;
@@ -607,6 +607,10 @@ void Player::addReinforcements(int armiesToAdd) {
 
 void Player::removeReinforcements(int armiesToRemove) {
     this->reinforcements -= armiesToRemove;
+}
+
+void Player::removeNegotiations(int index) {
+    this->negotiatingWith.erase(negotiatingWith.begin()+index);
 }
 
 

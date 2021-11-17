@@ -77,6 +77,7 @@ public:
     string getName() const;
     void setName(string s);
     vector<Player*> negotiatingWith;
+    void removeNegotiations(int index);
 
 private:
     string name; //Name of the player
@@ -85,7 +86,6 @@ private:
     OrdersList * ordersList; //Vector for all the orders the player can do
     int reinforcements; //number of armies
     vector<int> territoriesOwnedPerContinent; //when a player captures a territory increment the value at the continent
-
 };
 
 #endif //COMP_345_PROJ_PLAYER_H

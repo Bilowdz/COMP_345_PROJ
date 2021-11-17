@@ -49,10 +49,10 @@ Deck::Deck(const Deck &copyDeck) {
 Deck::Deck(int numPlayers){
     for(int i = 0; i < numPlayers; i++)
     {
-        // works cardsHeld.push_back(new Card( "Bomb"));
-        // works cardsHeld.push_back(new Card( "Reinforcement"));
-        // works cardsHeld.push_back(new Card( "Blockade"));
-        // works cardsHeld.push_back(new Card( "Airlift"));
+        //cardsHeld.push_back(new Card( "Bomb"));
+        //cardsHeld.push_back(new Card( "Reinforcement"));
+        //cardsHeld.push_back(new Card( "Blockade"));
+        cardsHeld.push_back(new Card( "Airlift"));
         cardsHeld.push_back(new Card( "Diplomacy"));
     }
 };
@@ -73,7 +73,7 @@ void Deck::ReceiveCard(Card *c)
 void Deck::Draw(Hand *playerHand)
 {
     srand((unsigned) time(0));
-    int deckPosition = rand() % this->cardsHeld.size();
+    int deckPosition = (rand() % this->cardsHeld.size());
     Card *dealtCard = new Card(*cardsHeld.at(deckPosition));
     playerHand->ReceiveCard(dealtCard);
     this->cardsHeld.erase(this->cardsHeld.begin() + deckPosition);

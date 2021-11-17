@@ -167,7 +167,7 @@ void GameEngine::addplayer(Command *c) {
 void GameEngine::gamestart() {
     gameMap.countTerritoriesPerContinent();
     std::shuffle(std::begin(Players), std::end(Players), std::default_random_engine());
-    cout << "The player order is: " << endl;
+    cout << "\nThe player order is: " << endl;
     for (int i = 0; i < Players.size(); i++) {
         cout << i + 1 << ": " << Players.at(i)->getName() << endl;
     }
@@ -334,6 +334,11 @@ void GameEngine::executeOrdersPhase() {
             //validates the order and executes the order if it is good.
             Players.at(i)->getOrdersList()->getList().at(0)->validate(*Players.at(i));
             Players.at(i)->getOrdersList()->remove(0);
+        }
+    }
+    for (int i = 0; i < Players.size(); i++) {
+        for (int j = 0; j < Players.at(i)->negotiatingWith.size(); j++) {
+            Players.at(i)->removeNegotiations(j);
         }
     }
 }
