@@ -68,6 +68,9 @@ public:
     int getNumberOfOrders() const;
     void setReinforcements(int armies);
     int getReinforcements();
+    void addReinforcements(int armiesToAdd);
+    void removeReinforcements(int armiesToRemove);
+
 
     void setOrdersList(OrdersList *ordersList);
 

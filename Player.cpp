@@ -149,7 +149,6 @@ vector<Territory *> Player::toAttack() {
         }
     }
     return territoriesToAttack;
-
 }
 
 /**
@@ -607,6 +606,13 @@ void Player::setDeckLink(Deck *deck) {
     this->deckLink = deck;
 }
 
+void Player::addReinforcements(int armiesToAdd) {
+    reinforcements += armiesToAdd;
+}
+
+void Player::removeReinforcements(int armiesToRemove) {
+    reinforcements -= armiesToRemove;
+}
 
 
 

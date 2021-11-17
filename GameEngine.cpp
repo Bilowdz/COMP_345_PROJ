@@ -160,9 +160,8 @@ void GameEngine::addplayer(Command *c) {
     Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
     newPlayer->setDeckLink(MainDeck);
     newPlayer->setMapLink(&gameMap);
-    newPlayer->setReinforcements(50);
+    newPlayer->addReinforcements(50);
     this->Players.push_back(newPlayer);
-
 
    // shuffle(Players.begin(), Players.end(), 15); todo uncomment
 }
@@ -320,7 +319,7 @@ void GameEngine::reinforcementPhase() {
 
 void GameEngine::issueOrdersPhase() {
     //loop through each player and allow them to issue orders
-    for (int i = 0; i < Players.size()-1; i++) {
+    for (int i = 0; i < Players.size(); i++) {
         cout << endl << Players.at(i)->getName() << "\'s turn to issue orders\n";
         Players.at(i)->issueOrder(Players);
     }
