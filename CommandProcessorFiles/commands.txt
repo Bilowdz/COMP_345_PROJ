@@ -1,4 +1,4 @@
-loadmap canada.map
+loadmap minimap.map
 validatemap
 addplayer Bilowdz
 addplayer NotRyan

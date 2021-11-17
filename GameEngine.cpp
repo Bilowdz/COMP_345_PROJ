@@ -128,13 +128,14 @@ void GameEngine::loadmap(Command *c) {
     int mapChosen;
 
     if (command == "loadmap zertina.map") {
-        mapChosen = 3;
+        mapChosen = 4;
     } else if (command == "loadmap bigeurope.map") {
         mapChosen = 1;
     } else if (command == "loadmap canada.map") {
         mapChosen = 2;
-
-    // invalid map
+    } else if (command == "loadmap minimap.map") {
+        mapChosen = 3;
+        // invalid map
     } else {
 
     }
@@ -277,7 +278,7 @@ void GameEngine::mainGameLoop() {
         this->transition(new Command("endexecorders"));
 
         //Check to see if players owns a territory, if they dont remove them from game
-        for (int i = 0; i < Players.size()-1; i++) {
+        for (int i = 0; i < Players.size(); i++) {
             if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
                 Players.erase(Players.begin() + i);
@@ -287,7 +288,7 @@ void GameEngine::mainGameLoop() {
         //Check to see if final player owns all territories on the map
         if (Players.size() == 1) {
             int doneCounter = 0;
-            for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size()-1; i++) {
+            for (int i = 0; i < gameMap.numberOfTerritoriesPerContinent.size(); i++) {
                 if (Players.at(0)->getTerritoriesOwnedPerContinent().at(i) == gameMap.numberOfTerritoriesPerContinent.at(i)) {
                     doneCounter++;
                 }
@@ -296,8 +297,16 @@ void GameEngine::mainGameLoop() {
                 //if there are neutral territories then he might not win
                 noWinner = true;
                 cout << "The winner is " << Players.at(0)->getName();
+            } else {
+                //requests last player if they want to end the game
+                int ending;
+                cout << "Do you want to end the game? (1 for yes, 0 for no)" << endl;
+                cin >> ending;
+                if (ending == 1) {
+                    noWinner = true;
+                    cout << "The winner is " << Players.at(0)->getName();
+                }
             }
-            //TODO final player can request to end the game
         }
     }
     this->transition(new Command("win"));

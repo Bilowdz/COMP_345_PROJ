@@ -686,7 +686,6 @@ void Blockade::validate(Player & player) {
 void Blockade::execute(Player & player) {
     target->unitsGarrisoned = target->unitsGarrisoned * 2;
     target->playerLink->removeTerritory(target);
-    target->playerLink = nullptr;
     std::cout << "Territory blockade set up! " << target->name << " now has " << target->unitsGarrisoned << " armies, and is not owned by " << player.getName() << " anymore." << endl;
 }
 

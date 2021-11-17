@@ -400,11 +400,11 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                             advanceOrder->setPlayerLink(*this);
                             this->ordersList->addAdvance(advanceOrder);
                         } else {
-                            cout << "Entered territory that does not exist. Enter a valid territory id.";
+                            cout << "Entered territory that does not exist. Enter a valid territory id." << endl;
                         }
                     }
                 } else {
-                    cout << "Entered territory that does not exist. Enter a valid territory id.";
+                    cout << "Entered territory that does not exist. Enter a valid territory id." << endl;
                 }
             }
         } else if (choice == 2) { // Bomb order
@@ -532,7 +532,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 }
 
 Territory *Player::isOwnedTerritory(int id) {
-    for (int i = 0; i < vTerritory.size() - 1; i++) {
+    for (int i = 0; i < vTerritory.size(); i++) {
         if (vTerritory.at(i)->id == id) {
             return vTerritory.at(i);
         }
