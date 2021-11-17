@@ -21,6 +21,7 @@ GameEngine::GameEngine(const GameEngine &game) : isGameDone(false), currentState
         cout << "GameEngine copy constructor called" << endl;
 }
 
+//Second copy constructor
 GameEngine::GameEngine(GameEngine *const pGameEngine) : isGameDone(false), currentState(pGameEngine->currentState) {
     if(this->debug)
         cout << "GameEngine copy constructor 2 called" << endl;
@@ -103,14 +104,14 @@ bool GameEngine::transition(Command *c) {
             this->win();
             return true;
         }
-    } else if (command == "play") {
+    } else if (command == "replay") {
         if (currentState == ST_WIN) {
             currentState = ST_START;
             Notify(this);
             this->play();
             return true;
         }
-    } else if (command == "end") {
+    } else if (command == "quit") {
         if (currentState == ST_WIN) {
             currentState = ST_END;
             Notify(this);
@@ -132,7 +133,10 @@ bool GameEngine::transition(Command *c) {
 State GameEngine::getState() {
     return currentState;
 }
-
+/**
+ *Loads the map depending on the command
+ * @param c is the command that gets passed in
+ */
 void GameEngine::loadmap(Command *c) {
 
     string command = c->getCommand();
@@ -156,6 +160,9 @@ void GameEngine::loadmap(Command *c) {
 
 }
 
+/**
+ * Runs the validate function that indicates if the map is valid
+ */
 void GameEngine::validatemap() {
     cout << "Validating Map..." << endl;
     if (gameMap.Validate())
@@ -166,6 +173,11 @@ void GameEngine::validatemap() {
     }
 }
 
+/**
+ *Each player gets initialized and added with their vector of territories,
+ * vector of hand and a orders list
+ * @param c
+ */
 void GameEngine::addplayer(Command *c) {
 
     // get the name from command object
@@ -185,6 +197,10 @@ void GameEngine::addplayer(Command *c) {
 
 }
 
+/**
+ * Sets up the initial game startup for each player
+ * Creates the link to the neutral player
+ */
 void GameEngine::gamestart() {
     gameMap.countTerritoriesPerContinent();
     Player::neutralPlayer().setDeckLink(MainDeck);
@@ -203,7 +219,9 @@ void GameEngine::gamestart() {
 
     this->transition(new Command("assigncountries"));
 }
-
+/**
+ * Assign the countries in the map randomly to each player
+ */
 void GameEngine::assigncountries() {
     for (int i = 0; i < gameMap.map.size(); i++) {
         int randomPlayer = i % Players.size();
@@ -212,31 +230,32 @@ void GameEngine::assigncountries() {
     }
 }
 
+//Calls the issueOrdersPhase function
 void GameEngine::issueorder() {
     issueOrdersPhase();
 }
-
+//Calls the executeOrdersPhase function
 void GameEngine::execorder() {
     executeOrdersPhase();
 }
-
+//Outputs to the terminal the end of execute orders fuction
 void GameEngine::endexecorders() {
     cout << "Executing function endexecorders" << endl;
 }
-
+//Outputs the end of issue orders function
 void GameEngine::endissueorders() {
     cout << "Executing function endissueorders" << endl;
 }
-
+//Outputs to the terminal the win execution will begin
 void GameEngine::win() {
     cout << "Executing function win" << endl;
     // todo: prompt user to play again or quit using command processor
 }
-
+//Outputs to the terminal the end exeuction will begin
 void GameEngine::end() {
     cout << "Executing function end" << endl;
 }
-
+//Outputs to the terminal the play execution will begin
 void GameEngine::play() {
     cout << "Executing function play" << endl;
 }
@@ -254,6 +273,11 @@ ostream &operator<<(ostream &out, const GameEngine &ge) {
     return out;
 }
 
+/**
+ * Initializes the game and creates the map
+ * @param cp to get the command processor
+ * @param ge to get a pointer to the game engine
+ */
 void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
     while (true) {
 
@@ -281,11 +305,14 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
     }
 }
 
+/**
+ * Includes the three phases and loops until there is one winner
+ */
 void GameEngine::mainGameLoop() {
 
     bool noWinner = false;
     while (!noWinner) {
-
+        //Call to reinforcement phase
         reinforcementPhase();
 
         this->transition(new Command("issueorders"));
@@ -333,6 +360,10 @@ void GameEngine::mainGameLoop() {
     }
 }
 
+/**
+ * Armies are given out depending on territories owned
+ * If player owns a continent then they get extra reinforcements
+ */
 void GameEngine::reinforcementPhase() {
     this->currentState = ST_ASSIGN_REINFORCEMENT;
     //Adds armies to the reinforcement pool
@@ -351,6 +382,9 @@ void GameEngine::reinforcementPhase() {
     }
 }
 
+/**
+ * Loop through all the players and allow them to issue orders from the Player.cpp issueOrders fucntion
+ */
 void GameEngine::issueOrdersPhase() {
     //loop through each player and allow them to issue orders
     for (int i = 0; i < Players.size(); i++) {
@@ -359,6 +393,10 @@ void GameEngine::issueOrdersPhase() {
     }
 }
 
+/**
+ * Once all the orders have been issued from each player, they get validated. If they are
+ * valid then they get executed.
+ */
 void GameEngine::executeOrdersPhase() {
     //TODO destroy all the pointers
     //Order of execution is which order was passed into the orderslist first
@@ -380,9 +418,30 @@ void GameEngine::executeOrdersPhase() {
     }
 }
 
-string GameEngine::stringToLog(){
-    string log = "Log :: New Game State : " + to_string(currentState);
-    return log;
+void GameEngine::printAvailableOptions() {
+    cout << endl;
+    cout << "Available options:" << endl;
+    if(this->getState() == ST_START){
+        cout << "loadmap <mapfile>" << endl;
+    } else if(this->getState() == ST_MAP_LOADED){
+        cout << "loadmap <mapfile>" << endl;
+        cout << "validatemap" << endl;
+    } else if(this->getState() == ST_MAP_VALIDATED){
+        cout << "addplayer <playername>" << endl;
+    } else if(this->getState() == ST_PLAYERS_ADDED){
+        cout << "addplayer <playername>" << endl;
+        cout << "gamestart" << endl;
+    } else if(this->getState() == ST_WIN) {
+        cout << "replay" << endl;
+        cout << "quit" << endl;
+    }
 }
 
-//end ryan
+/**
+ * Creates a string with the current game state
+ * @return the game state
+ */
+string GameEngine::stringToLog(){
+    string log = "Log :: New Game State : " + to_string(*enum_state_str[currentState]);
+    return log;
+}

@@ -11,12 +11,14 @@
 #include <list>
 #include <string>
 
+// Iloggable Interface
 class ILoggable {
 public:
     ~ILoggable();
     virtual std::string stringToLog() = 0;
 };
 
+// Observer Interface
 class Observer {
 public:
     ~Observer();
@@ -26,6 +28,7 @@ protected:
     Observer();
 };
 
+// Subject Interface
 class Subject {
 public:
     virtual void Attach(Observer *observer);
@@ -38,6 +41,7 @@ protected:
     std::list<Observer *> *_observers;
 };
 
+// LogObserver (Observer for the project, Logs to the logfile)
 class LogObserver : public Observer {
 public:
     LogObserver();

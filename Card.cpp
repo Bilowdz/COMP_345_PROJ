@@ -98,6 +98,7 @@ Deck& Deck::operator =(const Deck &d) {
 //creating Hand constructors
 Hand::Hand() = default;
 
+//Hand constructor that takes in a vector of cards held
 Hand::Hand(vector<Card*> cardsHeld) {
     this->cardsHeld = cardsHeld;
 }
@@ -118,6 +119,7 @@ void Hand::ReceiveCard(Card *c) {
     this->cardsHeld.push_back(c);
 };
 
+//Gets the index of the card based on the type of card passed in
 int Hand::getCardIndex(string playerCardType) {
     for (int i = 0; i < cardsHeld.size(); i++) {
         if (playerCardType.compare(cardsHeld.at(i)->cardType) == 0) {
@@ -127,10 +129,12 @@ int Hand::getCardIndex(string playerCardType) {
     return -1;
 }
 
+//Removes the card based on the passed in index
 void Hand::removeCard(int index) {
     cardsHeld.erase(cardsHeld.begin() + index);
 }
 
+//Checks to see if the card is owned by the player
 bool Hand::isCardOwned(string playerCardType) {
 
     for (int i = 0; i < this->cardsHeld.size(); ++i) {

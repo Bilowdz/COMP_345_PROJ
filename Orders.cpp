@@ -114,12 +114,6 @@ OrdersList::OrdersList() = default;
  * OrdersList destructor
  */
 OrdersList::~OrdersList() {
-    /*
-     * the following for loop breaks everything
-     */
-//    for (auto *o : ordersList) {
-//        delete o;
-//    }
     cout << "OrdersList destroyed\n";
 }
 
@@ -175,11 +169,19 @@ void OrdersList::remove(int index) {
     this->ordersList.erase(ordersList.begin()+index);
 }
 
+/**
+ * copy constructor of Orderslist
+ * @param p copied object
+ * @return the object
+ */
 OrdersList &OrdersList::operator=(const OrdersList &p) {
-
     return *this;
 }
 
+/**
+ * method logging to game log
+ * @return the string being logged
+ */
 string OrdersList::stringToLog(){
     string log = "Log :: Added Order : " + ordersList.back()->name + " to Player : " + ordersList.back()->playerLink->getName();
     return log;
@@ -238,13 +240,26 @@ void Orders::execute(Player & player) {
     std::cout << "\nOrders executed.\n";
 }
 
+/**
+ * Player linked to an order
+ * @return the player linked
+ */
 Player * Orders::getPlayerLink(){
     return this->playerLink;
 }
+
+/**
+ * setting player to an order
+ * @param player the player being linked
+ */
 void Orders::setPlayerLink(Player & player){
     this->playerLink = &player;
 }
 
+/**
+ * method logging to game log
+ * @return the string being logged
+ */
 string Orders::stringToLog(){
     string log = "Log :: Generic Order Executed";
     return log;
@@ -314,6 +329,7 @@ Deploy &Deploy::operator=(const Deploy &p) {
 
 /**
  * Deploy validate checks if the Deploy object can execute
+ * @param player player deploying armies
  */
 void Deploy::validate(Player & player) {
     int checkRefusal = player.getTerritorySize();
@@ -343,6 +359,7 @@ void Deploy::validate(Player & player) {
 
 /**
  * Executes a Deploy order
+ * @param player player deploying armies
  */
 void Deploy::execute(Player & player) {
     this->territory->unitsGarrisoned = this->territory->unitsGarrisoned + this->armies;
@@ -370,6 +387,10 @@ ostream &operator << (ostream &out, const Deploy &deploy) {
     return out;
 }
 
+/**
+ * method logging to game log
+ * @return the string being logged
+ */
 string Deploy::stringToLog(){
     string log = "Log :: " + playerLink->getName() + " Deployed " + to_string(getArmies()) + " Units to " + territory->name;
     return log;
@@ -407,6 +428,12 @@ Advance::~Advance() {
     cout << "Advance destroyed\n";
 }
 
+/**
+ * Advance constructor
+ * @param sArmies armies being advanced
+ * @param source from territory
+ * @param target to territory
+ */
 Advance::Advance(int sArmies, Territory& source, Territory& target) {
     name = "Advance";
     this->armies = sArmies;
@@ -435,6 +462,7 @@ Advance &Advance::operator=(const Advance &p) {
 
 /**
  * Advance validate checks if the Advance object can execute
+ * @param player player using the advance order
  */
 void Advance::validate(Player & player) {
     bool canAttack = false;
@@ -469,6 +497,7 @@ void Advance::validate(Player & player) {
 
 /**
  * Executes an Advance order
+ * @param player player using the advance order
  */
 void Advance::execute(Player & player) {
     // int to check if all territories have been checked
@@ -571,6 +600,10 @@ ostream &operator << (ostream &out, const Advance &advance) {
     return out;
 }
 
+/**
+ * method logging to game log
+ * @return the string being logged
+ */
 string Advance::stringToLog(){
     string log = "Log :: " + playerLink->getName() + " Advanced " + to_string(getArmies()) + " Units from " + source->name + " to " + target->name;
     return log;
@@ -592,6 +625,10 @@ Bomb::~Bomb() {
     cout << "Bomb destroyed\n";
 }
 
+/**
+ * Bomb constructor
+ * @param target target territory being bombed
+ */
 Bomb::Bomb(Territory& target){
     name = "Bomb";
     this->target = &target;
@@ -616,6 +653,7 @@ Bomb &Bomb::operator=(const Bomb &p) {
 
 /**
  * Bomb validate checks if the Bomb object can execute
+ * @param player player bombing another player
  */
 void Bomb::validate(Player & player) {
     bool checkTerritories = false;
@@ -647,6 +685,7 @@ void Bomb::validate(Player & player) {
 
 /**
  * Executes a Bomb order
+ * @param player player bombing another player
  */
 void Bomb::execute(Player & player) {
     player.getHand()->removeCard(player.getHand()->getCardIndex("Bomb"));
@@ -675,6 +714,10 @@ ostream &operator << (ostream &out, const Bomb &bomb) {
     return out;
 }
 
+/**
+ * method logging to game log
+ * @return the string being logged
+ */
 string Bomb::stringToLog(){
     string log = "Log :: " + playerLink->getName() + " Bombed " + target->name;
     return log;
@@ -696,6 +739,10 @@ Blockade::~Blockade() {
     cout << "Blockade destroyed\n";
 }
 
+/**
+ * Blockade constructor
+ * @param target territory blockaded
+ */
 Blockade::Blockade(Territory& target) {
     name = "Blockade";
     this->target = &target;
@@ -721,6 +768,7 @@ Blockade &Blockade::operator=(const Blockade &p) {
 
 /**
  * Blockade validate checks if the Blockade object can execute
+ * @param player the player passing the blockade order
  */
 void Blockade::validate(Player & player) {
     int checkRefusal = player.getTerritorySize();
@@ -740,6 +788,7 @@ void Blockade::validate(Player & player) {
 
 /**
  * Executes a Blockade order
+ * @param player the player passing the blockade order
  */
 void Blockade::execute(Player & player) {
     target->unitsGarrisoned = target->unitsGarrisoned * 2;
@@ -770,6 +819,10 @@ ostream &operator << (ostream &out, const Blockade &blockade) {
     return out;
 }
 
+/**
+ * method logging to game log
+ * @return the string being logged
+ */
 string Blockade::stringToLog(){
     string log = "Log :: " + playerLink->getName() + " Blockaded " + target->name + ", Now owned by NEUTRAL PLAYER";
     return log;
@@ -791,6 +844,12 @@ Airlift::~Airlift() {
     cout << "Airlift destroyed\n";
 }
 
+/**
+ * Airlift constructor
+ * @param sArmies armies airlifting
+ * @param source territory from
+ * @param target territory to
+ */
 Airlift::Airlift(int sArmies, Territory& source, Territory& target){
     name = "Airlift";
     this->armies = sArmies;
@@ -817,6 +876,7 @@ Airlift &Airlift::operator=(const Airlift &p) {
 
 /**
  * Airlift validate checks if the Airlift object can execute
+ * @param player player using airlift
  */
 void Airlift::validate(Player & player) {
     bool sourceBool = false;
@@ -841,6 +901,7 @@ void Airlift::validate(Player & player) {
 
 /**
  * Executes an Airlift order
+ * @param player player using airlift
  */
 void Airlift::execute(Player & player) {
     if (this->source->unitsGarrisoned - this->armies != 0) {
@@ -872,6 +933,10 @@ ostream &operator << (ostream &out, const Airlift &airlift) {
     return out;
 }
 
+/**
+ * method logging to game log
+ * @return the string being logged
+ */
 string Airlift::stringToLog(){
     string log = "Log :: " + playerLink->getName() + " Airlifted from " + source->name + " to " + target->name;
     return log;
@@ -893,6 +958,10 @@ Negotiate::~Negotiate() {
     cout << "Negotiate destroyed\n";
 }
 
+/**
+ * Negotiate constructor
+ * @param targetPlayer player negotiating with
+ */
 Negotiate::Negotiate(Player & targetPlayer) {
     name = "Negotiate";
     this->targetPlayer = &targetPlayer;
@@ -917,6 +986,7 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
 
 /**
  * Negotiate validate checks if the Negotiate object can execute
+ * @param player player negotiating
  */
 void Negotiate::validate(Player & player) {
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
@@ -929,6 +999,7 @@ void Negotiate::validate(Player & player) {
 
 /**
  * Executes a Negotiate order
+ * @param player player negotiating
  */
 void Negotiate::execute(Player & player) {
     playerLink->getHand()->removeCard(playerLink->getHand()->getCardIndex("Diplomacy"));
@@ -957,6 +1028,10 @@ ostream &operator << (ostream &out, const Negotiate &negotiate) {
     return out;
 }
 
+/**
+ * method logging to game log
+ * @return the string being logged
+ */
 string Negotiate::stringToLog(){
     string log = "Log :: " + playerLink->getName() + " Negotiated with " + targetPlayer->getName();
     return log;

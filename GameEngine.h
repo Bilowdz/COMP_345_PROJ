@@ -81,6 +81,8 @@ class GameEngine : public Subject, public ILoggable {
         void executeOrdersPhase();
         //end ryan
 
+        void printAvailableOptions();
+
         //string getState();
         //bool transition(Transition);
         State getState();

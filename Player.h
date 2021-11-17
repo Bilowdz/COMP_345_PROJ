@@ -65,14 +65,14 @@ public:
 
     OrdersList* getOrdersList();
     Orders* getOrder(int vIndex);
-    int getNumberOfOrders() const;
+    //int getNumberOfOrders() const;
     void setReinforcements(int armies);
     int getReinforcements();
     void addReinforcements(int armiesToAdd);
     void removeReinforcements(int armiesToRemove);
 
 
-    void setOrdersList(OrdersList *ordersList);
+    //void setOrdersList(OrdersList *ordersList);
 
     string getName() const;
     void setName(string s);

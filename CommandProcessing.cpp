@@ -43,16 +43,18 @@ Command::Command(const Command &c): command(c.command), effect(c.effect) {
 // destructor
 Command:: ~Command() = default;
 
-
+//Saves the current effect
 void Command::saveEffect(string e) {
     effect = e;
     Notify(this);
 }
 
+//Returns the current effect
 string Command::getEffect() const {
     return effect;
 }
 
+//Gets the command
 string Command::getCommand() const {
     return command;
 }
@@ -72,7 +74,7 @@ ostream & operator << (ostream &out, const Command &c)
     return out;
 }
 
-// logging call
+// Logging function for the Command
 string Command::stringToLog() {
     string log = "Log :: Effect: " + getEffect();
     return log;
@@ -101,7 +103,13 @@ CommandProcessor::CommandProcessor(const CommandProcessor & c): commands(c.comma
 // destructor
 CommandProcessor:: ~CommandProcessor() = default;
 
+/**
+ * Gets the command
+ * @param ge game engine gets passed in
+ * @return a command pointer
+ */
 Command* CommandProcessor::getCommand(GameEngine * ge) {
+    ge->printAvailableOptions();
     if(this->debug)
         cout << "calling getCommand from CommandProcessor" << endl;
 
@@ -123,6 +131,7 @@ Command* CommandProcessor::getCommand(GameEngine * ge) {
     return commands.back();
 }
 
+//Reads the command and calls the getline function
 string CommandProcessor::readCommand() {
 
     string input;
@@ -134,6 +143,7 @@ string CommandProcessor::readCommand() {
     return input;
 }
 
+//saves the command and pushes to the commands vector
 Command* CommandProcessor::saveCommand(string command, string effect) {
     Command *c;
     c = new Command(command);
@@ -149,6 +159,7 @@ Command* CommandProcessor::saveCommand(string command, string effect) {
     return c;
 }
 
+//validates the command based on the input andgame engine
 string CommandProcessor::validate(string command, GameEngine *ge) {
     string loadmap = "loadmap";
     string addplayer = "addplayer";
@@ -256,6 +267,7 @@ ostream & operator << (ostream &out, const CommandProcessor &cp)
     return out;
 }
 
+// Logging function for the CommandProcessor
 string CommandProcessor::stringToLog() {
     string log = "Log :: Command: " + currentCommand->getCommand();
     return log;
@@ -282,8 +294,10 @@ FileLineReader::FileLineReader(const FileLineReader & fr): path(fr.path), pos(fr
         cout << "FileLineReader copy constructor called (object)" << endl;
 }
 
+//Default constructor
 FileLineReader:: ~FileLineReader() = default;
 
+//Loads the line that was passed in
 void FileLineReader::load() {
     string line;
     ifstream file(path);
@@ -293,10 +307,12 @@ void FileLineReader::load() {
     }
 }
 
+//Gets the next position in the filelinereader
 string FileLineReader::next() {
     return fileData[pos++];
 }
 
+//checks if at the end of file
 bool FileLineReader::isEof() {
     return pos == (length - 1);
 }
@@ -337,6 +353,7 @@ FileCommandProcessorAdapter::FileCommandProcessorAdapter(const FileCommandProces
         cout << "FileCommandProcessorAdapter copy constructor called (object)" << endl;
 }
 
+//gets the command based on the game engine
 Command* FileCommandProcessorAdapter::getCommand(GameEngine * ge) {
     Command* c;
     string input = readCommand();
@@ -351,6 +368,7 @@ Command* FileCommandProcessorAdapter::getCommand(GameEngine * ge) {
     return c;
 }
 
+//reads the current command
 string FileCommandProcessorAdapter::readCommand() {
 
     // check if end of file reached
@@ -360,6 +378,7 @@ string FileCommandProcessorAdapter::readCommand() {
         return flr.next();
     }
 }
+//Checks if we are at end of file
 bool FileCommandProcessorAdapter::isEof() {
     return flr.isEof();
 }

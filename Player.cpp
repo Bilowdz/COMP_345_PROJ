@@ -124,6 +124,9 @@ ostream &operator<<(ostream &output, Player &player) {
     return output;
 }
 
+/**
+ * Loops through the list of the current players territories and displays them
+ */
 void Player::displayTerritoriesOwned() {
     for (int i = 0; i < vTerritory.size(); i++) {
         cout << "Name: " << vTerritory.at(i)->name << " ID: " << vTerritory.at(i)->id << " units: " << vTerritory.at(i)->unitsGarrisoned << endl;
@@ -174,6 +177,10 @@ vector<Territory *> Player::toDefend() {
     return territoriesToDefend;
 }
 
+/**
+ * Shows territories adjacent to the territories owned by current player
+ * (Used in toAttack)
+ */
 void Player::displayAdjacentTerritoriesNotOwned() {
 
     for (int i = 0; i < this->toAttack().size(); i++) {
@@ -182,6 +189,10 @@ void Player::displayAdjacentTerritoriesNotOwned() {
     }
 }
 
+/**
+ * Shows the territories that are owned by player that are adjacent to enemy territories
+ * (used in toDefend)
+ */
 void Player::displayOwnedAdjacentTerritories() {
 
     for (int i = 0; i < this->toDefend().size() - 1; i++) {
@@ -254,10 +265,19 @@ int Player::getHandSize() const {
     return vHand->cardsHeld.size();
 }
 
+/**
+ * Gets the order at the index given
+ * @param vIndex index of card
+ * @return the order at the given index
+ */
 Orders *Player::getOrder(int vIndex) {
     return this->ordersList->getListMember(vIndex);
 }
 
+/**
+ * Returns the orders list of the current player
+ * @return orders list as a pointer
+ */
 OrdersList *Player::getOrdersList() {
     return this->ordersList;
 }
@@ -279,17 +299,32 @@ void Player::setName(string s) {
     this->name = std::move(s);
 }
 
+/**
+ * Sets the initial reinforcements based on the initial startup phase
+ * @param armies
+ */
 void Player::setReinforcements(int armies) {
     this->reinforcements = armies;
 }
 
+/**
+ * Gets the reinforcements of the current player
+ * @return int of number of reinforcements
+ */
 int Player::getReinforcements() {
     return this->reinforcements;
 }
 
+/**
+ * Loops through each player and allows them to issue orders based on their hand,
+ * territories and the other players still in play
+ * @param vPlayersInPlay is a vector of the other players still in the game
+ */
 void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
-
+    //Checks if the current player own a Reinforcement card
+    //If he does he can choose to use it right away, otherwise
+    // he will have to wait until next turn
     if (vHand->isCardOwned("Reinforcement")) {
         string input;
         cout << "You own a reinforcement card, would you like to use it (type y if yes)? ";
@@ -301,6 +336,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
         }
     }
 
+    //Loops until the player deploys all the territories in their reinforcement pool
     cout << "You have " << this->getReinforcements() << " armies to Deploy.\n";
     bool isOutOfReinforcementsToDeploy = false;
     int numArmiesDeployed = 0;
@@ -367,7 +403,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             int numArmiesAdvance;
             int idOfTerriSource;
             int idOfTerriTarget;
-
+            //List of territories to attack and defend
             vector<Territory *> listOfTerritoriesToDefend = this->toDefend();
             vector<Territory *> listOfTerritoriesToAttack = this->toAttack();
 
@@ -432,7 +468,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else if (choice == 3) { // Blockade order
-
+            //Checks to see if we own a blockade card in our hand
             if (!vHand->isCardOwned("Blockade")) {
                 cout << "You do not own a Blockade card" << endl;
                 return;
@@ -457,7 +493,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else if (choice == 4) { // Airlift order
-
+            //Checks to see if player owns an airlift card
             if (!vHand->isCardOwned("Airlift")) {
                 cout << "You do not own a Airlift card" << endl;
                 return;
@@ -499,7 +535,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else if (choice == 5) { // Negotiate order
-
+            //Checks in hand if the player owns a diplomacy
             if (!vHand->isCardOwned("Diplomacy")) {
                 cout << "You do not own a Diplomacy card" << endl;
                 return;
@@ -526,12 +562,18 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                 }
             }
         } else {
+            //If they did not eneter a number in the menu it runs again
             cout << "Please enter a valid number." << endl;
             return;
         }
     }
 }
 
+/**
+ * Checks if the current territory id is owned by the current player
+ * @param id of the territory
+ * @return the territory that is owned otherwise a nullptr
+ */
 Territory *Player::isOwnedTerritory(int id) {
     for (int i = 0; i < vTerritory.size(); i++) {
         if (vTerritory.at(i)->id == id) {
@@ -541,12 +583,19 @@ Territory *Player::isOwnedTerritory(int id) {
     return nullptr;
 }
 
-
+/**
+ * Adds a territory to the players vector of territories
+ * @param territory is the territory being added
+ */
 void Player::addTerritory(Territory *territory) {
     vTerritory.push_back(territory);
     this->setIncrementTerritoryCount(territory->continent-1);
 }
 
+/**
+ * Removes a territory from the vector of territories
+ * @param territory is the territory we want to remove
+ */
 void Player::removeTerritory(Territory *territory) {
     for (int i = 0; i < vTerritory.size(); i++) {
         if (territory->id == vTerritory.at(i)->id) {
@@ -556,6 +605,10 @@ void Player::removeTerritory(Territory *territory) {
     this->setDecrementTerritoryCount(territory->continent-1);
 }
 
+/**
+ * Gets the current players hand
+ * @return the hand of the player
+ */
 Hand *Player::getHand() {
     return this->vHand;
 }
@@ -564,10 +617,17 @@ Hand *Player::getHand() {
 //
 //}
 
+/**
+ * Gets the territories owned conter in each continent
+ * @return a vector that is the same size and order as the main games continent territory count
+ */
 const vector<int> &Player::getTerritoriesOwnedPerContinent() const {
     return territoriesOwnedPerContinent;
 }
 
+/**
+ * Adds a count depending on the index where a new territory was gained
+ */
 void Player::setTerritoriesOwnedPerContinent() {
     for (int i = 0; i < mapLink->continents.size(); i++) {
         //if the total number of continents is 3 then it will loop 3 times and set the vector to a size of 3
@@ -575,10 +635,17 @@ void Player::setTerritoriesOwnedPerContinent() {
     }
 }
 
+/**
+ * Increments the territory size of the player
+ * @param index at the index of specified territory
+ */
 void Player::setIncrementTerritoryCount(int index) {
     this->territoriesOwnedPerContinent.at(index) = this->territoriesOwnedPerContinent.at(index) + 1;
 }
 
+/*
+ * Decrements the territory size if a territory is lost
+ */
 void Player::setDecrementTerritoryCount(int index) {
     this->territoriesOwnedPerContinent.at(index) = this->territoriesOwnedPerContinent.at(index) - 1;
 }
@@ -592,26 +659,50 @@ int Player::validPlayer(vector<Player *> validPlayers, string name) {
     return -1;
 }
 
+/**
+ * Links each player to the map loaded at startup
+ * @param map is the map at startup
+ */
 void Player::setMapLink(Map &map) {
     this->mapLink = &map;
 }
 
+/**
+ * Links each player to the deck that is loaded at startup
+ * @param deck is the deck at startup
+ */
 void Player::setDeckLink(Deck &deck) {
     this->deckLink = &deck;
 }
 
+/**
+ *
+ * @param armiesToAdd
+ */
 void Player::addReinforcements(int armiesToAdd) {
     this->reinforcements += armiesToAdd;
 }
 
+/**
+ * Removes reinforcements from the reinforcement pool
+ * @param armiesToRemove
+ */
 void Player::removeReinforcements(int armiesToRemove) {
     this->reinforcements -= armiesToRemove;
 }
 
+/**
+ * Remove a negotiation once it has be called
+ * @param index
+ */
 void Player::removeNegotiations(int index) {
     this->negotiatingWith.erase(negotiatingWith.cbegin());
 }
 
+/**
+ * A neutral player is created
+ * @return a neutral player
+ */
 Player &Player::neutralPlayer() {
     static Player neutralPlayer;
     return neutralPlayer;

@@ -30,7 +30,27 @@ void chooseComandProcessor() {
     if(input == 1) {
         CommandProcessor cp;
         cp.Attach(logger);
-        ge->startupPhase(cp, ge);
+
+        // loop until user chooses to exit game
+        while(!ge->isGameDone) {
+            GameEngine ge = new GameEngine();
+            ge->startupPhase(cp, ge);
+
+            // check for win condition
+            if(ge->getState() == ST_WIN) {
+                Command* c = cp.getCommand(ge);
+
+                // check for error
+                if(c->getEffect().length() == 0) {
+                    cout << "ERROR: " << c->getEffect() << endl;
+
+                    // valid command, execute it
+                } else {
+                    ge->transition(c);
+                }
+            }
+        }
+
     } else {
         string filename;
 
