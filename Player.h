@@ -79,6 +79,8 @@ public:
     vector<Player*> negotiatingWith;
     void removeNegotiations(int index);
 
+    static Player &neutralPlayer();
+
 private:
     string name; //Name of the player
     vector<Territory *> vTerritory; //Vector of all the territories owned
@@ -88,6 +90,6 @@ private:
     vector<int> territoriesOwnedPerContinent; //when a player captures a territory increment the value at the continent
 };
 
-static Player neutralPlayer;
+extern Player neutralPlayer;
 
 #endif //COMP_345_PROJ_PLAYER_H

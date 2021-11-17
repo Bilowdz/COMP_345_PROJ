@@ -58,8 +58,7 @@ int main() {
     vector<Territory*> neutralTerritories;
     Hand *neutralHand = new Hand();
     auto *neutralOrdersList = new OrdersList();
-    neutralPlayer = *new Player(neutralName, neutralTerritories, neutralHand, neutralOrdersList);
-
+    Player::neutralPlayer() = *new Player(neutralName, neutralTerritories, neutralHand, neutralOrdersList);
     cpDriver();
     //GameEngine* ge = new GameEngine();
     //CommandProcessor cp;

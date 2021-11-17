@@ -427,7 +427,6 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     Bomb *bombOrder = new Bomb(*territoryToBomb);
                     bombOrder->setPlayerLink(*this);
                     this->ordersList->addBomb(bombOrder);
-                    vHand->removeCard(vHand->getCardIndex("Bomb"));
                 } else {
                     cout << "Entered territory that does not exist. Enter a valid territory id.";
                 }
@@ -519,7 +518,9 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     Negotiate *negotiating = new Negotiate(*vPlayersInPlay.at(playerIndex));
                     negotiating->setPlayerLink(*this);
                     this->ordersList->addNegotiate(negotiating);
-                    vHand->removeCard(vHand->getCardIndex("Diplomacy"));
+                    int lastOrder = this->getOrdersList()->getList().size();
+                    this->getOrdersList()->getList().at(lastOrder-1)->validate(*this);
+                    this->getOrdersList()->remove(lastOrder-1);
                 } else {
                     cout << "That name is not on the list. Please enter a valid name" << endl;
                 }
@@ -609,6 +610,11 @@ void Player::removeReinforcements(int armiesToRemove) {
 
 void Player::removeNegotiations(int index) {
     this->negotiatingWith.erase(negotiatingWith.begin()+index);
+}
+
+Player &Player::neutralPlayer() {
+    static Player neutralPlayer;
+    return neutralPlayer;
 }
 
 

@@ -456,6 +456,7 @@ void Advance::execute(Player & player) {
                     target->playerLink->removeTerritory(target);
                     target->playerLink = &player;
                     player.deckLink->Draw(player.getHand());
+                    cout << player.getName() << " has won " << target->name << "!" << endl;
                     cout << target->name << " now has " << target->unitsGarrisoned << " armies, and " << source->name << " now has "
                             << source->unitsGarrisoned << " armies, and they have gained a card!" << endl;
                     return;
@@ -600,6 +601,7 @@ void Bomb::validate(Player & player) {
  * Executes a Bomb order
  */
 void Bomb::execute(Player & player) {
+    player.getHand()->removeCard(player.getHand()->getCardIndex("Bomb"));
     int bomb = target->unitsGarrisoned / 2;
     target->unitsGarrisoned = bomb;
     std::cout << "Bombing half the enemy armies! " << target->name << " now has " << target->unitsGarrisoned << " armies!" << endl;
@@ -687,9 +689,10 @@ void Blockade::validate(Player & player) {
 void Blockade::execute(Player & player) {
     target->unitsGarrisoned = target->unitsGarrisoned * 2;
     target->playerLink->removeTerritory(target);
-    neutralPlayer.addTerritory(target);
-    target->playerLink = &neutralPlayer;
+    Player::neutralPlayer().addTerritory(target);
+    target->playerLink = &Player::neutralPlayer();
     std::cout << "Territory blockade set up! " << target->name << " now has " << target->unitsGarrisoned << " armies, and is not owned by " << player.getName() << " anymore." << endl;
+    std::cout << target->name << " now owned by " << Player::neutralPlayer().getName() << endl;
 }
 
 /**
@@ -848,7 +851,7 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
  */
 void Negotiate::validate(Player & player) {
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
-    if (player.getName().compare(this->targetPlayer->getName())) {
+    if (player.getName().compare(playerLink->getName())) {
         cout << "Cannot negotiate with yourself. Order not executed." << endl;
     } else {
         Negotiate::execute(player);
@@ -859,6 +862,7 @@ void Negotiate::validate(Player & player) {
  * Executes a Negotiate order
  */
 void Negotiate::execute(Player & player) {
+    playerLink->getHand()->removeCard(playerLink->getHand()->getCardIndex("Diplomacy"));
     player.negotiatingWith.push_back(playerLink);
     playerLink->negotiatingWith.push_back(&player);
     std::cout << "Negotiate active between the two selected players.\n";
