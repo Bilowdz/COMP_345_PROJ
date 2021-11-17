@@ -4,27 +4,15 @@ Log :: New Game State : Map Loaded
 Log :: Command: validatemap
 Log :: Effect: 
 Log :: New Game State : Map Validated
-Log :: Command: addplayer Joey
+Log :: Command: addplayer Bilowdz
 Log :: Effect: 
 Log :: New Game State : Players Added
-Log :: Command: addplayer Jeff
+Log :: Command: addplayer NotRyan
 Log :: Effect: 
 Log :: New Game State : Players Added
 Log :: Command: gamestart
 Log :: Effect: 
 Log :: New Game State : Assign Reinforcement
 Log :: New Game State : Issue Orders
-Log :: Added Order : Deploy to Player : Jeff
-Log :: Added Order : Deploy to Player : Jeff
-Log :: Added Order : Advance to Player : Jeff
-Log :: Added Order : Advance to Player : Jeff
-Log :: Added Order : Deploy to Player : Joey
-Log :: New Game State : Execute Orders
-Log :: New Game State : Execute Orders
-Log :: Jeff Deployed 20 Units to TestTerritory1
-Log :: Jeff Deployed 31 Units to TestTerritory5
-Log :: Jeff Advanced 20 Units from TestTerritory1 to TestTerritory2
-Log :: Jeff Advanced 20 Units from TestTerritory5 to TestTerritory4
-Log :: New Game State : Win
-Log :: Command: quit
-Log :: Effect: 
+Log :: Added Order : Deploy to Player : NotRyan
+Log :: Added Order : Deploy to Player : NotRyan

@@ -16,6 +16,9 @@ class ILoggable {
 public:
     ~ILoggable();
     virtual std::string stringToLog() = 0;
+
+    ILoggable& operator =(const ILoggable & o1);
+    friend std::ostream & operator << (std::ostream &out, const ILoggable &logObserver);
 };
 
 // Observer Interface
@@ -23,6 +26,10 @@ class Observer {
 public:
     ~Observer();
     virtual void Update(ILoggable *loggable) = 0;
+
+    Observer& operator =(const Observer & o1);
+    Observer(const Observer &o1);
+    friend std::ostream & operator << (std::ostream &out, const Observer &logObserver);
 
 protected:
     Observer();
@@ -37,6 +44,10 @@ public:
     Subject();
     ~Subject();
 
+    Subject& operator =(const Subject & s1);
+    Subject(const Subject &s1);
+    friend std::ostream & operator << (std::ostream &out, const Subject &subject);
+
 protected:
     std::list<Observer *> *_observers;
 };
@@ -47,6 +58,10 @@ public:
     LogObserver();
     ~LogObserver();
     void Update(ILoggable *loggable) override;
+
+    LogObserver& operator =(const LogObserver & o1);
+    LogObserver(const LogObserver &o1);
+    friend std::ostream & operator << (std::ostream &out, const LogObserver &logObserver);
 
 private:
 };

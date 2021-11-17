@@ -7,11 +7,38 @@
 // ILoggable Destructor
 ILoggable::~ILoggable() {}
 
+// Assignment Operator
+ILoggable &ILoggable::operator=(const ILoggable &s1) {
+    return *this;
+}
+
+// Stream Output Operator
+std::ostream &operator<<(std::ostream &out, const ILoggable &subject) {
+    out << "{ILOGGABLE CLASS}";
+    return out;
+}
+
 // Observer Constructor
 Observer::Observer() {}
 
 // Observer Destructor
 Observer::~Observer() {}
+
+// Assignment Operator
+Observer &Observer::operator=(const Observer &s1) {
+    return *this;
+}
+
+// Copy Constructor
+Observer::Observer(const Observer &s1) {
+
+}
+
+// Stream Output Operator
+std::ostream &operator<<(std::ostream &out, const Observer &subject) {
+    out << "{OBSERVER CLASS}";
+    return out;
+}
 
 // Subject Constructor
 Subject::Subject() {
@@ -40,6 +67,22 @@ void Subject::Notify(ILoggable *loggable) {
         (*i)->Update(loggable);
 }
 
+// Assignment Operator
+Subject &Subject::operator=(const Subject &s1) {
+    return *this;
+}
+
+// Copy Constructor
+Subject::Subject(const Subject &s1) {
+
+}
+
+// Stream Output Operator
+std::ostream &operator<<(std::ostream &out, const Subject &subject) {
+    out << "{SUBJECT CLASS}";
+    return out;
+}
+
 // LogObserver Constructor
 LogObserver::LogObserver() {}
 
@@ -61,4 +104,20 @@ void LogObserver::Update(ILoggable *loggable) {
 
     // CLose the LogFile
     output.close();
+}
+
+// Assignment Operator
+LogObserver &LogObserver::operator=(const LogObserver &s1) {
+    return *this;
+}
+
+// Copy Constructor
+LogObserver::LogObserver(const LogObserver &s1) {
+
+}
+
+// Stream Output Operator
+std::ostream &operator<<(std::ostream &out, const LogObserver &subject) {
+    out << "{LOGOBSEREVER CLASS}";
+    return out;
 }
