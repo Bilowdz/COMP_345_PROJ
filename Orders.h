@@ -46,7 +46,6 @@ public:
     virtual Player * getPlayerLink();
     virtual void setPlayerLink(Player & player);
     friend ostream &operator << (ostream &, const Orders &orders);
-    //friend istream &operator >> (istream &, const Orders &deploy);
 
     // logging output
     std::string stringToLog() override;
@@ -76,7 +75,6 @@ public:
     void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Deploy &deploy);
-    //friend istream &operator >> (istream &, const Deploy &deploy);
 
     // logging output
     std::string stringToLog() override;
@@ -103,7 +101,6 @@ public:
     void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Advance &advance);
-   // friend istream &operator >> (istream &, const Advance &deploy);
 
     // logging output
     std::string stringToLog() override;
