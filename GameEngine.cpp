@@ -292,12 +292,12 @@ void GameEngine::mainGameLoop() {
         this->transition(new Command("endissueorders"));
         this->transition(new Command("endissueorders"));
         this->transition(new Command("execorder"));
-        this->transition(new Command("endexecorders"));
 
         //Check to see if players owns a territory, if they dont remove them from game
         for (int i = 0; i < Players.size(); i++) {
             if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
+                //delete Players.at(Players.begin() + i);
                 Players.erase(Players.begin() + i);
             }
         }
@@ -314,6 +314,8 @@ void GameEngine::mainGameLoop() {
                 //if there are neutral territories then he might not win
                 noWinner = true;
                 cout << "The winner is " << Players.at(0)->getName();
+                this->transition(new Command("win"));
+                return;
             } else {
                 //requests last player if they want to end the game
                 int ending;
@@ -322,11 +324,13 @@ void GameEngine::mainGameLoop() {
                 if (ending == 1) {
                     noWinner = true;
                     cout << "The winner is " << Players.at(0)->getName();
+                    this->transition(new Command("win"));
+                    return;
                 }
             }
         }
+        this->transition(new Command("endexecorders"));
     }
-    this->transition(new Command("win"));
 }
 
 void GameEngine::reinforcementPhase() {
