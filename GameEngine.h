@@ -47,6 +47,7 @@ class CommandProcessor;
 
 class GameEngine {
     private:
+        bool debug = false;
         State currentState;
         Map gameMap;
         Deck *MainDeck;

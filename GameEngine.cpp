@@ -11,16 +11,19 @@ using namespace std;
 
 // constructor
 GameEngine::GameEngine() : isGameDone(false), currentState(ST_START) {
-    cout << "GameEngine constructor called" << endl;
+    if(this->debug)
+        cout << "GameEngine constructor called" << endl;
 }
 
 // copy constructors
 GameEngine::GameEngine(const GameEngine &game) : isGameDone(false), currentState(game.currentState) {
-    cout << "GameEngine copy constructor called" << endl;
+    if(this->debug)
+        cout << "GameEngine copy constructor called" << endl;
 }
 
 GameEngine::GameEngine(GameEngine *const pGameEngine) : isGameDone(false), currentState(pGameEngine->currentState) {
-    cout << "GameEngine copy constructor 2 called" << endl;
+    if(this->debug)
+        cout << "GameEngine copy constructor 2 called" << endl;
 }
 
 // destructor
@@ -136,11 +139,11 @@ void GameEngine::loadmap(Command *c) {
 }
 
 void GameEngine::validatemap() {
-    cout << "Validating Map" << endl;
+    cout << "Validating Map..." << endl;
     if (gameMap.Validate())
-        cout << "Map is valid" << endl;
+        cout << "Map is valid!" << endl;
     else {
-        cout << "Map is not valid" << endl;
+        cout << "Map is not valid!" << endl;
         exit(0);
     }
 }

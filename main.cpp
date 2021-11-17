@@ -45,7 +45,6 @@ int main() {
     //}
 
     GameEngine* ge = new GameEngine();
-    cout << &ge << endl;
     CommandProcessor cp;
     ge->startupPhase(cp, ge);
     //FileCommandProcessorAdapter adapter(flr, ge);

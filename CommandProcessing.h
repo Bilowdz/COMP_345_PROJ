@@ -16,6 +16,7 @@ using namespace std;
 // holds data of commands
 class Command {
 private:
+    bool debug = false;
     string command;
     string effect;
 public:
@@ -50,6 +51,7 @@ public:
 // controls how commands are processed
 class CommandProcessor {
 private:
+    bool debug = false;
     vector<Command*> commands;
 protected:
     // reads command from console
@@ -85,6 +87,7 @@ public:
 // loads file to memory, reads line by line
 class FileLineReader {
 private:
+    bool debug = false;
     string path;
     vector<string> fileData;
     int length;
@@ -115,6 +118,7 @@ public:
 // parses line from file, executes command line by line
 class FileCommandProcessorAdapter: public CommandProcessor {
 private:
+    bool debug = false;
     FileLineReader flr;
 
     bool isEof();

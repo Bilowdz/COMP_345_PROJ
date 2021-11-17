@@ -15,24 +15,29 @@ using namespace std;
 
 // constructors
 Command::Command(): command(""), effect(""){
-    cout << "CommandProcessor constructor called (no params)" << endl;
+    if(this->debug)
+        cout << "CommandProcessor constructor called (no params)" << endl;
 }
 
 Command::Command(string command): command(command) {
-    cout << "CommandProcessor constructor called (1 param)" << endl;
+    if(this->debug)
+        cout << "CommandProcessor constructor called (1 param)" << endl;
 }
 
 Command::Command(string command, string effect): command(command), effect(effect) {
-    cout << "CommandProcessor constructor called (2 params)" << endl;
+    if(this->debug)
+        cout << "CommandProcessor constructor called (2 params)" << endl;
 }
 
 // copy constructors
 Command::Command(Command *const pc): command(pc->command), effect(pc->effect) {
-    cout << "Command copy constructor called (pointer)" << endl;
+    if(this->debug)
+        cout << "Command copy constructor called (pointer)" << endl;
 }
 
 Command::Command(const Command &c): command(c.command), effect(c.effect) {
-    cout << "Command copy constructor called (object)" << endl;
+    if(this->debug)
+        cout << "Command copy constructor called (object)" << endl;
 }
 
 // destructor
@@ -71,23 +76,27 @@ ostream & operator << (ostream &out, const Command &c)
  **/
 // constructors
 CommandProcessor::CommandProcessor() {
-    cout << "CommandProcessor constructor called" << endl;
+    if(this->debug)
+        cout << "CommandProcessor constructor called" << endl;
 }
 
 // copy constructors
 CommandProcessor::CommandProcessor(CommandProcessor *const cp): commands(cp->commands) {
-    cout << "CommandProcessor copy constructor called (pointer)" << endl;
+    if(this->debug)
+        cout << "CommandProcessor copy constructor called (pointer)" << endl;
 }
 
 CommandProcessor::CommandProcessor(const CommandProcessor & c): commands(c.commands) {
-    cout << "CommandProcessor copy constructor called (object)" << endl;
+    if(this->debug)
+        cout << "CommandProcessor copy constructor called (object)" << endl;
 }
 
 // destructor
 CommandProcessor:: ~CommandProcessor() = default;
 
 Command* CommandProcessor::getCommand(GameEngine * ge) {
-    cout << "calling getCommand from CommandProcessor" << endl;
+    if(this->debug)
+        cout << "calling getCommand from CommandProcessor" << endl;
 
     // read command from command line
     string userInput = readCommand();
@@ -135,25 +144,29 @@ string CommandProcessor::validate(string command, GameEngine *ge) {
         // check if map file was provided by comparing length of command against addplayer command
         if(command.length() == loadmap.length()) {
             response = "Command '" + command + "' does not specify mapfile!";
-            cout << response << endl;
+            if(this->debug)
+                cout << response << endl;
             return response;
 
         } else if (!(ge->getState() == ST_START || ge->getState() == ST_MAP_LOADED)) {
             response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge->getState()] + "'!";
-            cout << response << endl;
+            if(this->debug)
+                cout << response << endl;
             return response;
         } else {
             string token = command.substr(8,command.find(delimiter));
             if(token.length() == 0) {
                 response = "Command '" + command + "' does not specify mapfile!";
-                cout << response << endl;
+                if(this->debug)
+                    cout << response << endl;
                 return response;
             }
         }
     } else if(command == "validatemap"){
         if((ge->getState() != ST_MAP_LOADED)) {
             response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge->getState()] + "'!";
-            cout << response << endl;
+            if(this->debug)
+                cout << response << endl;
             return response;
         }
     } else if(command.rfind(addplayer,0) == 0) {
@@ -162,42 +175,49 @@ string CommandProcessor::validate(string command, GameEngine *ge) {
         // check if player name was provided by comparing length of command against addplayer command
         if(command.length() == addplayer.length()) {
             response = "Command '" + command + "' does not specify player name!";
-            cout << response << endl;
+            if(this->debug)
+                cout << response << endl;
             return response;
 
         } else if (!((ge->getState() == ST_MAP_VALIDATED || ge->getState() == ST_PLAYERS_ADDED))) {
             response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge->getState()] + "'!";
-            cout << response << endl;
+            if(this->debug)
+                cout << response << endl;
             return response;
         } else {
             string token = command.substr(10,command.find(delimiter));
             if(token.length() == 0) {
                 response = "Command '" + command + "' does not specify player name!";
-                cout << response << endl;
+                if(this->debug)
+                    cout << response << endl;
                 return response;
             }
         }
     } else if(command == "gamestart"){
         if((ge->getState() != ST_PLAYERS_ADDED)) {
             response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge->getState()] + "'!";
-            cout << response << endl;
+            if(this->debug)
+                cout << response << endl;
             return response;
         }
     } else if(command == "quit"){
         if((ge->getState() != ST_WIN)) {
             response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge->getState()] + "'!";
-            cout << response << endl;
+            if(this->debug)
+                cout << response << endl;
             return response;
         }
     } else if(command == "replay"){
         if((ge->getState() != ST_WIN)) {
             response = "Cannot perform transition '" + command + "' from state '" + enum_state_str[ge->getState()] + "'!";
-            cout << response << endl;
+            if(this->debug)
+                cout << response << endl;
             return response;
         }
     } else {
         response = "'" + command + "' is an invalid transition!";
-        cout << response << endl;
+        if(this->debug)
+            cout << response << endl;
         return  response;
     }
     return "valid";
@@ -232,12 +252,14 @@ FileLineReader::FileLineReader(string path): path(path), pos(0), length(0) {
 // copy constructors
 FileLineReader::FileLineReader(FileLineReader *const fr): path(fr->path), pos(fr->pos), length(fr->length) {
     this->load();
-    cout << "FileLineReader copy constructor called (pointer)" << endl;
+    if(this->debug)
+        cout << "FileLineReader copy constructor called (pointer)" << endl;
 }
 
 FileLineReader::FileLineReader(const FileLineReader & fr): path(fr.path), pos(fr.pos), length(fr.length) {
     this->load();
-    cout << "FileLineReader copy constructor called (object)" << endl;
+    if(this->debug)
+        cout << "FileLineReader copy constructor called (object)" << endl;
 }
 
 FileLineReader:: ~FileLineReader() = default;
@@ -285,12 +307,14 @@ FileCommandProcessorAdapter::FileCommandProcessorAdapter(FileLineReader flr): Co
 
 // copy constructors
 FileCommandProcessorAdapter::FileCommandProcessorAdapter(FileCommandProcessorAdapter *const fcpa): CommandProcessor(fcpa), flr(fcpa->flr) {
-    cout << "FileCommandProcessorAdapter copy constructor called (pointer)" << endl;
+    if(this->debug)
+        cout << "FileCommandProcessorAdapter copy constructor called (pointer)" << endl;
 }
 
 // FileCommandProcessorAdapter is a child of base class CommandProcessor, so instance of fcpa can be passed to CommandProcessor() via its copy constructor
 FileCommandProcessorAdapter::FileCommandProcessorAdapter(const FileCommandProcessorAdapter &fcpa): CommandProcessor(fcpa), flr(fcpa.flr) {
-    cout << "FileCommandProcessorAdapter copy constructor called (object)" << endl;
+    if(this->debug)
+        cout << "FileCommandProcessorAdapter copy constructor called (object)" << endl;
 }
 
 Command* FileCommandProcessorAdapter::getCommand(GameEngine * ge) {
