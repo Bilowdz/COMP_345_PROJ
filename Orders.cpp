@@ -202,14 +202,14 @@ ostream &operator << (ostream &out, const Orders &orders) {
 /**
  * Orders validate, a placeholder for the validate method of subclasses
  */
-void Orders::validate(Player * player) {
+void Orders::validate(Player & player) {
     std::cout << "Orders validate method.";
 }
 
 /**
  * Orders execute, a placeholder for the execute method of subclasses
  */
-void Orders::execute(Player * player) {
+void Orders::execute(Player & player) {
     std::cout << "\nOrders executed.\n";
 }
 
@@ -253,7 +253,7 @@ Deploy::Deploy() = default;
  */
 Deploy::Deploy(int sArmies, Territory& sTerritory) {
     this->armies = sArmies;
-    this->territory = sTerritory;
+    this->territory = &sTerritory;
 }
 
 /**
@@ -284,14 +284,14 @@ Deploy &Deploy::operator=(const Deploy &p) {
 /**
  * Deploy validate checks if the Deploy object can execute
  */
-void Deploy::validate(Player * player) {
-    int checkRefusal = player->getTerritorySize();
+void Deploy::validate(Player & player) {
+    int checkRefusal = player.getTerritorySize();
     // validate if player has enough armies
-    if (this->getArmies() <= player->getReinforcements()) {
+    if (this->getArmies() <= player.getReinforcements()) {
         // validate if territory is owned by current player
-        for (int i = 0; i < player->getTerritorySize(); i++) {
-            if (this->territory.id == (player->getTerritoriesOwned(i)->id)) {
-                std::cout << "Enough armies, and territory owned by player! Deploying armies!";
+        for (int i = 0; i < player.getTerritorySize(); i++) {
+            if (this->territory->id == (player.getTerritoriesOwned(i)->id)) {
+                std::cout << "Enough armies, and territory owned by " << player.getName() << "! Deploying armies in " << territory->name << "!";
                 Deploy::execute(player);
                 return;
             } else {
@@ -306,17 +306,17 @@ void Deploy::validate(Player * player) {
         }
     } else {
         // refuse to deploy vArmies
-        std::cout << "Not enough armies available for this deployment.\n";
+        std::cout << "Not enough armies available to deploy in " << territory->name << "." << endl;
     }
 }
 
 /**
  * Executes a Deploy order
  */
-void Deploy::execute(Player * player) {
-    this->territory.unitsGarrisoned = this->territory.unitsGarrisoned + this->armies;
-    player->setReinforcements(player->getReinforcements()-this->armies);
-    std::cout << "\nDeploy executed. New number of armies in territory: \n";
+void Deploy::execute(Player & player) {
+    this->territory->unitsGarrisoned = this->territory->unitsGarrisoned + this->armies;
+    player.setReinforcements(player.getReinforcements()-this->armies);
+    std::cout << "\nDeploy executed. New number of armies in " << territory->name << ": " << this->territory->unitsGarrisoned << endl;
 }
 
 /**
@@ -398,12 +398,12 @@ Advance &Advance::operator=(const Advance &p) {
 /**
  * Advance validate checks if the Advance object can execute
  */
-void Advance::validate(Player * player) {
+void Advance::validate(Player & player) {
     // check source territory is owned by player
-    int checkRefusal = player->getTerritorySize();
+    int checkRefusal = player.getTerritorySize();
     if (source->IsAdjacent(*target)) {
-        for (int i = 0; i < player->getTerritorySize(); i++) {
-            if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
+        for (int i = 0; i < player.getTerritorySize(); i++) {
+            if (this->source->id == (player.getTerritoriesOwned(i)->id)) {
                 Advance::execute(player);
                 return;
             } else {
@@ -422,30 +422,30 @@ void Advance::validate(Player * player) {
 /**
  * Executes an Advance order
  */
-void Advance::execute(Player * player) {
+void Advance::execute(Player & player) {
     // int to check if all territories have been checked
-    int checkRefusal = player->getTerritorySize();
+    int checkRefusal = player.getTerritorySize();
     // loop though all owned territories
-    for (int i = 0; i < player->getTerritorySize(); i++) {
+    for (int i = 0; i < player.getTerritorySize(); i++) {
         // check if source is owned by payer
-        if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
+        if (this->target->id == (player.getTerritoriesOwned(i)->id)) {
             // if owned by player, simply move armies to that territory
             cout << "Target owned by player, moving armies to target.\n";
             target->unitsGarrisoned = target->unitsGarrisoned + this->getArmies();
             source->unitsGarrisoned = source->unitsGarrisoned - this->getArmies();
-            cout << "Target now has " << target->unitsGarrisoned << " armies, and Source now has "
+            cout << target->name << " now has " << target->unitsGarrisoned << " armies, and " << source->name << " now has "
                  << source->unitsGarrisoned << " armies.";
             return;
         } else { // if not owned by player, attack target territory
             if (checkRefusal == 1) {
                 int sourceAttack = 0;
                 int targetDefense = 0;
-                for (int j = 0; j < source->unitsGarrisoned; i++) {
+                for (int j = 0; j < this->getArmies(); j++) {
                     bool victoryDefeat = (rand() % 100) < 60;
                     if (victoryDefeat)
                         sourceAttack++;
                 }
-                for (int j = 0; j < target->unitsGarrisoned; i++) {
+                for (int j = 0; j < this->getArmies(); j++) {
                     bool victoryDefeat = (rand() % 100) < 70;
                     if (victoryDefeat)
                         targetDefense++;
@@ -458,40 +458,28 @@ void Advance::execute(Player * player) {
                     if (target->unitsGarrisoned <= 0){
                         // if target has no units left, but attacker does, transfer territory to attacker
                         target->unitsGarrisoned = 0;
-                        player->addTerritory(target);
-                        player->setIncrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent-1);
+                        player.addTerritory(target);
+                        player.setIncrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent-1);
                         target->playerLink->removeTerritory(target);
-                        target->playerLink->setDecrementTerritoryCount(player->getTerritoriesOwned(player->getTerritorySize()-1)->continent);
-                        player->deckLink->Draw(player->getHand());
+                        target->playerLink->setDecrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent);
+                        player.deckLink->Draw(player.getHand());
+                        target->playerLink = &player;
+                        cout << "win";
                     } else { // if both sides have units left, nobody moves
                         cout << "Units left on both sides, no territories conquered.\n";
+                        cout << source->name << " has " << source->unitsGarrisoned << " armies left, and " << target->name << " has " << target->unitsGarrisoned << " armies left." << endl;
                     }
                 } else { // if attacker has no units left, make sure target still does and set attacker units to 0
                     source->unitsGarrisoned = 0;
                     if (target->unitsGarrisoned < 0){
                         target->unitsGarrisoned = 0;
                     }
+                    cout << "no win";
                 }
             } else {
                 checkRefusal--;
             }
         }
-    }
-
-    std::cout << "Is the territory destination adjacent to a territory of the current player? (1 for yes, 0 for no)";
-    int adjacentTerritory;
-    std::cin >> adjacentTerritory;
-    if (adjacentTerritory >= 1) {
-        std::cout << "Is the territory destination owned by the current player? (1 for yes, 0 for no)";
-        int ownedTerritory;
-        std::cin >> ownedTerritory;
-        if (ownedTerritory >= 1) {
-            std::cout << "Advancing armies to an owned territory.\n";
-        } else {
-            std::cout << "Advancing armies to enemy territory. Time for battle!\n";
-        }
-    } else {
-        std::cout << "Territory is not adjacent, therefore cannot move armies to it.\n";
     }
 }
 
@@ -554,22 +542,19 @@ Bomb &Bomb::operator=(const Bomb &p) {
 /**
  * Bomb validate checks if the Bomb object can execute
  */
-void Bomb::validate(Player * player) {
+void Bomb::validate(Player & player) {
     bool checkTerritories = false;
     //check if the target territory is adjacent to a player territory
-    for (int i = 0; i < player->getTerritorySize(); i++) {
-        if (player->getTerritoriesOwned(i)->IsAdjacent(*target)){
+    for (int i = 0; i < player.getTerritorySize(); i++) {
+        if (player.getTerritoriesOwned(i)->IsAdjacent(*target)){
             checkTerritories = true;
-        } else {
-            // invalidates the order
-            cout << "Territory not adjacent to an owned territory! Target too far to bomb.";
         }
     }
     if (checkTerritories) {
         //check if the territory target is owned by the player bombing
-        int checkRefusal = player->getTerritorySize();
-        for (int i = 0; i < player->getTerritorySize(); i++) {
-            if (this->target->id == (player->getTerritoriesOwned(i)->id)) {
+        int checkRefusal = player.getTerritorySize();
+        for (int j = 0; j < player.getTerritorySize(); j++) {
+            if (this->target->id == (player.getTerritoriesOwned(j)->id)) {
                 // invalidates the order
                 cout << "You are trying to bomb your own territory! Don't do that!";
             } else {
@@ -580,15 +565,19 @@ void Bomb::validate(Player * player) {
                 }
             }
         }
+    } else {
+        cout << "Territory not adjacent to an owned territory! Target too far to bomb.";
     }
 }
 
 /**
  * Executes a Bomb order
  */
-void Bomb::execute(Player * player) {
-    std::cout << "Bombing half the enemy armies!\n";
-    target->unitsGarrisoned = target->unitsGarrisoned/2;
+void Bomb::execute(Player & player) {
+    int bomb = target->unitsGarrisoned / 2;
+    cout << bomb << endl;
+    target->unitsGarrisoned = bomb;
+    std::cout << "Bombing half the enemy armies! " << target->name << " now has " << target->unitsGarrisoned << " armies!" << endl;
 }
 
 /**
@@ -651,10 +640,10 @@ Blockade &Blockade::operator=(const Blockade &p) {
 /**
  * Blockade validate checks if the Blockade object can execute
  */
-void Blockade::validate(Player * player) {
-    int checkRefusal = player->getTerritorySize();
-    for (int i = 0; i < player->getTerritorySize(); i++) {
-        if (this->target->id == (player->getTerritoriesOwned(i)->id)) {
+void Blockade::validate(Player & player) {
+    int checkRefusal = player.getTerritorySize();
+    for (int i = 0; i < player.getTerritorySize(); i++) {
+        if (this->target->id == (player.getTerritoriesOwned(i)->id)) {
             Blockade::execute(player);
         } else {
             if (checkRefusal == 1) {
@@ -670,10 +659,11 @@ void Blockade::validate(Player * player) {
 /**
  * Executes a Blockade order
  */
-void Blockade::execute(Player * player) {
+void Blockade::execute(Player & player) {
     target->unitsGarrisoned = target->unitsGarrisoned * 2;
-    //TODO set target owner to Neutral Player
-    std::cout << "Territory blockade set up! Armies doubled, territory lost, now neutral.\n";
+    target->playerLink->removeTerritory(target);
+    target->playerLink->setDecrementTerritoryCount(player.getTerritoriesOwned(player.getTerritorySize()-1)->continent);
+    std::cout << "Territory blockade set up! " << target->name << " now has " << target->unitsGarrisoned << " armies, and is not owned by " << player.getName() << " anymore." << endl;
 }
 
 /**
@@ -737,16 +727,16 @@ Airlift &Airlift::operator=(const Airlift &p) {
 /**
  * Airlift validate checks if the Airlift object can execute
  */
-void Airlift::validate(Player * player) {
+void Airlift::validate(Player & player) {
     bool sourceBool = false;
     bool targetBool = false;
-    for (int i = 0; i < player->getTerritorySize(); i++) {
-        if (this->source->id == (player->getTerritoriesOwned(i)->id)) {
+    for (int i = 0; i < player.getTerritorySize(); i++) {
+        if (this->source->id == (player.getTerritoriesOwned(i)->id)) {
             sourceBool = true;
         }
     }
-    for (int i = 0; i < player->getTerritorySize(); i++) {
-        if (this->target->id == (player->getTerritoriesOwned(i)->id)) {
+    for (int i = 0; i < player.getTerritorySize(); i++) {
+        if (this->target->id == (player.getTerritoriesOwned(i)->id)) {
             targetBool = true;
         }
     }
@@ -761,11 +751,11 @@ void Airlift::validate(Player * player) {
 /**
  * Executes an Airlift order
  */
-void Airlift::execute(Player * player) {
+void Airlift::execute(Player & player) {
     if (this->source->unitsGarrisoned - this->armies != 0) {
         this->source->unitsGarrisoned = this->source->unitsGarrisoned - this->armies;
         this->target->unitsGarrisoned = this->target->unitsGarrisoned + this->armies;
-        std::cout << "Airlifting armies to destination.\n";
+        std::cout << "Airlifting " << this->armies << " armies to " << target->name << " from " << source->name << "!\n";
     } else {
         cout << "Too many armies selected! Source territory cannot provide so many. Order not executed.";
     }
@@ -806,8 +796,8 @@ Negotiate::~Negotiate() {
     cout << "Negotiate destroyed\n";
 }
 
-Negotiate::Negotiate(Player * targetPlayer) {
-    this->targetPlayer = targetPlayer;
+Negotiate::Negotiate(Player & targetPlayer) {
+    this->targetPlayer = &targetPlayer;
 }
 
 /**
@@ -830,7 +820,7 @@ Negotiate &Negotiate::operator=(const Negotiate &p) {
 /**
  * Negotiate validate checks if the Negotiate object can execute
  */
-void Negotiate::validate(Player * player) {
+void Negotiate::validate(Player & player) {
     std::cout << "Validating if negotiate can happen between the two selected players...\n";
     if (this->getPlayerLink()->getName().compare(this->targetPlayer->getName())) {
         cout << "Cannot negotiate with yourself. Order not executed.";
@@ -842,7 +832,7 @@ void Negotiate::validate(Player * player) {
 /**
  * Executes a Negotiate order
  */
-void Negotiate::execute(Player * player) {
+void Negotiate::execute(Player & player) {
     // TODO make it so if this is executed this->getPlayerLink()
     //  and passed player cannot attack each other for the remainder of the turn.
     std::cout << "Negotiate active between the two selected players.\n";

@@ -39,8 +39,8 @@ public:
     virtual ~Orders();
     Orders(const Orders &o1);
     virtual void identify();
-    virtual void validate(Player *);
-    virtual void execute(Player *) = 0;
+    virtual void validate(Player &);
+    virtual void execute(Player &) = 0;
     virtual Player * getPlayerLink();
     virtual void setPlayerLink(Player & player);
     friend ostream &operator << (ostream &, const Orders &orders);
@@ -58,7 +58,7 @@ class Deploy : public Orders {
     // place some armies on one of the current player's territories
 private:
     int armies{};
-    Territory territory;
+    Territory * territory;
 public:
     void setArmies(int sArmies);
     [[nodiscard]] int getArmies() const;
@@ -67,8 +67,8 @@ public:
     Deploy(int sArmies, Territory&);
     Deploy(const Deploy &d1);
     Deploy &operator=(const Deploy &p);
-    void validate(Player *) override;
-    void execute(Player *) override;
+    void validate(Player &) override;
+    void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Deploy &deploy);
 };
@@ -90,8 +90,8 @@ public:
     Advance(int sArmies, Territory& source, Territory& target);
     Advance(const Advance &a1);
     Advance &operator=(const Advance &p);
-    void validate(Player *) override;
-    void execute(Player *) override;
+    void validate(Player &) override;
+    void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Advance &advance);
 };
@@ -109,8 +109,8 @@ public:
     Bomb(Territory& target);
     Bomb(const Bomb &b1);
     Bomb &operator=(const Bomb &p);
-    void validate(Player *) override;
-    void execute(Player *) override;
+    void validate(Player &) override;
+    void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Bomb &bomb);
 };
@@ -128,8 +128,8 @@ public:
     Blockade(Territory& target);
     Blockade(const Blockade &b1);
     Blockade &operator=(const Blockade &p);
-    void validate(Player *) override;
-    void execute(Player *) override;
+    void validate(Player &) override;
+    void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Blockade &blockade);
 };
@@ -149,8 +149,8 @@ public:
     Airlift(int sArmies, Territory& source, Territory& target);
     Airlift(const Airlift &a1);
     Airlift &operator=(const Airlift &p);
-    void validate(Player *) override;
-    void execute(Player *) override;
+    void validate(Player &) override;
+    void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Airlift &airlift);
 };
@@ -165,11 +165,11 @@ private:
 public:
     Negotiate();
     ~Negotiate() override;
-    Negotiate(Player * targetPlayer);
+    Negotiate(Player & targetPlayer);
     Negotiate(const Negotiate &n1);
     Negotiate &operator=(const Negotiate &p);
-    void validate(Player *) override;
-    void execute(Player *) override;
+    void validate(Player &) override;
+    void execute(Player &) override;
     void identify() override;
     friend ostream &operator << (ostream &, const Negotiate &negotiate);
 };

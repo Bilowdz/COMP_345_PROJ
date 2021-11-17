@@ -157,12 +157,15 @@ void GameEngine::addplayer(Command *c) {
     newPlayer->setMapLink(&gameMap);
     newPlayer->addReinforcements(50);
     this->Players.push_back(newPlayer);
-    //shuffles the players around
-    std::shuffle(std::begin(Players), std::end(Players), std::default_random_engine());
 
 }
 
 void GameEngine::gamestart() {
+    std::shuffle(std::begin(Players), std::end(Players), std::default_random_engine());
+    cout << "The player order is: " << endl;
+    for (int i = 0; i < Players.size(); i++) {
+        cout << i + 1 << ": " << Players.at(i)->getName() << endl;
+    }
     MainDeck = new Deck(Players.size());
     for (auto &Player: Players) {
         MainDeck->Draw(Player->getHand());
@@ -174,7 +177,10 @@ void GameEngine::gamestart() {
 
 void GameEngine::assigncountries() {
     for (int i = 0; i < gameMap.map.size(); i++) {
-        Players.at(i % Players.size())->addTerritory(gameMap.map.at(i));
+        int randomPlayer = i % Players.size();
+        Players.at(randomPlayer)->addTerritory(gameMap.map.at(i));
+        gameMap.map.at(i)->playerLink = Players.at(randomPlayer);
+        //Players.at(randomPlayer)->setIncrementTerritoryCount(Players.at(randomPlayer)->getTerritoriesOwned(Players.at(randomPlayer)->getTerritorySize()-1)->continent-1);
     }
 }
 
@@ -297,7 +303,7 @@ void GameEngine::mainGameLoop() {
 void GameEngine::reinforcementPhase() {
     this->currentState = ST_ASSIGN_REINFORCEMENT;
     //Adds armies to the reinforcement pool
-    for (int i = 0; i < Players.size()-1; i++) {
+    for (int i = 0; i < Players.size(); i++) {
         //sets the number of armies based on territory size
         int numArmies = floor(Players.at(i)->getTerritorySize() / 3);
         Players.at(i)->addReinforcements(numArmies);
@@ -315,7 +321,7 @@ void GameEngine::reinforcementPhase() {
 void GameEngine::issueOrdersPhase() {
     //loop through each player and allow them to issue orders
     for (int i = 0; i < Players.size(); i++) {
-        cout << endl << Players.at(i)->getName() << "\'s turn to issue orders\n";
+        cout << endl << Players.at(i)->getName() << "\'s turn to issue orders:\n\n";
         Players.at(i)->issueOrder(Players);
     }
 }
@@ -323,10 +329,14 @@ void GameEngine::issueOrdersPhase() {
 void GameEngine::executeOrdersPhase() {
     //TODO destroy all the pointers
     //Order of execution is which order was passed into the orderslist first
-    for (int i = 0; i < Players.size()-1; i++) {
-        for (int j = 0; j < Players.at(i)->getOrdersList()->getList().size()-1; j++) {
+    cout << "\nExecuting orders:" << endl;
+    for (int i = 0; i < Players.size(); i++) {
+        cout << Players.at(i)->getName() << "\'s orders:" << endl;
+        int numberOfOrders = Players.at(i)->getOrdersList()->getList().size();
+        for (int j = 0; j < numberOfOrders; j++) {
             //validates the order and executes the order if it is good.
-            Players.at(i)->getOrdersList()->getList().at(j)->validate(Players.at(i));
+            Players.at(i)->getOrdersList()->getList().at(0)->validate(*Players.at(i));
+            Players.at(i)->getOrdersList()->remove(0);
         }
     }
 }
