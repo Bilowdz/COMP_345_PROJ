@@ -107,6 +107,13 @@ bool GameEngine::transition(Command *c) {
             this->isGameDone = true;
             return true;
         }
+    } else if (command =="gamestart") {
+        if (currentState == ST_PLAYERS_ADDED) {
+            currentState = ST_ASSIGN_REINFORCEMENT;
+            gamestart();
+            mainGameLoop();
+            return true;
+        }
     }
     return false;
 }

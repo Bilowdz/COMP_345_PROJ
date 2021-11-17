@@ -18,36 +18,51 @@ void driveMap() {
 }
 
 void chooseComandProcessor() {
-    cout << "Choose between accepting the commands from the console (1) or from a file (2): " << endl;
+    GameEngine* ge = new GameEngine();
+    cout << "Choose between accepting the commands from the console (1) or from a file (2):";
     int input = 0;
     cin >> input;
 
     // user selected console
     if(input == 1) {
-        cout << "hello world" << endl;
+        CommandProcessor cp;
+        ge->startupPhase(cp, ge);
     } else {
-        cout << "goodbye world" << endl;
         string filename;
 
-        cout << "Please enter a filename (commands.txt is the only available file):" << endl;
+        cout << "Please enter a filename (commands.txt, commands2.txt are the only available files):";
         cin >> filename;
-        cout << "Your filename is: " << filename << endl;
-        // user selected from file
+
+        FileLineReader flr("../CommandProcessorFiles/" + filename);
+        FileCommandProcessorAdapter adapter(flr);
+        Command * c1 = adapter.getCommand(ge);
+        ge->transition(c1);
+        Command * c2 =adapter.getCommand(ge);
+        ge->transition(c2);
+        Command * c3 =adapter.getCommand(ge);
+        ge->transition(c3);
+        Command * c4 =adapter.getCommand(ge);
+        ge->transition(c4);
+        Command * c5 =adapter.getCommand(ge);
+        ge->transition(c5);
+        Command * c6 =adapter.getCommand(ge);
+        ge->transition(c6);
+        Command * c7 =adapter.getCommand(ge);
+        ge->transition(c7);
+        Command * c8 =adapter.getCommand(ge);
+        ge->transition(c8);
     }
 }
 
+void cpDriver() {
+    chooseComandProcessor();
+}
+
 int main() {
-
-    FileLineReader flr("../CommandProcessorFiles/commands.txt");
-    //flr.load();
-    //while(!flr.isEof()) {
-    //    cout << flr.next() << endl;
-    //}
-
-    GameEngine* ge = new GameEngine();
-    CommandProcessor cp;
-    ge->startupPhase(cp, ge);
-    //FileCommandProcessorAdapter adapter(flr, ge);
+    cpDriver();
+    //GameEngine* ge = new GameEngine();
+    //CommandProcessor cp;
+    //ge->startupPhase(cp, ge);
 
     return 0;
 }
