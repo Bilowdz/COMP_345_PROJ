@@ -31,24 +31,32 @@ void chooseComandProcessor() {
         CommandProcessor cp;
         cp.Attach(logger);
 
+        bool isGameDone = false;
         // loop until user chooses to exit game
-        while(!ge->isGameDone) {
-            //GameEngine ge = new GameEngine();
-            ge->startupPhase(cp, ge);
+        while(!isGameDone) {
+            GameEngine *ge2 = new GameEngine();
+            ge2->startupPhase(cp, ge2);
 
             // check for win condition
-            if(ge->getState() == ST_WIN) {
-                Command* c = cp.getCommand(ge);
+            if(ge2->getState() == ST_WIN) {
+                while(true) {
+                    Command* c = cp.getCommand(ge2);
 
-                // check for error
-                if(c->getEffect().length() == 0) {
-                    cout << "ERROR: " << c->getEffect() << endl;
+                    // check for error
+                    if(c->getEffect().length() != 0) {
+                        cout << "ERROR: " << c->getEffect() << endl;
 
-                    // valid command, execute it
-                } else {
-                    ge->transition(c);
+                        // valid command, execute it
+                    } else {
+                        ge2->transition(c);
+                        if (ge2->isGameDone) {
+                            isGameDone = true;
+                        }
+                        break;
+                    }
                 }
             }
+            delete ge2;
         }
 
     } else {

@@ -140,23 +140,24 @@ State GameEngine::getState() {
 void GameEngine::loadmap(Command *c) {
 
     string command = c->getCommand();
-    int mapChosen;
+    string mapChosen;
 
     if (command == "loadmap zertina.map") {
-        mapChosen = 4;
+        mapChosen = "../Maps/zertina.map";
     } else if (command == "loadmap bigeurope.map") {
-        mapChosen = 1;
+        mapChosen = "../Maps/bigeurope.map";
     } else if (command == "loadmap canada.map") {
-        mapChosen = 2;
+        mapChosen = "../Maps/canada.map";
     } else if (command == "loadmap minimap.map") {
-        mapChosen = 3;
+        mapChosen = "../Maps/minimap.map";
         // invalid map
     } else {
 
     }
 
     MapLoader load;
-    gameMap = *load.maps.at(mapChosen - 1);
+    load.Load(mapChosen);
+    gameMap = *load.maps.at(0);
 
 }
 
@@ -300,7 +301,7 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
         } else {
 
             // output the error message
-            cout << "ERROR" << effect << endl;
+            cout << "ERROR: " << effect << endl;
         }
     }
 }

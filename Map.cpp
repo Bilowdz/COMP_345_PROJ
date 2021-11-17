@@ -219,12 +219,12 @@ void Map::countTerritoriesPerContinent() {
 // Default constructor for the mapLoader
 // Loads all maps in the maps directory
 MapLoader::MapLoader() {
-    using recursive_directory_iterator = std::filesystem::recursive_directory_iterator;
-
-    std::filesystem::current_path("..");
-    for (const auto& dirEntry : recursive_directory_iterator("Maps")){
-        Load(dirEntry.path().string());
-    }
+//    using recursive_directory_iterator = std::filesystem::recursive_directory_iterator;
+//
+//    std::filesystem::current_path("..");
+//    for (const auto& dirEntry : recursive_directory_iterator("Maps")){
+//        Load(dirEntry.path().string());
+//    }
 }
 
 // Copy constructor for the map loader
