@@ -364,7 +364,8 @@ Command* FileCommandProcessorAdapter::getCommand(GameEngine * ge) {
     } else {
         c = saveCommand(input, response);
     }
-    cout << *c << endl;
+    if(this->debug)
+        cout << *c << endl;
     return c;
 }
 

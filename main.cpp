@@ -19,22 +19,23 @@ void driveMap() {
 }
 
 void chooseComandProcessor() {
-    LogObserver* logger = new LogObserver();
-    GameEngine* ge = new GameEngine();
-    ge->Attach(logger);
+
     cout << "Choose between accepting the commands from the console (1) or from a file (2):";
     int input = 0;
     cin >> input;
 
     // user selected console
     if(input == 1) {
-        CommandProcessor cp;
-        cp.Attach(logger);
+
 
         bool isGameDone = false;
         // loop until user chooses to exit game
         while(!isGameDone) {
+            LogObserver* logger = new LogObserver();
+            CommandProcessor cp;
+            cp.Attach(logger);
             GameEngine *ge2 = new GameEngine();
+            ge2->Attach(logger);
             ge2->startupPhase(cp, ge2);
 
             // check for win condition
@@ -57,9 +58,13 @@ void chooseComandProcessor() {
                 }
             }
             delete ge2;
+            delete logger;
         }
 
     } else {
+        LogObserver* logger = new LogObserver();
+        GameEngine* ge = new GameEngine();
+        ge->Attach(logger);
         string filename;
 
         cout << "Please enter a filename (commands.txt, commands2.txt are the only available files):";
@@ -78,6 +83,8 @@ void chooseComandProcessor() {
         ge->transition(c4);
         Command * c5 =adapter.getCommand(ge);
         ge->transition(c5);
+        Command * c6 =adapter.getCommand(ge);
+        ge->transition(c6);
     }
 }
 

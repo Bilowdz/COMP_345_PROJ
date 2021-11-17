@@ -249,12 +249,11 @@ void GameEngine::endissueorders() {
 }
 //Outputs to the terminal the win execution will begin
 void GameEngine::win() {
-    cout << "Executing function win" << endl;
-    // todo: prompt user to play again or quit using command processor
+
 }
 //Outputs to the terminal the end exeuction will begin
 void GameEngine::end() {
-    cout << "Executing function end" << endl;
+    cout << "--- Good bye! ---" << endl;
 }
 //Outputs to the terminal the play execution will begin
 void GameEngine::play() {
@@ -341,7 +340,7 @@ void GameEngine::mainGameLoop() {
             if (doneCounter == gameMap.continents.size()) {
                 //if there are neutral territories then he might not win
                 noWinner = true;
-                cout << "The winner is " << Players.at(0)->getName();
+                cout << "---- ---- ---- The winner is " << Players.at(0)->getName() << "!! ---- ---- ----";
                 this->transition(new Command("win"));
                 return;
             } else {
@@ -351,7 +350,7 @@ void GameEngine::mainGameLoop() {
                 cin >> ending;
                 if (ending == 1) {
                     noWinner = true;
-                    cout << "The winner is " << Players.at(0)->getName();
+                    cout << "---- ---- ---- The winner is " << Players.at(0)->getName() << "!! ---- ---- ----";
                     this->transition(new Command("win"));
                     return;
                 }

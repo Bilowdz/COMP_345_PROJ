@@ -49,7 +49,7 @@ LogObserver::~LogObserver() {}
 // Method to log the ILoggable's log string
 void LogObserver::Update(ILoggable *loggable) {
     // LogFile name
-    std::string LogFile = "gamelog.txt";
+    std::string LogFile = "../gamelog.txt";
     std::ofstream output;
 
     // Open LogFile and Get LogString

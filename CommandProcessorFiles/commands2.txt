@@ -1,5 +1,6 @@
-loadmap canada.map
+loadmap minimap.map
 validatemap
-addplayer Joey Paquet
-addplayer Jeff Bezos
+addplayer Joey
+addplayer Jeff
 gamestart
+quit
