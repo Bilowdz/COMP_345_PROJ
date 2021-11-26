@@ -96,16 +96,16 @@ int main() {
     ofstream file("../gamelog.txt");
     file.close();
 
-    auto *neutralName = new string("neutral");
-    vector<Territory*> neutralTerritories;
-    Hand *neutralHand = new Hand();
-    auto *neutralOrdersList = new OrdersList();
-    Player::neutralPlayer() = *new Player(neutralName, neutralTerritories, neutralHand, neutralOrdersList);
+//    auto *neutralName = new string("neutral");
+//    vector<Territory*> neutralTerritories;
+//    Hand *neutralHand = new Hand();
+//    auto *neutralOrdersList = new OrdersList();
+//    Player::neutralPlayer() = *new Player(neutralName, neutralTerritories, neutralHand, neutralOrdersList);
     cpDriver();
 
-    delete neutralName;
-    delete neutralHand;
-    delete neutralOrdersList;
+//    delete neutralName;
+//    delete neutralHand;
+//    delete neutralOrdersList;
 
     return 0;
 }

@@ -700,10 +700,10 @@ void Player::removeNegotiations(int index) {
  * A neutral player is created
  * @return a neutral player
  */
-Player &Player::neutralPlayer() {
-    static Player neutralPlayer;
-    return neutralPlayer;
-}
+//Player &Player::neutralPlayer() {
+//    static Player neutralPlayer;
+//    return neutralPlayer;
+//}
 
 
 
