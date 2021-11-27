@@ -324,7 +324,7 @@ void GameEngine::mainGameLoop() {
         for (int i = 0; i < Players.size(); i++) {
             if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
-                //delete Players.at(Players.begin() + i);
+
                 Players.erase(Players.begin() + i);
             }
         }
