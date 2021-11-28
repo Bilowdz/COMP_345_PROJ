@@ -399,3 +399,19 @@ ostream & operator << (ostream &out, const FileCommandProcessorAdapter &fcpa)
 
     return out;
 }
+void FileCommandProcessorAdapter::readTournamentParameters(vector<string> maps, vector<string> players, int numGames) {
+    /* todo: pseudocode
+     * 1.   create tournament_commands.txt file inside ./CommandProcessorFiles directory
+     * 2.   for i in range(0, numGames):
+     *          write('loadmap ' + map)
+     *          write('validatemap')
+     *          for i in range(0, len(players)
+     *              write('addplayer ' + player)
+     *          write('gamestart')
+     *          if end:
+     *              write('end')
+     *          else:
+     *              write('replay')
+     * 3. close file
+     * */
+}

@@ -140,6 +140,7 @@ public:
 
     string readCommand();
     Command* getCommand(GameEngine *);
+    void readTournamentParameters(vector<string>,vector<string>,int);
 
     // assignment operator
     FileCommandProcessorAdapter& operator =(const FileCommandProcessorAdapter &);

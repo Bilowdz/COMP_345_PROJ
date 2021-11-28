@@ -88,6 +88,17 @@ void chooseComandProcessor() {
     }
 }
 
+void tournamentDriver() {
+    /* todo: pseudocode
+     * GameEngine ge;
+     * while(adapter.hasNext()) {
+     *      Command c = adapter.next()
+     *      ge.transition(c)
+     * }
+     * finalOutput()
+     */
+}
+
 void cpDriver() {
     chooseComandProcessor();
 }
