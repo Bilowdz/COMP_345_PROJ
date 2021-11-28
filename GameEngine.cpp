@@ -311,6 +311,7 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
 void GameEngine::mainGameLoop() {
 
     bool noWinner = false;
+    int numTurns = 0;
     while (!noWinner) {
         //Call to reinforcement phase
         reinforcementPhase();
@@ -341,6 +342,7 @@ void GameEngine::mainGameLoop() {
                 //if there are neutral territories then he might not win
                 noWinner = true;
                 cout << "---- ---- ---- The winner is " << Players.at(0)->getName() << "!! ---- ---- ----";
+                gameResults.push_back(Players.at(0)->getName());
                 this->transition(new Command("win"));
                 return;
             } else {
@@ -351,14 +353,29 @@ void GameEngine::mainGameLoop() {
                 if (ending == 1) {
                     noWinner = true;
                     cout << "---- ---- ---- The winner is " << Players.at(0)->getName() << "!! ---- ---- ----";
+                    gameResults.push_back(Players.at(0)->getName());
                     this->transition(new Command("win"));
                     return;
                 }
             }
         }
+
+        numTurns++;
+        if(numTurns==maxTurns)
+        {
+            noWinner = true;
+            cout << "---- ---- ---- The game Ends in a Draw";
+            gameResults.push_back("Draw");
+            this->transition(new Command("win"));
+            return;
+        }
         this->transition(new Command("endexecorders"));
     }
+
+
 }
+
+
 
 /**
  * Armies are given out depending on territories owned

@@ -48,6 +48,13 @@ class CommandProcessor;
 
 class GameEngine : public Subject, public ILoggable {
     private:
+        vector<string> gameResults;
+        vector<string> tourneyMaps;
+        vector<string> tourneyplayers;
+        int numGames;
+        int maxTurns;
+        string currentWinner;
+
         bool debug = false;
         State currentState;
         Map gameMap;
