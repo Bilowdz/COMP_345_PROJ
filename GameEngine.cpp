@@ -114,7 +114,7 @@ bool GameEngine::transition(Command *c) {
     } else if (command == "quit") {
         if (currentState == ST_WIN) {
             currentState = ST_END;
-            Notify(this); // todo current place that returns code 0xc0000005
+            //Notify(this); // todo current place that returns code 0xc0000005
             this->end();
             this->isGameDone = true;
             return true;
