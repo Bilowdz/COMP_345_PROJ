@@ -116,7 +116,7 @@ ostream &operator<<(ostream &output, Player &player) {
     output << "Orders Sent: \n";
 
     output << "Territories to defend: \n";
-    player.toDefend();
+    player.displayOwnedAdjacentTerritories();
     output << "\n";
 
     return output;
@@ -136,7 +136,7 @@ void Player::displayTerritoriesOwned() {
  *
  * @param vPlayer the vector of all Players in the game
  */
-vector<Territory *> Player::toAttack() {
+void Player::toAttack() {
 
     ps->toAttack();
 
@@ -153,14 +153,14 @@ vector<Territory *> Player::toAttack() {
             }
         }
     }
-    return territoriesToAttack;
+    //return territoriesToAttack;
 }
 
 /**
  * All the territories that the current player can defend
  * Returns a list of territories that the player owns
  */
-vector<Territory *> Player::toDefend() {
+void Player::toDefend() {
 
     ps->toDefend();
 
@@ -179,14 +179,14 @@ vector<Territory *> Player::toDefend() {
             }
         }
     }
-    return territoriesToDefend;
+    //return territoriesToDefend;
 }
 
 /**
  * Shows territories adjacent to the territories owned by current player
  * (Used in toAttack)
  */
-void Player::displayAdjacentTerritoriesNotOwned() {
+vector<Territory *> Player::displayAdjacentTerritoriesNotOwned() {
 
     vector<Territory *> territoriesToAttack;
     //loop through player owned territories
@@ -204,13 +204,15 @@ void Player::displayAdjacentTerritoriesNotOwned() {
     for (int i = 0; i < territoriesToAttack.size(); i++) {
         cout << "Name: " << territoriesToAttack.at(i)->name << " ID: " << territoriesToAttack.at(i)->id << endl;
     }
+
+    return territoriesToAttack;
 }
 
 /**
  * Shows the territories that are owned by player that are adjacent to enemy territories
  * (used in toDefend)
  */
-void Player::displayOwnedAdjacentTerritories() {
+vector<Territory *> Player::displayOwnedAdjacentTerritories() {
 
     vector<Territory *> territoriesToDefend;
     //loop through player owned territories
@@ -229,6 +231,8 @@ void Player::displayOwnedAdjacentTerritories() {
     for (int i = 0; i < territoriesToDefend.size() - 1; i++) {
         cout << "Name: " << territoriesToDefend.at(i)->name << " ID: " << territoriesToDefend.at(i)->id << endl;
     }
+
+    return territoriesToDefend;
 }
 
 /**
@@ -436,8 +440,8 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
             int idOfTerriSource;
             int idOfTerriTarget;
             //List of territories to attack and defend
-            vector<Territory *> listOfTerritoriesToDefend = this->toDefend();
-            vector<Territory *> listOfTerritoriesToAttack = this->toAttack();
+            vector<Territory *> listOfTerritoriesToDefend = this->displayOwnedAdjacentTerritories();
+            vector<Territory *> listOfTerritoriesToAttack = this->displayAdjacentTerritoriesNotOwned();
 
             this->displayTerritoriesOwned();
             cout << "How many armies do you want to advance?:";
