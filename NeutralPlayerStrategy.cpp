@@ -5,7 +5,7 @@
 #include "NeutralPlayerStrategy.h"
 void NeutralPlayerStrategy::issueOrder() {
 }
-void NeutralPlayerStrategy::toAttack() {
+vector<Territory*> NeutralPlayerStrategy::toAttack() {
 }
-void NeutralPlayerStrategy::toDefend() {
+vector<Territory*> NeutralPlayerStrategy::toDefend() {
 }

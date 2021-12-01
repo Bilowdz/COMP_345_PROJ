@@ -138,6 +138,7 @@ void Player::displayTerritoriesOwned() {
  */
 vector<Territory *> Player::toAttack() {
 
+    //todo move to human Player
     vector<Territory *> territoriesToAttack;
     //loop through player owned territories
     for (int i = 0; i < getTerritorySize(); i++) {
@@ -158,6 +159,8 @@ vector<Territory *> Player::toAttack() {
  * Returns a list of territories that the player owns
  */
 vector<Territory *> Player::toDefend() {
+
+    //todo move to human Player
 
     vector<Territory *> territoriesToDefend;
     //loop through player owned territories

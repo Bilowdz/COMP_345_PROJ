@@ -5,7 +5,7 @@
 #include "HumanPlayerStrategy.h"
 void HumanPlayerStrategy::issueOrder() {
 }
-void HumanPlayerStrategy::toAttack() {
+vector<Territory*> HumanPlayerStrategy::toAttack() {
 }
-void HumanPlayerStrategy::toDefend() {
+vector<Territory*> HumanPlayerStrategy::toDefend() {
 }

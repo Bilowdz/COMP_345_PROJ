@@ -7,12 +7,14 @@
 
 #include "PlayerStrategy.h"
 
+class Territory;
+
 class HumanPlayerStrategy : public PlayerStrategy {
 
 public:
     void issueOrder() override;
-    void toAttack() override;
-    void toDefend() override;
+    vector<Territory*> toAttack() override;
+    vector<Territory*> toDefend() override;
 };
 
 

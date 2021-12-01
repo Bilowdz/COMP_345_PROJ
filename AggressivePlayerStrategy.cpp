@@ -5,7 +5,7 @@
 #include "AggressivePlayerStrategy.h"
 void AggressivePlayerStrategy::issueOrder() {
 }
-void AggressivePlayerStrategy::toAttack() {
+vector<Territory*> AggressivePlayerStrategy::toAttack() {
 }
-void AggressivePlayerStrategy::toDefend() {
+vector<Territory*> AggressivePlayerStrategy::toDefend() {
 }

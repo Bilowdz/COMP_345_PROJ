@@ -5,7 +5,7 @@
 #include "BenevolentPlayerStrategy.h"
 void BenevolentPlayerStrategy::issueOrder() {
 }
-void BenevolentPlayerStrategy::toAttack() {
+vector<Territory*> BenevolentPlayerStrategy::toAttack() {
 }
-void BenevolentPlayerStrategy::toDefend() {
+vector<Territory*> BenevolentPlayerStrategy::toDefend() {
 }

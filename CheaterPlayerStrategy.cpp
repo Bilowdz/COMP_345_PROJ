@@ -5,7 +5,7 @@
 #include "CheaterPlayerStrategy.h"
 void CheaterPlayerStrategy::issueOrder() {
 }
-void CheaterPlayerStrategy::toAttack() {
+vector<Territory*> CheaterPlayerStrategy::toAttack() {
 }
-void CheaterPlayerStrategy::toDefend() {
+vector<Territory*> CheaterPlayerStrategy::toDefend() {
 }

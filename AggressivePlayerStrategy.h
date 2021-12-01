@@ -11,8 +11,8 @@ class AggressivePlayerStrategy : public PlayerStrategy {
 
 public:
     void issueOrder() override;
-    void toAttack() override;
-    void toDefend() override;
+    vector<Territory*> toAttack() override;
+    vector<Territory*> toDefend() override;
 };
 
 
