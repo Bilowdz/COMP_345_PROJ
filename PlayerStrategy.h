@@ -7,6 +7,8 @@
 
 #include "Player.h"
 
+class Player;
+
 class PlayerStrategy {
     
 Player *p;

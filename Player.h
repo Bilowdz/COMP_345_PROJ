@@ -12,17 +12,18 @@
 #include "Card.h"
 #include "Orders.h"
 
-
 using namespace std;
 
 class Deck;
 class Map;
+class PlayerStrategies;
 
 class Player {
 public:
 
     Deck * deckLink;
     Map * mapLink;
+    PlayerStrategies *ps;
 
     void setMapLink(Map & map);
     void setDeckLink(Deck & deck);
