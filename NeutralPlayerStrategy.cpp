@@ -6,6 +6,10 @@
 void NeutralPlayerStrategy::issueOrder() {
 }
 vector<Territory*> NeutralPlayerStrategy::toAttack() {
+    vector<Territory *> territoriesToAttack;
+    return territoriesToAttack;
 }
 vector<Territory*> NeutralPlayerStrategy::toDefend() {
+    vector<Territory *> territoriesToDefend;
+    return territoriesToDefend;
 }

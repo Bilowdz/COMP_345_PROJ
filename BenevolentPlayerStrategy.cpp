@@ -6,6 +6,10 @@
 void BenevolentPlayerStrategy::issueOrder() {
 }
 vector<Territory*> BenevolentPlayerStrategy::toAttack() {
+    vector<Territory *> territoriesToAttack;
+    return territoriesToAttack;
 }
 vector<Territory*> BenevolentPlayerStrategy::toDefend() {
+    vector<Territory *> territoriesToDefend;
+    return territoriesToDefend;
 }

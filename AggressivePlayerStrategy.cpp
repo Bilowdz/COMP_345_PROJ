@@ -6,6 +6,10 @@
 void AggressivePlayerStrategy::issueOrder() {
 }
 vector<Territory*> AggressivePlayerStrategy::toAttack() {
+    vector<Territory *> territoriesToAttack;
+    return territoriesToAttack;
 }
 vector<Territory*> AggressivePlayerStrategy::toDefend() {
+    vector<Territory *> territoriesToDefend;
+    return territoriesToDefend;
 }

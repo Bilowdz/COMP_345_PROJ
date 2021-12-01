@@ -6,6 +6,10 @@
 void CheaterPlayerStrategy::issueOrder() {
 }
 vector<Territory*> CheaterPlayerStrategy::toAttack() {
+    vector<Territory *> territoriesToAttack;
+    return territoriesToAttack;
 }
 vector<Territory*> CheaterPlayerStrategy::toDefend() {
+        vector<Territory *> territoriesToDefend;
+        return territoriesToDefend;
 }

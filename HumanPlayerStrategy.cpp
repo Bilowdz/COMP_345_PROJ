@@ -6,6 +6,10 @@
 void HumanPlayerStrategy::issueOrder() {
 }
 vector<Territory*> HumanPlayerStrategy::toAttack() {
+    vector<Territory *> territoriesToAttack;
+    return territoriesToAttack;
 }
 vector<Territory*> HumanPlayerStrategy::toDefend() {
+    vector<Territory *> territoriesToDefend;
+    return territoriesToDefend;
 }
