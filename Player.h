@@ -38,10 +38,10 @@ public:
     ~Player();
 
     friend ostream &operator<<(ostream &output, Player &player);
-    void toAttack();
-    void toDefend();
-    vector<Territory *> displayAdjacentTerritoriesNotOwned();
-    vector<Territory *> displayOwnedAdjacentTerritories();
+    vector<Territory *> toAttack();
+    vector<Territory *> toDefend();
+    void displayAdjacentTerritoriesNotOwned();
+    void displayOwnedAdjacentTerritories();
     bool isTerritoryInList(vector<Territory*>, int id);
     void issueOrder(vector<Player*> &vPlayersInPlay);
 
