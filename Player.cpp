@@ -138,9 +138,6 @@ void Player::displayTerritoriesOwned() {
  */
 vector<Territory *> Player::toAttack() {
 
-    ps->toAttack();
-
-    //todo move to human player strategy
     vector<Territory *> territoriesToAttack;
     //loop through player owned territories
     for (int i = 0; i < getTerritorySize(); i++) {
@@ -161,10 +158,6 @@ vector<Territory *> Player::toAttack() {
  * Returns a list of territories that the player owns
  */
 vector<Territory *> Player::toDefend() {
-
-    ps->toDefend();
-
-    //todo move to human player strategy
 
     vector<Territory *> territoriesToDefend;
     //loop through player owned territories
@@ -326,8 +319,6 @@ int Player::getReinforcements() {
  * @param vPlayersInPlay is a vector of the other players still in the game
  */
 void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
-
-    ps->issueOrder();
 
     //Checks if the current player own a Reinforcement card
     //If he does he can choose to use it right away, otherwise
