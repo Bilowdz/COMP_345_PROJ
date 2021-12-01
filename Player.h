@@ -30,11 +30,14 @@ public:
 
     Player();
     explicit Player(string *name);
+    //todo constructor must take in a initial strategy
     Player(vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
     Player(string *name, vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
     Player(const Player &copyPlayer);
     Player & operator = (const Player &p);
     ~Player();
+
+    //todo add setStrategy() and executeStrategy()
 
     friend ostream &operator<<(ostream &output, Player &player);
     vector<Territory *> toAttack();
