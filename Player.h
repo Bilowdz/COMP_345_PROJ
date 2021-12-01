@@ -11,19 +11,19 @@
 #include "Map.h"
 #include "Card.h"
 #include "Orders.h"
-
+#include "PlayerStrategy.h"
 using namespace std;
 
 class Deck;
 class Map;
-class PlayerStrategies;
+//class PlayerStrategy;
 
 class Player {
 public:
 
     Deck * deckLink;
     Map * mapLink;
-    PlayerStrategies *ps;
+    PlayerStrategy *ps;
 
     void setMapLink(Map & map);
     void setDeckLink(Deck & deck);

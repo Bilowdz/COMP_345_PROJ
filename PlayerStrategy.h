@@ -5,9 +5,11 @@
 #ifndef GAMEENGINE_CPP_PLAYERSTRATEGY_H
 #define GAMEENGINE_CPP_PLAYERSTRATEGY_H
 
-#include "Player.h"
+#include <vector>
+using namespace std;
 
 class Player;
+class Territory;
 
 class PlayerStrategy {
     

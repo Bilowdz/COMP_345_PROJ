@@ -16,10 +16,13 @@ Log :: New Game State : Assign Reinforcement
 Log :: New Game State : Issue Orders
 Log :: Added Order : Deploy to Player : NotRyan
 Log :: Added Order : Deploy to Player : Bilowdz
+Log :: Added Order : Deploy to Player : Bilowdz
+Log :: Added Order : Bomb to Player : Bilowdz
 Log :: New Game State : Execute Orders
 Log :: New Game State : Execute Orders
-Log :: NotRyan Deployed 51 Units to TestTerritory1
-Log :: Bilowdz Deployed 55 Units to TestTerritory2
+Log :: NotRyan Deployed 56 Units to TestTerritory1
+Log :: Bilowdz Deployed 30 Units to TestTerritory2
+Log :: Bilowdz Deployed 20 Units to TestTerritory2
+Log :: Bilowdz Bombed TestTerritory3
 Log :: New Game State : Assign Reinforcement
 Log :: New Game State : Issue Orders
-Log :: Added Order : Deploy to Player : NotRyan
