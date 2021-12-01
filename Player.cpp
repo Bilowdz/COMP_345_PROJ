@@ -86,10 +86,10 @@ Player &Player::operator=(const Player &copyPlayer) {
  * Destructor
  */
 Player::~Player() {
-    for (auto &i: vTerritory) {
+    for (auto &i : vTerritory) {
         delete i;
     }
-    for (auto &i: vHand->cardsHeld) {
+    for (auto &i : vHand->cardsHeld) {
         delete i;
     }
     cout << "Destructor !" << endl;
@@ -175,7 +175,7 @@ vector<Territory *> Player::toDefend() {
             if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr &&
                 !(isTerritoryInList(territoriesToDefend, vTerritory.at(i)->id))) {
                 territoriesToDefend.push_back(
-                        vTerritory.at(i)); //push the territory we own into list of territories to defend
+                        vTerritory.at(i));//push the territory we own into list of territories to defend
             }
         }
     }
@@ -188,9 +188,21 @@ vector<Territory *> Player::toDefend() {
  */
 void Player::displayAdjacentTerritoriesNotOwned() {
 
-    for (int i = 0; i < this->toAttack().size(); i++) {
-        cout << "Name: " << this->toAttack().at(i)->name <<
-             " ID: " << this->toAttack().at(i)->id << endl;
+    vector<Territory *> territoriesToAttack;
+    //loop through player owned territories
+    for (int i = 0; i < getTerritorySize(); i++) {
+        //loop through the adjacent territories of the owned territories
+        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); j++) {
+            //check if that territory is already owned, if its now owned then add to list
+            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr &&
+                !(isTerritoryInList(territoriesToAttack, vTerritory.at(i)->adjacentTerritories.at(j)->id))) {
+                territoriesToAttack.push_back(vTerritory.at(i)->adjacentTerritories.at(j));
+            }
+        }
+    }
+
+    for (int i = 0; i < territoriesToAttack.size(); i++) {
+        cout << "Name: " << territoriesToAttack.at(i)->name << " ID: " << territoriesToAttack.at(i)->id << endl;
     }
 }
 
@@ -200,9 +212,22 @@ void Player::displayAdjacentTerritoriesNotOwned() {
  */
 void Player::displayOwnedAdjacentTerritories() {
 
-    for (int i = 0; i < this->toDefend().size() - 1; i++) {
-        cout << "Name: " << this->toDefend().at(i)->name <<
-             " ID: " << this->toDefend().at(i)->id << endl;
+    vector<Territory *> territoriesToDefend;
+    //loop through player owned territories
+    for (int i = 0; i < getTerritorySize(); i++) {
+        //loop through the adjacent territories of the owned territories
+        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); j++) {
+            //check if that territory is already owned, if the adjacent territory is not owned
+            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr &&
+                !(isTerritoryInList(territoriesToDefend, vTerritory.at(i)->id))) {
+                territoriesToDefend.push_back(
+                        vTerritory.at(i));//push the territory we own into list of territories to defend
+            }
+        }
+    }
+
+    for (int i = 0; i < territoriesToDefend.size() - 1; i++) {
+        cout << "Name: " << territoriesToDefend.at(i)->name << " ID: " << territoriesToDefend.at(i)->id << endl;
     }
 }
 
@@ -350,7 +375,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
     while (!isOutOfReinforcementsToDeploy) {
         int numArmiesDeploy;
         int idOfTerri;
-        cout << "You have " << this->getReinforcements()-numArmiesDeployed << " armies left to deploy." << endl;
+        cout << "You have " << this->getReinforcements() - numArmiesDeployed << " armies left to deploy." << endl;
         cout << "How many armies do you want to deploy?:";
         cin >> numArmiesDeploy;
         numArmiesDeployed = numArmiesDeployed + numArmiesDeploy;
@@ -406,7 +431,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
 
         if (choice == 0) {// finish adding orders
             isOrderDone = true;
-        } else if (choice == 1) { // Advance order
+        } else if (choice == 1) {// Advance order
             int numArmiesAdvance;
             int idOfTerriSource;
             int idOfTerriTarget;
@@ -450,7 +475,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     cout << "Entered territory that does not exist. Enter a valid territory id." << endl;
                 }
             }
-        } else if (choice == 2) { // Bomb order
+        } else if (choice == 2) {// Bomb order
 
             //check to see if we own Bomb card
             if (!vHand->isCardOwned("Bomb")) {
@@ -474,7 +499,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     cout << "Entered territory that does not exist. Enter a valid territory id.";
                 }
             }
-        } else if (choice == 3) { // Blockade order
+        } else if (choice == 3) {// Blockade order
             //Checks to see if we own a blockade card in our hand
             if (!vHand->isCardOwned("Blockade")) {
                 cout << "You do not own a Blockade card" << endl;
@@ -499,7 +524,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     cout << "Entered territory that does not exist. Enter a valid territory id.";
                 }
             }
-        } else if (choice == 4) { // Airlift order
+        } else if (choice == 4) {// Airlift order
             //Checks to see if player owns an airlift card
             if (!vHand->isCardOwned("Airlift")) {
                 cout << "You do not own a Airlift card" << endl;
@@ -541,7 +566,7 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     cout << "Entered territory that does not exist. Enter a valid territory id.";
                 }
             }
-        } else if (choice == 5) { // Negotiate order
+        } else if (choice == 5) {// Negotiate order
             //Checks in hand if the player owns a diplomacy
             if (!vHand->isCardOwned("Diplomacy")) {
                 cout << "You do not own a Diplomacy card" << endl;
@@ -562,8 +587,8 @@ void Player::issueOrder(vector<Player *> &vPlayersInPlay) {
                     negotiating->setPlayerLink(*this);
                     this->ordersList->addNegotiate(negotiating);
                     int lastOrder = this->getOrdersList()->getList().size();
-                    this->getOrdersList()->getList().at(lastOrder-1)->validate(*this);
-                    this->getOrdersList()->remove(lastOrder-1);
+                    this->getOrdersList()->getList().at(lastOrder - 1)->validate(*this);
+                    this->getOrdersList()->remove(lastOrder - 1);
                 } else {
                     cout << "That name is not on the list. Please enter a valid name" << endl;
                 }
@@ -595,7 +620,7 @@ Territory *Player::isOwnedTerritory(int id) {
  */
 void Player::addTerritory(Territory *territory) {
     vTerritory.push_back(territory);
-    this->setIncrementTerritoryCount(territory->continent-1);
+    this->setIncrementTerritoryCount(territory->continent - 1);
 }
 
 /**
@@ -608,7 +633,7 @@ void Player::removeTerritory(Territory *territory) {
             vTerritory.erase(vTerritory.begin() + i);
         }
     }
-    this->setDecrementTerritoryCount(territory->continent-1);
+    this->setDecrementTerritoryCount(territory->continent - 1);
 }
 
 /**
@@ -713,6 +738,3 @@ void Player::removeNegotiations(int index) {
 //    static Player neutralPlayer;
 //    return neutralPlayer;
 //}
-
-
-
