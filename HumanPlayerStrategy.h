@@ -6,8 +6,7 @@
 #define GAMEENGINE_CPP_HUMANPLAYERSTRATEGY_H
 
 #include "PlayerStrategy.h"
-
-class Territory;
+#include "Player.h"
 
 class HumanPlayerStrategy : public PlayerStrategy {
 

@@ -189,6 +189,7 @@ void GameEngine::addplayer(Command *c) {
     for(Observer* observer : *_observers)
         ordersList->Attach(observer);
 
+    //todo add the strategy depending on the type of player (make a list asking what kind of player it is)
     Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
     newPlayer->setDeckLink(MainDeck);
     newPlayer->setMapLink(gameMap);

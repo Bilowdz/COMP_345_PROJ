@@ -16,7 +16,7 @@ using namespace std;
 
 class Deck;
 class Map;
-//class PlayerStrategy;
+class PlayerStrategy;
 
 class Player {
 public:
@@ -30,14 +30,17 @@ public:
 
     Player();
     explicit Player(string *name);
-    //todo constructor must take in a initial strategy
-    Player(vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
     Player(string *name, vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
+    //todo constructor must take in a initial strategy
+    //PlayerStrategy* initStrategy -> put in constructor below
+    Player(vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
     Player(const Player &copyPlayer);
     Player & operator = (const Player &p);
     ~Player();
 
-    //todo add setStrategy() and executeStrategy()
+    //todo implement
+    void setPlayerStrategy(PlayerStrategy* newStrategy);
+    void executePlayerStrategy();
 
     friend ostream &operator<<(ostream &output, Player &player);
     vector<Territory *> toAttack();

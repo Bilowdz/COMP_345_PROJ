@@ -28,6 +28,8 @@ Player::Player(vector<Territory *> vTerritories, Hand *vHand, OrdersList *orders
     this->vTerritory = vTerritories;
     this->vHand = vHand;
     this->ordersList = ordersList;
+    //todo add this in
+    //this->ps = initStrategy;
 }
 
 /**
@@ -138,7 +140,7 @@ void Player::displayTerritoriesOwned() {
  */
 vector<Territory *> Player::toAttack() {
 
-    ps->toAttack();
+    //ps->toAttack();
 
     //todo move to human Player
     vector<Territory *> territoriesToAttack;
@@ -162,9 +164,9 @@ vector<Territory *> Player::toAttack() {
  */
 vector<Territory *> Player::toDefend() {
 
+    //ps->toDefend();
 
     //todo move to human Player
-
     vector<Territory *> territoriesToDefend;
     //loop through player owned territories
     for (int i = 0; i < getTerritorySize(); i++) {
@@ -700,6 +702,17 @@ void Player::removeReinforcements(int armiesToRemove) {
  */
 void Player::removeNegotiations(int index) {
     this->negotiatingWith.erase(negotiatingWith.cbegin());
+}
+
+void Player::setPlayerStrategy(PlayerStrategy *newStrategy) {
+    this->ps = newStrategy;
+}
+
+void Player::executePlayerStrategy() {
+    //Not sure if we need this because we can call the standalone methods
+    this->ps->toAttack();
+    this->ps->toDefend();
+    this->ps->issueOrder();
 }
 
 /**

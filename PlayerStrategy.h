@@ -13,8 +13,8 @@ class Territory;
 
 class PlayerStrategy {
     
-Player *p;
 public:
+    Player *p;
     virtual void issueOrder() = 0;
     virtual vector<Territory*> toAttack() = 0;
     virtual vector<Territory*> toDefend() = 0;
