@@ -1,0 +1,56 @@
+loadmap minimap.map
+validatemap
+addplayer p1
+addplayer p2
+addplayer p3
+gamestart
+replay
+loadmap minimap.map
+validatemap
+addplayer p1
+addplayer p2
+addplayer p3
+gamestart
+replay
+loadmap minimap.map
+validatemap
+addplayer p1
+addplayer p2
+addplayer p3
+gamestart
+replay
+loadmap minimap.map
+validatemap
+addplayer p1
+addplayer p2
+addplayer p3
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer p1
+addplayer p2
+addplayer p3
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer p1
+addplayer p2
+addplayer p3
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer p1
+addplayer p2
+addplayer p3
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer p1
+addplayer p2
+addplayer p3
+gamestart
+quit

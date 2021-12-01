@@ -399,19 +399,40 @@ ostream & operator << (ostream &out, const FileCommandProcessorAdapter &fcpa)
 
     return out;
 }
-void FileCommandProcessorAdapter::readTournamentParameters(vector<string> maps, vector<string> players, int numGames) {
-    /* todo: pseudocode
-     * 1.   create tournament_commands.txt file inside ./CommandProcessorFiles directory
-     * 2.   for i in range(0, numGames):
-     *          write('loadmap ' + map)
-     *          write('validatemap')
-     *          for i in range(0, len(players)
-     *              write('addplayer ' + player)
-     *          write('gamestart')
-     *          if end:
-     *              write('end')
-     *          else:
-     *              write('replay')
-     * 3. close file
-     * */
+
+bool FileCommandProcessorAdapter::hasCommand() {
+    return !flr.isEof();
+}
+
+// based on given tournament parameters, create a commands file which the file command processor can read from
+string FileCommandWriter::writeTournamentFile(vector<string> maps, vector<string> players, int numGames) {
+    string gameFile = "../CommandProcessorFiles/commands_tournament.txt";
+    ofstream output;
+    output.open(gameFile,ios_base::trunc);
+
+    // loop over each map
+    for(int i = 0; i < maps.size(); i++) {
+
+        // loop over each game
+        for(int j = 0; j < numGames; j++) {
+            output << "loadmap " + maps[i] << endl;
+            output << "validatemap" << endl;
+
+            // loop over each player
+            for(int k = 0; k < players.size(); k++) {
+                output << "addplayer " + players[k] << endl;
+            }
+            output << "gamestart" << endl;
+
+            // check if last iteration
+            if(i == (maps.size() - 1) && j == (numGames - 1)) {
+                output << "quit";
+            } else {
+                output << "replay" << endl;
+            }
+        }
+    }
+    output.close();
+
+    return gameFile;
 }

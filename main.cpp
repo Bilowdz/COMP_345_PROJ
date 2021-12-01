@@ -89,14 +89,34 @@ void chooseComandProcessor() {
 }
 
 void tournamentDriver() {
-    /* todo: pseudocode
-     * GameEngine ge;
-     * while(adapter.hasNext()) {
-     *      Command c = adapter.next()
-     *      ge.transition(c)
-     * }
-     * finalOutput()
-     */
+    GameEngine* ge = new GameEngine();
+
+    // used for parsing the tournament parameters
+    FileCommandWriter fcw;
+
+    // sample data until tournament parameters is parsed
+    vector<string> maps;
+    maps.push_back("minimap.map");
+    maps.push_back("canada.map");
+
+    vector<string> players;
+    players.push_back("p1");
+    players.push_back("p2");
+    players.push_back("p3");
+    int numGames = 4;
+
+    // write a commands.txt type file based on given tournament parameters, get its fileName
+    string fileName = fcw.writeTournamentFile(maps,players,numGames);
+
+    FileCommandProcessorAdapter adapter((FileLineReader(fileName)));
+
+    // read whole tournament until there are no more commands left
+    while(adapter.hasCommand()) {
+        Command * c = adapter.getCommand(ge);
+        ge->transition(c);
+        // todo: destruct everything
+    }
+    // todo: final output
 }
 
 void cpDriver() {
@@ -119,4 +139,5 @@ int main() {
     delete neutralOrdersList;
 
     return 0;
+
 }

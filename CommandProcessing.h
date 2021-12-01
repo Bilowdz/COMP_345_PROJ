@@ -137,16 +137,20 @@ public:
     FileCommandProcessorAdapter(FileCommandProcessorAdapter *);
     FileCommandProcessorAdapter(const FileCommandProcessorAdapter &);
 
-
     string readCommand();
     Command* getCommand(GameEngine *);
-    void readTournamentParameters(vector<string>,vector<string>,int);
+    bool hasCommand();
 
     // assignment operator
     FileCommandProcessorAdapter& operator =(const FileCommandProcessorAdapter &);
 
     // stream insertion operator overload
     friend ostream & operator << (ostream &, const FileCommandProcessorAdapter &fcpa);
+};
+
+class FileCommandWriter {
+public:
+    string writeTournamentFile(vector<string>,vector<string>,int);
 };
 
 #endif //CMAKELISTS_TXT_COMMANDPROCESSING_H
