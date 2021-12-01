@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 #include <algorithm>
+#include <regex>
 #include "Map.h"
 #include "Player.h"
 #include "Card.h"
@@ -87,7 +88,7 @@ class GameEngine : public Subject, public ILoggable {
         void issueOrdersPhase();
         void executeOrdersPhase();
         //end ryan
-
+        bool validateTournamentPhase(string toValidate);
         void printAvailableOptions();
 
         //string getState();

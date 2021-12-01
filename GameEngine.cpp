@@ -463,3 +463,18 @@ string GameEngine::stringToLog(){
     string log = "Log :: New Game State : " + state;
     return log;
 }
+
+
+bool GameEngine::validateTournamentPhase(string toValidate) {
+    std:: regex reg ("(T|t)ournament -M(\\s[\\w]+\\.map,)*(\\s[\\w]+\\.map\\s)-P\\s((Aggressive,\\s)|(Benevolent,\\s)|(Neutral,\\s)|(Cheater,\\s))+((Aggressive\\s)|(Benevolent\\s)|(Neutral\\s)|(Cheater\\s))-G(\\s\\d+\\s)-D(\\s\\d+)");
+    if(!std::regex_match(toValidate, reg))
+    {
+        cout << "Invalid String";
+        return false;
+    }
+    else
+    {
+        cout << "Valid String";
+        return true;
+    }
+}
