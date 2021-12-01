@@ -5,12 +5,12 @@
 #ifndef GAMEENGINE_CPP_PLAYERSTRATEGY_H
 #define GAMEENGINE_CPP_PLAYERSTRATEGY_H
 
-#include "Player.h"
+class Player;
 
 class PlayerStrategy {
     
-Player *p;
 public:
+    Player *p; //Circular dependency
     virtual void issueOrder() = 0;
     virtual void toAttack() = 0;
     virtual void toDefend() = 0;

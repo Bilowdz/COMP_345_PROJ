@@ -6,6 +6,7 @@
 void HumanPlayerStrategy::issueOrder() {
 }
 void HumanPlayerStrategy::toAttack() {
+
 }
 void HumanPlayerStrategy::toDefend() {
 }
