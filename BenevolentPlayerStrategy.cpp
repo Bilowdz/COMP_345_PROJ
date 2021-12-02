@@ -9,51 +9,63 @@ BenevolentPlayerStrategy::BenevolentPlayerStrategy(Player* player) {
 }
 
 void BenevolentPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
-    //Reinforce whenever possible
+    int numArmiesDeployed = 0;
+    int toDeploy;
+    int weakest;
+    int weakestUnits;
+    int currentUnits;
+    int difference;
+
+    vector<Territory *> ownedTerritories = p->getVTerritory();
+    vector<int> territoryUnits;
+    for(int i = 0; i < ownedTerritories.size(); i++)
+        territoryUnits.push_back(ownedTerritories.at(i)->unitsGarrisoned);
+
+    // Reinforce whenever possible
     if (p->getHand()->isCardOwned("Reinforcement")) {
         int reinforcementCardReward = 5;
         this->p->setReinforcements(this->p->getReinforcements() + reinforcementCardReward);
         p->getHand()->removeCard(p->getHand()->getCardIndex("Reinforcement"));
     }
 
-    //Use reinforcement pool
-    while (p->getReinforcements() )
+    // Use reinforcement pool
+    while (p->getReinforcements() != numArmiesDeployed){
+        weakest = -1;
+        for(int i = 0; i < ownedTerritories.size(); i++){
+            Territory * cur = ownedTerritories.at(i);
+            currentUnits = cur->unitsGarrisoned;
 
-    cout << "You have " << this->p->getReinforcements() << " armies to Deploy.\n";
-    bool isOutOfReinforcementsToDeploy = false;
-    int numArmiesDeployed = 0;
-    while (!isOutOfReinforcementsToDeploy) {
-        int numArmiesDeploy;
-        int idOfTerri;
-        cout << "You have " << this->p->getReinforcements()-numArmiesDeployed << " armies left to deploy." << endl;
-        cout << "How many armies do you want to deploy?:";
-        cin >> numArmiesDeploy;
-        numArmiesDeployed = numArmiesDeployed + numArmiesDeploy;
-        bool isCorrectTerriName = false;
-        while (!isCorrectTerriName) {
-            cout << "Here are all the territories you own:" << endl;
-            this->p->displayTerritoriesOwned();
-
-            cout << "Here are the adjacent territories to enemy territories that you own:" << endl;
-            this->p->displayOwnedAdjacentTerritories();
-
-            cout << "What territory do you want to deploy to? (write in a territory id):" << endl;
-            cin >> idOfTerri;
-            Territory *myTerri = p->isOwnedTerritory(idOfTerri);
-            if (myTerri) {
-                auto *newDeploy = new Deploy(numArmiesDeploy, *myTerri);
-                newDeploy->setPlayerLink(*p);
-                this->p->getOrdersList()->addDeploy(newDeploy);
-                isCorrectTerriName = true;
-            } else {
-                cout << "Please enter a territory id that you own." << endl;
+            if(weakest == -1) {
+                weakest = 0;
+                weakestUnits = currentUnits;
+                toDeploy = p->getReinforcements() - numArmiesDeployed;
+                continue;
             }
+
+            difference = abs(weakestUnits - currentUnits);
+
+            if(weakestUnits > currentUnits){
+                toDeploy = difference;
+                weakest = i;
+                weakestUnits = currentUnits;
+            }
+            else if(difference < toDeploy)
+                toDeploy = difference;
         }
-        //check to see if there are still reinforcements to deploy
-        if (numArmiesDeployed >= this->p->getReinforcements()) {
-            isOutOfReinforcementsToDeploy = true;
-        }
+
+        if(toDeploy == 0)
+            toDeploy = 1;
+
+        territoryUnits.at(weakest) = territoryUnits.at(weakest) + toDeploy;
+        numArmiesDeployed += toDeploy;
+
+        auto *newDeploy = new Deploy(toDeploy, *ownedTerritories.at(weakest));
+        newDeploy->setPlayerLink(*p);
+        this->p->getOrdersList()->addDeploy(newDeploy);
     }
+
+    // todo: Fortifies weakest territories
+
 }
 
 vector<Territory*> BenevolentPlayerStrategy::toAttack() {
