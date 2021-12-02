@@ -15,7 +15,7 @@ class PlayerStrategy {
     
 public:
     Player *p;
-    virtual void issueOrder() = 0;
+    virtual void issueOrder(vector<Player *> &) = 0;
     virtual vector<Territory*> toAttack() = 0;
     virtual vector<Territory*> toDefend() = 0;
 private:

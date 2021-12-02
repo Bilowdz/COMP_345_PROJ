@@ -3,7 +3,7 @@
 //
 
 #include "BenevolentPlayerStrategy.h"
-void BenevolentPlayerStrategy::issueOrder() {
+void BenevolentPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
 }
 vector<Territory*> BenevolentPlayerStrategy::toAttack() {
     vector<Territory *> territoriesToAttack;

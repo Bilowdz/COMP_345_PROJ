@@ -3,7 +3,7 @@
 //
 
 #include "CheaterPlayerStrategy.h"
-void CheaterPlayerStrategy::issueOrder() {
+void CheaterPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
 }
 vector<Territory*> CheaterPlayerStrategy::toAttack() {
     vector<Territory *> territoriesToAttack;

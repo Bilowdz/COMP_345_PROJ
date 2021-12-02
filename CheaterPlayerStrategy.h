@@ -10,7 +10,7 @@
 class CheaterPlayerStrategy : public PlayerStrategy {
 
 public:
-    void issueOrder() override;
+    void issueOrder(vector<Player *> &vPlayersInPlay) override;
     vector<Territory*> toAttack() override;
     vector<Territory*> toDefend() override;
 };

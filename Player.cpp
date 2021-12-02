@@ -28,8 +28,15 @@ Player::Player(vector<Territory *> vTerritories, Hand *vHand, OrdersList *orders
     this->vTerritory = vTerritories;
     this->vHand = vHand;
     this->ordersList = ordersList;
-    //todo add this in
-    //this->ps = initStrategy;
+
+}
+
+Player::Player(string *name, vector<Territory *> vTerritories, Hand *vHand, OrdersList *ordersList) {
+    (*this).name = *name;
+    this->vTerritory = vTerritories;
+    this->vHand = vHand;
+    this->ordersList = ordersList;
+    this->reinforcements = 0;
 }
 
 /**
@@ -40,12 +47,13 @@ Player::Player(vector<Territory *> vTerritories, Hand *vHand, OrdersList *orders
  * @param vHand is the vector Hand pointer of all the hand the player owns
  * @param ordersList is the vector Order pointer of all the orders the player can do
  */
-Player::Player(string *name, vector<Territory *> vTerritories, Hand *vHand, OrdersList *ordersList) {
+Player::Player(string *name, vector<Territory *> vTerritories, Hand *vHand, OrdersList *ordersList, PlayerStrategy* initStrategy) {
     (*this).name = *name;
     this->vTerritory = vTerritories;
     this->vHand = vHand;
     this->ordersList = ordersList;
     this->reinforcements = 0;
+    this->ps = initStrategy;
 }
 
 /**
@@ -139,23 +147,7 @@ void Player::displayTerritoriesOwned() {
  * @param vPlayer the vector of all Players in the game
  */
 vector<Territory *> Player::toAttack() {
-
-    //ps->toAttack();
-
-    //todo move to human Player
-    vector<Territory *> territoriesToAttack;
-    //loop through player owned territories
-    for (int i = 0; i < getTerritorySize(); i++) {
-        //loop through the adjacent territories of the owned territories
-        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); j++) {
-            //check if that territory is already owned, if its now owned then add to list
-            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr &&
-                !(isTerritoryInList(territoriesToAttack, vTerritory.at(i)->adjacentTerritories.at(j)->id))) {
-                territoriesToAttack.push_back(vTerritory.at(i)->adjacentTerritories.at(j));
-            }
-        }
-    }
-    return territoriesToAttack;
+   return ps->toAttack();
 }
 
 /**
@@ -163,24 +155,7 @@ vector<Territory *> Player::toAttack() {
  * Returns a list of territories that the player owns
  */
 vector<Territory *> Player::toDefend() {
-
-    //ps->toDefend();
-
-    //todo move to human Player
-    vector<Territory *> territoriesToDefend;
-    //loop through player owned territories
-    for (int i = 0; i < getTerritorySize(); i++) {
-        //loop through the adjacent territories of the owned territories
-        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); j++) {
-            //check if that territory is already owned, if the adjacent territory is not owned
-            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr &&
-                !(isTerritoryInList(territoriesToDefend, vTerritory.at(i)->id))) {
-                territoriesToDefend.push_back(
-                        vTerritory.at(i)); //push the territory we own into list of territories to defend
-            }
-        }
-    }
-    return territoriesToDefend;
+    return ps->toDefend();
 }
 
 /**
@@ -707,13 +682,10 @@ void Player::removeNegotiations(int index) {
 void Player::setPlayerStrategy(PlayerStrategy *newStrategy) {
     this->ps = newStrategy;
 }
-
-void Player::executePlayerStrategy() {
-    //Not sure if we need this because we can call the standalone methods
-    this->ps->toAttack();
-    this->ps->toDefend();
-    this->ps->issueOrder();
+const vector<Territory *> &Player::getVTerritory() const {
+    return vTerritory;
 }
+
 
 /**
  * A neutral player is created

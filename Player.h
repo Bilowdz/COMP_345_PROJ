@@ -23,7 +23,7 @@ public:
 
     Deck * deckLink;
     Map * mapLink;
-    PlayerStrategy *ps;
+
 
     void setMapLink(Map & map);
     void setDeckLink(Deck & deck);
@@ -31,16 +31,13 @@ public:
     Player();
     explicit Player(string *name);
     Player(string *name, vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
-    //todo constructor must take in a initial strategy
-    //PlayerStrategy* initStrategy -> put in constructor below
+    Player(string *name, vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList, PlayerStrategy* initStrategy);
     Player(vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
     Player(const Player &copyPlayer);
     Player & operator = (const Player &p);
     ~Player();
 
-    //todo implement
     void setPlayerStrategy(PlayerStrategy* newStrategy);
-    void executePlayerStrategy();
 
     friend ostream &operator<<(ostream &output, Player &player);
     vector<Territory *> toAttack();
@@ -78,6 +75,7 @@ public:
     void addReinforcements(int armiesToAdd);
     void removeReinforcements(int armiesToRemove);
 
+    const vector<Territory *> &getVTerritory() const;
 
     //void setOrdersList(OrdersList *ordersList);
 
@@ -95,6 +93,7 @@ private:
     OrdersList * ordersList; //Vector for all the orders the player can do
     int reinforcements; //number of armies
     vector<int> territoriesOwnedPerContinent; //when a player captures a territory increment the value at the continent
+    PlayerStrategy *ps;
 };
 
 extern Player neutralPlayer;

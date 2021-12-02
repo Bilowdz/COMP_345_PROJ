@@ -3,7 +3,7 @@
 //
 
 #include "NeutralPlayerStrategy.h"
-void NeutralPlayerStrategy::issueOrder() {
+void NeutralPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
 }
 vector<Territory*> NeutralPlayerStrategy::toAttack() {
     vector<Territory *> territoriesToAttack;

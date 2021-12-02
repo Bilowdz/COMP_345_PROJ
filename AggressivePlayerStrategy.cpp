@@ -3,7 +3,7 @@
 //
 
 #include "AggressivePlayerStrategy.h"
-void AggressivePlayerStrategy::issueOrder() {
+void AggressivePlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
 }
 vector<Territory*> AggressivePlayerStrategy::toAttack() {
     vector<Territory *> territoriesToAttack;

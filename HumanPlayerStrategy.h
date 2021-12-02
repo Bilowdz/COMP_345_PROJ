@@ -11,7 +11,8 @@
 class HumanPlayerStrategy : public PlayerStrategy {
 
 public:
-    void issueOrder() override;
+    HumanPlayerStrategy(Player*);
+    void issueOrder(vector<Player *>&) override;
     vector<Territory*> toAttack() override;
     vector<Territory*> toDefend() override;
 };
