@@ -207,6 +207,7 @@ void Player::setTerritoriesOwned(vector<Territory *> vTerritories) {
     vTerritory = vTerritories;
 }
 
+
 /**
  * Gets all the territories the current player owns.
  *
