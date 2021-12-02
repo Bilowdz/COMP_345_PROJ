@@ -6,10 +6,12 @@
 #define GAMEENGINE_CPP_AGGRESSIVEPLAYERSTRATEGY_H
 
 #include "PlayerStrategy.h"
+#include "Player.h"
 
 class AggressivePlayerStrategy : public PlayerStrategy {
 
 public:
+    AggressivePlayerStrategy(Player * player);
     void issueOrder(vector<Player *> &vPlayersInPlay) override;
     vector<Territory*> toAttack() override;
     vector<Territory*> toDefend() override;
