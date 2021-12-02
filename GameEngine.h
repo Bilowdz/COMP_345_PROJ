@@ -101,6 +101,7 @@ class GameEngine : public Subject, public ILoggable {
 
         // logging output
         std::string stringToLog() override;
+        void PrintResults();
 };
 
 #endif //COMP_345_PROJ_GAMEENGINE_H

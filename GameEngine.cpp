@@ -478,3 +478,35 @@ bool GameEngine::validateTournamentPhase(string toValidate) {
         return true;
     }
 }
+
+void GameEngine::PrintResults()
+{
+    vector<string> resultsVector;
+    string result;
+    resultsVector.push_back("\t");
+
+    for(int i = 0; i < numGames; i++)
+    {
+        resultsVector.at(0).append("Game " + to_string((i+1)) + "\t");
+    }
+
+    resultsVector.at(0).append("\n");
+
+    int resultPos = 0;
+    for(int i = 0; i < tourneyMaps.size(); i++)
+    {
+        resultsVector.push_back("Map " + to_string((i+1)) + "\t");
+
+        for(int j = 0; j < numGames; j++)
+        {
+            resultsVector.at(i+1).append(gameResults.at(resultPos) + "\t");
+            resultPos++;
+        }
+    }
+
+    for(auto & i : resultsVector)
+    {
+        result.append(i + "\n");
+    }
+    cout << result;
+}
