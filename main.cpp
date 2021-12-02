@@ -88,22 +88,41 @@ void chooseComandProcessor() {
     }
 }
 
+
+void cpDriver() {
+    chooseComandProcessor();
+}
+
+string validateTournament(GameEngine * ge) {
+    string input;
+
+    cout << "Enter tournament thing: ";
+    // get user input
+    getline(cin,input);
+    cout << endl;
+
+    while(!ge->validateTournamentPhase(input)) {
+        cout << endl;
+        cout << "Enter tournament thing: ";
+        // get user input
+        getline(cin,input);
+    }
+    return input;
+}
+
 void tournamentDriver() {
     GameEngine* ge = new GameEngine();
 
     // used for parsing the tournament parameters
     FileCommandWriter fcw;
 
-    // sample data until tournament parameters is parsed
-    vector<string> maps;
-    maps.push_back("minimap.map");
-    maps.push_back("canada.map");
-
-    vector<string> players;
-    players.push_back("p1");
-    players.push_back("p2");
-    players.push_back("p3");
-    int numGames = 4;
+    // get tournament command from user, and validate it
+    string input = validateTournament(ge);
+    // parse tournament parameters
+    vector<string> players = fcw.parsePlayer(input);
+    vector<string> maps = fcw.parseMap(input);
+    int depth = fcw.parseMaxDepth(input);
+    int numGames = fcw.parseNumGames(input);
 
     // write a commands.txt type file based on given tournament parameters, get its fileName
     string fileName = fcw.writeTournamentFile(maps,players,numGames);
@@ -116,14 +135,11 @@ void tournamentDriver() {
         ge->transition(c);
         // todo: destruct everything
     }
-    // todo: final output
-}
-
-void cpDriver() {
-    chooseComandProcessor();
+    ge->PrintResults();
 }
 
 int main() {
+    /*
     ofstream file("../gamelog.txt");
     file.close();
 
@@ -137,7 +153,11 @@ int main() {
     delete neutralName;
     delete neutralHand;
     delete neutralOrdersList;
+*/
 
+    // sample tournament command:
+    // tournament -M minimap.map, canada.map -P Cheater, Aggressive -G 6 -D 15
+    tournamentDriver();
     return 0;
 
 }

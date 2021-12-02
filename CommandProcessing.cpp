@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -435,4 +436,67 @@ string FileCommandWriter::writeTournamentFile(vector<string> maps, vector<string
     output.close();
 
     return gameFile;
+}
+
+// parse comma seperated string of maps from valid tournament into vector of strings
+vector<string> FileCommandWriter::parseMap(string input) {
+    // get substring between -M and -P
+    std:: regex reg ("\\-M (.*) -P");
+    return parseList(input, reg);
+}
+
+// parse comma seperated string of players from valid tournament into vector of strings
+vector<string> FileCommandWriter::parsePlayer(string input) {
+    // get substring between -P and -G
+    std:: regex reg ("\\-P (.*) -G");
+    return parseList(input,reg);
+}
+
+// parse number of games string from valid tournament string into int
+int FileCommandWriter::parseNumGames(string input) {
+    // get substring between -G and -D
+    std:: regex reg ("\\-G (.*) -D");
+    return parseInt(input,reg);
+}
+
+// parse max depth string from valid tournament string into int
+int FileCommandWriter::parseMaxDepth(string input) {
+
+    // get substring after -D
+    std:: regex reg ("\\-D (.*)");
+    return parseInt(input,reg);
+}
+
+// given valid tournament string and regex expression, parse into int
+int FileCommandWriter::parseInt(string input, regex re) {
+    smatch m;
+
+    regex_search(input,m, re);
+
+    // cast match to int
+    int num = stoi(m[1]);
+    return num;
+}
+
+// given valid tournament string and regex expression, parse into vector of strings
+vector<string> FileCommandWriter::parseList(string input, regex re) {
+    vector<string> build;
+
+    smatch m;
+
+    regex_search(input,m, re);
+    std::stringstream ss(m[1]);
+
+    // get all comma seperated items and put into vector
+    for (string s; ss >> s;) {
+        if(s.back() == *",") {
+            s.pop_back();
+            build.push_back(s);
+        } else {
+            build.push_back(s);
+        }
+        if (ss.peek() == ',')
+            ss.ignore();
+    }
+    return build;
 }

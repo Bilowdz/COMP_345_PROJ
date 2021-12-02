@@ -165,10 +165,11 @@ void GameEngine::loadmap(Command *c) {
  * Runs the validate function that indicates if the map is valid
  */
 void GameEngine::validatemap() {
-    cout << "Validating Map..." << endl;
-    if (gameMap.Validate())
+    if (gameMap.Validate()) {
+        cout << "Validating Map..." << endl;
         cout << "Map is valid!" << endl;
-    else {
+    }else {
+        cout << "Validating Map..." << endl;
         cout << "Map is not valid!" << endl;
         exit(0);
     }
@@ -469,12 +470,11 @@ bool GameEngine::validateTournamentPhase(string toValidate) {
     std:: regex reg ("(T|t)ournament -M(\\s[\\w]+\\.map,)*(\\s[\\w]+\\.map\\s)-P\\s((Aggressive,\\s)|(Benevolent,\\s)|(Neutral,\\s)|(Cheater,\\s))+((Aggressive\\s)|(Benevolent\\s)|(Neutral\\s)|(Cheater\\s))-G(\\s\\d+\\s)-D(\\s\\d+)");
     if(!std::regex_match(toValidate, reg))
     {
-        cout << "Invalid String";
+        cout << "Invalid tournament..." << endl;
         return false;
     }
     else
     {
-        cout << "Valid String";
         return true;
     }
 }
