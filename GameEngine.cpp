@@ -191,14 +191,26 @@ void GameEngine::addplayer(Command *c) {
         ordersList->Attach(observer);
 
     Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
-    PlayerStrategy *ps = new HumanPlayerStrategy(newPlayer);
+    PlayerStrategy *ps;
+
+    if (*name == "Aggressive") {
+        ps = new AggressivePlayerStrategy(newPlayer);
+    } else if (*name == "Benevolent") {
+        ps = new BenevolentPlayerStrategy(newPlayer);
+    } else if (*name == "Neutral") {
+        ps = new NeutralPlayerStrategy(newPlayer);
+    } else if (*name == "Cheater") {
+        ps = new CheaterPlayerStrategy(newPlayer);
+    } else {
+        ps = new HumanPlayerStrategy(newPlayer);
+    }
+
     newPlayer->setPlayerStrategy(ps);
     newPlayer->setDeckLink(MainDeck);
     newPlayer->setMapLink(gameMap);
     newPlayer->setTerritoriesOwnedPerContinent();
     newPlayer->addReinforcements(50);
     this->Players.push_back(newPlayer);
-
 }
 
 /**

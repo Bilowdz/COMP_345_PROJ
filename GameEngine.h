@@ -9,7 +9,13 @@ using namespace std;
 #include "Player.h"
 #include "Card.h"
 #include "LoggingObserver.h"
+#include "PlayerStrategy.h"
 #include "HumanPlayerStrategy.h"
+#include "BenevolentPlayerStrategy.h"
+#include "CheaterPlayerStrategy.h"
+#include "NeutralPlayerStrategy.h"
+#include "AggressivePlayerStrategy.h"
+
 
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H

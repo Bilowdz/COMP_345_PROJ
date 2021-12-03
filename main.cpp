@@ -157,7 +157,7 @@ int main() {
 
     // sample tournament command:
     // tournament -M minimap.map, canada.map -P Cheater, Aggressive -G 6 -D 15
+*/
     tournamentDriver();
     return 0;
-
 }
