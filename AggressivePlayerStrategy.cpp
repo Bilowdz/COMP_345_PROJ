@@ -21,12 +21,12 @@ AggressivePlayerStrategy::AggressivePlayerStrategy(Player * player) {
 void AggressivePlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
     for (int i = 0; i < toDefend().size(); i++) {
         if (toDefend().at(i)->IsAdjacent(*toAttack().at(0))) {
-            i = toDefend().size();
             auto * deploy = new Deploy(p->getReinforcements(), *toDefend().at(i));
             p->getOrdersList()->addDeploy(deploy);
             int advancingarmies = p->getReinforcements() + toDefend().at(i)->unitsGarrisoned;
             auto * advance = new Advance(advancingarmies,*toDefend().at(i) , *toAttack().at(0));
             p->getOrdersList()->addAdvance(advance);
+            i = toDefend().size();
         }
     }
 }

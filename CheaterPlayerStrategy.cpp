@@ -20,6 +20,8 @@ CheaterPlayerStrategy::CheaterPlayerStrategy(Player *player) {
  */
 void CheaterPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
 
+    bool flag = true;
+
     //conquer all territories that are adjacent to its own territories
     for (int i = 0; i < this->toAttack().size(); i++) {
 
@@ -32,11 +34,15 @@ void CheaterPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
 
                 //add the territory to cheater list
                 p->addTerritory(this->toAttack().at(i));
+                flag = false;
                 break;//end the loop
             }
         }
-        //add the territory to cheater list
-        p->addTerritory(this->toAttack().at(i));
+        if(flag) {
+            //add the territory to cheater list
+            p->addTerritory(this->toAttack().at(i));
+        }
+        flag = true;
     }
 }
 
