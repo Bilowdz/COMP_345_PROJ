@@ -103,7 +103,7 @@ Player::~Player() {
     for (auto &i: vHand->cardsHeld) {
         delete i;
     }
-    cout << "Destructor !" << endl;
+    cout << "\nDestructor !";
 }
 
 /**
