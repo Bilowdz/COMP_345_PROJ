@@ -558,7 +558,9 @@ void GameEngine::PrintResults()
 
     string gameFile = "../CommandProcessorFiles/results_tournament.txt";
     ofstream output;
-    output.open(gameFile, std::fstream::in | std::fstream::out | std::fstream::app);
+    //output.open(gameFile, std::fstream::in | std::fstream::out | std::fstream::app);
+    output.open(gameFile,ios_base::trunc);
+
     output << result;
     output.close();
     cout << result;

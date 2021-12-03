@@ -12617,3 +12617,282 @@ Log :: Benevolent Advanced 0 Units from Quebec-Central to Ontario-North
 Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
 Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
 Log :: New Game State : Win
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
