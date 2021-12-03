@@ -98,7 +98,6 @@ private:
     bool debug = false;
     string path;
     vector<string> fileData;
-    int length;
     int pos;
 public:
     // constructor

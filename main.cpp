@@ -124,10 +124,12 @@ void tournamentDriver() {
     int depth = fcw.parseMaxDepth(input);
     int numGames = fcw.parseNumGames(input);
 
+    ge->setTournament(numGames, depth, maps, players);
     // write a commands.txt type file based on given tournament parameters, get its fileName
     string fileName = fcw.writeTournamentFile(maps,players,numGames);
 
-    FileCommandProcessorAdapter adapter((FileLineReader(fileName)));
+    FileLineReader flr(fileName);
+    FileCommandProcessorAdapter adapter(flr);
 
     // read whole tournament until there are no more commands left
     while(adapter.hasCommand()) {
@@ -156,7 +158,7 @@ int main() {
 
 
     // sample tournament command:
-    // tournament -M minimap.map, canada.map -P Cheater, Aggressive -G 6 -D 15
+    // tournament -M minimap.map, canada.map -P Cheater, Aggressive -G 2 -D 15
 */
     tournamentDriver();
     return 0;

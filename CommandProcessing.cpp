@@ -278,18 +278,18 @@ string CommandProcessor::stringToLog() {
  * --- --- --- FileLineReader ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
  **/
 // constructor
-FileLineReader::FileLineReader(string path): path(path), pos(0), length(0) {
+FileLineReader::FileLineReader(string path): path(path), pos(0) {
     this->load();
 }
 
 // copy constructors
-FileLineReader::FileLineReader(FileLineReader *const fr): path(fr->path), pos(fr->pos), length(fr->length) {
+FileLineReader::FileLineReader(FileLineReader *const fr): path(fr->path), pos(fr->pos) {
     this->load();
     if(this->debug)
         cout << "FileLineReader copy constructor called (pointer)" << endl;
 }
 
-FileLineReader::FileLineReader(const FileLineReader & fr): path(fr.path), pos(fr.pos), length(fr.length) {
+FileLineReader::FileLineReader(const FileLineReader & fr): path(fr.path), pos(fr.pos) {
     this->load();
     if(this->debug)
         cout << "FileLineReader copy constructor called (object)" << endl;
@@ -304,7 +304,6 @@ void FileLineReader::load() {
     ifstream file(path);
     while(getline(file,line)) {
         fileData.push_back(line);
-        length++;
     }
 }
 
@@ -315,13 +314,12 @@ string FileLineReader::next() {
 
 //checks if at the end of file
 bool FileLineReader::isEof() {
-    return pos == (length - 1);
+    return pos == (fileData.size() - 1);
 }
 
 // assignment operator overload
 FileLineReader& FileLineReader::operator =(const FileLineReader &fr) {
     this->path = fr.path;
-    this->length = fr.length;
     this->pos = fr.pos;
 
     return *this;
@@ -331,7 +329,7 @@ FileLineReader& FileLineReader::operator =(const FileLineReader &fr) {
 ostream & operator << (ostream &out, const FileLineReader &fr)
 {
     out << "FileLineReader: " << endl;
-    out << "Path:" << fr.path << ", Length: " << fr.length << ", Position: " << fr.pos << " " << endl;
+    out << "Path:" << fr.path << ", Position: " << fr.pos << " " << endl;
 
     return out;
 }

@@ -88,7 +88,6 @@ class GameEngine : public Subject, public ILoggable {
         GameEngine(GameEngine *);
         ~GameEngine();
         void startupPhase(CommandProcessor cp, GameEngine *);
-
         //added from ryan
         void mainGameLoop();
         void reinforcementPhase();
@@ -109,6 +108,7 @@ class GameEngine : public Subject, public ILoggable {
         // logging output
         std::string stringToLog() override;
         void PrintResults();
+        void setTournament(int i, int i1, vector<string> vector1, vector<string> vector2);
 };
 
 #endif //COMP_345_PROJ_GAMEENGINE_H

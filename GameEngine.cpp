@@ -530,3 +530,11 @@ void GameEngine::PrintResults()
     }
     cout << result;
 }
+
+void GameEngine::setTournament(int games, int depth, vector<string> maps, vector<string> players) {
+    tourneyMaps = maps;
+    tourneyplayers = players;
+    numGames = games;
+    maxTurns = depth;
+
+}
