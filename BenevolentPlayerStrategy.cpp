@@ -75,7 +75,18 @@ void BenevolentPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
     }
 
     // todo: Fortifies weakest territories
-
+    vector<Territory*> defendingTerritories = toDefend();
+    for(Territory * border : defendingTerritories){
+        for(Territory * potentialAdj : ownedTerritories){
+            if(potentialAdj->IsAdjacent(*border)){
+                //if(!p->isTerritoryInList(defendingTerritories, potentialAdj->id)){
+                    auto *newAdvance = new Advance(0, *potentialAdj, *border);
+                    newAdvance->setPlayerLink(*p);
+                    this->p->getOrdersList()->addAdvance(newAdvance);
+                //}
+            }
+        }
+    }
 }
 
 /**
