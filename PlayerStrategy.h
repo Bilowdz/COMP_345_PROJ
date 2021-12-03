@@ -12,8 +12,9 @@ class Player;
 class Territory;
 
 class PlayerStrategy {
-    
+
 public:
+    virtual int neutralReturn();
     Player *p;
     virtual void issueOrder(vector<Player *> &) = 0;
     virtual vector<Territory*> toAttack() = 0;

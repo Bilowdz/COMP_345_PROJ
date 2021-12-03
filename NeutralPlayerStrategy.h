@@ -6,10 +6,13 @@
 #define GAMEENGINE_CPP_NEUTRALPLAYERSTRATEGY_H
 
 #include "PlayerStrategy.h"
+#include "Player.h"
 
 class NeutralPlayerStrategy : public PlayerStrategy {
 
 public:
+    int neutralReturn() override;
+    NeutralPlayerStrategy(Player * player);
     void issueOrder(vector<Player *> &vPlayersInPlay) override;
     vector<Territory*> toAttack() override;
     vector<Territory*> toDefend() override;

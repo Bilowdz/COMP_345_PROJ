@@ -686,6 +686,12 @@ void Player::setPlayerStrategy(PlayerStrategy *newStrategy) {
 const vector<Territory *> &Player::getVTerritory() const {
     return vTerritory;
 }
+int Player::getPlayerStrategy() {
+    if (ps->neutralReturn() == 1) {
+        return 1;
+    }
+    return 0;
+}
 
 
 /**

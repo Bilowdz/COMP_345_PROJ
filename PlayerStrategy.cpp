@@ -3,3 +3,6 @@
 //
 
 #include "PlayerStrategy.h"
+int PlayerStrategy::neutralReturn() {
+    return 0;
+}

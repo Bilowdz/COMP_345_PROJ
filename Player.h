@@ -38,6 +38,7 @@ public:
     ~Player();
 
     void setPlayerStrategy(PlayerStrategy* newStrategy);
+    int getPlayerStrategy();
 
     friend ostream &operator<<(ostream &output, Player &player);
     vector<Territory *> toAttack();
