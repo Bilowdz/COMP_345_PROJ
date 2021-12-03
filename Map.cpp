@@ -204,15 +204,27 @@ Map::~Map(){
     }
 }
 
+/**
+ * Gets the number of territories in each continent
+ */
+void Map::countTerritoriesPerContinent() {
+
+    for (int i = 0; i < this->continents.size(); ++i) {
+        numberOfTerritoriesPerContinent.push_back(
+                this->continents.at(i)->territories.size());
+    }
+
+}
+
 // Default constructor for the mapLoader
 // Loads all maps in the maps directory
 MapLoader::MapLoader() {
-    using recursive_directory_iterator = std::filesystem::recursive_directory_iterator;
-
-    std::filesystem::current_path("..");
-    for (const auto& dirEntry : recursive_directory_iterator("Maps")){
-        Load(dirEntry.path().string());
-    }
+//    using recursive_directory_iterator = std::filesystem::recursive_directory_iterator;
+//
+//    std::filesystem::current_path("..");
+//    for (const auto& dirEntry : recursive_directory_iterator("Maps")){
+//        Load(dirEntry.path().string());
+//    }
 }
 
 // Copy constructor for the map loader
@@ -407,8 +419,13 @@ std::ostream &operator<<(std::ostream &out, const Continent &continent) {
     return out;
 }
 
+//Default constructor
+Continent::Continent() = default;
+
 // Destructor for the continent class
 Continent::~Continent() = default;
+
+Territory::Territory() = default;
 
 // Constructor for the territory class
 Territory::Territory(int id, std::string name, int continent) {
@@ -464,5 +481,51 @@ std::ostream &operator<<(std::ostream &out, const Territory &territory) {
     return out;
 }
 
+// Loops through adjacent territory in search for
+// the given territory
+bool Territory::IsAdjacent(Territory &adj) {
+    for(Territory* ter : adjacentTerritories)
+        if(ter->id == adj.id)
+            return true;
+    return false;
+}
+
 // Destructor for the territory class
 Territory::~Territory() = default;
+
+/**
+ * Outputs the name and id of all the territories to the terminal
+ */
+void Map::displayTerritories() {
+    for (int i = 0; i < map.size(); i++) {
+        std::cout << "Name: " << map.at(i)->name << " ID: " << map.at(i)->id << std::endl;
+    }
+}
+
+/**
+ * Checks to see if the passed in territory id is included in the map
+ * @param id of the territory
+ * @return the territory if true, nullptr otherwise
+ */
+Territory * Map::isTerritory(int id) {
+    for (int i = 0; i < map.size(); i++) {
+        if(map.at(i)->id == id) {
+            return map.at(i);
+        }
+    }
+    return nullptr;
+}
+
+/**
+ * Gets the territory based on the id passed in
+ * @param id of the territory we want
+ * @return the territory or nullptr if it does not exist
+ */
+Territory * Map::getTerritory(int id) {
+    for (int i = 0; i < map.size(); ++i) {
+        if(map.at(i)->id == id) {
+            return map.at(i);
+        }
+    }
+    return nullptr;
+}

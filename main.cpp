@@ -1,295 +1,15 @@
-#include <iostream>
-#include "GameEngineDriver.h"
+#include "Card.h"
 #include "Map.h"
 #include "Orders.h"
-#include "Card.h"
 #include "Player.h"
+#include "CommandProcessing.h"
+#include "LoggingObserver.h"
+#include <iostream>
 #include <memory>
 using namespace std;
 
-vector<Territory *> generateTerritories(int numTerritoryOwned);
-vector<Hand *> generateHand(int numberCardsPerPlayer);
-vector<Order *> generateOrder();
-
-static int territoryNumber = 1;
-static int cardNumber = 1;
-static int numOfOrders = 2;
-static const int territoriesOwnedPerPlayer = 5;
-static const int numCardsPerPlayer = 3;
-
-void player() {
-    int numPlayers = 0;
-    vector<Player *> vPlayer;
-    string playerName;
-    cout << "Enter number of players: \n";
-    cin >> numPlayers;
-
-    for (unsigned i = 0; i < numPlayers; ++i) {
-        cout << "Please enter your name: ";
-        cin >> playerName;
-
-        auto *pPlayer = new Player(&playerName,
-                                   generateTerritories(territoriesOwnedPerPlayer),
-                                   generateHand(numCardsPerPlayer),
-                                   generateOrder());
-        vPlayer.push_back(pPlayer);
-        cout << endl;
-    }
-
-    for (int i = 0; i < numPlayers; ++i) {
-
-        cout << *vPlayer.at(i); //ostream called
-        cout << "Territories to attack: \n";
-        vPlayer.at(i)->toAttack(vPlayer);
-        cout << endl;
-    }
-
-    int playing = false;
-
-    while(!playing) {
-        string input;
-        string order;
-        cout << "Would you like to issue an order (y/n)? ";
-        cin >> input;
-
-        if(input == "y") {
-            cout << "Enter your order: ";
-            cin >> order;
-            vPlayer.at(0)->issueOrder(order); //showing issueOrder Function
-            playing = false;
-        } else if(input == "n") {
-            cout << "Orders Sent: \n";
-            for (int l = 0; l < vPlayer.at(0)->getNumberOfOrders(); ++l) {
-                cout << "\t" + vPlayer.at(0)->getOrder(l) << endl;
-            }
-            cout << "End of program!" << endl;
-            playing = true;
-        }
-        else {
-            cout << "Sorry try again\n" << endl;
-            playing = false;
-        }
-    }
-
-    //delete the pointers of vPlayer
-    for (auto & i : vPlayer) {
-        delete i;
-    }
-}
-
-/**
- * Generates the territories for each player.
- *
- * @param numTerritoryOwned the initial amount of territories
- * @return vector of Territories that gets passed into the player vector
- */
-vector<Territory *> generateTerritories(int numTerritoryOwned) {
-    vector<Territory *> vTerritory;
-    Territory *pPlayerTerritory;
-    for (int i = 0; i < numTerritoryOwned; ++i) {
-        pPlayerTerritory = new Territory((rand() % 100), "Territory " + to_string(territoryNumber), 1);
-        vTerritory.push_back(pPlayerTerritory);
-        territoryNumber++;
-    }
-    return vTerritory;
-}
-
-/**
- * Generates the cards for each player
- *
- * @param numCardsPerPlayer the initial amount of cards per player
- * @return vector of Hands that gets passed into the player vector
- */
-vector<Hand *> generateHand(int numberCardsPerPlayer) {
-    vector<Hand *> vHand;
-    Hand *pHand;
-    for (unsigned i = 0; i < numberCardsPerPlayer; i++) {
-        pHand = new Hand();
-        pHand->ReceiveCard(new Card( "Bomb"));
-        vHand.push_back(pHand);
-        cardNumber++;
-    }
-    return vHand;
-}
-
-/**
- * Generates Orders that each player can execute
- *
- * @return a vector of Orders that gets passed into player vector
- */
-vector<Order *> generateOrder() {
-    vector<Order *> vOrder;
-    for (unsigned i = 0; i <= numOfOrders; ++i) {
-        auto *pOrder = new Order;
-        vOrder.push_back(pOrder);
-    }
-    return vOrder;
-}
-
-void RunCardDriver()
-{
-    Deck* TestDeck = new Deck(3);
-    Hand* TestHand = new Hand();
-    cout <<  *TestDeck << endl;
-    TestDeck->Draw(TestHand);
-    TestDeck->Draw(TestHand);
-    TestDeck->Draw(TestHand);
-    cout <<  *TestDeck << endl;
-    TestHand->Play(TestDeck);
-    cout <<  *TestDeck << endl;
-    cout <<  *TestHand << endl;
-    delete TestDeck;
-    delete TestHand;
-}
-
-void OrdersDriver(){
-
-    // Creating objects of Orders subclasses
-    Deploy deploy1;
-    deploy1.setArmies(11);
-    Deploy *pDeploy1 = &deploy1;
-
-    Advance advance1;
-    advance1.setArmies(7);
-    Advance *pAdvance1 = &advance1;
-
-    Deploy deploy2;
-    deploy2.setArmies(23);
-    Deploy *pDeploy2 = &deploy2;
-
-    Advance advance2;
-    advance2.setArmies(2);
-    Advance *pAdvance2 = &advance2;
-
-    Bomb bomb1;
-    Bomb *pBomb1 = &bomb1;
-
-    Blockade blockade1;
-    Blockade *pBlockade1 = &blockade1;
-
-    Airlift airlift1;
-    Airlift *pAirlift1 = &airlift1;
-
-    Negotiate negotiate1;
-    Negotiate *pNegotiate1 = &negotiate1;
-
-    // Creating OrdersList object
-    OrdersList ordersListObj;
-
-    cout << "\nostream operator example for each subclass of order: \n\n";
-
-    cout << deploy1;
-    cout << advance1;
-    cout << bomb1;
-    cout << blockade1;
-    cout << airlift1;
-    cout << negotiate1 << "\n";
-
-    // Adding all the Orders subclass objects to OrdersList object
-    ordersListObj.addDeploy(pDeploy1);
-    ordersListObj.addAdvance(pAdvance1);
-    ordersListObj.addDeploy(pDeploy2);
-    ordersListObj.addAdvance(pAdvance2);
-    ordersListObj.addBomb(pBomb1);
-    ordersListObj.addBlockade(pBlockade1);
-    ordersListObj.addAirlift(pAirlift1);
-    ordersListObj.addNegotiate(pNegotiate1);
-
-    // Printing original list
-    cout << "\nprinting original vector list in the OrdersList object\n\n";
-
-    for (int i = 0; i < ordersListObj.getList().size(); i++) {
-        ordersListObj.getList().at(i)->identify();
-    }
-
-    // Testing GetListMember method
-    cout << "\nexample of getter method with index 4\n\n";
-
-    ordersListObj.getListMember(4);
-
-    // Testing move method
-    cout << "\nmoving index 3 to index 0\n\n";
-
-    ordersListObj.move(3,0);
-
-    for (int i = 0; i < ordersListObj.getList().size(); i++) {
-        ordersListObj.getList().at(i)->identify();
-    }
-
-    // Testing remove method
-    cout << "\nremoving index 1\n\n";
-
-    ordersListObj.remove(1);
-
-    for (int i = 0; i < ordersListObj.getList().size(); i++) {
-        ordersListObj.getList().at(i)->identify();
-    }
-
-    // Testing move method differently
-    cout << "\nmoving index 2 to index 5\n\n";
-
-    ordersListObj.move(2,5);
-
-    for (int i = 0; i < ordersListObj.getList().size(); i++) {
-        ordersListObj.getList().at(i)->identify();
-    }
-
-    // Testing final case for move method
-    cout << "\nmoving index 4 to index 4\n\n";
-
-    ordersListObj.move(4,4);
-
-    for (int i = 0; i < ordersListObj.getList().size(); i++) {
-        ordersListObj.getList().at(i)->identify();
-    }
-
-    // Testing validate/execute of Deploy class
-    cout << "\nexample validate/execute on a deploy object at index 4\n\n";
-
-    ordersListObj.getList().at(4)->validate();
-
-    // Testing validate/execute of Advance class
-    cout << "\nexample validate/execute on an advance object at index 1\n\n";
-
-    ordersListObj.getList().at(1)->validate();
-
-    // Testing validate/execute of Bomb class
-    cout << "\nexample validate/execute on a bomb object at index 2\n\n";
-
-    ordersListObj.getList().at(2)->validate();
-
-    // Testing validate/execute of Blockade class
-    cout << "\nexample validate/execute on an blockade object at index 3\n\n";
-
-    ordersListObj.getList().at(3)->validate();
-
-    // Testing validate/execute of Airlift class
-    cout << "\nexample validate/execute on an airlift object at index 5\n\n";
-
-    ordersListObj.getList().at(5)->validate();
-
-    // Testing validate/execute of Negotiate class
-    cout << "\nexample validate/execute on an negotiate object at index 6\n\n";
-
-    ordersListObj.getList().at(6)->validate();
-
-}
-
-void runGameEngine(){
-    GameEngineDriver driver;
-
-    // loop until game is done
-    while(!driver.isGameDone()) {
-
-        // accept user input
-        cin >> driver;
-
-        cout << driver << endl;
-    }
-}
-
 void driveMap() {
-    auto* loader(new MapLoader());
+    auto *loader(new MapLoader());
 
     std::cout << *loader;
 
@@ -298,12 +18,146 @@ void driveMap() {
     delete loader;
 }
 
-int main() {
-    //OrdersDriver();
-    //RunCardDriver();
-    //player();
-    //driveMap();
-    //runGameEngine();
+void chooseComandProcessor() {
 
+    cout << "Choose between accepting the commands from the console (1) or from a file (2):";
+    int input = 0;
+    cin >> input;
+
+    // user selected console
+    if(input == 1) {
+
+
+        bool isGameDone = false;
+        // loop until user chooses to exit game
+        while(!isGameDone) {
+            LogObserver* logger = new LogObserver();
+            CommandProcessor cp;
+            cp.Attach(logger);
+            GameEngine *ge2 = new GameEngine();
+            ge2->Attach(logger);
+            ge2->startupPhase(cp, ge2);
+
+            // check for win condition
+            if(ge2->getState() == ST_WIN) {
+                while(true) {
+                    Command* c = cp.getCommand(ge2);
+
+                    // check for error
+                    if(c->getEffect().length() != 0) {
+                        cout << "ERROR: " << c->getEffect() << endl;
+
+                        // valid command, execute it
+                    } else {
+                        ge2->transition(c);
+                        if (ge2->isGameDone) {
+                            isGameDone = true;
+                        }
+                        break;
+                    }
+                }
+            }
+            delete ge2;
+            delete logger;
+        }
+
+    } else {
+        LogObserver* logger = new LogObserver();
+        GameEngine* ge = new GameEngine();
+        ge->Attach(logger);
+        string filename;
+
+        cout << "Please enter a filename (commands.txt, commands2.txt are the only available files):";
+        cin >> filename;
+
+        FileLineReader flr("../CommandProcessorFiles/" + filename);
+        FileCommandProcessorAdapter adapter(flr);
+        adapter.Attach(logger);
+        Command * c1 = adapter.getCommand(ge);
+        ge->transition(c1);
+        Command * c2 =adapter.getCommand(ge);
+        ge->transition(c2);
+        Command * c3 =adapter.getCommand(ge);
+        ge->transition(c3);
+        Command * c4 =adapter.getCommand(ge);
+        ge->transition(c4);
+        Command * c5 =adapter.getCommand(ge);
+        ge->transition(c5);
+        Command * c6 =adapter.getCommand(ge);
+        ge->transition(c6);
+    }
+}
+
+
+void cpDriver() {
+    chooseComandProcessor();
+}
+
+string validateTournament(GameEngine * ge) {
+    string input;
+
+    cout << "Enter tournament thing: ";
+    // get user input
+    getline(cin,input);
+    cout << endl;
+
+    while(!ge->validateTournamentPhase(input)) {
+        cout << endl;
+        cout << "Enter tournament thing: ";
+        // get user input
+        getline(cin,input);
+    }
+    return input;
+}
+
+void tournamentDriver() {
+    GameEngine* ge = new GameEngine();
+
+    // used for parsing the tournament parameters
+    FileCommandWriter fcw;
+
+    // get tournament command from user, and validate it
+    string input = validateTournament(ge);
+    // parse tournament parameters
+    vector<string> players = fcw.parsePlayer(input);
+    vector<string> maps = fcw.parseMap(input);
+    int depth = fcw.parseMaxDepth(input);
+    int numGames = fcw.parseNumGames(input);
+
+    // write a commands.txt type file based on given tournament parameters, get its fileName
+    string fileName = fcw.writeTournamentFile(maps,players,numGames);
+
+    FileCommandProcessorAdapter adapter((FileLineReader(fileName)));
+
+    // read whole tournament until there are no more commands left
+    while(adapter.hasCommand()) {
+        Command * c = adapter.getCommand(ge);
+        ge->transition(c);
+        // todo: destruct everything
+    }
+    ge->PrintResults();
+}
+
+int main() {
+    /*
+    ofstream file("../gamelog.txt");
+    file.close();
+
+    auto *neutralName = new string("neutral");
+    vector<Territory*> neutralTerritories;
+    Hand *neutralHand = new Hand();
+    auto *neutralOrdersList = new OrdersList();
+    Player::neutralPlayer() = *new Player(neutralName, neutralTerritories, neutralHand, neutralOrdersList);
+    cpDriver();
+
+    delete neutralName;
+    delete neutralHand;
+    delete neutralOrdersList;
+*/
+
+    // sample tournament command:
+    // tournament -M minimap.map, canada.map -P Cheater, Aggressive -G 6 -D 15
+    tournamentDriver();
     return 0;
+
 }

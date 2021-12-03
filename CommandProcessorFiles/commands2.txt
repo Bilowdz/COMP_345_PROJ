@@ -1,0 +1,6 @@
+loadmap minimap.map
+validatemap
+addplayer Joey
+addplayer Jeff
+gamestart
+quit

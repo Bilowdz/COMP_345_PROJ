@@ -1,0 +1,72 @@
+loadmap minimap.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap minimap.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap minimap.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap minimap.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap minimap.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap minimap.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+replay
+loadmap canada.map
+validatemap
+addplayer Cheater
+addplayer Aggressive
+gamestart
+quit

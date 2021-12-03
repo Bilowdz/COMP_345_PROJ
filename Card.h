@@ -4,12 +4,12 @@
 
 #ifndef COMP_345_PROJ_CARD_H
 #define COMP_345_PROJ_CARD_H
-#pragma  once
 #include <vector>
-#include<iostream>
+#include <iostream>
 #include <string>
 #include <stdlib.h>
 #include <time.h>
+#include "Orders.h"
 using namespace std;
 
 class Hand;
@@ -44,10 +44,14 @@ class Hand {
 public:
     std::vector<Card*> cardsHeld;
     Hand();
+    Hand(vector<Card*> cardsHeld);
     Hand(const Hand &copyHand);
     ~Hand();
     void ReceiveCard(Card *c);
-    void Play(Deck *mainDeck);
+    int getCardIndex(string playerCardType);
+    void removeCard(int index);
+    bool isCardOwned(string playerCardType);
+    OrdersList Play(Deck *mainDeck, OrdersList *o);
     friend ostream & operator << (ostream &out, const Hand &showHand);
     Hand& operator = (const Hand &h);
 };

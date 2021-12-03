@@ -1,0 +1,5 @@
+loadmap minimap.map
+validatemap
+addplayer Bilowdz
+addplayer NotRyan
+gamestart
