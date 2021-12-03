@@ -4,10 +4,19 @@
 
 #include "AggressivePlayerStrategy.h"
 
+/**
+ * Default constructor
+ * @param player link
+ */
 AggressivePlayerStrategy::AggressivePlayerStrategy(Player * player) {
     this->p = player;
 }
 
+/**
+ * Issue order inherited from PlayerStrategy
+ *
+ * @param vPlayersInPlay all the other players in the game
+ */
 void AggressivePlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
     for (int i = 0; i < toDefend().size(); i++) {
         if (toDefend().at(i)->IsAdjacent(*toAttack().at(0))) {
@@ -20,6 +29,12 @@ void AggressivePlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
         }
     }
 }
+
+/**
+ * Displays all adjacent territories to owned territories
+ *
+ * @return vector of all adjacent territories
+ */
 vector<Territory*> AggressivePlayerStrategy::toAttack() {
     vector<Territory *> territoriesToAttack;
     //loop through player owned territories
@@ -35,6 +50,12 @@ vector<Territory*> AggressivePlayerStrategy::toAttack() {
     }
     return territoriesToAttack;
 }
+
+/**
+ * Displays territories owned that are adjacent to other unowned territories
+ *
+ * @return vector of all adjacent territories
+ */
 vector<Territory*> AggressivePlayerStrategy::toDefend() {
     vector<Territory *> territoriesToDefend;
     //loop through player owned territories

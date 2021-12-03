@@ -4,10 +4,19 @@
 
 #include "BenevolentPlayerStrategy.h"
 
+/**
+ * Default constructor
+ * @param player link
+ */
 BenevolentPlayerStrategy::BenevolentPlayerStrategy(Player* player) {
     this->p = player;
 }
 
+/**
+ * Issue order inherited from PlayerStrategy
+ *
+ * @param vPlayersInPlay all the other players in the game
+ */
 void BenevolentPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
     int numArmiesDeployed = 0;
     int toDeploy;
@@ -68,11 +77,32 @@ void BenevolentPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
 
 }
 
+/**
+ * Displays all adjacent territories to owned territories
+ *
+ * @return vector of all adjacent territories
+ */
 vector<Territory*> BenevolentPlayerStrategy::toAttack() {
     vector<Territory *> territoriesToAttack;
+    //loop through player owned territories
+    for (int i = 0; i < p->getTerritorySize(); i++) {
+        //loop through the adjacent territories of the owned territories
+        for (int j = 0; j < p->getVTerritory().at(i)->adjacentTerritories.size(); j++) {
+            //check if that territory is already owned, if its now owned then add to list
+            if (this->p->isOwnedTerritory(p->getVTerritory().at(i)->adjacentTerritories.at(j)->id) == nullptr &&
+                !(p->isTerritoryInList(territoriesToAttack, p->getVTerritory().at(i)->adjacentTerritories.at(j)->id))) {
+                territoriesToAttack.push_back(p->getVTerritory().at(i)->adjacentTerritories.at(j));
+            }
+        }
+    }
     return territoriesToAttack;
 }
 
+/**
+ * Displays territories owned that are adjacent to other unowned territories
+ *
+ * @return vector of all adjacent territories
+ */
 vector<Territory*> BenevolentPlayerStrategy::toDefend() {
     vector<Territory *> territoriesToDefend;
     //loop through player owned territories

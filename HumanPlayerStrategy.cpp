@@ -4,10 +4,19 @@
 
 #include "HumanPlayerStrategy.h"
 
+/**
+ * Default constructor
+ * @param player link
+ */
 HumanPlayerStrategy::HumanPlayerStrategy(Player* player) {
     this->p = player;
 }
 
+/**
+ * Issue order inherited from PlayerStrategy
+ *
+ * @param vPlayersInPlay all the other players in the game
+ */
 void HumanPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
     //Checks if the current player own a Reinforcement card
     //If he does he can choose to use it right away, otherwise
@@ -254,8 +263,13 @@ void HumanPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
         }
     }
 }
+
+/**
+ * Displays all adjacent territories to owned territories
+ *
+ * @return vector of all adjacent territories
+ */
 vector<Territory*> HumanPlayerStrategy::toAttack() {
-    
     vector<Territory *> territoriesToAttack;
     //loop through player owned territories
     for (int i = 0; i < p->getTerritorySize(); i++) {
@@ -270,6 +284,12 @@ vector<Territory*> HumanPlayerStrategy::toAttack() {
     }
     return territoriesToAttack;
 }
+
+/**
+ * Displays territories owned that are adjacent to other unowned territories
+ *
+ * @return vector of all adjacent territories
+ */
 vector<Territory*> HumanPlayerStrategy::toDefend() {
     vector<Territory *> territoriesToDefend;
     //loop through player owned territories
