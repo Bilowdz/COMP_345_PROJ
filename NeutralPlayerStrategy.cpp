@@ -30,6 +30,8 @@ vector<Territory*> NeutralPlayerStrategy::toAttack() {
         }
     }
     return territoriesToAttack;
+}
+
 vector<Territory*> NeutralPlayerStrategy::toDefend() {
     vector<Territory *> territoriesToDefend;
     //loop through player owned territories
