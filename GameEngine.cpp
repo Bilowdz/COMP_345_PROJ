@@ -264,7 +264,13 @@ void GameEngine::endissueorders() {
 }
 //Outputs to the terminal the win execution will begin
 void GameEngine::win() {
+    gameMap.destruct();
 
+    for(Player *p: Players){
+        delete p;
+        p=NULL;
+    }
+    Players.clear();
 }
 //Outputs to the terminal the end exeuction will begin
 void GameEngine::end() {

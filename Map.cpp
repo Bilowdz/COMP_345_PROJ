@@ -43,6 +43,9 @@ Map::Map(const Map &m1) {
 
 // Assignment operator for the map class
 Map &Map::operator=(const Map &m1) {
+    map.clear();
+    continents.clear();
+
     // Add a copy of all territories
     for(Territory *t : m1.map){
         auto *copy (new Territory(*t));
@@ -202,6 +205,21 @@ Map::~Map(){
     for(Territory *t : map){
         delete t;
     }
+}
+
+void Map::destruct() {
+    numberOfTerritoriesPerContinent.clear();
+    for(Territory *t : map){
+        delete t;
+        t = NULL;
+    }
+
+    for(Continent *c : continents){
+        delete c;
+        c = NULL;
+    }
+    map.clear();
+    continents.clear();
 }
 
 /**

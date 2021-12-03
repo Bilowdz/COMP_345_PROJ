@@ -67,6 +67,7 @@ public:
     Map();
     Map(const Map &m1);
     ~Map();
+    void destruct();
     void displayTerritories();
     Territory *isTerritory(int id);
     Territory *getTerritory(int id);

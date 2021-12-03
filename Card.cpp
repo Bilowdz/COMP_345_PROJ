@@ -47,6 +47,7 @@ Deck::Deck(const Deck &copyDeck) {
 
 //creates a deck of cards in relation to the number of card (prof didnt specify the number of cards in a deck, can be modified as needed)
 Deck::Deck(int numPlayers){
+    cardsHeld.clear();
     for(int i = 0; i < numPlayers; i++)
     {
         cardsHeld.push_back(new Card( "Bomb"));

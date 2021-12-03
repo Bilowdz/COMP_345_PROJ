@@ -96,9 +96,10 @@ Player &Player::operator=(const Player &copyPlayer) {
  * Destructor
  */
 Player::~Player() {
-    for (auto &i: vTerritory) {
+    /*for (auto &i: vTerritory) {
         delete i;
     }
+    */
     for (auto &i: vHand->cardsHeld) {
         delete i;
     }
