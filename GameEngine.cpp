@@ -165,10 +165,11 @@ void GameEngine::loadmap(Command *c) {
  * Runs the validate function that indicates if the map is valid
  */
 void GameEngine::validatemap() {
-    cout << "Validating Map..." << endl;
-    if (gameMap.Validate())
+    if (gameMap.Validate()) {
+        cout << "Validating Map..." << endl;
         cout << "Map is valid!" << endl;
-    else {
+    }else {
+        cout << "Validating Map..." << endl;
         cout << "Map is not valid!" << endl;
         exit(0);
     }
@@ -313,6 +314,7 @@ void GameEngine::startupPhase(CommandProcessor cp, GameEngine *ge) {
 void GameEngine::mainGameLoop() {
 
     bool noWinner = false;
+    int numTurns = 0;
     while (!noWinner) {
         //Call to reinforcement phase
         reinforcementPhase();
@@ -343,6 +345,7 @@ void GameEngine::mainGameLoop() {
                 //if there are neutral territories then he might not win
                 noWinner = true;
                 cout << "---- ---- ---- The winner is " << Players.at(0)->getName() << "!! ---- ---- ----";
+                gameResults.push_back(Players.at(0)->getName());
                 this->transition(new Command("win"));
                 return;
             } else {
@@ -353,14 +356,29 @@ void GameEngine::mainGameLoop() {
                 if (ending == 1) {
                     noWinner = true;
                     cout << "---- ---- ---- The winner is " << Players.at(0)->getName() << "!! ---- ---- ----";
+                    gameResults.push_back(Players.at(0)->getName());
                     this->transition(new Command("win"));
                     return;
                 }
             }
         }
+
+        numTurns++;
+        if(numTurns==maxTurns)
+        {
+            noWinner = true;
+            cout << "---- ---- ---- The game Ends in a Draw";
+            gameResults.push_back("Draw");
+            this->transition(new Command("win"));
+            return;
+        }
         this->transition(new Command("endexecorders"));
     }
+
+
 }
+
+
 
 /**
  * Armies are given out depending on territories owned
@@ -447,4 +465,50 @@ string GameEngine::stringToLog(){
     string state = enum_state_str[currentState];
     string log = "Log :: New Game State : " + state;
     return log;
+}
+
+
+bool GameEngine::validateTournamentPhase(string toValidate) {
+    std:: regex reg ("(T|t)ournament -M(\\s[\\w]+\\.map,)*(\\s[\\w]+\\.map\\s)-P\\s((Aggressive,\\s)|(Benevolent,\\s)|(Neutral,\\s)|(Cheater,\\s))+((Aggressive\\s)|(Benevolent\\s)|(Neutral\\s)|(Cheater\\s))-G(\\s\\d+\\s)-D(\\s\\d+)");
+    if(!std::regex_match(toValidate, reg))
+    {
+        cout << "Invalid tournament..." << endl;
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+void GameEngine::PrintResults()
+{
+    vector<string> resultsVector;
+    string result;
+    resultsVector.push_back("\t");
+
+    for(int i = 0; i < numGames; i++)
+    {
+        resultsVector.at(0).append("Game " + to_string((i+1)) + "\t");
+    }
+
+    resultsVector.at(0).append("\n");
+
+    int resultPos = 0;
+    for(int i = 0; i < tourneyMaps.size(); i++)
+    {
+        resultsVector.push_back("Map " + to_string((i+1)) + "\t");
+
+        for(int j = 0; j < numGames; j++)
+        {
+            resultsVector.at(i+1).append(gameResults.at(resultPos) + "\t");
+            resultPos++;
+        }
+    }
+
+    for(auto & i : resultsVector)
+    {
+        result.append(i + "\n");
+    }
+    cout << result;
 }

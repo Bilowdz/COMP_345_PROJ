@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 #include <algorithm>
+#include <regex>
 #include "Map.h"
 #include "Player.h"
 #include "Card.h"
@@ -49,6 +50,13 @@ class CommandProcessor;
 
 class GameEngine : public Subject, public ILoggable {
     private:
+        vector<string> gameResults;
+        vector<string> tourneyMaps;
+        vector<string> tourneyplayers;
+        int numGames;
+        int maxTurns;
+        string currentWinner;
+
         bool debug = false;
         State currentState;
         Map gameMap;
@@ -81,7 +89,7 @@ class GameEngine : public Subject, public ILoggable {
         void issueOrdersPhase();
         void executeOrdersPhase();
         //end ryan
-
+        bool validateTournamentPhase(string toValidate);
         void printAvailableOptions();
 
         //string getState();
@@ -94,6 +102,7 @@ class GameEngine : public Subject, public ILoggable {
 
         // logging output
         std::string stringToLog() override;
+        void PrintResults();
 };
 
 #endif //COMP_345_PROJ_GAMEENGINE_H

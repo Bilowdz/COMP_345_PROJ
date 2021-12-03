@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -398,4 +399,104 @@ ostream & operator << (ostream &out, const FileCommandProcessorAdapter &fcpa)
     //out << fcpa.flr << endl;
 
     return out;
+}
+
+bool FileCommandProcessorAdapter::hasCommand() {
+    return !flr.isEof();
+}
+
+// based on given tournament parameters, create a commands file which the file command processor can read from
+string FileCommandWriter::writeTournamentFile(vector<string> maps, vector<string> players, int numGames) {
+    string gameFile = "../CommandProcessorFiles/commands_tournament.txt";
+    ofstream output;
+    output.open(gameFile,ios_base::trunc);
+
+    // loop over each map
+    for(int i = 0; i < maps.size(); i++) {
+
+        // loop over each game
+        for(int j = 0; j < numGames; j++) {
+            output << "loadmap " + maps[i] << endl;
+            output << "validatemap" << endl;
+
+            // loop over each player
+            for(int k = 0; k < players.size(); k++) {
+                output << "addplayer " + players[k] << endl;
+            }
+            output << "gamestart" << endl;
+
+            // check if last iteration
+            if(i == (maps.size() - 1) && j == (numGames - 1)) {
+                output << "quit";
+            } else {
+                output << "replay" << endl;
+            }
+        }
+    }
+    output.close();
+
+    return gameFile;
+}
+
+// parse comma seperated string of maps from valid tournament into vector of strings
+vector<string> FileCommandWriter::parseMap(string input) {
+    // get substring between -M and -P
+    std:: regex reg ("\\-M (.*) -P");
+    return parseList(input, reg);
+}
+
+// parse comma seperated string of players from valid tournament into vector of strings
+vector<string> FileCommandWriter::parsePlayer(string input) {
+    // get substring between -P and -G
+    std:: regex reg ("\\-P (.*) -G");
+    return parseList(input,reg);
+}
+
+// parse number of games string from valid tournament string into int
+int FileCommandWriter::parseNumGames(string input) {
+    // get substring between -G and -D
+    std:: regex reg ("\\-G (.*) -D");
+    return parseInt(input,reg);
+}
+
+// parse max depth string from valid tournament string into int
+int FileCommandWriter::parseMaxDepth(string input) {
+
+    // get substring after -D
+    std:: regex reg ("\\-D (.*)");
+    return parseInt(input,reg);
+}
+
+// given valid tournament string and regex expression, parse into int
+int FileCommandWriter::parseInt(string input, regex re) {
+    smatch m;
+
+    regex_search(input,m, re);
+
+    // cast match to int
+    int num = stoi(m[1]);
+    return num;
+}
+
+// given valid tournament string and regex expression, parse into vector of strings
+vector<string> FileCommandWriter::parseList(string input, regex re) {
+    vector<string> build;
+
+    smatch m;
+
+    regex_search(input,m, re);
+    std::stringstream ss(m[1]);
+
+    // get all comma seperated items and put into vector
+    for (string s; ss >> s;) {
+        if(s.back() == *",") {
+            s.pop_back();
+            build.push_back(s);
+        } else {
+            build.push_back(s);
+        }
+        if (ss.peek() == ',')
+            ss.ignore();
+    }
+    return build;
 }
