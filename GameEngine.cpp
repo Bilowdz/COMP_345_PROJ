@@ -481,6 +481,32 @@ bool GameEngine::validateTournamentPhase(string toValidate) {
 
 void GameEngine::PrintResults()
 {
+    string tourneyInfo = "Tournament mode: \nM: ";
+    for(int i = 0; i < tourneyMaps.size(); i++)
+    {
+        if(i!=0)
+        {
+            tourneyInfo.append(", ");
+        }
+        tourneyInfo.append(tourneyMaps.at(i));
+    }
+    tourneyInfo.append("\nP: ");
+
+    for(int i = 0; i < tourneyplayers.size(); i++)
+    {
+        if(i!=0)
+        {
+            tourneyInfo.append(", ");
+        }
+        tourneyInfo.append(tourneyplayers.at(i));
+    }
+    tourneyInfo.append("\nG: ");
+    tourneyInfo.append(to_string(numGames));
+    tourneyInfo.append("\nD: ");
+    tourneyInfo.append(to_string(maxTurns));
+
+
+
     vector<string> resultsVector;
     string result;
     resultsVector.push_back("\t");
@@ -508,5 +534,12 @@ void GameEngine::PrintResults()
     {
         result.append(i + "\n");
     }
+    result = tourneyInfo.append(result);
+
+    string gameFile = "../CommandProcessorFiles/commands_tournament.txt";
+    ofstream output;
+    output.open(gameFile, std::fstream::in | std::fstream::out | std::fstream::app);
+    output << result;
+    output.close();
     cout << result;
 }
