@@ -14,6 +14,8 @@
 
 #include "Orders.h"
 #include "Player.h"
+#include "PlayerStrategy.h"
+#include "AggressivePlayerStrategy.h"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -515,6 +517,10 @@ void Advance::execute(Player & player) {
             Notify(this);
             return;
         } else { // if not owned by player, attack target territory
+            if (target->playerLink->getPlayerStrategy() == 1) {
+                auto aggresiveStrat = new AggressivePlayerStrategy(target->playerLink);
+                target->playerLink->setPlayerStrategy(aggresiveStrat);
+            }
             if (checkRefusal == 1) {
                 if (target->unitsGarrisoned == 0) {
                     target->unitsGarrisoned = target->unitsGarrisoned + this->getArmies();
@@ -793,10 +799,10 @@ void Blockade::validate(Player & player) {
 void Blockade::execute(Player & player) {
     target->unitsGarrisoned = target->unitsGarrisoned * 2;
     target->playerLink->removeTerritory(target);
-    Player::neutralPlayer().addTerritory(target);
-    target->playerLink = &Player::neutralPlayer();
+    //Player::neutralPlayer().addTerritory(target);
+    //target->playerLink = &Player::neutralPlayer();
     std::cout << "Territory blockade set up! " << target->name << " now has " << target->unitsGarrisoned << " armies, and is not owned by " << player.getName() << " anymore." << endl;
-    std::cout << target->name << " now owned by " << Player::neutralPlayer().getName() << endl;
+    //std::cout << target->name << " now owned by " << Player::neutralPlayer().getName() << endl;
     Notify(this);
 }
 

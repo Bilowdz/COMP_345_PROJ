@@ -11,12 +11,12 @@
 #include "Map.h"
 #include "Card.h"
 #include "Orders.h"
-
-
+#include "PlayerStrategy.h"
 using namespace std;
 
 class Deck;
 class Map;
+class PlayerStrategy;
 
 class Player {
 public:
@@ -24,16 +24,21 @@ public:
     Deck * deckLink;
     Map * mapLink;
 
+
     void setMapLink(Map & map);
     void setDeckLink(Deck & deck);
 
     Player();
     explicit Player(string *name);
-    Player(vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
     Player(string *name, vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
+    Player(string *name, vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList, PlayerStrategy* initStrategy);
+    Player(vector<Territory *> vTerritories, Hand * vHand, OrdersList * ordersList);
     Player(const Player &copyPlayer);
     Player & operator = (const Player &p);
     ~Player();
+
+    void setPlayerStrategy(PlayerStrategy* newStrategy);
+    int getPlayerStrategy();
 
     friend ostream &operator<<(ostream &output, Player &player);
     vector<Territory *> toAttack();
@@ -71,6 +76,7 @@ public:
     void addReinforcements(int armiesToAdd);
     void removeReinforcements(int armiesToRemove);
 
+    const vector<Territory *> &getVTerritory() const;
 
     //void setOrdersList(OrdersList *ordersList);
 
@@ -88,6 +94,7 @@ private:
     OrdersList * ordersList; //Vector for all the orders the player can do
     int reinforcements; //number of armies
     vector<int> territoriesOwnedPerContinent; //when a player captures a territory increment the value at the continent
+    PlayerStrategy *ps;
 };
 
 extern Player neutralPlayer;

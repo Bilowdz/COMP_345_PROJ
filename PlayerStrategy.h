@@ -5,15 +5,20 @@
 #ifndef GAMEENGINE_CPP_PLAYERSTRATEGY_H
 #define GAMEENGINE_CPP_PLAYERSTRATEGY_H
 
-#include "Player.h"
+#include <vector>
+using namespace std;
+
+class Player;
+class Territory;
 
 class PlayerStrategy {
-    
-Player *p;
+
 public:
-    virtual void issueOrder() = 0;
-    virtual void toAttack() = 0;
-    virtual void toDefend() = 0;
+    virtual int neutralReturn();
+    Player *p;
+    virtual void issueOrder(vector<Player *> &) = 0;
+    virtual vector<Territory*> toAttack() = 0;
+    virtual vector<Territory*> toDefend() = 0;
 private:
 
 };

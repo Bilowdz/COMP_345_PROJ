@@ -28,6 +28,15 @@ Player::Player(vector<Territory *> vTerritories, Hand *vHand, OrdersList *orders
     this->vTerritory = vTerritories;
     this->vHand = vHand;
     this->ordersList = ordersList;
+
+}
+
+Player::Player(string *name, vector<Territory *> vTerritories, Hand *vHand, OrdersList *ordersList) {
+    (*this).name = *name;
+    this->vTerritory = vTerritories;
+    this->vHand = vHand;
+    this->ordersList = ordersList;
+    this->reinforcements = 0;
 }
 
 /**
@@ -38,12 +47,13 @@ Player::Player(vector<Territory *> vTerritories, Hand *vHand, OrdersList *orders
  * @param vHand is the vector Hand pointer of all the hand the player owns
  * @param ordersList is the vector Order pointer of all the orders the player can do
  */
-Player::Player(string *name, vector<Territory *> vTerritories, Hand *vHand, OrdersList *ordersList) {
+Player::Player(string *name, vector<Territory *> vTerritories, Hand *vHand, OrdersList *ordersList, PlayerStrategy* initStrategy) {
     (*this).name = *name;
     this->vTerritory = vTerritories;
     this->vHand = vHand;
     this->ordersList = ordersList;
     this->reinforcements = 0;
+    this->ps = initStrategy;
 }
 
 /**
@@ -137,20 +147,7 @@ void Player::displayTerritoriesOwned() {
  * @param vPlayer the vector of all Players in the game
  */
 vector<Territory *> Player::toAttack() {
-
-    vector<Territory *> territoriesToAttack;
-    //loop through player owned territories
-    for (int i = 0; i < getTerritorySize(); i++) {
-        //loop through the adjacent territories of the owned territories
-        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); j++) {
-            //check if that territory is already owned, if its now owned then add to list
-            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr &&
-                !(isTerritoryInList(territoriesToAttack, vTerritory.at(i)->adjacentTerritories.at(j)->id))) {
-                territoriesToAttack.push_back(vTerritory.at(i)->adjacentTerritories.at(j));
-            }
-        }
-    }
-    return territoriesToAttack;
+   return ps->toAttack();
 }
 
 /**
@@ -158,21 +155,7 @@ vector<Territory *> Player::toAttack() {
  * Returns a list of territories that the player owns
  */
 vector<Territory *> Player::toDefend() {
-
-    vector<Territory *> territoriesToDefend;
-    //loop through player owned territories
-    for (int i = 0; i < getTerritorySize(); i++) {
-        //loop through the adjacent territories of the owned territories
-        for (int j = 0; j < vTerritory.at(i)->adjacentTerritories.size(); j++) {
-            //check if that territory is already owned, if the adjacent territory is not owned
-            if (this->isOwnedTerritory(vTerritory.at(i)->adjacentTerritories.at(j)->id) == nullptr &&
-                !(isTerritoryInList(territoriesToDefend, vTerritory.at(i)->id))) {
-                territoriesToDefend.push_back(
-                        vTerritory.at(i)); //push the territory we own into list of territories to defend
-            }
-        }
-    }
-    return territoriesToDefend;
+    return ps->toDefend();
 }
 
 /**
@@ -223,6 +206,7 @@ bool Player::isTerritoryInList(vector<Territory *> listOfTerritories, int idOfTe
 void Player::setTerritoriesOwned(vector<Territory *> vTerritories) {
     vTerritory = vTerritories;
 }
+
 
 /**
  * Gets all the territories the current player owns.
@@ -696,14 +680,28 @@ void Player::removeNegotiations(int index) {
     this->negotiatingWith.erase(negotiatingWith.cbegin());
 }
 
+void Player::setPlayerStrategy(PlayerStrategy *newStrategy) {
+    this->ps = newStrategy;
+}
+const vector<Territory *> &Player::getVTerritory() const {
+    return vTerritory;
+}
+int Player::getPlayerStrategy() {
+    if (ps->neutralReturn() == 1) {
+        return 1;
+    }
+    return 0;
+}
+
+
 /**
  * A neutral player is created
  * @return a neutral player
  */
-Player &Player::neutralPlayer() {
-    static Player neutralPlayer;
-    return neutralPlayer;
-}
+//Player &Player::neutralPlayer() {
+//    static Player neutralPlayer;
+//    return neutralPlayer;
+//}
 
 
 

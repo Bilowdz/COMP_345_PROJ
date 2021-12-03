@@ -114,7 +114,7 @@ bool GameEngine::transition(Command *c) {
     } else if (command == "quit") {
         if (currentState == ST_WIN) {
             currentState = ST_END;
-            Notify(this);
+            //Notify(this); // todo current place that returns code 0xc0000005
             this->end();
             this->isGameDone = true;
             return true;
@@ -191,6 +191,8 @@ void GameEngine::addplayer(Command *c) {
         ordersList->Attach(observer);
 
     Player *newPlayer = new Player(name, vTerritories, vHand, ordersList);
+    PlayerStrategy *ps = new HumanPlayerStrategy(newPlayer);
+    newPlayer->setPlayerStrategy(ps);
     newPlayer->setDeckLink(MainDeck);
     newPlayer->setMapLink(gameMap);
     newPlayer->setTerritoriesOwnedPerContinent();
@@ -205,9 +207,9 @@ void GameEngine::addplayer(Command *c) {
  */
 void GameEngine::gamestart() {
     gameMap.countTerritoriesPerContinent();
-    Player::neutralPlayer().setDeckLink(MainDeck);
-    Player::neutralPlayer().setMapLink(gameMap);
-    Player::neutralPlayer().setTerritoriesOwnedPerContinent();
+//    Player::neutralPlayer().setDeckLink(MainDeck);
+//    Player::neutralPlayer().setMapLink(gameMap);
+//    Player::neutralPlayer().setTerritoriesOwnedPerContinent();
     std::shuffle(std::begin(Players), std::end(Players), std::default_random_engine());
     cout << "\nThe player order is: " << endl;
     for (int i = 0; i < Players.size(); i++) {
@@ -326,7 +328,7 @@ void GameEngine::mainGameLoop() {
         for (int i = 0; i < Players.size(); i++) {
             if (Players.at(i)->getTerritorySize() == 0) {
                 //delete this player from the vector
-                //delete Players.at(Players.begin() + i);
+
                 Players.erase(Players.begin() + i);
             }
         }

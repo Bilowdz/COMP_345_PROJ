@@ -9,6 +9,7 @@ using namespace std;
 #include "Player.h"
 #include "Card.h"
 #include "LoggingObserver.h"
+#include "HumanPlayerStrategy.h"
 
 #ifndef COMP_345_PROJ_GAMEENGINE_H
 #define COMP_345_PROJ_GAMEENGINE_H
