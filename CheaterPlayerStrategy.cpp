@@ -9,15 +9,6 @@ CheaterPlayerStrategy::CheaterPlayerStrategy(Player *player) {
 }
 
 void CheaterPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
-    //if they own a reinforcement card automatically add them to the reinforcements
-    if (p->getHand()->isCardOwned("Reinforcement")) {
-        int reinforcementCardReward = 5;
-        this->p->setReinforcements(this->p->getReinforcements() + reinforcementCardReward);
-        p->getHand()->removeCard(p->getHand()->getCardIndex("Reinforcement"));
-    }
-
-    //calculate the amount of territories to push to each adjacent territory
-    //int numOfUnitsToMovePerAdjacentTerritory = p->getReinforcements() / this->toAttack().size();
 
     //conquer all territories that are adjacent to its own territories
     for (int i = 0; i < this->toAttack().size(); i++) {
