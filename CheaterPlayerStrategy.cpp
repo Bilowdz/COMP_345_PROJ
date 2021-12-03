@@ -10,6 +10,7 @@
  */
 CheaterPlayerStrategy::CheaterPlayerStrategy(Player *player) {
     this->p = player;
+    p->setName("Cheater");
 }
 
 /**

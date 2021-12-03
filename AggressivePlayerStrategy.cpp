@@ -10,6 +10,7 @@
  */
 AggressivePlayerStrategy::AggressivePlayerStrategy(Player * player) {
     this->p = player;
+    p->setName("Aggressive");
 }
 
 /**

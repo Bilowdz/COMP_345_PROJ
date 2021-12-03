@@ -18,6 +18,7 @@ int NeutralPlayerStrategy::neutralReturn() {
  */
 NeutralPlayerStrategy::NeutralPlayerStrategy(Player *player) {
     this->p = player;
+    p->setName("Neutral");
 }
 
 /**

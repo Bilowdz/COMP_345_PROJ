@@ -10,6 +10,7 @@
  */
 BenevolentPlayerStrategy::BenevolentPlayerStrategy(Player* player) {
     this->p = player;
+    p->setName("Benevolent");
 }
 
 /**
