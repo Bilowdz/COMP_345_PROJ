@@ -80,7 +80,7 @@ void BenevolentPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
         for(Territory * potentialAdj : ownedTerritories){
             if(potentialAdj->IsAdjacent(*border)){
                 //if(!p->isTerritoryInList(defendingTerritories, potentialAdj->id)){
-                    auto *newAdvance = new Advance(0, *potentialAdj, *border);
+                    auto *newAdvance = new Advance(floor(potentialAdj->unitsGarrisoned / 2), *potentialAdj, *border);
                     newAdvance->setPlayerLink(*p);
                     this->p->getOrdersList()->addAdvance(newAdvance);
                 //}
