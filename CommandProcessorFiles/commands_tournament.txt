@@ -1,4 +1,4 @@
-loadmap minimap.map
+loadmap zertina.map
 validatemap
 addplayer Cheater
 addplayer Aggressive
@@ -6,7 +6,7 @@ addplayer Neutral
 addplayer Benevolent
 gamestart
 replay
-loadmap minimap.map
+loadmap zertina.map
 validatemap
 addplayer Cheater
 addplayer Aggressive

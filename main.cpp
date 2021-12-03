@@ -144,35 +144,10 @@ void tournamentDriver() {
 }
 
 int main() {
-    /*
-    ofstream file("../gamelog.txt");
-    file.close();
-
-//    auto *neutralName = new string("neutral");
-//    vector<Territory*> neutralTerritories;
-//    Hand *neutralHand = new Hand();
-//    auto *neutralOrdersList = new OrdersList();
-//    Player::neutralPlayer() = *new Player(neutralName, neutralTerritories, neutralHand, neutralOrdersList);
-    cpDriver();
-
-//    delete neutralName;
-//    delete neutralHand;
-//    delete neutralOrdersList;
 
     // sample tournament command:
-    // tournament -M minimap.map, canada.map -P Cheater, Aggressive, Neutral -G 2 -D 15
-    // tournament -M minimap.map, canada.map -P Cheater, Aggressive, Neutral -G 1 -D 200000
-    // tournament -M minimap.map -P Cheater, Aggressive -G 3 -D 200000
+    // tournament -M zertina.map, canada.map -P Cheater, Aggressive, Neutral, Benevolent -G 2 -D 15
 
-    // bugs:
-    // tournament -M canada.map -P Neutral, Aggressive -G 10 -D 200000
-    // tournament -M canada.map -P Neutral, Cheater -G 10 -D 200000
-    // tournament -M minimap.map -P Neutral, Cheater -G 10 -D 200000
-    // tournament -M minimap.map, canada.map -P Aggressive, Benevolent -G 2 -D 5000
-     
-    // sample tournament command:
-    // tournament -M minimap.map, canada.map -P Cheater, Aggressive, Neutral, Benevolent -G 2 -D 15
-*/
     tournamentDriver();
     return 0;
 }

@@ -1,0 +1,16 @@
+Tournament mode: 
+M: minimap.map, canada.map
+P: Cheater, Aggressive, Neutral, Benevolent
+G: 2
+D: 15	Game 1	Game 2	
+
+Map 1	Draw	Draw	
+Map 2	Draw	Draw	
+Tournament mode: 
+M: zertina.map, canada.map
+P: Cheater, Aggressive, Neutral, Benevolent
+G: 2
+D: 15	Game 1	Game 2	
+
+Map 1	Draw	Draw	
+Map 2	Draw	Draw	

@@ -97,6 +97,4 @@ private:
     PlayerStrategy *ps;
 };
 
-extern Player neutralPlayer;
-
 #endif //COMP_345_PROJ_PLAYER_H
