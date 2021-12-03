@@ -111,7 +111,9 @@ string validateTournament(GameEngine * ge) {
 }
 
 void tournamentDriver() {
+    LogObserver* logger = new LogObserver();
     GameEngine* ge = new GameEngine();
+    ge->Attach(logger);
 
     // used for parsing the tournament parameters
     FileCommandWriter fcw;
@@ -130,6 +132,7 @@ void tournamentDriver() {
 
     FileLineReader flr(fileName);
     FileCommandProcessorAdapter adapter(flr);
+    adapter.Attach(logger);
 
     // read whole tournament until there are no more commands left
     while(adapter.hasCommand()) {
@@ -158,7 +161,7 @@ int main() {
 
 
     // sample tournament command:
-    // tournament -M minimap.map, canada.map -P Cheater, Aggressive -G 2 -D 15
+    // tournament -M minimap.map, canada.map -P Cheater, Aggressive, Neutral, Benevolent -G 2 -D 15
 */
     tournamentDriver();
     return 0;

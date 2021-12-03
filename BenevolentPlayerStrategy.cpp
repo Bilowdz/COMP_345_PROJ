@@ -43,7 +43,7 @@ void BenevolentPlayerStrategy::issueOrder(vector<Player *> &vPlayersInPlay) {
         weakest = -1;
         for(int i = 0; i < ownedTerritories.size(); i++){
             Territory * cur = ownedTerritories.at(i);
-            currentUnits = cur->unitsGarrisoned;
+            currentUnits = territoryUnits.at(i);
 
             if(weakest == -1) {
                 weakest = 0;
