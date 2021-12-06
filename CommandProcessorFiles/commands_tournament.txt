@@ -1,32 +1,24 @@
-loadmap zertina.map
+loadmap minimap.map
 validatemap
 addplayer Cheater
 addplayer Aggressive
-addplayer Neutral
-addplayer Benevolent
 gamestart
 replay
-loadmap zertina.map
+loadmap minimap.map
 validatemap
 addplayer Cheater
 addplayer Aggressive
-addplayer Neutral
-addplayer Benevolent
 gamestart
 replay
 loadmap canada.map
 validatemap
 addplayer Cheater
 addplayer Aggressive
-addplayer Neutral
-addplayer Benevolent
 gamestart
 replay
 loadmap canada.map
 validatemap
 addplayer Cheater
 addplayer Aggressive
-addplayer Neutral
-addplayer Benevolent
 gamestart
 quit

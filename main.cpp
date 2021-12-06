@@ -96,14 +96,14 @@ void cpDriver() {
 string validateTournament(GameEngine * ge) {
     string input;
 
-    cout << "Enter tournament thing: ";
+    cout << "Enter tournament command: ";
     // get user input
     getline(cin,input);
     cout << endl;
 
     while(!ge->validateTournamentPhase(input)) {
         cout << endl;
-        cout << "Enter tournament thing: ";
+        cout << "Enter tournament command: ";
         // get user input
         getline(cin,input);
     }
@@ -138,7 +138,6 @@ void tournamentDriver() {
     while(adapter.hasCommand()) {
         Command * c = adapter.getCommand(ge);
         ge->transition(c);
-        // todo: destruct everything
     }
     ge->PrintResults();
 }

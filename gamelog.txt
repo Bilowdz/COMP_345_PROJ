@@ -16088,3 +16088,3325 @@ Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
 Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
 Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
 Log :: New Game State : Win
+Log :: Command: loadmap zertina.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Neutral
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Benevolent
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 53 Units to Deomar
+Log :: Aggressive Advanced 53 Units from Deomar to Malvar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Aggressive Deployed 3 Units to Deomar
+Log :: Aggressive Advanced 3 Units from Deomar to Iltzar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 54 Units to Managar
+Log :: Aggressive Advanced 54 Units from Managar to Beofiras
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Decimus
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 5 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 1 Units to Beofiras
+Log :: Aggressive Advanced 55 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 6 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Derfiras
+Log :: Benevolent Deployed 3 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 7 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed -9 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 7 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 8 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 5 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 3 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 3 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 3 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap zertina.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Neutral
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Benevolent
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Aggressive Deployed 53 Units to Deomar
+Log :: Aggressive Advanced 53 Units from Deomar to Malvar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Aggressive Deployed 3 Units to Deomar
+Log :: Aggressive Advanced 3 Units from Deomar to Iltzar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 54 Units to Managar
+Log :: Aggressive Advanced 54 Units from Managar to Beofiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Decimus
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 1 Units to Beofiras
+Log :: Aggressive Advanced 55 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 3 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 6 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Derfiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed -4 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 6 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 4 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 5 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 3 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 3 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 3 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 4 Units from Cerobi to Reogar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Cerobi
+Log :: Aggressive Advanced 6 Units from Cerobi to Reogar
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Neutral
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Benevolent
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Advanced 0 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 0 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 52 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 52 Units from N&L-Newfoundland to Nova_Scotia
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to N&L-Labrador
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 53 Units to NT-Victoria_Island-West
+Log :: Aggressive Advanced 53 Units from NT-Victoria_Island-West to NU-Victoria_Island-East
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 3 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 3 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NT-Victoria_Island-West
+Log :: Aggressive Advanced 0 Units from NT-Victoria_Island-West to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 53 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Neutral
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Benevolent
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Advanced 0 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 0 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 52 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 52 Units from N&L-Newfoundland to Nova_Scotia
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to N&L-Labrador
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 53 Units to NT-Victoria_Island-West
+Log :: Aggressive Advanced 53 Units from NT-Victoria_Island-West to NU-Victoria_Island-East
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 3 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 3 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NT-Victoria_Island-West
+Log :: Aggressive Advanced 0 Units from NT-Victoria_Island-West to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 53 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Win
+Log :: Command: loadmap zertina.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Neutral
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Benevolent
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 53 Units to Deomar
+Log :: Aggressive Advanced 53 Units from Deomar to Malvar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Aggressive Deployed 3 Units to Deomar
+Log :: Aggressive Advanced 3 Units from Deomar to Iltzar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 54 Units to Managar
+Log :: Aggressive Advanced 54 Units from Managar to Beofiras
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Decimus
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 3 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 1 Units to Beofiras
+Log :: Aggressive Advanced 55 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Derfiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 5 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 5 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 5 Units from Deomar to Carmen
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap zertina.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Neutral
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Benevolent
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Malvar
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 53 Units to Deomar
+Log :: Aggressive Advanced 53 Units from Deomar to Malvar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Aggressive Deployed 3 Units to Deomar
+Log :: Aggressive Advanced 3 Units from Deomar to Iltzar
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 54 Units to Managar
+Log :: Aggressive Advanced 54 Units from Managar to Beofiras
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Decimus
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Miromar
+Log :: Benevolent Deployed 1 Units to Sinorias
+Log :: Benevolent Deployed 1 Units to Reogar
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 3 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 1 Units to Beofiras
+Log :: Aggressive Advanced 55 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Festgon
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Derfiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 5 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Derfiras
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Eastoria
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 5 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Elmar
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Fernatia
+Log :: Benevolent Deployed 1 Units to Menagea
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 4 Units from Deomar to Carmen
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to Beofiras
+Log :: Aggressive Advanced 0 Units from Beofiras to Sectiras
+Log :: Benevolent Deployed 2 Units to Carmen
+Log :: Benevolent Deployed 1 Units to Carmen
+Log :: Aggressive Deployed 4 Units to Deomar
+Log :: Aggressive Advanced 5 Units from Deomar to Carmen
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Neutral
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Benevolent
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Advanced 0 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 0 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 52 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 52 Units from N&L-Newfoundland to Nova_Scotia
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to N&L-Labrador
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 53 Units to NT-Victoria_Island-West
+Log :: Aggressive Advanced 53 Units from NT-Victoria_Island-West to NU-Victoria_Island-East
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 3 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 3 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NT-Victoria_Island-West
+Log :: Aggressive Advanced 0 Units from NT-Victoria_Island-West to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 53 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 2 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 2 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 2 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Neutral
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Benevolent
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Deployed 1 Units to Nova_Scotia
+Log :: Benevolent Advanced 0 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 0 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 52 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 52 Units from N&L-Newfoundland to Nova_Scotia
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to N&L-Labrador
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 53 Units to NT-Victoria_Island-West
+Log :: Aggressive Advanced 53 Units from NT-Victoria_Island-West to NU-Victoria_Island-East
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 3 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 3 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NT-Victoria_Island-West
+Log :: Aggressive Advanced 0 Units from NT-Victoria_Island-West to NT-Northern_Islands
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to NU-Baffin_Island
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 53 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 2 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 2 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to NT-Northern_Islands
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Deployed 1 Units to Yukon_Territory
+Log :: Benevolent Advanced 3 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 2 Units to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 3 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Ontario-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to British_Columbia-South
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Deploy to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Advance to Player : Benevolent
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: Aggressive Deployed 0 Units to NU-Victoria_Island-East
+Log :: Aggressive Advanced 0 Units from NU-Victoria_Island-East to Nunavut-Continental
+Log :: Benevolent Deployed 1 Units to Quebec-Central
+Log :: Benevolent Deployed 1 Units to Saskatchewan-North
+Log :: Benevolent Advanced 4 Units from Ontario-North to Quebec-Central
+Log :: Benevolent Advanced 4 Units from Quebec-Central to Ontario-North
+Log :: Aggressive Deployed 2 Units to N&L-Newfoundland
+Log :: Aggressive Advanced 2 Units from N&L-Newfoundland to Quebec-Central
+Log :: New Game State : Win
+Log :: Command: loadmap minimap.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap minimap.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
+Log :: Command: replay
+Log :: Effect: 
+Log :: New Game State : Start
+Log :: Command: loadmap canada.map
+Log :: Effect: 
+Log :: New Game State : Map Loaded
+Log :: Command: validatemap
+Log :: Effect: 
+Log :: New Game State : Map Validated
+Log :: Command: addplayer Cheater
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: addplayer Aggressive
+Log :: Effect: 
+Log :: New Game State : Players Added
+Log :: Command: gamestart
+Log :: Effect: 
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
+Log :: Added Order : Deploy to Player : Aggressive
+Log :: Added Order : Advance to Player : Aggressive
+Log :: New Game State : Execute Orders
+Log :: New Game State : Execute Orders
+Log :: New Game State : Win
