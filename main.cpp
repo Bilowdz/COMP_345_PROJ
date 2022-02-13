@@ -147,6 +147,9 @@ int main() {
     // sample tournament command:
     // tournament -M zertina.map, canada.map -P Cheater, Aggressive, Neutral, Benevolent -G 2 -D 15
 
-    tournamentDriver();
+    //tournamentDriver();
+
+    cpDriver();
+
     return 0;
 }

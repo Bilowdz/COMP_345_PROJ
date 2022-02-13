@@ -19410,3 +19410,9 @@ Log :: Added Order : Advance to Player : Aggressive
 Log :: New Game State : Execute Orders
 Log :: New Game State : Execute Orders
 Log :: New Game State : Win
+Log :: New Game State : Map Loaded
+Log :: New Game State : Map Validated
+Log :: New Game State : Players Added
+Log :: New Game State : Players Added
+Log :: New Game State : Assign Reinforcement
+Log :: New Game State : Issue Orders
